@@ -63,7 +63,8 @@
     "title": "Contact",
     "sendEmail": "Send Email",
     "linkedin": "LinkedIn",
-    "github": "GitHub"
+    "github": "GitHub",
+    "malt": "Malt"
   },
   "footer": {
     "copyright": "© 2024 Aldéric Hoarau. All rights reserved."
