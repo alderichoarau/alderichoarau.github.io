@@ -1,0 +1,71 @@
+{
+  "nav": {
+    "about": "About",
+    "skills": "Skills",
+    "experience": "Experience",
+    "certifications": "Certifications",
+    "references": "References",
+    "contact": "Contact",
+    "getInTouch": "Get In Touch"
+  },
+  "header": {
+    "name": "Aldéric Hoarau",
+    "subtitle": "Developer, Cloud & DevSecOps Freelancer"
+  },
+  "about": {
+    "title": "About",
+    "text": "Cloud-ready developer & consultant with +10 years of experience in modernization, cost optimization and infrastructure security. Committed agilist, I believe in more human & responsible technology."
+  },
+  "skills": {
+    "title": "Key Skills",
+    "cloudDevSecOps": "Cloud & DevSecOps",
+    "cloudDevSecOpsDesc": "Azure, CI/CD, Terraform, GitHub Actions, Azure DevOps",
+    "finOps": "FinOps & Optimization",
+    "finOpsDesc": "Cloud cost optimization and budget management",
+    "architecture": "Architecture & Security",
+    "architectureDesc": "Azure AD, Defender, Security Center",
+    "agility": "Agility & Facilitation",
+    "agilityDesc": "Scrum, Kanban, Team Coaching"
+  },
+  "experience": {
+    "title": "Recent Experience",
+    "freelance": "Freelance – Cloud Consultant",
+    "freelancePeriod": "2023 - Present",
+    "freelanceDesc": "Migration of +20 applications with 10x cost reduction. Specialization in cloud architecture and financial optimization.",
+    "inetum": "Inetum – Java, DevOps & Cloud Consultant",
+    "inetumPeriod": "2021 - 2023",
+    "inetumDesc": "Supporting clients in their digital transformation and migration to Azure cloud.",
+    "gfi": "Gfi World – Full Stack Developer & Agile Facilitator",
+    "gfiPeriod": "2018 - 2020",
+    "gfiDesc": "Web application development and facilitation of agile transformation for teams."
+  },
+  "certifications": {
+    "title": "Certifications",
+    "psm1": "Professional Scrum Master 1",
+    "az204": "AZ-204: Developing Solutions for Microsoft Azure",
+    "az104": "AZ-104: Azure Administrator",
+    "pl300": "PL-300: Power BI Data Analyst",
+    "planned": "planned 2025"
+  },
+  "languages": {
+    "title": "Languages",
+    "french": "French & Réunion Creole",
+    "english": "English",
+    "spanish": "Spanish",
+    "native": "Native",
+    "professional": "Professional",
+    "elementary": "Elementary"
+  },
+  "references": {
+    "title": "Trusted by"
+  },
+  "contact": {
+    "title": "Contact",
+    "sendEmail": "Send Email",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
+  },
+  "footer": {
+    "copyright": "© 2024 Aldéric Hoarau. All rights reserved."
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "nav": {
+    "about": "À propos",
+    "skills": "Compétences",
+    "experience": "Expérience",
+    "certifications": "Certifications",
+    "references": "Références",
+    "contact": "Contact",
+    "getInTouch": "Me contacter"
+  },
+  "header": {
+    "name": "Aldéric Hoarau",
+    "subtitle": "Développeur, Cloud & DevSecOps Freelance"
+  },
+  "about": {
+    "title": "À propos",
+    "text": "Développeur et consultant cloud avec +10 ans d'expérience en modernisation, optimisation des coûts et sécurité d'infrastructure. Agiliste engagé, je crois en une technologie plus humaine et responsable."
+  },
+  "skills": {
+    "title": "Compétences clés",
+    "cloudDevSecOps": "Cloud & DevSecOps",
+    "cloudDevSecOpsDesc": "Azure, CI/CD, Terraform, GitHub Actions, Azure DevOps",
+    "finOps": "FinOps & Optimisation",
+    "finOpsDesc": "Optimisation des coûts cloud et gestion budgétaire",
+    "architecture": "Architecture & Sécurité",
+    "architectureDesc": "Azure AD, Defender, Security Center",
+    "agility": "Agilité & Facilitation",
+    "agilityDesc": "Scrum, Kanban, Coaching d'équipe"
+  },
+  "experience": {
+    "title": "Expérience récente",
+    "freelance": "Freelance – Consultant Cloud",
+    "freelancePeriod": "2023 - Présent",
+    "freelanceDesc": "Migration de +20 applications avec réduction des coûts x10. Spécialisation en architecture cloud et optimisation financière.",
+    "inetum": "Inetum – Consultant Java, DevOps & Cloud",
+    "inetumPeriod": "2021 - 2023",
+    "inetumDesc": "Accompagnement des clients dans leur transformation digitale et migration vers le cloud Azure.",
+    "gfi": "Gfi World – Développeur Full Stack & Facilitateur Agile",
+    "gfiPeriod": "2018 - 2020",
+    "gfiDesc": "Développement d'applications web et facilitation de transformation agile pour les équipes."
+  },
+  "certifications": {
+    "title": "Certifications",
+    "psm1": "Professional Scrum Master 1",
+    "az204": "AZ-204: Développement de solutions pour Microsoft Azure",
+    "az104": "AZ-104: Administrateur Azure",
+    "pl300": "PL-300: Analyste de données Power BI",
+    "planned": "prévu 2025"
+  },
+  "languages": {
+    "title": "Langues",
+    "french": "Français & Créole réunionnais",
+    "english": "Anglais",
+    "spanish": "Espagnol",
+    "native": "Natif",
+    "professional": "Professionnel",
+    "elementary": "Élémentaire"
+  },
+  "references": {
+    "title": "Ils m'ont fait confiance"
+  },
+  "contact": {
+    "title": "Contact",
+    "sendEmail": "Envoyer un email",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
+  },
+  "footer": {
+    "copyright": "© 2024 Aldéric Hoarau. Tous droits réservés."
+  }
+}

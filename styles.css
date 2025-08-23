@@ -5,10 +5,10 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Manrope', sans-serif;
     line-height: 1.6;
-    color: #333;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    color: #1a1a1a;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
     min-height: 100vh;
 }
 
@@ -41,11 +41,12 @@ nav {
 }
 
 .logo {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #2c3e50;
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #1a1a1a;
     text-decoration: none;
+    letter-spacing: -0.02em;
 }
 
 .nav-menu {
@@ -116,6 +117,54 @@ nav {
     box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
 }
 
+/* Language Switcher */
+.language-switcher {
+    display: flex;
+    gap: 0.5rem;
+    margin-left: 1rem;
+}
+
+.lang-btn {
+    background: rgba(102, 126, 234, 0.1);
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #667eea;
+}
+
+.lang-btn img {
+    width: 16px;
+    height: 12px;
+    object-fit: cover;
+    border-radius: 2px;
+}
+
+.lang-btn:hover {
+    background: rgba(102, 126, 234, 0.15);
+    border-color: rgba(102, 126, 234, 0.3);
+    transform: translateY(-1px);
+}
+
+.lang-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: #667eea;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.lang-btn.active:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
 /* Header */
 header {
     background: rgba(255, 255, 255, 0.95);
@@ -145,16 +194,18 @@ header {
 }
 
 h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #2c3e50;
-    margin-bottom: 0.5rem;
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
 }
 
 .subtitle {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: #667eea;
     font-weight: 500;
+    letter-spacing: 0.01em;
 }
 
 /* Sections */
@@ -351,25 +402,31 @@ h1 {
     opacity: 0.8;
 }
 
-/* References */
-.references-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    align-items: center;
-    justify-items: center;
+/* References Carousel */
+.references-carousel {
+    overflow: hidden;
+    position: relative;
+    margin: 0 -2.5rem;
+}
+
+.references-track {
+    display: flex;
+    animation: scroll-references 30s linear infinite;
+    width: calc(200% + 4rem);
 }
 
 .reference-item {
-    background: rgba(255, 255, 255, 0.8);
+    flex: 0 0 200px;
+    background: rgba(255, 255, 255, 0.9);
     padding: 1.5rem;
     border-radius: 12px;
-    transition: all 0.3s ease;
+    margin: 0 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
 }
 
 .reference-item:hover {
@@ -384,13 +441,26 @@ h1 {
     width: auto;
     height: auto;
     object-fit: contain;
-    filter: grayscale(20%);
+    filter: grayscale(30%) opacity(0.8);
     transition: all 0.3s ease;
 }
 
 .reference-item:hover .reference-logo {
-    filter: grayscale(0%);
+    filter: grayscale(0%) opacity(1);
     transform: scale(1.05);
+}
+
+.references-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scroll-references {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 /* Contact */
@@ -443,6 +513,15 @@ footer {
         display: block;
     }
 
+    .language-switcher {
+        margin-left: 0.5rem;
+    }
+
+    .lang-btn {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.8rem;
+    }
+
     .nav-menu {
         position: fixed;
         top: 80px;
@@ -492,6 +571,15 @@ footer {
 
     .skills-grid {
         grid-template-columns: 1fr;
+    }
+
+    .references-carousel {
+        margin: 0 -1.5rem;
+    }
+
+    .reference-item {
+        flex: 0 0 180px;
+        padding: 1rem;
     }
 
     .contact-buttons {

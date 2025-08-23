@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aldéric Hoarau - Developer, Cloud & DevSecOps Freelancer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -14,14 +14,24 @@
         <div class="nav-container">
             <a href="#home" class="logo">Aldéric Hoarau</a>
             <ul class="nav-menu">
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#certifications">Certifications</a></li>
-                <li><a href="#references">Références</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="mailto:alderic.hoarau@gmail.com" class="cta-button">Get In Touch</a></li>
+                <li><a href="#about" data-translate="nav.about">About</a></li>
+                <li><a href="#skills" data-translate="nav.skills">Skills</a></li>
+                <li><a href="#experience" data-translate="nav.experience">Experience</a></li>
+                <li><a href="#certifications" data-translate="nav.certifications">Certifications</a></li>
+                <li><a href="#references" data-translate="nav.references">References</a></li>
+                <li><a href="#contact" data-translate="nav.contact">Contact</a></li>
+                <li><a href="mailto:alderic.hoarau@gmail.com" class="cta-button" data-translate="nav.getInTouch">Get In Touch</a></li>
             </ul>
+            <div class="language-switcher">
+                <button class="lang-btn active" data-lang="en">
+                    <img src="https://flagcdn.com/w20/gb.png" alt="English">
+                    EN
+                </button>
+                <button class="lang-btn" data-lang="fr">
+                    <img src="https://flagcdn.com/w20/fr.png" alt="Français">
+                    FR
+                </button>
+            </div>
             <button class="nav-toggle" id="nav-toggle">
                 <i class="fas fa-bars"></i>
             </button>
@@ -32,8 +42,8 @@
         <div class="container">
             <div class="header-content">
                 <div class="profile-img">AH</div>
-                <h1>Aldéric Hoarau</h1>
-                <p class="subtitle">Developer, Cloud & DevSecOps Freelancer</p>
+                <h1 data-translate="header.name">Aldéric Hoarau</h1>
+                <p class="subtitle" data-translate="header.subtitle">Developer, Cloud & DevSecOps Freelancer</p>
             </div>
         </div>
     </header>
@@ -41,8 +51,8 @@
     <main class="container">
         <!-- About -->
         <section class="section" id="about">
-            <h2><i class="fas fa-user"></i> About</h2>
-            <p class="about-text">
+            <h2><i class="fas fa-user"></i> <span data-translate="about.title">About</span></h2>
+            <p class="about-text" data-translate="about.text">
                 Cloud-ready developer & consultant with +10 years of experience in modernization, 
                 cost optimization and infrastructure security. Committed agilist, I believe 
                 in more human & responsible technology.
@@ -51,51 +61,51 @@
 
         <!-- Skills -->
         <section class="section" id="skills">
-            <h2><i class="fas fa-cogs"></i> Key Skills</h2>
+            <h2><i class="fas fa-cogs"></i> <span data-translate="skills.title">Key Skills</span></h2>
             <div class="skills-grid">
                 <div class="skill-card">
-                    <h3><i class="fas fa-cloud"></i> Cloud & DevSecOps</h3>
-                    <p>Azure, CI/CD, Terraform, GitHub Actions, Azure DevOps</p>
+                    <h3><i class="fas fa-cloud"></i> <span data-translate="skills.cloudDevSecOps">Cloud & DevSecOps</span></h3>
+                    <p data-translate="skills.cloudDevSecOpsDesc">Azure, CI/CD, Terraform, GitHub Actions, Azure DevOps</p>
                 </div>
                 <div class="skill-card">
-                    <h3><i class="fas fa-chart-line"></i> FinOps & Optimization</h3>
-                    <p>Cloud cost optimization and budget management</p>
+                    <h3><i class="fas fa-chart-line"></i> <span data-translate="skills.finOps">FinOps & Optimization</span></h3>
+                    <p data-translate="skills.finOpsDesc">Cloud cost optimization and budget management</p>
                 </div>
                 <div class="skill-card">
-                    <h3><i class="fas fa-shield-alt"></i> Architecture & Security</h3>
-                    <p>Azure AD, Defender, Security Center</p>
+                    <h3><i class="fas fa-shield-alt"></i> <span data-translate="skills.architecture">Architecture & Security</span></h3>
+                    <p data-translate="skills.architectureDesc">Azure AD, Defender, Security Center</p>
                 </div>
                 <div class="skill-card">
-                    <h3><i class="fas fa-users"></i> Agility & Facilitation</h3>
-                    <p>Scrum, Kanban, Team Coaching</p>
+                    <h3><i class="fas fa-users"></i> <span data-translate="skills.agility">Agility & Facilitation</span></h3>
+                    <p data-translate="skills.agilityDesc">Scrum, Kanban, Team Coaching</p>
                 </div>
             </div>
         </section>
 
         <!-- Experience -->
         <section class="section" id="experience">
-            <h2><i class="fas fa-briefcase"></i> Recent Experience</h2>
+            <h2><i class="fas fa-briefcase"></i> <span data-translate="experience.title">Recent Experience</span></h2>
             <div class="timeline">
                 <div class="timeline-item">
-                    <h3><i class="fas fa-laptop-code"></i> Freelance – Cloud Consultant</h3>
-                    <div class="timeline-period">2023 - Present</div>
-                    <p class="timeline-description">
+                    <h3><i class="fas fa-laptop-code"></i> <span data-translate="experience.freelance">Freelance – Cloud Consultant</span></h3>
+                    <div class="timeline-period" data-translate="experience.freelancePeriod">2023 - Present</div>
+                    <p class="timeline-description" data-translate="experience.freelanceDesc">
                         Migration of +20 applications with 10x cost reduction. 
                         Specialization in cloud architecture and financial optimization.
                     </p>
                 </div>
                 <div class="timeline-item">
-                    <h3><i class="fas fa-building"></i> Inetum – Java, DevOps & Cloud Consultant</h3>
-                    <div class="timeline-period">2021 - 2023</div>
-                    <p class="timeline-description">
+                    <h3><i class="fas fa-building"></i> <span data-translate="experience.inetum">Inetum – Java, DevOps & Cloud Consultant</span></h3>
+                    <div class="timeline-period" data-translate="experience.inetumPeriod">2021 - 2023</div>
+                    <p class="timeline-description" data-translate="experience.inetumDesc">
                         Supporting clients in their digital transformation 
                         and migration to Azure cloud.
                     </p>
                 </div>
                 <div class="timeline-item">
-                    <h3><i class="fas fa-code"></i> Gfi World – Full Stack Developer & Agile Facilitator</h3>
-                    <div class="timeline-period">2018 - 2020</div>
-                    <p class="timeline-description">
+                    <h3><i class="fas fa-code"></i> <span data-translate="experience.gfi">Gfi World – Full Stack Developer & Agile Facilitator</span></h3>
+                    <div class="timeline-period" data-translate="experience.gfiPeriod">2018 - 2020</div>
+                    <p class="timeline-description" data-translate="experience.gfiDesc">
                         Web application development and facilitation of 
                         agile transformation for teams.
                     </p>
@@ -105,85 +115,109 @@
 
         <!-- Certifications -->
         <section class="section" id="certifications">
-            <h2><i class="fas fa-certificate"></i> Certifications</h2>
+            <h2><i class="fas fa-certificate"></i> <span data-translate="certifications.title">Certifications</span></h2>
             <div class="cert-grid">
                 <div class="cert-item">
-                    <i class="fas fa-award"></i> <strong>Professional Scrum Master 1</strong>
+                    <i class="fas fa-award"></i> <strong data-translate="certifications.psm1">Professional Scrum Master 1</strong>
                 </div>
                 <div class="cert-item">
-                    <i class="fab fa-microsoft"></i> <strong>AZ-204:</strong> Developing Solutions for Microsoft Azure
+                    <i class="fab fa-microsoft"></i> <strong><span data-translate="certifications.az204">AZ-204: Developing Solutions for Microsoft Azure</span></strong>
                 </div>
                 <div class="cert-item">
-                    <i class="fab fa-microsoft"></i> <strong>AZ-104:</strong> Azure Administrator <em>(planned 2025)</em>
+                    <i class="fab fa-microsoft"></i> <strong><span data-translate="certifications.az104">AZ-104: Azure Administrator</span> <em>(<span data-translate="certifications.planned">planned 2025</span>)</em></strong>
                 </div>
                 <div class="cert-item">
-                    <i class="fas fa-chart-bar"></i> <strong>PL-300:</strong> Power BI Data Analyst <em>(planned 2025)</em>
+                    <i class="fas fa-chart-bar"></i> <strong><span data-translate="certifications.pl300">PL-300: Power BI Data Analyst</span> <em>(<span data-translate="certifications.planned">planned 2025</span>)</em></strong>
                 </div>
             </div>
         </section>
 
         <!-- Languages -->
         <section class="section">
-            <h2><i class="fas fa-globe-americas"></i> Languages</h2>
+            <h2><i class="fas fa-globe-americas"></i> <span data-translate="languages.title">Languages</span></h2>
             <div class="languages-grid">
                 <div class="language-item">
-                    <span><i class="fas fa-flag"></i> French & Réunion Creole</span>
-                    <span class="language-level">Native</span>
+                    <span><i class="fas fa-flag"></i> <span data-translate="languages.french">French & Réunion Creole</span></span>
+                    <span class="language-level" data-translate="languages.native">Native</span>
                 </div>
                 <div class="language-item">
-                    <span><i class="fas fa-flag-usa"></i> English</span>
-                    <span class="language-level">Professional</span>
+                    <span><i class="fas fa-flag-usa"></i> <span data-translate="languages.english">English</span></span>
+                    <span class="language-level" data-translate="languages.professional">Professional</span>
                 </div>
                 <div class="language-item">
-                    <span><i class="fas fa-flag"></i> Spanish</span>
-                    <span class="language-level">Elementary</span>
+                    <span><i class="fas fa-flag"></i> <span data-translate="languages.spanish">Spanish</span></span>
+                    <span class="language-level" data-translate="languages.elementary">Elementary</span>
                 </div>
             </div>
         </section>
 
         <!-- References -->
         <section class="section" id="references">
-            <h2><i class="fas fa-building"></i> Références</h2>
-            <div class="references-grid">
-                <div class="reference-item">
-                    <img src="img/Airbus.png" alt="Airbus" class="reference-logo">
-                </div>
-                <div class="reference-item">
-                    <img src="img/AirFrance.jpg" alt="Air France" class="reference-logo">
-                </div>
-                <div class="reference-item">
-                    <img src="img/Transavia.svg" alt="Transavia" class="reference-logo">
-                </div>
-                <div class="reference-item">
-                    <img src="img/KLM.png" alt="KLM" class="reference-logo">
-                </div>
-                <div class="reference-item">
-                    <img src="img/INETUM.png" alt="Inetum" class="reference-logo">
-                </div>
-                <div class="reference-item">
-                    <img src="img/GFI.jpg" alt="GFI" class="reference-logo">
-                </div>
-                <div class="reference-item">
-                    <img src="img/Ministere.png" alt="Ministère de l'Agriculture" class="reference-logo">
+            <h2><i class="fas fa-building"></i> <span data-translate="references.title">Trusted by</span></h2>
+            <div class="references-carousel">
+                <div class="references-track">
+                    <div class="reference-item">
+                        <img src="img/Airbus.png" alt="Airbus" class="reference-logo">
+                    </div>
+                    <div class="reference-item">
+                        <img src="img/AirFrance.jpg" alt="Air France" class="reference-logo">
+                    </div>
+                    <div class="reference-item">
+                        <img src="img/Transavia.svg" alt="Transavia" class="reference-logo">
+                    </div>
+                    <div class="reference-item">
+                        <img src="img/KLM.png" alt="KLM" class="reference-logo">
+                    </div>
+                    <div class="reference-item">
+                        <img src="img/INETUM.png" alt="Inetum" class="reference-logo">
+                    </div>
+                    <div class="reference-item">
+                        <img src="img/GFI.jpg" alt="GFI" class="reference-logo">
+                    </div>
+                    <div class="reference-item">
+                        <img src="img/Ministere.png" alt="Ministère de l'Agriculture" class="reference-logo">
+                    </div>
+                    <!-- Duplication pour l'animation infinie -->
+                    <div class="reference-item">
+                        <img src="img/Airbus.png" alt="Airbus" class="reference-logo">
+                    </div>
+                    <div class="reference-item">
+                        <img src="img/AirFrance.jpg" alt="Air France" class="reference-logo">
+                    </div>
+                    <div class="reference-item">
+                        <img src="img/Transavia.svg" alt="Transavia" class="reference-logo">
+                    </div>
+                    <div class="reference-item">
+                        <img src="img/KLM.png" alt="KLM" class="reference-logo">
+                    </div>
+                    <div class="reference-item">
+                        <img src="img/INETUM.png" alt="Inetum" class="reference-logo">
+                    </div>
+                    <div class="reference-item">
+                        <img src="img/GFI.jpg" alt="GFI" class="reference-logo">
+                    </div>
+                    <div class="reference-item">
+                        <img src="img/Ministere.png" alt="Ministère de l'Agriculture" class="reference-logo">
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Contact -->
         <section class="section" id="contact">
-            <h2><i class="fas fa-paper-plane"></i> Contact</h2>
+            <h2><i class="fas fa-paper-plane"></i> <span data-translate="contact.title">Contact</span></h2>
             <div class="contact-buttons">
                 <a href="mailto:alderic.hoarau@gmail.com" class="btn">
                     <i class="fas fa-envelope"></i>
-                    Send Email
+                    <span data-translate="contact.sendEmail">Send Email</span>
                 </a>
                 <a href="https://www.linkedin.com/in/alderichoarau" class="btn btn-secondary" target="_blank" rel="noopener">
                     <i class="fab fa-linkedin"></i>
-                    LinkedIn
+                    <span data-translate="contact.linkedin">LinkedIn</span>
                 </a>
                 <a href="https://github.com/alderichoarau" class="btn" style="background: linear-gradient(135deg, #333 0%, #24292e 100%);" target="_blank" rel="noopener">
                     <i class="fab fa-github"></i>
-                    GitHub
+                    <span data-translate="contact.github">GitHub</span>
                 </a>
             </div>
         </section>
@@ -191,7 +225,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Aldéric Hoarau. All rights reserved.</p>
+            <p data-translate="footer.copyright">&copy; 2024 Aldéric Hoarau. All rights reserved.</p>
         </div>
     </footer>
 
