@@ -40,20 +40,21 @@ This project is designed to be easily deployed on GitHub Pages, allowing you to 
 
 ```
 landing-page/
-├── index.html          # Main HTML file
-├── styles.css          # External CSS file
-├── script.js           # External JavaScript file
-├── sections/           # Folder for separate HTML sections
-│   ├── navigation.html # Navigation / Menu
-│   ├── header.html     # Header with profile
-│   ├── about.html      # About section
-│   ├── skills.html     # Skills section
-│   ├── experience.html # Experience section
-│   ├── certifications.html # Certifications section
-│   ├── languages.html  # Languages section
-│   ├── contact.html    # Contact section
-│   └── footer.html     # Footer
-└── README.md           # Project documentation
+├── index.html          # Main HTML file with all content
+├── styles.css         # CSS styles
+├── script.js          # JavaScript functionalities
+├── img/              # Images folder
+│   ├── Airbus.png
+│   ├── AirFrance.jpg
+│   ├── GFI.jpg
+│   ├── INETUM.png
+│   ├── KLM.png
+│   ├── Ministere.png
+│   └── Transavia.svg
+├── lang/             # Language files
+│   ├── en.json
+│   └── fr.json
+└── README.md         # Project documentation
 ```
 
 ## 🚀 Usage
@@ -63,11 +64,12 @@ The `index.html` file uses external CSS and JavaScript files:
 - **CSS:** `styles.css`
 - **JavaScript:** `script.js`
 
-### Separate sections
-Each section is available in the `sections/` folder to facilitate:
-- Maintenance
-- Reusability
-- Modular development
+### Single Page Structure
+The entire content is contained in `index.html` to ensure:
+- Simple deployment without server requirements
+- Fast loading
+- Easy maintenance
+- Direct browser compatibility (no CORS issues)
 
 ## 🎨 Features
 
@@ -116,12 +118,16 @@ Each section is available in the `sections/` folder to facilitate:
 - `#certifications` - Certifications section
 - `#contact` - Contact section
 
-## 🔄 How to use separate sections
+## 🔄 Translations
 
-To integrate a section into another project:
-1. Copy the HTML file of the desired section
-2. Include the corresponding CSS styles from `styles.css`
-3. Add JavaScript if needed (`script.js`)
+The site supports multiple languages:
+- English (default)
+- French
+
+Translations are managed through:
+1. Data attributes in HTML (`data-translate`)
+2. JavaScript translation system
+3. JSON language files in `lang/` folder
 
 ---
 *Project created with ❤️ for a modern professional presentation*
