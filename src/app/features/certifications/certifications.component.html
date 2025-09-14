@@ -1,0 +1,43 @@
+<section id="certifications" class="section-container">
+  <mat-card class="content-card">
+    <mat-card-header>
+      <mat-card-title class="section-title">
+        <mat-icon>verified</mat-icon>
+        {{ 'certifications.title' | translate }}
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="certifications-grid">
+        <div class="cert-item" *ngFor="let cert of certifications">
+          <mat-icon class="cert-icon">{{ cert.icon }}</mat-icon>
+          <div class="cert-content">
+            <h3>{{ cert.title | translate }}</h3>
+            <p *ngIf="cert.status" class="cert-status">({{ cert.status | translate }})</p>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</section>
+
+<section class="section-container">
+  <mat-card class="content-card">
+    <mat-card-header>
+      <mat-card-title class="section-title">
+        <mat-icon>translate</mat-icon>
+        {{ 'languages.title' | translate }}
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="languages-grid">
+        <div class="language-item" *ngFor="let lang of languages">
+          <div class="language-info">
+            <mat-icon>language</mat-icon>
+            <span>{{ lang.name | translate }}</span>
+          </div>
+          <mat-chip class="language-level">{{ lang.level | translate }}</mat-chip>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</section>

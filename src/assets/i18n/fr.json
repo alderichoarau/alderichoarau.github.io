@@ -59,6 +59,25 @@
   "references": {
     "title": "Ils m'ont fait confiance"
   },
+  "faq": {
+    "title": "FAQ",
+    "q1": "Quels types de projets cloud prenez-vous en charge ?",
+    "a1": "J'interviens sur la conception, le développement et le déploiement d'applications cloud-native, la migration vers le cloud, l'optimisation des infrastructures existantes (AWS, Azure, GCP) ainsi que l'automatisation via CI/CD et Infrastructure as Code (Terraform, Ansible, etc.).",
+    "q2": "Comment se déroule une mission type avec vous ?",
+    "a2": "Après un premier échange pour comprendre vos besoins, je propose une feuille de route technique. Ensuite, nous avançons par étapes claires : cadrage, mise en place, tests, livraison, puis transfert de compétences si nécessaire.",
+    "q3": "Pouvez-vous intervenir en urgence ?",
+    "a3": "Oui, je peux intervenir rapidement sur des incidents critiques ou des besoins ponctuels (pannes, problèmes de déploiement, optimisation urgente). Les conditions sont adaptées selon l'urgence.",
+    "q4": "Comment assurez-vous la sécurité de mes données et de mon infrastructure ?",
+    "a4": "Je mets en place les bonnes pratiques de sécurité cloud : gestion fine des accès (IAM), chiffrement des données, monitoring des logs et bonnes pratiques DevSecOps.",
+    "q5": "Travaillez-vous en autonomie ou en collaboration avec une équipe interne ?",
+    "a5": "Les deux sont possibles. Je peux travailler en totale autonomie ou bien m'intégrer à une équipe existante (développeurs, ops, chefs de projet) en utilisant vos outils de communication et gestion.",
+    "q6": "Comment fonctionne la facturation ?",
+    "a6": "Je facture au forfait (par projet) ou au temps passé (TJM – Taux Journalier Moyen). Un devis clair est proposé avant chaque mission, avec possibilité d'échelonnement selon l'avancement.",
+    "q7": "Est-il possible de prévoir une maintenance ou un suivi après la mission ?",
+    "a7": "Oui, je propose des forfaits de support et de maintenance afin de garantir la stabilité, la performance et la mise à jour régulière de vos environnements cloud.",
+    "q8": "Travaillez-vous uniquement en remote ou aussi sur site ?",
+    "a8": "Je privilégie le travail à distance pour plus de flexibilité, mais je peux aussi intervenir sur site en fonction de vos besoins et de votre localisation."
+  },
   "contact": {
     "title": "Contact",
     "sendEmail": "Envoyer un email",

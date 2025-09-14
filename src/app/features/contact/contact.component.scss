@@ -1,0 +1,108 @@
+.contact-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.contact-btn {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  padding: 1rem 2rem !important;
+  border-radius: 25px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+  min-width: 160px;
+  justify-content: center;
+  
+  mat-icon {
+    font-size: 1.2rem;
+  }
+  
+  &:hover {
+    transform: translateY(-2px) !important;
+  }
+  
+  &.email-btn {
+    background: linear-gradient(135deg, #0077b5 0%, #005885 100%) !important;
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(0, 119, 181, 0.3) !important;
+    
+    &:hover {
+      box-shadow: 0 6px 20px rgba(0, 119, 181, 0.4) !important;
+    }
+  }
+  
+  &.linkedin-btn {
+    background: linear-gradient(135deg, #0077b5 0%, #005885 100%) !important;
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(0, 119, 181, 0.3) !important;
+    
+    &:hover {
+      box-shadow: 0 6px 20px rgba(0, 119, 181, 0.4) !important;
+    }
+  }
+  
+  &.github-btn {
+    background: linear-gradient(135deg, #333 0%, #24292e 100%) !important;
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(51, 51, 51, 0.3) !important;
+    
+    &:hover {
+      box-shadow: 0 6px 20px rgba(51, 51, 51, 0.4) !important;
+    }
+  }
+  
+  &.malt-btn {
+    background: linear-gradient(135deg, #FC5656 0%, #FC2D2D 100%) !important;
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(252, 86, 86, 0.3) !important;
+    
+    &:hover {
+      box-shadow: 0 6px 20px rgba(252, 86, 86, 0.4) !important;
+    }
+  }
+}
+
+.footer {
+  text-align: center;
+  padding: 2rem 0;
+  color: #666;
+  margin-top: 3rem;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .contact-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .contact-btn {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-btn {
+    padding: 0.8rem 1.5rem !important;
+    min-width: auto;
+  }
+}

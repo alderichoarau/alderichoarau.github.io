@@ -1,0 +1,54 @@
+.main-content {
+  padding-top: 0; // Let the header component handle its own spacing
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+}
+
+// Global section styles
+:host ::ng-deep .section-container {
+  padding: 2rem 0;
+  
+  .content-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    margin-bottom: 2rem;
+    
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #2c3e50;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      
+      mat-icon {
+        color: #0077b5;
+      }
+    }
+  }
+}
+
+:host ::ng-deep .about-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+  margin: 0;
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .main-content .container {
+    padding: 0 15px;
+  }
+  
+  :host ::ng-deep .section-container .content-card {
+    padding: 1.5rem;
+  }
+}

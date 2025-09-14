@@ -1,0 +1,54 @@
+<section id="contact" class="section-container">
+  <mat-card class="content-card">
+    <mat-card-header>
+      <mat-card-title class="section-title">
+        <mat-icon>contact_mail</mat-icon>
+        {{ 'contact.title' | translate }}
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="contact-buttons">
+        <a mat-raised-button 
+           color="primary" 
+           class="contact-btn email-btn"
+           href="mailto:alderic.hoarau@gmail.com">
+          <mat-icon>email</mat-icon>
+          {{ 'contact.sendEmail' | translate }}
+        </a>
+        
+        <a mat-raised-button 
+           class="contact-btn linkedin-btn"
+           href="https://www.linkedin.com/in/alderichoarau" 
+           target="_blank" 
+           rel="noopener">
+          <mat-icon>person</mat-icon>
+          {{ 'contact.linkedin' | translate }}
+        </a>
+        
+        <a mat-raised-button 
+           class="contact-btn github-btn"
+           href="https://github.com/alderichoarau" 
+           target="_blank" 
+           rel="noopener">
+          <mat-icon>code</mat-icon>
+          {{ 'contact.github' | translate }}
+        </a>
+        
+        <a mat-raised-button 
+           class="contact-btn malt-btn"
+           href="https://www.malt.fr/profile/alderichoarau" 
+           target="_blank" 
+           rel="noopener">
+          <mat-icon>work</mat-icon>
+          {{ 'contact.malt' | translate }}
+        </a>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <p>{{ 'footer.copyright' | translate }}</p>
+  </div>
+</footer>

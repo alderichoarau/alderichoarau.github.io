@@ -1,0 +1,115 @@
+.certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cert-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, rgba(0, 119, 181, 0.1) 0%, rgba(0, 88, 133, 0.1) 100%);
+  border-left: 4px solid #0077b5;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: linear-gradient(135deg, #0077b5 0%, #005885 100%);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 119, 181, 0.3);
+    
+    .cert-icon {
+      color: white;
+    }
+    
+    .cert-status {
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+  
+  .cert-icon {
+    font-size: 1.8rem;
+    color: #0077b5;
+    transition: color 0.3s ease;
+  }
+  
+  .cert-content {
+    flex: 1;
+    
+    h3 {
+      margin: 0 0 0.25rem 0;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    
+    .cert-status {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #666;
+      font-style: italic;
+      transition: color 0.3s ease;
+    }
+  }
+}
+
+.languages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.language-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 119, 181, 0.1);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(0, 119, 181, 0.05);
+    border-color: rgba(0, 119, 181, 0.3);
+    transform: translateY(-1px);
+  }
+  
+  .language-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    
+    mat-icon {
+      color: #0077b5;
+    }
+    
+    span {
+      font-weight: 500;
+    }
+  }
+  
+  .language-level {
+    background: linear-gradient(135deg, #0077b5 0%, #005885 100%) !important;
+    color: white !important;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .certifications-grid,
+  .languages-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .language-item {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+}

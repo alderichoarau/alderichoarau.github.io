@@ -1,0 +1,75 @@
+.faq-accordion {
+  margin-top: 1rem;
+}
+
+.faq-panel {
+  margin-bottom: 1rem !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(0, 119, 181, 0.1) !important;
+  transition: all 0.3s ease !important;
+  
+  &:hover {
+    border-color: rgba(0, 119, 181, 0.3) !important;
+    box-shadow: 0 4px 15px rgba(0, 119, 181, 0.1) !important;
+  }
+  
+  .faq-question {
+    font-weight: 600 !important;
+    color: #2c3e50 !important;
+    font-size: 1.1rem !important;
+  }
+  
+  .faq-answer {
+    line-height: 1.6;
+    color: #555;
+    margin: 0 0 1rem 0;
+    padding-right: 1rem;
+  }
+}
+
+// Override Angular Material expansion panel styles
+:host ::ng-deep {
+  .mat-expansion-panel {
+    box-shadow: none !important;
+    
+    &.mat-expanded {
+      .mat-expansion-panel-header {
+        background: linear-gradient(135deg, rgba(0, 119, 181, 0.05) 0%, rgba(0, 88, 133, 0.05) 100%) !important;
+        
+        .mat-expansion-panel-header-title {
+          color: #0077b5 !important;
+        }
+        
+        .mat-expansion-indicator::after {
+          color: #0077b5 !important;
+        }
+      }
+    }
+  }
+  
+  .mat-expansion-panel-header {
+    padding: 1rem 1.5rem !important;
+    height: auto !important;
+    transition: all 0.3s ease !important;
+    
+    &:hover {
+      background: rgba(0, 119, 181, 0.02) !important;
+    }
+    
+    .mat-expansion-indicator::after {
+      color: #666 !important;
+      transition: color 0.3s ease !important;
+    }
+  }
+  
+  .mat-expansion-panel-content {
+    .mat-expansion-panel-body {
+      padding: 0 1.5rem 1rem 1.5rem !important;
+    }
+  }
+  
+  .mat-expansion-panel-header-title {
+    margin: 0 !important;
+    line-height: 1.4 !important;
+  }
+}

@@ -51,3 +51,23 @@ node_modules/
 .env.development.local
 .env.test.local
 .env.production.local
+
+# Angular specific
+# Development build (we keep production build files for GitHub Pages)
+/dist/
+/tmp/
+/out-tsc/
+/bazel-out/
+
+# Angular CLI cache
+.angular/cache/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Testing
+/coverage/
+
+# Development temp files
+*.tmp
+*.temp

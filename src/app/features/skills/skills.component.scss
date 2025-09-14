@@ -1,0 +1,47 @@
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.skill-card {
+  background: linear-gradient(135deg, #0077b5 0%, #005885 100%) !important;
+  color: white !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 119, 181, 0.3) !important;
+  }
+  
+  .skill-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white !important;
+    font-size: 1.1rem;
+    
+    mat-icon {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.5rem;
+    }
+  }
+  
+  mat-card-content p {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+  }
+}
+
+// Override Angular Material card styling for skills
+:host ::ng-deep .skill-card {
+  .mat-mdc-card-header {
+    padding-bottom: 0 !important;
+  }
+  
+  .mat-mdc-card-title {
+    color: white !important;
+    margin: 0 !important;
+  }
+}

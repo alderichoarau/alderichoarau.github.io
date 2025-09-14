@@ -1,0 +1,112 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$alderichoarau-portfolio-temp-primary: mat.define-palette(mat.$indigo-palette);
+$alderichoarau-portfolio-temp-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$alderichoarau-portfolio-temp-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$alderichoarau-portfolio-temp-theme: mat.define-light-theme((
+  color: (
+    primary: $alderichoarau-portfolio-temp-primary,
+    accent: $alderichoarau-portfolio-temp-accent,
+    warn: $alderichoarau-portfolio-temp-warn,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($alderichoarau-portfolio-temp-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { 
+  height: 100%; 
+  margin: 0; 
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body { 
+  font-family: 'Manrope', 'Roboto', "Helvetica Neue", sans-serif;
+  line-height: 1.6;
+  color: #1a1a1a;
+  background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+  min-height: 100vh;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+// Import Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+// Smooth scrolling
+html {
+  scroll-behavior: smooth;
+}
+
+// Custom Angular Material theme adjustments
+.mat-mdc-raised-button {
+  &.mat-primary {
+    background: linear-gradient(135deg, #0077b5 0%, #005885 100%) !important;
+    box-shadow: 0 4px 15px rgba(0, 119, 181, 0.3) !important;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 119, 181, 0.4) !important;
+    }
+  }
+}
+
+.mat-mdc-button {
+  &:hover {
+    background: rgba(0, 119, 181, 0.1) !important;
+  }
+}
+
+// Remove default Angular Material card padding
+.mat-mdc-card {
+  border-radius: 15px !important;
+}
+
+.mat-mdc-card-header {
+  padding-bottom: 0 !important;
+}
+
+// Custom scrollbar
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #0077b5 0%, #005885 100%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #005885 0%, #004466 100%);
+}
