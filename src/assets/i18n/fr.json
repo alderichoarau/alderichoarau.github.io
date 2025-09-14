@@ -1,12 +1,17 @@
 {
   "nav": {
     "about": "À propos",
-    "skills": "Compétences",
+    "technologies": "Technologies",
+    "portfolio": "Portfolio",
+    "projects": "Projets",
     "experience": "Expérience",
     "certifications": "Certifications",
-    "references": "Références",
+    "faq": "FAQ",
     "contact": "Contact",
-    "getInTouch": "Me contacter"
+    "getInTouch": "Me contacter",
+    "language": "Langue",
+    "french": "Français",
+    "english": "Anglais"
   },
   "header": {
     "name": "Aldéric Hoarau",
@@ -14,18 +19,50 @@
   },
   "about": {
     "title": "À propos",
-    "text": "Développeur et consultant cloud avec +10 ans d'expérience en modernisation, optimisation des coûts et sécurité d'infrastructure. Agiliste engagé, je crois en une technologie plus humaine et responsable."
+    "text": "Développeur et consultant cloud avec +10 ans d'expérience en modernisation, optimisation des coûts et sécurité d'infrastructure. Agiliste engagé, je crois en une technologie plus humaine et responsable.",
+    "yearsExperience": "Années d'expérience",
+    "projectsCompleted": "Projets réalisés",
+    "costReduction": "Réduction des coûts",
+    "keyAreas": "Domaines d'expertise clés"
   },
-  "skills": {
-    "title": "Compétences clés",
-    "cloudDevSecOps": "Cloud & DevSecOps",
-    "cloudDevSecOpsDesc": "Azure, CI/CD, Terraform, GitHub Actions, Azure DevOps",
-    "finOps": "FinOps & Optimisation",
-    "finOpsDesc": "Optimisation des coûts cloud et gestion budgétaire",
-    "architecture": "Architecture & Sécurité",
-    "architectureDesc": "Azure AD, Defender, Security Center",
-    "agility": "Agilité & Facilitation",
-    "agilityDesc": "Scrum, Kanban, Coaching d'équipe"
+  "technologies": {
+    "title": "Technologies & Stack",
+    "subtitle": "Outils modernes et frameworks que j'utilise pour construire des solutions évolutives",
+    "all": "Toutes les technologies",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "cloud": "Cloud & DevOps",
+    "databases": "Bases de données",
+    "tools": "Outils de développement",
+    "levels": {
+      "expert": "Expert",
+      "advanced": "Avancé",
+      "intermediate": "Intermédiaire"
+    }
+  },
+  "projects": {
+    "title": "Projets Vedettes",
+    "subtitle": "Une sélection de projets sur lesquels j'ai travaillé récemment",
+    "viewProject": "Voir le projet",
+    "liveDemo": "Démo live",
+    "sourceCode": "Code source",
+    "featured": "Vedette",
+    "allProjects": "Tous les projets",
+    "project1": {
+      "title": "Plateforme de migration Cloud",
+      "description": "Migration Azure complète pour 20+ applications avec réduction des coûts x10 grâce à une architecture optimisée et un déploiement automatisé.",
+      "technologies": ["Azure", "Terraform", "GitHub Actions", "Docker"]
+    },
+    "project2": {
+      "title": "Dashboard FinOps",
+      "description": "Plateforme de surveillance et d'optimisation des coûts en temps réel pour environnements multi-cloud avec recommandations automatisées.",
+      "technologies": ["Angular", "Power BI", "Azure Functions", "Cosmos DB"]
+    },
+    "project3": {
+      "title": "Pipeline DevSecOps",
+      "description": "Pipeline CI/CD sécurisé avec scanning de sécurité automatisé, vérifications de conformité et infrastructure as code.",
+      "technologies": ["Azure DevOps", "SonarQube", "Terraform", "Kubernetes"]
+    }
   },
   "experience": {
     "title": "Expérience récente",
@@ -60,7 +97,15 @@
     "title": "Ils m'ont fait confiance"
   },
   "faq": {
-    "title": "FAQ",
+    "title": "Questions Fréquentes",
+    "subtitle": "Questions fréquemment posées sur mes services et méthodes de travail",
+    "categories": {
+      "all": "Toutes",
+      "services": "Services",
+      "process": "Processus",
+      "security": "Sécurité",
+      "pricing": "Tarification"
+    },
     "q1": "Quels types de projets cloud prenez-vous en charge ?",
     "a1": "J'interviens sur la conception, le développement et le déploiement d'applications cloud-native, la migration vers le cloud, l'optimisation des infrastructures existantes (AWS, Azure, GCP) ainsi que l'automatisation via CI/CD et Infrastructure as Code (Terraform, Ansible, etc.).",
     "q2": "Comment se déroule une mission type avec vous ?",
@@ -80,6 +125,7 @@
   },
   "contact": {
     "title": "Contact",
+    "subtitle": "Discutons de votre projet et de vos besoins",
     "sendEmail": "Envoyer un email",
     "linkedin": "LinkedIn",
     "github": "GitHub",

@@ -1,0 +1,83 @@
+{
+  "configVersion": 1,
+  "timestamp": 1757883893083,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/chunk-ASFRGJNA.js",
+        "/chunk-Y6YCTVHH.js",
+        "/favicon.ico",
+        "/index.html",
+        "/main-WRGSX66U.js",
+        "/polyfills-B6TNHZQ6.js",
+        "/styles-KHAJZQ3S.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/assets/AirFrance.jpg",
+        "/assets/Airbus.png",
+        "/assets/GFI.jpg",
+        "/assets/INETUM.png",
+        "/assets/KLM.png",
+        "/assets/Linkedin.png",
+        "/assets/Ministere.png",
+        "/assets/Transavia.svg",
+        "/assets/images/projects/placeholder.svg"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/assets/AirFrance.jpg": "93a96c0fd8ce161180804bd2886f8dfa27ac6f5d",
+    "/assets/Airbus.png": "e7f6005d9390f5d28faa0199960034077fb22f01",
+    "/assets/GFI.jpg": "0c32e29b3ab133d53f9394d2f9f4bdde63c18da6",
+    "/assets/INETUM.png": "e5d0b3b18c4e3aedc3e1acd6020f499fa71b5ab9",
+    "/assets/KLM.png": "d50e3d3557fb18edee581ad551916269d42660e8",
+    "/assets/Linkedin.png": "c719c3b37f447788cbe0153c3fc5c16c49bdc464",
+    "/assets/Ministere.png": "a7e8a29ba85a3a126a8d0ee65cd92364aa63ce17",
+    "/assets/Transavia.svg": "de866aade3c949de9539211d3888205ed9c984a6",
+    "/assets/images/projects/placeholder.svg": "24fc890e0390c856e6743f696fa8bf481169ef9d",
+    "/chunk-ASFRGJNA.js": "533208f0ad1b46a0863d04feed228e29a970d0d1",
+    "/chunk-Y6YCTVHH.js": "9a74d8f2ab95e07437efd67f37694737a9202a2a",
+    "/favicon.ico": "9c39f434fe1261f68c5e3eefdf734630d99c5670",
+    "/index.html": "ee28524113dfcc0db28251d3f763bf29d7339135",
+    "/main-WRGSX66U.js": "2a2c9e6fe76b8ef87c34ac4f788d9bd91ee7e0cb",
+    "/polyfills-B6TNHZQ6.js": "bf76ac291d7f51c1139b7edcf86b359a30c08c64",
+    "/styles-KHAJZQ3S.css": "fea91f76d506b37b9de367363655fd4d4cb984af"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}

@@ -19,12 +19,16 @@ export class TranslationService {
     en: {
       nav: {
         about: "About",
-        skills: "Skills",
+        technologies: "Technologies",
+        projects: "Projects",
         experience: "Experience",
         certifications: "Certifications",
-        references: "References",
+        faq: "FAQ",
         contact: "Contact",
-        getInTouch: "Get In Touch"
+        getInTouch: "Get In Touch",
+        language: "Language",
+        french: "French",
+        english: "English"
       },
       header: {
         name: "Aldéric Hoarau",
@@ -32,7 +36,35 @@ export class TranslationService {
       },
       about: {
         title: "About",
-        text: "Cloud-ready developer & consultant with +10 years of experience in modernization, cost optimization and infrastructure security. Committed agilist, I believe in more human & responsible technology."
+        text: "Cloud-ready developer & consultant with +10 years of experience in modernization, cost optimization and infrastructure security. Committed agilist, I believe in more human & responsible technology.",
+        yearsExperience: "Years Experience",
+        projectsCompleted: "Projects Completed",
+        costReduction: "Cost Reduction",
+        keyAreas: "Key Areas of Expertise"
+      },
+      technologies: {
+        title: "Technologies & Stack",
+        subtitle: "Modern tools and frameworks I work with to build scalable solutions",
+        all: "All Technologies",
+        frontend: "Frontend",
+        backend: "Backend",
+        cloud: "Cloud & DevOps",
+        databases: "Databases",
+        tools: "Development Tools",
+        levels: {
+          expert: "Expert",
+          advanced: "Advanced",
+          intermediate: "Intermediate"
+        }
+      },
+      projects: {
+        title: "Featured Projects",
+        subtitle: "A selection of projects I've worked on recently",
+        viewProject: "View Project",
+        liveDemo: "Live Demo",
+        sourceCode: "Source Code",
+        featured: "Featured",
+        allProjects: "All Projects"
       },
       skills: {
         title: "Key Skills",
@@ -78,7 +110,15 @@ export class TranslationService {
         title: "Trusted by"
       },
       faq: {
-        title: "FAQ",
+        title: "Frequently Asked Questions",
+        subtitle: "Frequently asked questions about my services and working methods",
+        categories: {
+          all: "All",
+          services: "Services",
+          process: "Process",
+          security: "Security",
+          pricing: "Pricing"
+        },
         q1: "What types of cloud projects do you handle?",
         a1: "I work on the design, development and deployment of cloud-native applications, cloud migration, optimization of existing infrastructures (AWS, Azure, GCP) as well as automation via CI/CD and Infrastructure as Code (Terraform, Ansible, etc.).",
         q2: "How does a typical mission work with you?",
@@ -98,6 +138,7 @@ export class TranslationService {
       },
       contact: {
         title: "Contact",
+        subtitle: "Let's discuss your project and needs",
         sendEmail: "Send Email",
         linkedin: "LinkedIn",
         github: "GitHub",
@@ -110,12 +151,16 @@ export class TranslationService {
     fr: {
       nav: {
         about: "À propos",
-        skills: "Compétences",
+        technologies: "Technologies",
+        projects: "Projets",
         experience: "Expérience",
         certifications: "Certifications",
-        references: "Références",
+        faq: "FAQ",
         contact: "Contact",
-        getInTouch: "Me contacter"
+        getInTouch: "Me contacter",
+        language: "Langue",
+        french: "Français",
+        english: "Anglais"
       },
       header: {
         name: "Aldéric Hoarau",
@@ -123,7 +168,35 @@ export class TranslationService {
       },
       about: {
         title: "À propos",
-        text: "Développeur et consultant cloud avec +10 ans d'expérience en modernisation, optimisation des coûts et sécurité d'infrastructure. Agiliste engagé, je crois en une technologie plus humaine et responsable."
+        text: "Développeur et consultant cloud avec +10 ans d'expérience en modernisation, optimisation des coûts et sécurité d'infrastructure. Agiliste engagé, je crois en une technologie plus humaine et responsable.",
+        yearsExperience: "Années d'expérience",
+        projectsCompleted: "Projets réalisés",
+        costReduction: "Réduction des coûts",
+        keyAreas: "Domaines d'expertise clés"
+      },
+      technologies: {
+        title: "Technologies & Stack",
+        subtitle: "Outils modernes et frameworks que j'utilise pour construire des solutions évolutives",
+        all: "Toutes les technologies",
+        frontend: "Frontend",
+        backend: "Backend",
+        cloud: "Cloud & DevOps",
+        databases: "Bases de données",
+        tools: "Outils de développement",
+        levels: {
+          expert: "Expert",
+          advanced: "Avancé",
+          intermediate: "Intermédiaire"
+        }
+      },
+      projects: {
+        title: "Projets Vedettes",
+        subtitle: "Une sélection de projets sur lesquels j'ai travaillé récemment",
+        viewProject: "Voir le projet",
+        liveDemo: "Démo live",
+        sourceCode: "Code source",
+        featured: "Vedette",
+        allProjects: "Tous les projets"
       },
       skills: {
         title: "Compétences clés",
@@ -169,7 +242,15 @@ export class TranslationService {
         title: "Ils m'ont fait confiance"
       },
       faq: {
-        title: "FAQ",
+        title: "Questions Fréquentes",
+        subtitle: "Questions fréquemment posées sur mes services et méthodes de travail",
+        categories: {
+          all: "Toutes",
+          services: "Services",
+          process: "Processus",
+          security: "Sécurité",
+          pricing: "Tarification"
+        },
         q1: "Quels types de projets cloud prenez-vous en charge ?",
         a1: "J'interviens sur la conception, le développement et le déploiement d'applications cloud-native, la migration vers le cloud, l'optimisation des infrastructures existantes (AWS, Azure, GCP) ainsi que l'automatisation via CI/CD et Infrastructure as Code (Terraform, Ansible, etc.).",
         q2: "Comment se déroule une mission type avec vous ?",
@@ -189,6 +270,7 @@ export class TranslationService {
       },
       contact: {
         title: "Contact",
+        subtitle: "Discutons de votre projet et de vos besoins",
         sendEmail: "Envoyer un email",
         linkedin: "LinkedIn",
         github: "GitHub",
@@ -206,14 +288,14 @@ export class TranslationService {
     this.translate.setTranslation('fr', this.translations.fr);
     
     // Set default language
-    this.translate.setDefaultLang('en');
+    this.translate.setDefaultLang('fr'); // Default to French
     
-    // Get saved language from localStorage or default to 'en'
+    // Get saved language from localStorage or default to 'fr'
     if (typeof localStorage !== 'undefined') {
-      const savedLang = localStorage.getItem('language') || 'en';
+      const savedLang = localStorage.getItem('language') || 'fr';
       this.setLanguage(savedLang);
     } else {
-      this.setLanguage('en');
+      this.setLanguage('fr');
     }
   }
 

@@ -4,9 +4,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
+import { fadeInUpAnimation, fadeInLeftAnimation, fadeInRightAnimation, bounceInAnimation } from '../../shared/animations/animations';
 
 @Component({
     selector: 'app-about',
+    standalone: true,
     imports: [
         CommonModule,
         MatCardModule,
@@ -15,7 +17,8 @@ import { TranslateModule } from '@ngx-translate/core';
         TranslateModule
     ],
     templateUrl: './about.component.html',
-    styleUrl: './about.component.scss'
+    styleUrl: './about.component.scss',
+    animations: [fadeInUpAnimation, fadeInLeftAnimation, fadeInRightAnimation, bounceInAnimation]
 })
 export class AboutComponent {
 

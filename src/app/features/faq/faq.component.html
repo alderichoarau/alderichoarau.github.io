@@ -1,25 +1,59 @@
-<section id="faq" class="section-container">
-  <mat-card class="content-card">
-    <mat-card-header>
-      <mat-card-title class="section-title">
-        <mat-icon>help</mat-icon>
-        {{ 'faq.title' | translate }}
-      </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <mat-accordion class="faq-accordion">
-        <mat-expansion-panel 
-          *ngFor="let faq of faqs; let i = index" 
-          class="faq-panel"
-          [expanded]="expandedIndex === i">
-          <mat-expansion-panel-header>
-            <mat-panel-title class="faq-question">
-              {{ faq.question | translate }}
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <p class="faq-answer">{{ faq.answer | translate }}</p>
-        </mat-expansion-panel>
-      </mat-accordion>
-    </mat-card-content>
-  </mat-card>
+<section id="faq" class="section fade-in-up">
+  <div class="container">
+    <div class="faq-content">
+      <!-- Header -->
+      <div class="faq-header">
+        <div class="section-badge">
+          <mat-icon class="badge-icon">help</mat-icon>
+          <span class="badge-text">{{ 'faq.title' | translate }}</span>
+        </div>
+        <h2 class="section-title">{{ 'faq.title' | translate }}</h2>
+        <p class="section-subtitle">{{ 'faq.subtitle' | translate }}</p>
+      </div>
+
+      <!-- Category Filters -->
+      <div class="category-filters fade-in-up">
+        <div class="filter-buttons">
+          <button 
+            *ngFor="let category of categories"
+            class="filter-button"
+            [class.active]="selectedCategory === category.id"
+            (click)="selectCategory(category.id)">
+            <mat-icon>{{ category.icon }}</mat-icon>
+            <span>{{ category.translationKey | translate }}</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- FAQ Accordion -->
+      <div class="faq-accordion-container fade-in-up">
+        <mat-accordion class="modern-faq-accordion" multi="false">
+          <mat-expansion-panel 
+            *ngFor="let faq of getFilteredFAQs(); let i = index; trackBy: trackByFAQ" 
+            class="modern-faq-panel"
+            [expanded]="expandedIndex === i"
+            (opened)="expandedIndex = i"
+            (closed)="expandedIndex = null">
+            
+            <mat-expansion-panel-header class="faq-panel-header">
+              <mat-panel-title class="faq-question">
+                <mat-icon class="question-icon">help_outline</mat-icon>
+                <span class="question-text">{{ faq.question }}</span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            
+            <div class="faq-answer-content">
+              <p class="faq-answer">{{ faq.answer }}</p>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+        
+        <!-- Empty state -->
+        <div *ngIf="getFilteredFAQs().length === 0" class="empty-state">
+          <mat-icon class="empty-icon">search_off</mat-icon>
+          <p class="empty-text">Aucune question trouvée pour cette catégorie.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>

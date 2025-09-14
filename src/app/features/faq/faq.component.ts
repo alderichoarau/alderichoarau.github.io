@@ -5,48 +5,53 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { TranslateModule } from '@ngx-translate/core';
+import { DataService } from '../../core/services/data.service';
+import { fadeInUpAnimation, listItemAnimation, slideInUpAnimation } from '../../shared/animations/animations';
 
 @Component({
     selector: 'app-faq',
+    standalone: true,
     imports: [CommonModule, MatCardModule, MatButtonModule, MatIconModule, MatExpansionModule, TranslateModule],
     templateUrl: './faq.component.html',
-    styleUrl: './faq.component.scss'
+    styleUrl: './faq.component.scss',
+    animations: [fadeInUpAnimation, listItemAnimation, slideInUpAnimation]
 })
 export class FaqComponent {
   expandedIndex: number | null = null;
+  selectedCategory = 'all';
 
-  faqs = [
-    {
-      question: 'faq.q1',
-      answer: 'faq.a1'
-    },
-    {
-      question: 'faq.q2',
-      answer: 'faq.a2'
-    },
-    {
-      question: 'faq.q3',
-      answer: 'faq.a3'
-    },
-    {
-      question: 'faq.q4',
-      answer: 'faq.a4'
-    },
-    {
-      question: 'faq.q5',
-      answer: 'faq.a5'
-    },
-    {
-      question: 'faq.q6',
-      answer: 'faq.a6'
-    },
-    {
-      question: 'faq.q7',
-      answer: 'faq.a7'
-    },
-    {
-      question: 'faq.q8',
-      answer: 'faq.a8'
-    }
+  // FAQ categories with icons and translation keys
+  categories = [
+    { id: 'all', translationKey: 'faq.categories.all', icon: 'help' },
+    { id: 'services', translationKey: 'faq.categories.services', icon: 'work' },
+    { id: 'process', translationKey: 'faq.categories.process', icon: 'timeline' },
+    { id: 'security', translationKey: 'faq.categories.security', icon: 'security' },
+    { id: 'pricing', translationKey: 'faq.categories.pricing', icon: 'euro_symbol' }
   ];
+
+  constructor(public dataService: DataService) {}
+
+  // Get FAQ data from service
+  get faqs() {
+    return this.dataService.faq();
+  }
+
+  // Get filtered FAQs based on selected category
+  getFilteredFAQs() {
+    if (this.selectedCategory === 'all') {
+      return this.faqs;
+    }
+    return this.faqs.filter(faq => faq.category === this.selectedCategory);
+  }
+
+  // Set category filter
+  selectCategory(categoryId: string) {
+    this.selectedCategory = categoryId;
+    this.expandedIndex = null; // Close all panels when switching categories
+  }
+
+  // Track by function for performance
+  trackByFAQ(index: number, faq: any) {
+    return faq.id;
+  }
 }

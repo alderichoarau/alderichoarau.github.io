@@ -1,4 +1,4 @@
-import { Component, signal, computed } from '@angular/core';
+import { Component, signal, computed, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -20,10 +20,13 @@ import { TranslationService } from '../../core/services/translation.service';
     templateUrl: './navigation.component.html',
     styleUrl: './navigation.component.scss'
 })
-export class NavigationComponent {
-  // Angular 18 Signals - No more OnInit/OnDestroy needed!
+export class NavigationComponent implements OnInit, OnDestroy {
+  // Angular Signals for state management
   private readonly mobileMenuOpenSignal = signal(false);
   public readonly mobileMenuOpen = this.mobileMenuOpenSignal.asReadonly();
+  
+  private readonly scrolledSignal = signal(false);
+  public readonly isScrolled = this.scrolledSignal.asReadonly();
   
   // Get language signal from service
   public readonly currentLang = this.translationService.currentLang;
@@ -31,6 +34,25 @@ export class NavigationComponent {
   public readonly isFrench = this.translationService.isFrench;
 
   constructor(private translationService: TranslationService) {}
+
+  ngOnInit() {
+    // Initial scroll position check
+    this.updateScrollState();
+  }
+
+  ngOnDestroy() {
+    // Cleanup handled by Angular 19 automatically for signals
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll() {
+    this.updateScrollState();
+  }
+
+  private updateScrollState() {
+    const scrollY = window.scrollY || document.documentElement.scrollTop;
+    this.scrolledSignal.set(scrollY > 50);
+  }
 
   changeLanguage(lang: string) {
     this.translationService.setLanguage(lang);

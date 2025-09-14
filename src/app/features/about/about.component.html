@@ -1,13 +1,87 @@
-<section id="about" class="section-container">
-  <mat-card class="content-card">
-    <mat-card-header>
-      <mat-card-title class="section-title">
-        <mat-icon>person</mat-icon>
-        {{ 'about.title' | translate }}
-      </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <p class="about-text">{{ 'about.text' | translate }}</p>
-    </mat-card-content>
-  </mat-card>
+<section id="about" class="section fade-in-up">
+  <div class="container">
+    <div class="about-content">
+      <div class="about-header">
+        <div class="section-badge">
+          <mat-icon class="badge-icon">person</mat-icon>
+          <span class="badge-text">{{ 'about.title' | translate }}</span>
+        </div>
+        <h2 class="section-title">{{ 'about.title' | translate }}</h2>
+      </div>
+      
+      <div class="about-grid">
+        <div class="about-text-card">
+          <mat-card class="modern-card">
+            <mat-card-content>
+              <div class="profile-section">
+                <div class="profile-avatar">
+                  <mat-icon class="avatar-icon">account_circle</mat-icon>
+                </div>
+                <div class="profile-info">
+                  <h3 class="profile-name">Aldéric Hoarau</h3>
+                  <p class="profile-title">{{ 'header.subtitle' | translate }}</p>
+                </div>
+              </div>
+              
+              <div class="about-description">
+                <p class="about-text">{{ 'about.text' | translate }}</p>
+              </div>
+              
+              <div class="about-highlights">
+                <div class="highlight-item">
+                  <mat-icon class="highlight-icon">trending_up</mat-icon>
+                  <div class="highlight-content">
+                    <span class="highlight-number">10+</span>
+                    <span class="highlight-label">{{ 'about.yearsExperience' | translate }}</span>
+                  </div>
+                </div>
+                
+                <div class="highlight-item">
+                  <mat-icon class="highlight-icon">cloud_done</mat-icon>
+                  <div class="highlight-content">
+                    <span class="highlight-number">20+</span>
+                    <span class="highlight-label">{{ 'about.projectsCompleted' | translate }}</span>
+                  </div>
+                </div>
+                
+                <div class="highlight-item">
+                  <mat-icon class="highlight-icon">savings</mat-icon>
+                  <div class="highlight-content">
+                    <span class="highlight-number">10x</span>
+                    <span class="highlight-label">{{ 'about.costReduction' | translate }}</span>
+                  </div>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        
+        <div class="about-skills-preview">
+          <mat-card class="modern-card skills-card">
+            <mat-card-content>
+              <h4 class="skills-title">{{ 'about.keyAreas' | translate }}</h4>
+              <div class="skills-list">
+                <div class="skill-item">
+                  <mat-icon class="skill-icon">cloud</mat-icon>
+                  <span class="skill-text">Cloud & DevSecOps</span>
+                </div>
+                <div class="skill-item">
+                  <mat-icon class="skill-icon">analytics</mat-icon>
+                  <span class="skill-text">FinOps & Optimization</span>
+                </div>
+                <div class="skill-item">
+                  <mat-icon class="skill-icon">security</mat-icon>
+                  <span class="skill-text">Architecture & Security</span>
+                </div>
+                <div class="skill-item">
+                  <mat-icon class="skill-icon">groups</mat-icon>
+                  <span class="skill-text">Agility & Coaching</span>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>

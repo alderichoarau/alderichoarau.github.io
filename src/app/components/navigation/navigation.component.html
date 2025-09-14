@@ -1,18 +1,50 @@
-<mat-toolbar class="portfolio-navbar">
+<mat-toolbar class="portfolio-navbar" [class.scrolled]="isScrolled()">
   <div class="nav-container">
-    <a href="#home" class="logo">Aldéric Hoarau</a>
+    <a href="#home" class="logo">
+      <mat-icon class="logo-icon">code</mat-icon>
+      <span class="logo-text">Aldéric</span>
+    </a>
     
     <div class="nav-content">
       <nav class="nav-menu">
-        <a mat-button href="#about">{{ 'nav.about' | translate }}</a>
-        <a mat-button href="#skills">{{ 'nav.skills' | translate }}</a>
-        <a mat-button href="#experience">{{ 'nav.experience' | translate }}</a>
-        <a mat-button href="#certifications">{{ 'nav.certifications' | translate }}</a>
-        <a mat-button href="#references">{{ 'nav.references' | translate }}</a>
-        <a mat-button href="#contact">{{ 'nav.contact' | translate }}</a>
+        <a mat-button href="#about" class="nav-link">
+          <mat-icon>person</mat-icon>
+          <span>{{ 'nav.about' | translate }}</span>
+        </a>
+        <a mat-button href="#technologies" class="nav-link">
+          <mat-icon>settings</mat-icon>
+          <span>{{ 'nav.technologies' | translate }}</span>
+        </a>
+        <button mat-button [matMenuTriggerFor]="portfolioMenu" class="nav-link dropdown-trigger">
+          <mat-icon>work</mat-icon>
+          <span>{{ 'nav.portfolio' | translate }}</span>
+          <mat-icon class="dropdown-arrow">keyboard_arrow_down</mat-icon>
+        </button>
+        <mat-menu #portfolioMenu="matMenu">
+          <a mat-menu-item href="#projects">
+            <mat-icon>work</mat-icon>
+            <span>{{ 'nav.projects' | translate }}</span>
+          </a>
+          <a mat-menu-item href="#experience">
+            <mat-icon>timeline</mat-icon>
+            <span>{{ 'nav.experience' | translate }}</span>
+          </a>
+        </mat-menu>
+        <a mat-button href="#certifications" class="nav-link">
+          <mat-icon>verified</mat-icon>
+          <span>{{ 'nav.certifications' | translate }}</span>
+        </a>
+        <a mat-button href="#faq" class="nav-link">
+          <mat-icon>help_outline</mat-icon>
+          <span>{{ 'nav.faq' | translate }}</span>
+        </a>
+        <a mat-button href="#contact" class="nav-link">
+          <mat-icon>contact_mail</mat-icon>
+          <span>{{ 'nav.contact' | translate }}</span>
+        </a>
         <a mat-raised-button color="primary" href="mailto:alderic.hoarau@gmail.com" class="cta-button">
-          {{ 'nav.getInTouch' | translate }}
-          <mat-icon>arrow_forward</mat-icon>
+          <mat-icon>send</mat-icon>
+          <span>{{ 'nav.getInTouch' | translate }}</span>
         </a>
       </nav>
       
@@ -40,16 +72,72 @@
   
   <!-- Mobile menu -->
   <div class="mobile-menu" [class.open]="mobileMenuOpen()">
+    <div class="mobile-menu-overlay" (click)="closeMobileMenu()"></div>
     <nav class="mobile-nav">
-      <a mat-button href="#about" (click)="closeMobileMenu()">{{ 'nav.about' | translate }}</a>
-      <a mat-button href="#skills" (click)="closeMobileMenu()">{{ 'nav.skills' | translate }}</a>
-      <a mat-button href="#experience" (click)="closeMobileMenu()">{{ 'nav.experience' | translate }}</a>
-      <a mat-button href="#certifications" (click)="closeMobileMenu()">{{ 'nav.certifications' | translate }}</a>
-      <a mat-button href="#references" (click)="closeMobileMenu()">{{ 'nav.references' | translate }}</a>
-      <a mat-button href="#contact" (click)="closeMobileMenu()">{{ 'nav.contact' | translate }}</a>
-      <a mat-raised-button color="primary" href="mailto:alderic.hoarau@gmail.com" (click)="closeMobileMenu()">
-        {{ 'nav.getInTouch' | translate }}
+      <a mat-button href="#about" class="mobile-nav-link" (click)="closeMobileMenu()">
+        <mat-icon>person</mat-icon>
+        <span>{{ 'nav.about' | translate }}</span>
       </a>
+      <a mat-button href="#technologies" class="mobile-nav-link" (click)="closeMobileMenu()">
+        <mat-icon>settings</mat-icon>
+        <span>{{ 'nav.technologies' | translate }}</span>
+      </a>
+      
+      <!-- Portfolio section in mobile -->
+      <div class="mobile-section-divider">
+        <span class="section-title">{{ 'nav.portfolio' | translate }}</span>
+      </div>
+      <a mat-button href="#projects" class="mobile-nav-link mobile-sub-link" (click)="closeMobileMenu()">
+        <mat-icon>work</mat-icon>
+        <span>{{ 'nav.projects' | translate }}</span>
+      </a>
+      <a mat-button href="#experience" class="mobile-nav-link mobile-sub-link" (click)="closeMobileMenu()">
+        <mat-icon>timeline</mat-icon>
+        <span>{{ 'nav.experience' | translate }}</span>
+      </a>
+      <a mat-button href="#certifications" class="mobile-nav-link" (click)="closeMobileMenu()">
+        <mat-icon>verified</mat-icon>
+        <span>{{ 'nav.certifications' | translate }}</span>
+      </a>
+      <a mat-button href="#faq" class="mobile-nav-link" (click)="closeMobileMenu()">
+        <mat-icon>help_outline</mat-icon>
+        <span>{{ 'nav.faq' | translate }}</span>
+      </a>
+      <a mat-button href="#contact" class="mobile-nav-link" (click)="closeMobileMenu()">
+        <mat-icon>contact_mail</mat-icon>
+        <span>{{ 'nav.contact' | translate }}</span>
+      </a>
+      <!-- Language Switcher Mobile -->
+      <div class="mobile-language-section">
+        <div class="mobile-section-divider">
+          <span class="section-title">{{ 'nav.language' | translate }}</span>
+        </div>
+        <div class="mobile-language-options">
+          <button 
+            mat-button 
+            class="mobile-lang-button" 
+            [class.active]="currentLang() === 'fr'"
+            (click)="changeLanguage('fr'); closeMobileMenu()">
+            <img src="https://flagcdn.com/w20/fr.png" alt="Français" class="flag-icon">
+            <span>{{ 'nav.french' | translate }}</span>
+          </button>
+          <button 
+            mat-button 
+            class="mobile-lang-button" 
+            [class.active]="currentLang() === 'en'"
+            (click)="changeLanguage('en'); closeMobileMenu()">
+            <img src="https://flagcdn.com/w20/gb.png" alt="English" class="flag-icon">
+            <span>{{ 'nav.english' | translate }}</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="mobile-cta">
+        <a mat-raised-button color="primary" href="mailto:alderic.hoarau@gmail.com" (click)="closeMobileMenu()" class="mobile-cta-button">
+          <mat-icon>send</mat-icon>
+          <span>{{ 'nav.getInTouch' | translate }}</span>
+        </a>
+      </div>
     </nav>
   </div>
 </mat-toolbar>

@@ -37,6 +37,22 @@ $alderichoarau-portfolio-temp-theme: mat.m2-define-light-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
+// Modern color variables
+:root {
+  --primary-bg: #243040;
+  --secondary-bg: #2c3e50;
+  --accent-color: #00d4aa;
+  --text-primary: #ffffff;
+  --text-secondary: #b8c5d1;
+  --text-muted: #8a9ba8;
+  --card-bg: rgba(255, 255, 255, 0.08);
+  --card-border: rgba(255, 255, 255, 0.12);
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-medium: rgba(0, 0, 0, 0.2);
+  --gradient-primary: linear-gradient(135deg, #00d4aa 0%, #00b894 100%);
+  --gradient-secondary: linear-gradient(135deg, #243040 0%, #2c3e50 100%);
+}
+
 html, body { 
   height: 100%; 
   margin: 0; 
@@ -45,11 +61,12 @@ html, body {
 }
 
 body { 
-  font-family: 'Manrope', 'Roboto', "Helvetica Neue", sans-serif;
+  font-family: 'Inter', 'Manrope', 'Roboto', "Helvetica Neue", sans-serif;
   line-height: 1.6;
-  color: #1a1a1a;
-  background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+  color: var(--text-primary);
+  background: var(--primary-bg);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 *, *::before, *::after {
@@ -65,48 +82,594 @@ html {
   scroll-behavior: smooth;
 }
 
-// Custom Angular Material theme adjustments
+// Custom Angular Material theme adjustments for dark theme
 .mat-mdc-raised-button {
   &.mat-primary {
-    background: linear-gradient(135deg, #0077b5 0%, #005885 100%) !important;
-    box-shadow: 0 4px 15px rgba(0, 119, 181, 0.3) !important;
+    background: var(--gradient-primary) !important;
+    color: var(--primary-bg) !important;
+    box-shadow: 0 4px 15px rgba(0, 212, 170, 0.3) !important;
+    border: none !important;
+    transition: all 0.3s ease !important;
     
     &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 119, 181, 0.4) !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 6px 20px rgba(0, 212, 170, 0.4) !important;
     }
   }
 }
 
 .mat-mdc-button {
+  color: var(--text-primary) !important;
+  
   &:hover {
-    background: rgba(0, 119, 181, 0.1) !important;
+    background: rgba(0, 212, 170, 0.1) !important;
   }
 }
 
-// Remove default Angular Material card padding
+.mat-mdc-outlined-button {
+  border-color: var(--accent-color) !important;
+  color: var(--accent-color) !important;
+  
+  &:hover {
+    background: rgba(0, 212, 170, 0.1) !important;
+  }
+}
+
+// Modern card styling
 .mat-mdc-card {
-  border-radius: 15px !important;
+  background: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
+  border-radius: 16px !important;
+  backdrop-filter: blur(10px) !important;
+  color: var(--text-primary) !important;
+  box-shadow: 0 8px 32px var(--shadow-medium) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  
+  &:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 12px 40px var(--shadow-medium) !important;
+  }
 }
 
 .mat-mdc-card-header {
   padding-bottom: 0 !important;
 }
 
-// Custom scrollbar
+.mat-mdc-card-title {
+  color: var(--text-primary) !important;
+}
+
+.mat-mdc-card-subtitle {
+  color: var(--text-secondary) !important;
+}
+
+// Accordion styling for FAQ
+.mat-expansion-panel {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
+  border-radius: 12px !important;
+  margin-bottom: 16px !important;
+  
+  .mat-expansion-panel-header {
+    color: var(--text-primary) !important;
+    
+    &:hover {
+      background: rgba(0, 212, 170, 0.05) !important;
+    }
+  }
+  
+  .mat-expansion-panel-body {
+    color: var(--text-secondary) !important;
+  }
+}
+
+// Modern utility classes
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  
+  @media (max-width: 768px) {
+    padding: 0 16px;
+  }
+}
+
+.section {
+  padding: 80px 0;
+  
+  @media (max-width: 768px) {
+    padding: 60px 0;
+  }
+}
+
+.section-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
+}
+
+.section-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+}
+
+// Technology badges
+.tech-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 25px;
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  margin: 6px;
+  
+  &:hover {
+    transform: translateY(-2px);
+    background: rgba(0, 212, 170, 0.1);
+    border-color: var(--accent-color);
+    box-shadow: 0 4px 12px rgba(0, 212, 170, 0.2);
+  }
+  
+  .badge-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+// Project cards
+.project-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px var(--shadow-medium);
+  }
+  
+  .project-image {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover .project-image {
+    transform: scale(1.05);
+  }
+}
+
+// Custom scrollbar for dark theme
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--secondary-bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #0077b5 0%, #005885 100%);
+  background: var(--gradient-primary);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #005885 0%, #004466 100%);
+  background: linear-gradient(135deg, #00b894 0%, #009977 100%);
+}
+
+// Animation classes
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.fade-in-left {
+  animation: fadeInLeft 0.6s ease-out;
+}
+
+.fade-in-right {
+  animation: fadeInRight 0.6s ease-out;
+}
+
+// Responsive grid system
+.grid {
+  display: grid;
+  gap: 2rem;
+  
+  &.grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  
+  &.grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  
+  &.grid-4 {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  
+  @media (max-width: 768px) {
+    gap: 1rem;
+    
+    &.grid-2,
+    &.grid-3,
+    &.grid-4 {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+// Additional animation utilities
+.scale-in {
+  animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.bounce-in {
+  animation: bounceIn 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.rotate-in {
+  animation: rotateIn 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  80% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes rotateIn {
+  from {
+    opacity: 0;
+    transform: rotate(-180deg) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+// Animation delays for staggered effects
+.animate-delay-1 { animation-delay: 100ms; }
+.animate-delay-2 { animation-delay: 200ms; }
+.animate-delay-3 { animation-delay: 300ms; }
+.animate-delay-4 { animation-delay: 400ms; }
+.animate-delay-5 { animation-delay: 500ms; }
+.animate-delay-6 { animation-delay: 600ms; }
+
+// Smooth transitions for hover effects
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.hover-scale {
+  transition: transform 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+// Intersection observer animations
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 600ms cubic-bezier(0.4, 0.0, 0.2, 1);
+  
+  &.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Enhanced responsive utilities
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  
+  @media (max-width: 768px) {
+    padding: 0 16px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0 12px;
+  }
+}
+
+// Responsive text utilities
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem !important;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem !important;
+    margin-bottom: 2rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.75rem !important;
+  }
+  
+  .section-subtitle {
+    font-size: 0.9rem !important;
+  }
+  
+  .section {
+    padding: 3rem 0 !important;
+  }
+}
+
+// Touch-friendly buttons and interactive elements
+@media (max-width: 768px) {
+  .mat-mdc-raised-button,
+  .mat-mdc-outlined-button,
+  .mat-mdc-fab,
+  .mat-mdc-mini-fab {
+    min-height: 44px !important;
+    min-width: 44px !important;
+  }
+  
+  .mat-mdc-icon-button {
+    width: 44px !important;
+    height: 44px !important;
+  }
+}
+
+// Responsive spacing
+@media (max-width: 768px) {
+  .section {
+    padding: 4rem 0;
+  }
+  
+  .card,
+  .mat-mdc-card {
+    margin-bottom: 1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 3rem 0;
+  }
+  
+  .card,
+  .mat-mdc-card {
+    border-radius: 12px !important;
+  }
+}
+
+// Responsive grid adjustments
+@media (max-width: 968px) {
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 1.5rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid,
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+}
+
+// Image optimization and lazy loading styles
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  
+  // Lazy loading placeholder
+  &[data-src] {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    
+    &.loaded {
+      opacity: 1;
+      background: none;
+      animation: none;
+    }
+  }
+  
+  // Responsive images
+  &.responsive {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  // Critical images (above the fold)
+  &.critical {
+    opacity: 1;
+    transition: none;
+  }
+}
+
+// Shimmer animation for image placeholders
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+// Performance optimizations
+* {
+  // Enable hardware acceleration for animations
+  &.animate,
+  &.hover-lift,
+  &.hover-scale,
+  &[class*="fade-in"],
+  &[class*="scale-"],
+  &[class*="bounce-"],
+  &[class*="rotate-"] {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+  }
+}
+
+// Reduce motion for users who prefer it
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .hover-lift:hover,
+  .hover-scale:hover {
+    transform: none !important;
+  }
+}
+
+// Loading states
+.loading {
+  position: relative;
+  overflow: hidden;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: loading-shimmer 1.5s infinite;
+  }
+}
+
+@keyframes loading-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+// Optimize font rendering
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-display: swap;
+}
+
+// Critical resource hints
+.preload-fonts {
+  font-display: swap;
+}
+
+// Content visibility for performance
+.offscreen {
+  content-visibility: auto;
+  contain-intrinsic-size: 500px;
 }
