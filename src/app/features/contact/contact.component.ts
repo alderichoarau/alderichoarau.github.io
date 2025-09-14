@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
-import { SharedModule } from '../../shared/shared.module';
+import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [SharedModule],
+  imports: [CommonModule, MatCardModule, MatButtonModule, MatIconModule, TranslateModule],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })

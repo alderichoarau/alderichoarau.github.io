@@ -8,7 +8,7 @@
     </mat-card-header>
     <mat-card-content>
       <div class="skills-grid">
-        <mat-card class="skill-card" *ngFor="let skill of skills">
+        <mat-card class="skill-card" *ngFor="let skill of skills()">
           <mat-card-header>
             <mat-card-title class="skill-title">
               <mat-icon>{{ skill.icon }}</mat-icon>

@@ -1,45 +1,47 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-import { SharedModule } from '../../shared/shared.module';
+import { Component, signal, computed } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { TranslateModule } from '@ngx-translate/core';
 import { TranslationService } from '../../core/services/translation.service';
 
 @Component({
   selector: 'app-navigation',
   standalone: true,
-  imports: [SharedModule],
+  imports: [
+    CommonModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule,
+    TranslateModule
+  ],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss'
 })
-export class NavigationComponent implements OnInit, OnDestroy {
-  currentLang = 'en';
-  mobileMenuOpen = false;
-  private destroy$ = new Subject<void>();
+export class NavigationComponent {
+  // Angular 18 Signals - No more OnInit/OnDestroy needed!
+  private readonly mobileMenuOpenSignal = signal(false);
+  public readonly mobileMenuOpen = this.mobileMenuOpenSignal.asReadonly();
+  
+  // Get language signal from service
+  public readonly currentLang = this.translationService.currentLang;
+  public readonly isEnglish = this.translationService.isEnglish;
+  public readonly isFrench = this.translationService.isFrench;
 
   constructor(private translationService: TranslationService) {}
-
-  ngOnInit() {
-    this.translationService.currentLang$
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(lang => {
-        this.currentLang = lang;
-      });
-  }
-
-  ngOnDestroy() {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
 
   changeLanguage(lang: string) {
     this.translationService.setLanguage(lang);
   }
 
   toggleMobileMenu() {
-    this.mobileMenuOpen = !this.mobileMenuOpen;
+    this.mobileMenuOpenSignal.update(current => !current);
   }
 
   closeMobileMenu() {
-    this.mobileMenuOpen = false;
+    this.mobileMenuOpenSignal.set(false);
   }
 }

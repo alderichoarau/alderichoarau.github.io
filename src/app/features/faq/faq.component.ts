@@ -1,10 +1,15 @@
 import { Component } from '@angular/core';
-import { SharedModule } from '../../shared/shared.module';
+import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-faq',
   standalone: true,
-  imports: [SharedModule],
+  imports: [CommonModule, MatCardModule, MatButtonModule, MatIconModule, MatExpansionModule, TranslateModule],
   templateUrl: './faq.component.html',
   styleUrl: './faq.component.scss'
 })

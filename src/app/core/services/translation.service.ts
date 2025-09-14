@@ -1,13 +1,18 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal, computed } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { BehaviorSubject } from 'rxjs';
+import { effect } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TranslationService {
-  private currentLangSubject = new BehaviorSubject<string>('en');
-  public currentLang$ = this.currentLangSubject.asObservable();
+  // Angular 18 Signals - Modern reactive state management
+  private readonly currentLangSignal = signal<string>('en');
+  public readonly currentLang = this.currentLangSignal.asReadonly();
+  
+  // Computed signal for translations based on current language
+  public readonly isEnglish = computed(() => this.currentLangSignal() === 'en');
+  public readonly isFrench = computed(() => this.currentLangSignal() === 'fr');
 
   // Embedded translations
   private translations = {
@@ -214,7 +219,7 @@ export class TranslationService {
 
   setLanguage(lang: string): void {
     this.translate.use(lang);
-    this.currentLangSubject.next(lang);
+    this.currentLangSignal.set(lang);
     if (typeof localStorage !== 'undefined') {
       localStorage.setItem('language', lang);
     }
@@ -224,7 +229,7 @@ export class TranslationService {
   }
 
   getCurrentLanguage(): string {
-    return this.currentLangSubject.value;
+    return this.currentLangSignal();
   }
 
   getTranslation(key: string): string {

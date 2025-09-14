@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
-import { SharedModule } from '../../shared/shared.module';
+import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-references',
   standalone: true,
-  imports: [SharedModule],
+  imports: [CommonModule, MatCardModule, MatIconModule, TranslateModule],
   templateUrl: './references.component.html',
   styleUrl: './references.component.scss'
 })

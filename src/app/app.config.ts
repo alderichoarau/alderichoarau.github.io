@@ -1,6 +1,7 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
-import { provideRouter } from '@angular/router';
-import { provideHttpClient } from '@angular/common/http';
+import { provideRouter, withEnabledBlockingInitialNavigation, withInMemoryScrolling } from '@angular/router';
+import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideClientHydration } from '@angular/platform-browser';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { routes } from './app.routes';
@@ -8,9 +9,26 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes), 
+    // Angular 18 Modern Router with optimizations
+    provideRouter(
+      routes,
+      withEnabledBlockingInitialNavigation(), // Better initial loading
+      withInMemoryScrolling({
+        scrollPositionRestoration: 'top',
+        anchorScrolling: 'enabled'
+      })
+    ),
+    
+    // Angular 18 Client Hydration for SSR support
+    provideClientHydration(),
+    
+    // Modern HTTP client with fetch API
+    provideHttpClient(withFetch()),
+    
+    // Async animations for better performance
     provideAnimationsAsync(),
-    provideHttpClient(),
+    
+    // Translation module
     importProvidersFrom(
       TranslateModule.forRoot()
     )

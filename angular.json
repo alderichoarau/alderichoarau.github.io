@@ -49,7 +49,20 @@
                 }
               ],
               "outputHashing": "all",
-              "outputPath": "docs"
+              "outputPath": "docs",
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": true
+                },
+                "fonts": {
+                  "inline": true
+                }
+              },
+              "extractLicenses": true,
+              "sourceMap": false,
+              "namedChunks": false
             },
             "github-pages": {
               "budgets": [
@@ -66,7 +79,20 @@
               ],
               "outputHashing": "all",
               "outputPath": "./",
-              "baseHref": "/"
+              "baseHref": "/",
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": true
+                },
+                "fonts": {
+                  "inline": true
+                }
+              },
+              "extractLicenses": true,
+              "sourceMap": false,
+              "namedChunks": false
             },
             "development": {
               "optimization": false,

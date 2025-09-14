@@ -21,11 +21,11 @@
           <mat-icon>language</mat-icon>
         </button>
         <mat-menu #langMenu="matMenu">
-          <button mat-menu-item (click)="changeLanguage('en')" [class.active]="currentLang === 'en'">
+          <button mat-menu-item (click)="changeLanguage('en')" [class.active]="currentLang() === 'en'">
             <img src="https://flagcdn.com/w20/gb.png" alt="English" class="flag-icon">
             EN
           </button>
-          <button mat-menu-item (click)="changeLanguage('fr')" [class.active]="currentLang === 'fr'">
+          <button mat-menu-item (click)="changeLanguage('fr')" [class.active]="currentLang() === 'fr'">
             <img src="https://flagcdn.com/w20/fr.png" alt="Français" class="flag-icon">
             FR
           </button>
@@ -33,13 +33,13 @@
       </div>
       
       <button mat-icon-button class="mobile-menu-toggle" (click)="toggleMobileMenu()">
-        <mat-icon>{{ mobileMenuOpen ? 'close' : 'menu' }}</mat-icon>
+        <mat-icon>{{ mobileMenuOpen() ? 'close' : 'menu' }}</mat-icon>
       </button>
     </div>
   </div>
   
   <!-- Mobile menu -->
-  <div class="mobile-menu" [class.open]="mobileMenuOpen">
+  <div class="mobile-menu" [class.open]="mobileMenuOpen()">
     <nav class="mobile-nav">
       <a mat-button href="#about" (click)="closeMobileMenu()">{{ 'nav.about' | translate }}</a>
       <a mat-button href="#skills" (click)="closeMobileMenu()">{{ 'nav.skills' | translate }}</a>
