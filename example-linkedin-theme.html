@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemple - Thème LinkedIn</title>
+    <link rel="stylesheet" href="linkedin-theme.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#home" class="active">Accueil</a></li>
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Section Hero -->
+    <section class="section">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="fade-in-up">Développeur Full Stack</h1>
+                <p class="text-center mb-4">
+                    Créateur d'expériences digitales modernes et performantes. 
+                    Spécialisé en développement web avec plus de 5 ans d'expérience.
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <button class="btn-primary btn-lg">Me contacter</button>
+                    <button class="btn-outline btn-lg">Voir mes projets</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section À propos -->
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center">À propos de moi</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                
+                <div class="card fade-in-up">
+                    <h3>Expertise Technique</h3>
+                    <p>Maîtrise des technologies modernes comme React, Angular, Node.js, et les architectures cloud AWS/Azure.</p>
+                    <button class="btn-secondary">En savoir plus</button>
+                </div>
+
+                <div class="card fade-in-up">
+                    <h3>Approche Créative</h3>
+                    <p>Conception d'interfaces utilisateurs intuitives avec une attention particulière à l'expérience utilisateur et au design moderne.</p>
+                    <button class="btn-secondary">Mes réalisations</button>
+                </div>
+
+                <div class="card fade-in-up">
+                    <h3>Collaboration</h3>
+                    <p>Travail en équipe agile, communication transparente et livraison de solutions qui dépassent les attentes clients.</p>
+                    <button class="btn-secondary">Témoignages</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Services -->
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center">Mes Services</h2>
+            <p class="text-center text-muted mb-4">
+                Des solutions complètes pour vos projets digitaux
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                
+                <div class="card">
+                    <h4 class="text-accent">🚀 Développement Web</h4>
+                    <p>Applications web modernes, sites vitrine, e-commerce avec les dernières technologies.</p>
+                    <ul style="color: var(--text-secondary); margin: 1rem 0;">
+                        <li>React, Angular, Vue.js</li>
+                        <li>Node.js, Python, PHP</li>
+                        <li>Responsive & Mobile-First</li>
+                    </ul>
+                    <button class="btn-ghost">Découvrir</button>
+                </div>
+
+                <div class="card">
+                    <h4 class="text-accent">☁️ Cloud & DevOps</h4>
+                    <p>Déploiement, infrastructure cloud et optimisation des performances de vos applications.</p>
+                    <ul style="color: var(--text-secondary); margin: 1rem 0;">
+                        <li>AWS, Azure, Google Cloud</li>
+                        <li>Docker, Kubernetes</li>
+                        <li>CI/CD, Monitoring</li>
+                    </ul>
+                    <button class="btn-ghost">Découvrir</button>
+                </div>
+
+                <div class="card">
+                    <h4 class="text-accent">🎨 UI/UX Design</h4>
+                    <p>Conception d'interfaces utilisateur modernes et expériences utilisateur optimisées.</p>
+                    <ul style="color: var(--text-secondary); margin: 1rem 0;">
+                        <li>Figma, Adobe Creative Suite</li>
+                        <li>Prototypage interactif</li>
+                        <li>Tests utilisateurs</li>
+                    </ul>
+                    <button class="btn-ghost">Découvrir</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section class="section">
+        <div class="container">
+            <div class="text-center">
+                <h2>Prêt à collaborer ?</h2>
+                <p class="mb-4">
+                    Discutons de votre projet et donnons vie à vos idées ensemble.
+                </p>
+                
+                <!-- Formulaire de contact -->
+                <div class="card" style="max-width: 500px; margin: 0 auto; text-align: left;">
+                    <form>
+                        <div style="margin-bottom: 1rem;">
+                            <label for="name">Nom complet</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div style="margin-bottom: 1rem;">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div style="margin-bottom: 1rem;">
+                            <label for="project">Type de projet</label>
+                            <select id="project" name="project">
+                                <option value="">Sélectionnez...</option>
+                                <option value="website">Site web</option>
+                                <option value="webapp">Application web</option>
+                                <option value="ecommerce">E-commerce</option>
+                                <option value="consulting">Consulting</option>
+                            </select>
+                        </div>
+                        
+                        <div style="margin-bottom: 2rem;">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Parlez-moi de votre projet..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary" style="width: 100%;">
+                            Envoyer le message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Boutons sociaux -->
+                <div style="margin-top: 3rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="#" class="btn-outline btn-sm">LinkedIn</a>
+                    <a href="#" class="btn-outline btn-sm">GitHub</a>
+                    <a href="#" class="btn-outline btn-sm">Twitter</a>
+                    <a href="#" class="btn-outline btn-sm">Email</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--bg-secondary); padding: 2rem 0; text-align: center; border-top: 1px solid var(--border-color);">
+        <div class="container">
+            <p class="text-muted">&copy; 2024 Mon Portfolio. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Animation simple au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = '0s';
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        // Observer tous les éléments .card
+        document.querySelectorAll('.card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navigation active
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                document.querySelectorAll('nav a').forEach(l => l.classList.remove('active'));
+                e.target.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

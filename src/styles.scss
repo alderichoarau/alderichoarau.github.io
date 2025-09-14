@@ -37,20 +37,32 @@ $alderichoarau-portfolio-temp-theme: mat.m2-define-light-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
-// Modern color variables
+// LinkedIn Inspired Theme - Bleu foncé + Jaune orangé
 :root {
-  --primary-bg: #243040;
-  --secondary-bg: #2c3e50;
-  --accent-color: #00d4aa;
-  --text-primary: #ffffff;
-  --text-secondary: #b8c5d1;
-  --text-muted: #8a9ba8;
+  --primary-bg: #0A1628; // Bleu foncé presque noir
+  --secondary-bg: #1B263B; // Bleu plus clair
+  --tertiary-bg: #264653; // Bleu-vert
+  --accent-color: #F4A261; // Jaune orangé chaud
+  --accent-secondary: #E76F51; // Orange plus foncé
+  --accent-tertiary: #E9C46A; // Gris chaud
+  --text-primary: #FFFFFF;
+  --text-secondary: #E5E7EB;
+  --text-muted: #9CA3AF;
+  --text-dark: #0A1628; // Pour texte sur fond clair
   --card-bg: rgba(255, 255, 255, 0.08);
-  --card-border: rgba(255, 255, 255, 0.12);
+  --card-bg-hover: rgba(255, 255, 255, 0.12);
+  --card-border: rgba(255, 255, 255, 0.15);
   --shadow-light: rgba(0, 0, 0, 0.1);
-  --shadow-medium: rgba(0, 0, 0, 0.2);
-  --gradient-primary: linear-gradient(135deg, #00d4aa 0%, #00b894 100%);
-  --gradient-secondary: linear-gradient(135deg, #243040 0%, #2c3e50 100%);
+  --shadow-medium: rgba(0, 0, 0, 0.25);
+  --shadow-strong: rgba(0, 0, 0, 0.4);
+  --gradient-primary: linear-gradient(135deg, #F4A261 0%, #E76F51 100%);
+  --gradient-secondary: linear-gradient(135deg, #0A1628 0%, #1B263B 100%);
+  --gradient-accent: linear-gradient(135deg, #E9C46A 0%, #F4A261 100%);
+  
+  // RGB values for transparency usage
+  --primary-rgb: 10, 22, 40;
+  --accent-rgb: 244, 162, 97;
+  --accent-secondary-rgb: 231, 111, 81;
 }
 
 html, body { 
@@ -61,20 +73,23 @@ html, body {
 }
 
 body { 
-  font-family: 'Inter', 'Manrope', 'Roboto', "Helvetica Neue", sans-serif;
+  font-family: 'Poppins', 'Montserrat', 'Roboto', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
   line-height: 1.6;
   color: var(--text-primary);
   background: var(--primary-bg);
   min-height: 100vh;
   overflow-x: hidden;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 *, *::before, *::after {
   box-sizing: inherit;
 }
 
-// Import Google Fonts
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@300;400;500;600;700;800&display=swap');
+// Import Google Fonts - LinkedIn inspired
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 // Smooth scrolling
@@ -82,36 +97,41 @@ html {
   scroll-behavior: smooth;
 }
 
-// Custom Angular Material theme adjustments for dark theme
+// Custom Angular Material theme adjustments - LinkedIn colors
 .mat-mdc-raised-button {
   &.mat-primary {
     background: var(--gradient-primary) !important;
-    color: var(--primary-bg) !important;
-    box-shadow: 0 4px 15px rgba(0, 212, 170, 0.3) !important;
+    color: var(--text-dark) !important;
+    box-shadow: 0 4px 15px rgba(var(--accent-rgb), 0.3) !important;
     border: none !important;
     transition: all 0.3s ease !important;
+    font-weight: 600 !important;
     
     &:hover {
       transform: translateY(-2px) !important;
-      box-shadow: 0 6px 20px rgba(0, 212, 170, 0.4) !important;
+      box-shadow: 0 6px 20px rgba(var(--accent-rgb), 0.4) !important;
     }
   }
 }
 
 .mat-mdc-button {
   color: var(--text-primary) !important;
+  font-weight: 500 !important;
   
   &:hover {
-    background: rgba(0, 212, 170, 0.1) !important;
+    background: rgba(var(--accent-rgb), 0.1) !important;
+    color: var(--accent-color) !important;
   }
 }
 
 .mat-mdc-outlined-button {
   border-color: var(--accent-color) !important;
   color: var(--accent-color) !important;
+  font-weight: 500 !important;
   
   &:hover {
-    background: rgba(0, 212, 170, 0.1) !important;
+    background: rgba(var(--accent-rgb), 0.1) !important;
+    border-color: var(--accent-secondary) !important;
   }
 }
 
@@ -204,9 +224,187 @@ html {
   
   @media (max-width: 768px) {
     font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 2rem;
   }
 }
 
+// Badge styles for technologies
+.tech-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  
+  &:hover {
+    background: var(--card-bg-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--shadow-medium);
+  }
+  
+  mat-icon {
+    font-size: 1.2rem;
+  }
+  
+  &.expert {
+    border-color: var(--accent-color);
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+  }
+  
+  &.advanced {
+    border-color: var(--accent-secondary);
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(245, 158, 11, 0.05) 100%);
+  }
+  
+  &.intermediate {
+    border-color: #6366F1;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(99, 102, 241, 0.05) 100%);
+  }
+}
+
+// Project card styles
+.project-card {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
+  border-radius: 20px !important;
+  backdrop-filter: blur(15px) !important;
+  overflow: hidden !important;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  
+  &:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: 0 20px 60px var(--shadow-strong) !important;
+    border-color: rgba(var(--accent-rgb), 0.3) !important;
+  }
+  
+  .project-image {
+    height: 200px;
+    background: var(--gradient-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(var(--accent-rgb), 0.1) 0%, rgba(var(--accent-secondary-rgb), 0.1) 100%);
+    }
+    
+    mat-icon {
+      font-size: 4rem;
+      color: var(--text-secondary);
+      z-index: 1;
+    }
+  }
+}
+
+// CTA Button styles
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  background: var(--gradient-primary) !important;
+  color: var(--primary-bg) !important;
+  border: none !important;
+  border-radius: 50px !important;
+  font-weight: 600 !important;
+  font-size: 1.1rem !important;
+  text-decoration: none !important;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  box-shadow: 0 8px 30px rgba(var(--accent-rgb), 0.3) !important;
+  
+  &:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 12px 40px rgba(var(--accent-rgb), 0.4) !important;
+  }
+  
+  &:active {
+    transform: translateY(-1px) !important;
+  }
+  
+  mat-icon {
+    font-size: 1.3rem !important;
+  }
+}
+
+// Animation classes
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.6s ease-out;
+}
+
+// Intersection Observer animations
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+  
+  &.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Section subtitle styles
 .section-subtitle {
   font-size: 1.25rem;
   color: var(--text-secondary);
@@ -214,58 +412,10 @@ html {
   max-width: 600px;
   margin: 0 auto 3rem;
   line-height: 1.6;
-}
-
-// Technology badges
-.tech-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 20px;
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 25px;
-  color: var(--text-primary);
-  font-weight: 500;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-  margin: 6px;
   
-  &:hover {
-    transform: translateY(-2px);
-    background: rgba(0, 212, 170, 0.1);
-    border-color: var(--accent-color);
-    box-shadow: 0 4px 12px rgba(0, 212, 170, 0.2);
-  }
-  
-  .badge-icon {
-    width: 20px;
-    height: 20px;
-  }
-}
-
-// Project cards
-.project-card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 16px;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 16px 48px var(--shadow-medium);
-  }
-  
-  .project-image {
-    width: 100%;
-    height: 240px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-  
-  &:hover .project-image {
-    transform: scale(1.05);
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    margin: 0 auto 2rem;
   }
 }
 
@@ -284,30 +434,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #00b894 0%, #009977 100%);
-}
-
-// Animation classes
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
 }
 
 @keyframes fadeInRight {

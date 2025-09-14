@@ -128,19 +128,21 @@
           align-items: center;
           gap: 1rem;
           padding: 1rem;
-          background: rgba(0, 212, 170, 0.05);
+          background: rgba(var(--accent-rgb), 0.05);
           border-radius: 12px;
           transition: all 0.3s ease;
+          border: 1px solid rgba(var(--accent-rgb), 0.1);
           
           &:hover {
-            background: rgba(0, 212, 170, 0.1);
+            background: rgba(var(--accent-rgb), 0.1);
             transform: translateY(-2px);
+            border-color: rgba(var(--accent-rgb), 0.2);
           }
           
           .highlight-icon {
             font-size: 1.5rem;
             color: var(--accent-color);
-            background: rgba(0, 212, 170, 0.1);
+            background: rgba(var(--accent-rgb), 0.1);
             padding: 0.5rem;
             border-radius: 50%;
             width: 2.5rem;

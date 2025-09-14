@@ -2,6 +2,7 @@
   "nav": {
     "about": "About",
     "technologies": "Technologies",
+    "portfolio": "Portfolio",
     "projects": "Projects",
     "experience": "Experience",
     "certifications": "Certifications",
@@ -131,6 +132,6 @@
     "malt": "Malt"
   },
   "footer": {
-    "copyright": "© 2024 Aldéric Hoarau. All rights reserved."
+    "copyright": "© 2025 Aldéric Hoarau. All rights reserved."
   }
 }

@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { TranslateModule } from '@ngx-translate/core';
 import { TranslationService } from '../../core/services/translation.service';
+import { ScrollAnimationService } from '../../core/services/scroll-animation.service';
 
 @Component({
     selector: 'app-navigation',
@@ -33,7 +34,10 @@ export class NavigationComponent implements OnInit, OnDestroy {
   public readonly isEnglish = this.translationService.isEnglish;
   public readonly isFrench = this.translationService.isFrench;
 
-  constructor(private translationService: TranslationService) {}
+  constructor(
+    private translationService: TranslationService,
+    private scrollAnimationService: ScrollAnimationService
+  ) {}
 
   ngOnInit() {
     // Initial scroll position check
@@ -64,5 +68,40 @@ export class NavigationComponent implements OnInit, OnDestroy {
 
   closeMobileMenu() {
     this.mobileMenuOpenSignal.set(false);
+  }
+  
+  /**
+   * Navigate to section with smooth scroll and close mobile menu
+   */
+  navigateToSection(sectionId: string) {
+    this.scrollAnimationService.scrollToElement(`#${sectionId}`);
+    this.closeMobileMenu();
+  }
+  
+  /**
+   * Handle click outside mobile menu
+   */
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event) {
+    if (this.mobileMenuOpen()) {
+      const target = event.target as Element;
+      const mobileMenu = document.querySelector('.mobile-menu');
+      const menuToggle = document.querySelector('.mobile-menu-toggle');
+      
+      // Close menu if clicking outside of it (but not on the toggle button)
+      if (mobileMenu && !mobileMenu.contains(target) && !menuToggle?.contains(target)) {
+        this.closeMobileMenu();
+      }
+    }
+  }
+  
+  /**
+   * Handle escape key to close mobile menu
+   */
+  @HostListener('document:keydown.escape', ['$event'])
+  onEscapeKey() {
+    if (this.mobileMenuOpen()) {
+      this.closeMobileMenu();
+    }
   }
 }

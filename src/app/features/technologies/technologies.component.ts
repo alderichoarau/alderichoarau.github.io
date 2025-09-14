@@ -53,15 +53,15 @@ export class TechnologiesComponent {
     this.selectedCategorySignal.set(category);
   }
 
-  // Get level badge color
+  // Get level badge color - LinkedIn colors
   getLevelColor(level: Technology['level']): string {
     switch (level) {
       case 'expert':
-        return 'var(--accent-color)';
+        return 'var(--accent-color)'; // Jaune orangé chaud
       case 'advanced':
-        return '#ffd700';
+        return 'var(--accent-secondary)'; // Orange plus foncé
       case 'intermediate':
-        return '#ff9500';
+        return 'var(--accent-tertiary)'; // Gris chaud
       default:
         return 'var(--text-muted)';
     }

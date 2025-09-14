@@ -145,7 +145,7 @@ export class TranslationService {
         malt: "Malt"
       },
       footer: {
-        copyright: "© 2024 Aldéric Hoarau. All rights reserved."
+        copyright: "© 2025 Aldéric Hoarau. All rights reserved."
       }
     },
     fr: {

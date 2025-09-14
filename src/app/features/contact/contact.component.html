@@ -1,50 +1,60 @@
-<section id="contact" class="section-container">
-  <mat-card class="content-card">
-    <mat-card-header>
-      <mat-card-title class="section-title">
-        <mat-icon>contact_mail</mat-icon>
-        {{ 'contact.title' | translate }}
-      </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="contact-buttons">
-        <a mat-raised-button 
-           color="primary" 
-           class="contact-btn email-btn"
-           href="mailto:alderic.hoarau@gmail.com">
-          <mat-icon>email</mat-icon>
-          {{ 'contact.sendEmail' | translate }}
-        </a>
-        
-        <a mat-raised-button 
-           class="contact-btn linkedin-btn"
-           href="https://www.linkedin.com/in/alderichoarau" 
-           target="_blank" 
-           rel="noopener">
-          <mat-icon>person</mat-icon>
-          {{ 'contact.linkedin' | translate }}
-        </a>
-        
-        <a mat-raised-button 
-           class="contact-btn github-btn"
-           href="https://github.com/alderichoarau" 
-           target="_blank" 
-           rel="noopener">
-          <mat-icon>code</mat-icon>
-          {{ 'contact.github' | translate }}
-        </a>
-        
-        <a mat-raised-button 
-           class="contact-btn malt-btn"
-           href="https://www.malt.fr/profile/alderichoarau" 
-           target="_blank" 
-           rel="noopener">
-          <mat-icon>work</mat-icon>
-          {{ 'contact.malt' | translate }}
-        </a>
+<section id="contact" class="section fade-in-up">
+  <div class="container">
+    <div class="contact-content">
+      <!-- Header -->
+      <div class="contact-header">
+        <div class="section-badge">
+          <mat-icon class="badge-icon">contact_mail</mat-icon>
+          <span class="badge-text">{{ 'contact.title' | translate }}</span>
+        </div>
+        <h2 class="section-title">{{ 'contact.title' | translate }}</h2>
+        <p class="section-subtitle">{{ 'contact.subtitle' | translate }}</p>
       </div>
-    </mat-card-content>
-  </mat-card>
+      
+      <!-- Main CTA -->
+      <div class="main-cta">
+        <a href="mailto:alderic.hoarau@gmail.com" class="cta-button primary-cta">
+          <mat-icon>send</mat-icon>
+          <span>{{ 'contact.sendEmail' | translate }}</span>
+        </a>
+        <p class="cta-description">Discutons de votre projet et de vos besoins</p>
+      </div>
+      
+      <!-- Contact Methods -->
+      <div class="contact-methods">
+        <mat-card class="contact-card">
+          <mat-card-content>
+            <h3 class="contact-methods-title">Retrouvez-moi aussi sur</h3>
+            <div class="contact-buttons">
+              <a href="https://www.linkedin.com/in/alderichoarau" 
+                 target="_blank" 
+                 rel="noopener"
+                 class="contact-btn linkedin-btn">
+                <mat-icon>person</mat-icon>
+                <span>{{ 'contact.linkedin' | translate }}</span>
+              </a>
+              
+              <a href="https://github.com/alderichoarau" 
+                 target="_blank" 
+                 rel="noopener"
+                 class="contact-btn github-btn">
+                <mat-icon>code</mat-icon>
+                <span>{{ 'contact.github' | translate }}</span>
+              </a>
+              
+              <a href="https://www.malt.fr/profile/alderichoarau" 
+                 target="_blank" 
+                 rel="noopener"
+                 class="contact-btn malt-btn">
+                <mat-icon>work</mat-icon>
+                <span>{{ 'contact.malt' | translate }}</span>
+              </a>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
 </section>
 
 <footer class="footer">
