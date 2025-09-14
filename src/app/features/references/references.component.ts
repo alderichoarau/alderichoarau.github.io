@@ -5,11 +5,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-references',
-  standalone: true,
-  imports: [CommonModule, MatCardModule, MatIconModule, TranslateModule],
-  templateUrl: './references.component.html',
-  styleUrl: './references.component.scss'
+    selector: 'app-references',
+    imports: [CommonModule, MatCardModule, MatIconModule, TranslateModule],
+    templateUrl: './references.component.html',
+    styleUrl: './references.component.scss'
 })
 export class ReferencesComponent {
   isHovered = false;

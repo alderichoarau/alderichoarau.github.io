@@ -11,22 +11,21 @@ import { FaqComponent } from './features/faq/faq.component';
 import { ContactComponent } from './features/contact/contact.component';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [
-    RouterOutlet, 
-    NavigationComponent, 
-    HeaderComponent, 
-    AboutComponent,
-    SkillsComponent,
-    ExperienceComponent,
-    CertificationsComponent,
-    ReferencesComponent,
-    FaqComponent,
-    ContactComponent
-  ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    selector: 'app-root',
+    imports: [
+        RouterOutlet,
+        NavigationComponent,
+        HeaderComponent,
+        AboutComponent,
+        SkillsComponent,
+        ExperienceComponent,
+        CertificationsComponent,
+        ReferencesComponent,
+        FaqComponent,
+        ContactComponent
+    ],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'Aldéric Hoarau - Portfolio';

@@ -5,11 +5,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-experience',
-  standalone: true,
-  imports: [CommonModule, MatCardModule, MatIconModule, TranslateModule],
-  templateUrl: './experience.component.html',
-  styleUrl: './experience.component.scss'
+    selector: 'app-experience',
+    imports: [CommonModule, MatCardModule, MatIconModule, TranslateModule],
+    templateUrl: './experience.component.html',
+    styleUrl: './experience.component.scss'
 })
 export class ExperienceComponent {
   experiences = [

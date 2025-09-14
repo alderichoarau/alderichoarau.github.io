@@ -7,11 +7,10 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-faq',
-  standalone: true,
-  imports: [CommonModule, MatCardModule, MatButtonModule, MatIconModule, MatExpansionModule, TranslateModule],
-  templateUrl: './faq.component.html',
-  styleUrl: './faq.component.scss'
+    selector: 'app-faq',
+    imports: [CommonModule, MatCardModule, MatButtonModule, MatIconModule, MatExpansionModule, TranslateModule],
+    templateUrl: './faq.component.html',
+    styleUrl: './faq.component.scss'
 })
 export class FaqComponent {
   expandedIndex: number | null = null;

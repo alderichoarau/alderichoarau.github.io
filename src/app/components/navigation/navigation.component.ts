@@ -8,18 +8,17 @@ import { TranslateModule } from '@ngx-translate/core';
 import { TranslationService } from '../../core/services/translation.service';
 
 @Component({
-  selector: 'app-navigation',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
-    MatMenuModule,
-    TranslateModule
-  ],
-  templateUrl: './navigation.component.html',
-  styleUrl: './navigation.component.scss'
+    selector: 'app-navigation',
+    imports: [
+        CommonModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatIconModule,
+        MatMenuModule,
+        TranslateModule
+    ],
+    templateUrl: './navigation.component.html',
+    styleUrl: './navigation.component.scss'
 })
 export class NavigationComponent {
   // Angular 18 Signals - No more OnInit/OnDestroy needed!
