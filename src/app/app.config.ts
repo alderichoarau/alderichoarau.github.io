@@ -32,9 +32,12 @@ export const appConfig: ApplicationConfig = {
     // Translation module
     importProvidersFrom(
       TranslateModule.forRoot()
-    ), provideServiceWorker('ngsw-worker.js', {
-            enabled: !isDevMode(),
-            registrationStrategy: 'registerWhenStable:30000'
-          })
+    ),
+    
+    // Service Worker
+    provideServiceWorker('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ]
 };
