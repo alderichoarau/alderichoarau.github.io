@@ -52,14 +52,26 @@
 
 3. **Start development server:**
    ```bash
-   ng serve
+   npm start
    ```
    Navigate to `http://localhost:4200/` - the app will automatically reload when you change source files.
 
-### Production Build
+### Production Build & Test
 
+**Build de production:**
 ```bash
-ng build --configuration production --output-path docs --base-href /
+npm run build
+```
+
+**Test local avec serveur HTTP:**
+```bash
+./test-local.sh
+```
+Ce script build le projet et lance un serveur sur `http://localhost:8080` pour tester la version de production.
+
+**Build pour GitHub Pages:**
+```bash
+npm run build:gh-pages
 ```
 
 ### Code Quality
@@ -98,13 +110,45 @@ alderichoarau.github.io/
 └── README.md                 # This file
 ```
 
-## 🌐 Deployment
+## 🌐 Déploiement GitHub Pages
 
-The site is automatically deployed to GitHub Pages using GitHub Actions:
+### Déploiement Automatique
 
-- **Main branch** pushes trigger automatic deployment
-- Build files are placed in the repository root for GitHub Pages
-- Custom domain support available through GitHub Pages settings
+Le site est déployé automatiquement via **GitHub Actions** :
+
+1. **Push vers main** : Chaque push déclenche le workflow automatiquement
+2. **Build** : GitHub Actions exécute `npm run build` avec ESLint
+3. **Déploiement** : Les fichiers sont déployés sur GitHub Pages
+4. **URL** : Disponible sur [https://alderichoarau.github.io](https://alderichoarau.github.io)
+
+### Workflow GitHub Actions
+
+Le fichier `.github/workflows/deploy.yml` contient :
+- Installation des dépendances
+- Vérification ESLint (non-bloquante)
+- Build de production Angular
+- Déploiement automatique sur GitHub Pages
+
+### Test Local avant Déploiement
+
+```bash
+# Test complet avec serveur local
+./test-local.sh
+
+# Ou manuellement :
+npm run build
+cd docs/browser && python3 -m http.server 8080
+```
+
+### Résolution des Problèmes de Cache
+
+Si les traductions ne s'affichent pas après déploiement :
+
+1. **Attendre 2-5 minutes** pour la propagation GitHub Pages
+2. **Vider le cache** : Ctrl+F5 (Windows) ou Cmd+Shift+R (Mac)
+3. **Navigation privée** : Tester dans un onglet incognito
+4. **Vérifier les traductions** : [https://alderichoarau.github.io/assets/i18n/fr.json](https://alderichoarau.github.io/assets/i18n/fr.json)
+5. **Console développeur** : Vérifier les erreurs dans F12
 
 ## 🔧 Development
 
