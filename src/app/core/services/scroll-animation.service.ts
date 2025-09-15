@@ -84,7 +84,7 @@ export class ScrollAnimationService {
   /**
    * Smooth scroll to element
    */
-  scrollToElement(selector: string, offset: number = 80) {
+  scrollToElement(selector: string, offset = 80) {
     if (typeof document !== 'undefined') {
       const element = document.querySelector(selector);
       if (element) {
@@ -102,7 +102,7 @@ export class ScrollAnimationService {
   /**
    * Add staggered animation delays to child elements
    */
-  addStaggeredAnimation(parentSelector: string, childSelector: string, delayIncrement: number = 100) {
+  addStaggeredAnimation(parentSelector: string, childSelector: string, delayIncrement = 100) {
     if (typeof document !== 'undefined') {
       const parent = document.querySelector(parentSelector);
       if (parent) {

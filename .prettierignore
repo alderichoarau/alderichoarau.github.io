@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build outputs
+dist/
+docs/
+*.tsbuildinfo
+
+# Generated files
+*.log
+*.js.map
+*.d.ts
+
+# Angular generated files
+.angular/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp

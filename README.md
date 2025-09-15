@@ -62,6 +62,23 @@
 ng build --configuration production --output-path docs --base-href /
 ```
 
+### Code Quality
+
+**ESLint & Prettier Setup:**
+```bash
+npm run lint             # Check code with ESLint
+npm run lint:fix         # Auto-fix ESLint errors
+npm run format           # Format code with Prettier
+npm run format:check     # Check formatting
+npm run check            # Run both lint and format check
+```
+
+**VS Code Integration:**
+- ESLint extension automatically installed via workspace recommendations
+- Auto-fix on save enabled
+- Prettier formatting on save
+- Angular Language Service support
+
 ## 📁 Project Structure
 
 ```

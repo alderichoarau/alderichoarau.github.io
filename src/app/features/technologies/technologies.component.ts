@@ -29,7 +29,7 @@ export class TechnologiesComponent {
   public readonly selectedCategory = this.selectedCategorySignal.asReadonly();
   
   // Available categories
-  public readonly categories: Array<{key: Technology['category'] | 'all', translationKey: string, icon: string}> = [
+  public readonly categories: {key: Technology['category'] | 'all', translationKey: string, icon: string}[] = [
     { key: 'all', translationKey: 'technologies.all', icon: 'apps' },
     { key: 'frontend', translationKey: 'technologies.frontend', icon: 'web' },
     { key: 'backend', translationKey: 'technologies.backend', icon: 'storage' },
