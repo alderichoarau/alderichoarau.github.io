@@ -73,8 +73,8 @@ export class DataService {
   private readonly projectsData = signal<Project[]>([
     {
       id: 'cloud-migration',
-      title: 'Cloud Migration Platform',
-      description: 'Complete Azure migration for 20+ applications with 10x cost reduction through optimized architecture and automated deployment.',
+      title: 'projects.project1.title',
+      description: 'projects.project1.description',
       image: '/assets/images/projects/placeholder.svg',
       technologies: ['Azure', 'Terraform', 'GitHub Actions', 'Docker'],
       liveUrl: '#',
@@ -82,8 +82,8 @@ export class DataService {
     },
     {
       id: 'finops-dashboard',
-      title: 'FinOps Dashboard',
-      description: 'Real-time cost monitoring and optimization platform for multi-cloud environments with automated recommendations.',
+      title: 'projects.project2.title',
+      description: 'projects.project2.description',
       image: '/assets/images/projects/placeholder.svg',
       technologies: ['Angular', 'Power BI', 'Azure Functions', 'Cosmos DB'],
       liveUrl: '#',
@@ -91,8 +91,8 @@ export class DataService {
     },
     {
       id: 'devsecops-pipeline',
-      title: 'DevSecOps Pipeline',
-      description: 'Secure CI/CD pipeline with automated security scanning, compliance checks, and infrastructure as code.',
+      title: 'projects.project3.title',
+      description: 'projects.project3.description',
       image: '/assets/images/projects/placeholder.svg',
       technologies: ['Azure DevOps', 'SonarQube', 'Terraform', 'Kubernetes'],
       sourceUrl: '#',
@@ -100,8 +100,8 @@ export class DataService {
     },
     {
       id: 'portfolio-website',
-      title: 'Portfolio Website',
-      description: 'Modern, responsive portfolio website built with Angular 19 and Material Design, featuring dark theme and smooth animations.',
+      title: 'projects.project4.title',
+      description: 'projects.project4.description',
       image: '/assets/images/projects/placeholder.svg',
       technologies: ['Angular', 'Material Design', 'TypeScript', 'SCSS'],
       liveUrl: 'https://alderichoarau.github.io',
@@ -114,50 +114,50 @@ export class DataService {
   private readonly faqData = signal<FAQItem[]>([
     {
       id: 'cloud-projects',
-      question: 'What types of cloud projects do you handle?',
-      answer: 'I work on the design, development and deployment of cloud-native applications, cloud migration, optimization of existing infrastructures (AWS, Azure, GCP) as well as automation via CI/CD and Infrastructure as Code (Terraform, Ansible, etc.).',
+      question: 'faq.q1',
+      answer: 'faq.a1',
       category: 'services'
     },
     {
       id: 'mission-process',
-      question: 'How does a typical mission work with you?',
-      answer: 'After an initial exchange to understand your needs, I propose a technical roadmap. Then, we move forward in clear stages: framing, implementation, testing, delivery, and skills transfer if necessary.',
+      question: 'faq.q2',
+      answer: 'faq.a2',
       category: 'process'
     },
     {
       id: 'emergency',
-      question: 'Can you intervene in emergencies?',
-      answer: 'Yes, I can quickly intervene on critical incidents or specific needs (breakdowns, deployment issues, urgent optimization). Conditions are adapted according to urgency.',
+      question: 'faq.q3',
+      answer: 'faq.a3',
       category: 'services'
     },
     {
       id: 'security',
-      question: 'How do you ensure the security of my data and infrastructure?',
-      answer: 'I implement cloud security best practices: fine-grained access management (IAM), data encryption, log monitoring, and DevSecOps best practices.',
+      question: 'faq.q4',
+      answer: 'faq.a4',
       category: 'security'
     },
     {
       id: 'collaboration',
-      question: 'Do you work independently or in collaboration with an internal team?',
-      answer: 'Both are possible. I can work completely independently or integrate with an existing team (developers, ops, project managers) using your communication and management tools.',
+      question: 'faq.q5',
+      answer: 'faq.a5',
       category: 'process'
     },
     {
       id: 'billing',
-      question: 'How does billing work?',
-      answer: 'I charge either fixed-price (per project) or time-spent (daily rate). A clear quote is provided before each mission, with possibility of scheduling according to progress.',
+      question: 'faq.q6',
+      answer: 'faq.a6',
       category: 'pricing'
     },
     {
       id: 'maintenance',
-      question: 'Is it possible to plan maintenance or follow-up after the mission?',
-      answer: 'Yes, I offer support and maintenance packages to ensure stability, performance and regular updates of your cloud environments.',
+      question: 'faq.q7',
+      answer: 'faq.a7',
       category: 'services'
     },
     {
       id: 'remote-onsite',
-      question: 'Do you work only remotely or also on-site?',
-      answer: 'I prefer remote work for more flexibility, but I can also work on-site depending on your needs and location.',
+      question: 'faq.q8',
+      answer: 'faq.a8',
       category: 'process'
     }
   ]);

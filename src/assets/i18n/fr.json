@@ -62,6 +62,11 @@
       "title": "Pipeline DevSecOps",
       "description": "Pipeline CI/CD sécurisé avec scanning de sécurité automatisé, vérifications de conformité et infrastructure as code.",
       "technologies": ["Azure DevOps", "SonarQube", "Terraform", "Kubernetes"]
+    },
+    "project4": {
+      "title": "Site Portfolio",
+      "description": "Site portfolio moderne et responsive construit avec Angular 19 et Material Design, avec thème sombre et animations fluides.",
+      "technologies": ["Angular", "Material Design", "TypeScript", "SCSS"]
     }
   },
   "experience": {

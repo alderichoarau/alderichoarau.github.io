@@ -64,6 +64,7 @@
   .filter-button {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
     padding: 0.75rem 1.5rem;
     background: var(--card-bg);
@@ -75,23 +76,28 @@
     cursor: pointer;
     transition: all 0.3s ease;
     outline: none;
-    
+
     mat-icon {
       font-size: 1.1rem;
+      width: 1.1rem;
+      height: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    
+
     &:hover {
       transform: translateY(-2px);
       background: rgba(0, 212, 170, 0.05);
       border-color: var(--accent-color);
     }
-    
+
     &.active {
       background: var(--gradient-primary);
       border-color: var(--accent-color);
       color: var(--primary-bg);
       box-shadow: 0 4px 15px rgba(0, 212, 170, 0.3);
-      
+
       &:hover {
         transform: translateY(-2px);
         box-shadow: 0 6px 20px rgba(0, 212, 170, 0.4);
@@ -110,19 +116,21 @@
     gap: 1rem;
 
     .modern-faq-panel {
-      background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.08) 0%, 
-        rgba(255, 255, 255, 0.04) 100%);
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.08) 0%,
+        rgba(255, 255, 255, 0.04) 100%
+      );
       border: 1px solid rgba(var(--primary-rgb), 0.15);
       border-radius: 20px;
       overflow: hidden;
       transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
       backdrop-filter: blur(20px);
-      box-shadow: 
+      box-shadow:
         0 8px 32px rgba(0, 0, 0, 0.1),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
       position: relative;
-      
+
       // Gradient border effect
       &::before {
         content: '';
@@ -131,11 +139,13 @@
         left: 0;
         right: 0;
         height: 2px;
-        background: linear-gradient(90deg, 
-          transparent 0%, 
-          var(--accent-color) 20%, 
-          var(--primary-color) 80%, 
-          transparent 100%);
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          var(--accent-color) 20%,
+          var(--primary-color) 80%,
+          transparent 100%
+        );
         opacity: 0;
         transition: opacity 0.3s ease;
       }
@@ -143,43 +153,45 @@
       &:hover {
         border-color: rgba(var(--primary-rgb), 0.3);
         transform: translateY(-4px) scale(1.01);
-        box-shadow: 
+        box-shadow:
           0 16px 48px rgba(0, 0, 0, 0.15),
           0 0 0 1px rgba(var(--accent-color), 0.1),
           inset 0 1px 0 rgba(255, 255, 255, 0.2);
-        
+
         &::before {
           opacity: 1;
         }
       }
 
       &.mat-expanded {
-        background: linear-gradient(135deg, 
-          rgba(var(--primary-rgb), 0.08) 0%, 
-          rgba(var(--accent-rgb, 0, 212, 170), 0.04) 100%);
+        background: linear-gradient(
+          135deg,
+          rgba(var(--primary-rgb), 0.08) 0%,
+          rgba(var(--accent-rgb, 0, 212, 170), 0.04) 100%
+        );
         border-color: rgba(var(--accent-rgb, 0, 212, 170), 0.3);
-        box-shadow: 
+        box-shadow:
           0 12px 40px rgba(var(--accent-rgb, 0, 212, 170), 0.1),
           0 0 0 1px rgba(var(--accent-color), 0.2),
           inset 0 1px 0 rgba(255, 255, 255, 0.15);
-        
+
         &::before {
           opacity: 1;
-          background: linear-gradient(90deg, 
-            var(--accent-color) 0%, 
-            var(--primary-color) 50%, 
-            var(--accent-color) 100%);
+          background: linear-gradient(
+            90deg,
+            var(--accent-color) 0%,
+            var(--primary-color) 50%,
+            var(--accent-color) 100%
+          );
         }
       }
 
       .faq-panel-header {
         padding: 2rem 2.5rem;
-        background: linear-gradient(135deg, 
-          rgba(255, 255, 255, 0.03) 0%, 
-          transparent 100%);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, transparent 100%);
         transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         position: relative;
-        
+
         &::after {
           content: '';
           position: absolute;
@@ -187,23 +199,27 @@
           left: 2.5rem;
           right: 2.5rem;
           height: 1px;
-          background: linear-gradient(90deg, 
-            transparent 0%, 
-            rgba(var(--primary-rgb), 0.1) 50%, 
-            transparent 100%);
+          background: linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(var(--primary-rgb), 0.1) 50%,
+            transparent 100%
+          );
           opacity: 0;
           transition: opacity 0.3s ease;
         }
 
         &:hover {
-          background: linear-gradient(135deg, 
-            rgba(var(--accent-rgb, 0, 212, 170), 0.05) 0%, 
-            rgba(var(--primary-rgb), 0.03) 100%);
-          
+          background: linear-gradient(
+            135deg,
+            rgba(var(--accent-rgb, 0, 212, 170), 0.05) 0%,
+            rgba(var(--primary-rgb), 0.03) 100%
+          );
+
           &::after {
             opacity: 1;
           }
-          
+
           .faq-question .question-icon {
             transform: scale(1.1) rotate(5deg);
             color: var(--accent-color);
@@ -229,6 +245,7 @@
             font-size: 1.3rem;
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             flex-shrink: 0;
+            color: white;
           }
 
           .question-text {
@@ -244,7 +261,7 @@
       .faq-answer-content {
         padding: 0 2.5rem 2.5rem 2.5rem;
         position: relative;
-        
+
         &::before {
           content: '';
           position: absolute;
@@ -252,9 +269,7 @@
           left: 2.5rem;
           width: 2px;
           height: 100%;
-          background: linear-gradient(180deg, 
-            var(--accent-color) 0%, 
-            transparent 70%);
+          background: linear-gradient(180deg, var(--accent-color) 0%, transparent 70%);
           opacity: 0.3;
         }
 
@@ -265,7 +280,7 @@
           margin: 0;
           padding: 1rem 0 0 4rem; // Align with icon
           position: relative;
-          
+
           &::before {
             content: '"';
             position: absolute;
@@ -277,7 +292,7 @@
             font-family: Georgia, serif;
             line-height: 1;
           }
-          
+
           &::after {
             content: '"';
             position: absolute;
@@ -342,6 +357,8 @@
 
       mat-icon {
         font-size: 1rem;
+        width: 1rem;
+        height: 1rem;
       }
     }
   }
@@ -349,19 +366,19 @@
   .faq-accordion-container {
     .modern-faq-panel {
       border-radius: 16px;
-      
+
       .faq-panel-header {
         padding: 1.5rem 2rem;
 
         .faq-question {
           gap: 1rem;
-          
+
           .question-icon {
             width: 2rem;
             height: 2rem;
             font-size: 1.1rem;
           }
-          
+
           .question-text {
             font-size: 1rem;
           }
@@ -370,7 +387,7 @@
 
       .faq-answer-content {
         padding: 0 2rem 2rem 2rem;
-        
+
         &::before {
           left: 2rem;
         }
@@ -378,12 +395,12 @@
         .faq-answer {
           font-size: 0.95rem;
           padding: 0.75rem 0 0 3rem;
-          
+
           &::before {
             font-size: 1.5rem;
             left: 0.5rem;
           }
-          
+
           &::after {
             font-size: 1.5rem;
             right: 0.5rem;
@@ -422,8 +439,28 @@
   }
 
   .mat-expansion-indicator {
-    color: var(--primary-color) !important;
-    transition: color 0.3s ease !important;
+    color: white !important;
+    background: var(--primary-color) !important;
+    border-radius: 50% !important;
+    width: 2rem !important;
+    height: 2rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-right: 1rem !important;
+    transition: all 0.3s ease !important;
+    
+    &::after {
+      border-color: white !important;
+    }
   }
-
+  
+  .mat-expansion-panel-header:hover .mat-expansion-indicator {
+    background: var(--accent-color) !important;
+    transform: scale(1.1) !important;
+  }
+  
+  .mat-expanded .mat-expansion-indicator {
+    background: var(--accent-color) !important;
+  }
 }

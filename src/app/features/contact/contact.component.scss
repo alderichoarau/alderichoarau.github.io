@@ -127,15 +127,20 @@
   }
   
   &.github-btn {
-    border-color: #333 !important;
+    border-color: var(--text-primary) !important;
     
     mat-icon {
-      color: #333;
+      color: var(--text-primary);
     }
     
     &:hover {
-      background: linear-gradient(135deg, rgba(51, 51, 51, 0.1) 0%, rgba(36, 41, 46, 0.1) 100%) !important;
-      box-shadow: 0 8px 30px rgba(51, 51, 51, 0.2) !important;
+      background: linear-gradient(135deg, rgba(100, 100, 100, 0.15) 0%, rgba(60, 60, 60, 0.15) 100%) !important;
+      box-shadow: 0 8px 30px rgba(100, 100, 100, 0.3) !important;
+      border-color: #6cc644 !important;
+      
+      mat-icon {
+        color: #6cc644 !important;
+      }
     }
   }
   
