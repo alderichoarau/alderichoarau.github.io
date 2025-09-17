@@ -1,14 +1,18 @@
 <section id="experience" class="section-container">
   <mat-card class="content-card">
-    <mat-card-header>
-      <mat-card-title class="section-title">
-        <mat-icon>work</mat-icon>
-        {{ 'experience.title' | translate }}
-      </mat-card-title>
-    </mat-card-header>
     <mat-card-content>
+      <div class="experience-header">
+        <div class="section-badge">
+          <mat-icon class="badge-icon">timeline</mat-icon>
+          <span class="badge-text">{{ 'experience.title' | translate }}</span>
+        </div>
+      </div>
       <div class="timeline">
-        <div class="timeline-item" *ngFor="let exp of experiences; let last = last" [class.last]="last">
+        <div
+          class="timeline-item"
+          *ngFor="let exp of experiences; let last = last"
+          [class.last]="last"
+        >
           <div class="timeline-marker"></div>
           <mat-card class="timeline-card">
             <mat-card-header>

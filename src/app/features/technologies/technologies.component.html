@@ -7,17 +7,17 @@
           <mat-icon class="badge-icon">settings</mat-icon>
           <span class="badge-text">{{ 'technologies.title' | translate }}</span>
         </div>
-        <h2 class="section-title">{{ 'technologies.title' | translate }}</h2>
         <p class="section-subtitle">{{ 'technologies.subtitle' | translate }}</p>
       </div>
 
       <!-- Category Filters -->
       <div class="category-filters">
-        <button 
-          *ngFor="let category of categories" 
+        <button
+          *ngFor="let category of categories"
           class="filter-button"
           [class.active]="selectedCategory() === category.key"
-          (click)="selectCategory(category.key)">
+          (click)="selectCategory(category.key)"
+        >
           <mat-icon>{{ category.icon }}</mat-icon>
           <span>{{ category.translationKey | translate }}</span>
         </button>
@@ -25,10 +25,11 @@
 
       <!-- Technologies Grid -->
       <div class="technologies-grid">
-        <div 
-          *ngFor="let tech of getFilteredTechnologies(); trackBy: trackByTech" 
+        <div
+          *ngFor="let tech of getFilteredTechnologies(); trackBy: trackByTech"
           class="tech-badge"
-          [style.--tech-color]="tech.color">
+          [style.--tech-color]="tech.color"
+        >
           <div class="tech-icon">
             <mat-icon>{{ tech.icon }}</mat-icon>
           </div>
@@ -54,10 +55,11 @@
             </mat-card-header>
             <mat-card-content>
               <div class="category-technologies">
-                <div 
-                  *ngFor="let tech of getCategoryTechnologies(category.key)" 
+                <div
+                  *ngFor="let tech of getCategoryTechnologies(category.key)"
                   class="mini-tech-badge"
-                  [style.--tech-color]="tech.color">
+                  [style.--tech-color]="tech.color"
+                >
                   <mat-icon class="mini-tech-icon">{{ tech.icon }}</mat-icon>
                   <span class="mini-tech-name">{{ tech.name }}</span>
                   <div class="mini-tech-level" [style.background-color]="getLevelColor(tech.level)">

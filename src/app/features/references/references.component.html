@@ -1,26 +1,33 @@
 <section id="references" class="section-container">
   <mat-card class="content-card">
-    <mat-card-header>
-      <mat-card-title class="section-title">
-        <mat-icon>business</mat-icon>
-        {{ 'references.title' | translate }}
-      </mat-card-title>
-    </mat-card-header>
     <mat-card-content>
+      <div class="references-header">
+        <div class="section-badge">
+          <mat-icon class="badge-icon">business</mat-icon>
+          <span class="badge-text">{{ 'references.title' | translate }}</span>
+        </div>
+      </div>
       <div class="references-container">
-        <div class="references-track" [style.animation-play-state]="isHovered ? 'paused' : 'running'">
-          <div class="reference-item" 
-               *ngFor="let ref of references; let i = index" 
-               (mouseenter)="onMouseEnter()" 
-               (mouseleave)="onMouseLeave()">
-            <img [src]="ref.logo" [alt]="ref.name" class="reference-logo">
+        <div
+          class="references-track"
+          [style.animation-play-state]="isHovered ? 'paused' : 'running'"
+        >
+          <div
+            class="reference-item"
+            *ngFor="let ref of references; let i = index"
+            (mouseenter)="onMouseEnter()"
+            (mouseleave)="onMouseLeave()"
+          >
+            <img [src]="ref.logo" [alt]="ref.name" class="reference-logo" />
           </div>
           <!-- Duplicate for seamless loop -->
-          <div class="reference-item" 
-               *ngFor="let ref of references; let i = index" 
-               (mouseenter)="onMouseEnter()" 
-               (mouseleave)="onMouseLeave()">
-            <img [src]="ref.logo" [alt]="ref.name" class="reference-logo">
+          <div
+            class="reference-item"
+            *ngFor="let ref of references; let i = index"
+            (mouseenter)="onMouseEnter()"
+            (mouseleave)="onMouseLeave()"
+          >
+            <img [src]="ref.logo" [alt]="ref.name" class="reference-logo" />
           </div>
         </div>
       </div>

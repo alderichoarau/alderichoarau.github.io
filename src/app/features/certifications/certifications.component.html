@@ -1,12 +1,12 @@
 <section id="certifications" class="section-container">
   <mat-card class="content-card">
-    <mat-card-header>
-      <mat-card-title class="section-title">
-        <mat-icon>verified</mat-icon>
-        {{ 'certifications.title' | translate }}
-      </mat-card-title>
-    </mat-card-header>
     <mat-card-content>
+      <div class="certifications-header">
+        <div class="section-badge">
+          <mat-icon class="badge-icon">verified</mat-icon>
+          <span class="badge-text">{{ 'certifications.title' | translate }}</span>
+        </div>
+      </div>
       <div class="certifications-grid">
         <div class="cert-item" *ngFor="let cert of certifications">
           <mat-icon class="cert-icon">{{ cert.icon }}</mat-icon>
@@ -22,13 +22,14 @@
 
 <section class="section-container">
   <mat-card class="content-card">
-    <mat-card-header>
-      <mat-card-title class="section-title">
-        <mat-icon>translate</mat-icon>
-        {{ 'languages.title' | translate }}
-      </mat-card-title>
-    </mat-card-header>
     <mat-card-content>
+      <div class="languages-header">
+        <div class="section-badge">
+          <mat-icon class="badge-icon">translate</mat-icon>
+          <span class="badge-text">{{ 'languages.title' | translate }}</span>
+        </div>
+        <h2 class="section-title">{{ 'languages.title' | translate }}</h2>
+      </div>
       <div class="languages-grid">
         <div class="language-item" *ngFor="let lang of languages">
           <div class="language-info">
