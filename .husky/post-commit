@@ -1,0 +1,17 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo ""
+echo "🎉 Commit successful!"
+echo "📊 Your Angular 19 portfolio is ready for deployment!"
+echo ""
+
+# Optional: Show latest commit info
+echo "📋 Latest commit:"
+git log --oneline -1
+echo ""
+
+# Optional: Remind about deployment
+echo "💡 To deploy to GitHub Pages, run:"
+echo "   npm run build:gh-pages && git push origin main"
+echo ""

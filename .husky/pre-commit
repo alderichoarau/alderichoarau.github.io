@@ -1,0 +1,32 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "🔍 Running quality gate checks before commit..."
+echo "⏳ This may take a moment..."
+echo ""
+
+# Run lint-staged first (fast checks)
+echo "📝 Running lint-staged (format + lint)..."
+npx lint-staged
+
+if [ $? -ne 0 ]; then
+  echo "❌ Lint-staged failed. Please fix the issues and try again."
+  exit 1
+fi
+
+echo "✅ Lint-staged passed!"
+echo ""
+
+# Build production (final check)
+echo "🏗️ Building production to ensure deployability..."
+npm run build:prod
+
+if [ $? -ne 0 ]; then
+  echo "❌ Production build failed. Please fix the build issues and try again."
+  exit 1
+fi
+
+echo "✅ Production build successful!"
+echo ""
+echo "🎉 Quality gates passed! Proceeding with commit..."
+echo ""

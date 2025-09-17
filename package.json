@@ -5,14 +5,21 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build --configuration production",
     "build:gh-pages": "ng build --configuration production --base-href=/",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "lint": "ng lint",
+    "test": "ng test --watch=false --code-coverage=false --browsers=ChromeHeadless",
+    "test:watch": "ng test",
+    "test:coverage": "ng test --watch=false --code-coverage=true --browsers=ChromeHeadless",
+    "lint": "ng lint --max-warnings=0",
     "lint:fix": "ng lint --fix",
     "format": "prettier --write \"src/**/*.{ts,js,html,scss,css,json}\"",
     "format:check": "prettier --check \"src/**/*.{ts,js,html,scss,css,json}\"",
-    "check": "npm run lint && npm run format:check"
+    "check": "npm run lint && npm run format:check",
+    "pre-commit": "lint-staged",
+    "pre-commit-full": "npm run test && npm run lint && npm run build:prod",
+    "quality-gate": "npm run format:check && npm run lint && npm run test && npm run build:prod",
+    "prepare": "husky"
   },
   "private": true,
   "dependencies": {
@@ -35,19 +42,30 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^19.2.16",
-    "@angular/cli": "^19.2.16",
+    "@angular/cli": "^19.2.17",
     "@angular/compiler-cli": "^19.2.15",
     "@types/jasmine": "~5.1.0",
     "angular-eslint": "20.3.0",
     "eslint": "^9.35.0",
+    "husky": "^9.1.7",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "lint-staged": "^16.1.6",
     "prettier": "^3.6.2",
     "typescript": "~5.5.4",
     "typescript-eslint": "8.40.0"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,js}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "src/**/*.{html,scss,css,json,md}": [
+      "prettier --write"
+    ]
   }
 }

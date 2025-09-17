@@ -57,6 +57,7 @@ src/app/
 - **Build:** Angular CLI + optimisations Webpack
 - **PWA:** Service Worker + cache strategies
 - **Deployment:** GitHub Pages avec 404.html routing
+- **Quality:** Husky + lint-staged pour hooks Git automatiques
 
 ## 🚀 Quick Start
 
@@ -111,6 +112,24 @@ npm run lint:fix         # Auto-fix ESLint errors
 npm run format           # Format code with Prettier
 npm run format:check     # Check formatting
 npm run check            # Run both lint and format check
+npm run quality-gate      # Tests complets (lint+test+build)
+```
+
+## 🐺 **Git Hooks avec Husky**
+
+### Hooks Automatiques
+- **Pre-commit** : Lint-staged + Tests + Build production
+- **Post-commit** : Notifications et rappels de déploiement
+
+### Scripts Qualité Additionnels
+```bash
+# Tests avec différentes options
+npm run test                # Tests headless rapides
+npm run test:watch          # Tests en mode watch
+npm run test:coverage       # Tests avec couverture de code
+
+# Bypass d'urgence (utiliser avec précaution)
+git commit --no-verify -m "Emergency commit"
 ```
 
 **VS Code Integration:**
