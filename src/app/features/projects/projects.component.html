@@ -13,7 +13,7 @@
       <!-- Featured Projects Grid -->
       <div class="projects-grid">
         <div
-          *ngFor="let project of getFeaturedProjects(); let i = index; trackBy: trackByProject"
+          *ngFor="let project of featuredProjects(); let i = index; trackBy: trackByProject"
           class="project-card"
           [class.fade-in-left]="i % 2 === 0"
           [class.fade-in-right]="i % 2 === 1"

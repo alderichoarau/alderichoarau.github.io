@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal, computed, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -14,41 +14,44 @@ import { fadeInUpAnimation, listItemAnimation, slideInUpAnimation } from '../../
     imports: [CommonModule, MatCardModule, MatButtonModule, MatIconModule, MatExpansionModule, TranslateModule],
     templateUrl: './faq.component.html',
     styleUrl: './faq.component.scss',
-    animations: [fadeInUpAnimation, listItemAnimation, slideInUpAnimation]
+    animations: [fadeInUpAnimation, listItemAnimation, slideInUpAnimation],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FaqComponent {
   // Modern Angular inject pattern
   public readonly dataService = inject(DataService);
   
-  expandedIndex: number | null = null;
-  selectedCategory = 'all';
+  // Angular 19 signals for reactive state
+  public readonly expandedIndexSignal = signal<number | null>(null);
+  public readonly expandedIndex = this.expandedIndexSignal.asReadonly();
+  
+  private readonly selectedCategorySignal = signal<string>('all');
+  public readonly selectedCategory = this.selectedCategorySignal.asReadonly();
 
   // FAQ categories with icons and translation keys
-  categories = [
+  public readonly categories = [
     { id: 'all', translationKey: 'faq.categories.all', icon: 'help' },
     { id: 'services', translationKey: 'faq.categories.services', icon: 'work' },
     { id: 'process', translationKey: 'faq.categories.process', icon: 'timeline' },
     { id: 'security', translationKey: 'faq.categories.security', icon: 'security' },
     { id: 'pricing', translationKey: 'faq.categories.pricing', icon: 'euro_symbol' }
-  ];
+  ] as const;
 
-  // Get FAQ data from service
-  get faqs() {
-    return this.dataService.faq();
-  }
-
-  // Get filtered FAQs based on selected category
-  getFilteredFAQs() {
-    if (this.selectedCategory === 'all') {
-      return this.faqs;
+  // Angular 19 computed signals for better performance
+  public readonly faqs = this.dataService.faq;
+  
+  public readonly filteredFAQs = computed(() => {
+    const category = this.selectedCategory();
+    if (category === 'all') {
+      return this.faqs();
     }
-    return this.faqs.filter(faq => faq.category === this.selectedCategory);
-  }
+    return this.faqs().filter(faq => faq.category === category);
+  });
 
   // Set category filter
-  selectCategory(categoryId: string) {
-    this.selectedCategory = categoryId;
-    this.expandedIndex = null; // Close all panels when switching categories
+  selectCategory(categoryId: string): void {
+    this.selectedCategorySignal.set(categoryId);
+    this.expandedIndexSignal.set(null); // Close all panels when switching categories
   }
 
   // Track by function for performance

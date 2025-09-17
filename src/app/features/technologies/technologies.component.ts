@@ -1,4 +1,4 @@
-import { Component, signal, inject } from '@angular/core';
+import { Component, signal, inject, computed, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -17,7 +17,8 @@ import { fadeInUpAnimation, staggerAnimation, scaleInAnimation, bounceInAnimatio
   ],
   templateUrl: './technologies.component.html',
   styleUrl: './technologies.component.scss',
-  animations: [fadeInUpAnimation, staggerAnimation, scaleInAnimation, bounceInAnimation]
+  animations: [fadeInUpAnimation, staggerAnimation, scaleInAnimation, bounceInAnimation],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TechnologiesComponent {
   
@@ -42,13 +43,13 @@ export class TechnologiesComponent {
     { key: 'tools', translationKey: 'technologies.tools', icon: 'build' }
   ];
 
-  // Filter technologies by selected category
-  getFilteredTechnologies(): Technology[] {
+  // Angular 19 computed signal for filtered technologies (better performance)
+  public readonly filteredTechnologies = computed(() => {
     const category = this.selectedCategory();
     return category === 'all' 
       ? this.technologies()
       : this.dataService.getTechnologiesByCategory(category);
-  }
+  });
 
   // Set selected category
   selectCategory(category: Technology['category'] | 'all') {
@@ -79,11 +80,13 @@ export class TechnologiesComponent {
     return tech.name;
   }
 
-  // Get technologies for a specific category (helper for template)
-  getCategoryTechnologies(categoryKey: Technology['category'] | 'all'): Technology[] {
-    if (categoryKey === 'all') {
-      return this.technologies();
-    }
-    return this.dataService.getTechnologiesByCategory(categoryKey);
-  }
+  // Get technologies for a specific category using computed signal
+  getCategoryTechnologies = computed(() => {
+    return (categoryKey: Technology['category'] | 'all'): Technology[] => {
+      if (categoryKey === 'all') {
+        return this.technologies();
+      }
+      return this.dataService.getTechnologiesByCategory(categoryKey);
+    };
+  });
 }

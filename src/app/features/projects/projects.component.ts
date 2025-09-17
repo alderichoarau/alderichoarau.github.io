@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, computed, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -21,7 +21,8 @@ import { fadeInUpAnimation, fadeInLeftAnimation, fadeInRightAnimation, cardHover
   ],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss',
-  animations: [fadeInUpAnimation, fadeInLeftAnimation, fadeInRightAnimation, cardHoverAnimation]
+  animations: [fadeInUpAnimation, fadeInLeftAnimation, fadeInRightAnimation, cardHoverAnimation],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProjectsComponent {
   
@@ -31,10 +32,10 @@ export class ProjectsComponent {
   // Get projects from data service using Angular Signals
   public readonly projects = this.dataService.projects;
 
-  // Get featured projects only
-  getFeaturedProjects() {
+  // Angular 19 computed signal for featured projects
+  public readonly featuredProjects = computed(() => {
     return this.dataService.getFeaturedProjects();
-  }
+  });
 
   // TrackBy function for performance optimization
   trackByProject(index: number, project: Project): string {

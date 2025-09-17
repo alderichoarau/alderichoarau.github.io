@@ -17,7 +17,7 @@
           <button
             *ngFor="let category of categories"
             class="filter-button"
-            [class.active]="selectedCategory === category.id"
+            [class.active]="selectedCategory() === category.id"
             (click)="selectCategory(category.id)"
           >
             <mat-icon>{{ category.icon }}</mat-icon>
@@ -30,11 +30,11 @@
       <div class="faq-accordion-container fade-in-up">
         <mat-accordion class="modern-faq-accordion" multi="false">
           <mat-expansion-panel
-            *ngFor="let faq of getFilteredFAQs(); let i = index; trackBy: trackByFAQ"
+            *ngFor="let faq of filteredFAQs(); let i = index; trackBy: trackByFAQ"
             class="modern-faq-panel"
-            [expanded]="expandedIndex === i"
-            (opened)="expandedIndex = i"
-            (closed)="expandedIndex = null"
+            [expanded]="expandedIndex() === i"
+            (opened)="expandedIndexSignal.set(i)"
+            (closed)="expandedIndexSignal.set(null)"
           >
             <mat-expansion-panel-header class="faq-panel-header">
               <mat-panel-title class="faq-question">
@@ -50,7 +50,7 @@
         </mat-accordion>
 
         <!-- Empty state -->
-        <div *ngIf="getFilteredFAQs().length === 0" class="empty-state">
+        <div *ngIf="filteredFAQs().length === 0" class="empty-state">
           <mat-icon class="empty-icon">search_off</mat-icon>
           <p class="empty-text">Aucune question trouvée pour cette catégorie.</p>
         </div>
