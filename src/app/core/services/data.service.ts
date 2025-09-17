@@ -167,8 +167,6 @@ export class DataService {
   public readonly projects = this.projectsData.asReadonly();
   public readonly faq = this.faqData.asReadonly();
 
-  constructor() {}
-
   // Helper methods with computed signals
   getFeaturedProjects() {
     return this.projects().filter(project => project.featured);

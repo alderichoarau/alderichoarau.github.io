@@ -72,7 +72,13 @@
   
   <!-- Mobile menu -->
   <div class="mobile-menu" [class.open]="mobileMenuOpen()">
-    <div class="mobile-menu-overlay" (click)="closeMobileMenu()"></div>
+    <div class="mobile-menu-overlay" 
+         (click)="closeMobileMenu()" 
+         (keydown.enter)="closeMobileMenu()" 
+         (keydown.space)="closeMobileMenu()" 
+         tabindex="0" 
+         role="button" 
+         [attr.aria-label]="'nav.closeMobileMenu' | translate"></div>
     <nav class="mobile-nav">
       <button mat-button class="mobile-nav-link" (click)="navigateToSection('about')">
         <mat-icon>person</mat-icon>

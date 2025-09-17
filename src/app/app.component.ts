@@ -1,7 +1,7 @@
-import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NavigationComponent } from './components/navigation/navigation.component';
-import { HeaderComponent } from './components/header/header.component';
+import { NavigationComponent } from './core/components/navigation/navigation.component';
+import { HeaderComponent } from './core/components/header/header.component';
 import { AboutComponent } from './features/about/about.component';
 import { TechnologiesComponent } from './features/technologies/technologies.component';
 import { ProjectsComponent } from './features/projects/projects.component';
@@ -32,14 +32,12 @@ import { ScrollAnimationService } from './core/services/scroll-animation.service
     styleUrl: './app.component.scss',
     animations: [fadeInUpAnimation, staggerAnimation]
 })
-export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
+export class AppComponent implements AfterViewInit, OnDestroy {
   title = 'Aldéric Hoarau - Portfolio';
   
-  constructor(private scrollAnimationService: ScrollAnimationService) {}
+  // Modern Angular inject pattern
+  private readonly scrollAnimationService = inject(ScrollAnimationService);
   
-  ngOnInit() {
-    // Component initialization
-  }
   
   ngAfterViewInit() {
     // Set up scroll animations for sections

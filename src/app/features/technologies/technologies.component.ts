@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -21,6 +21,10 @@ import { fadeInUpAnimation, staggerAnimation, scaleInAnimation, bounceInAnimatio
 })
 export class TechnologiesComponent {
   
+  // Modern Angular inject pattern
+  public readonly dataService = inject(DataService);
+  private readonly translate = inject(TranslateService);
+  
   // Get technologies from data service using Angular Signals
   public readonly technologies = this.dataService.technologies;
   
@@ -37,8 +41,6 @@ export class TechnologiesComponent {
     { key: 'databases', translationKey: 'technologies.databases', icon: 'database' },
     { key: 'tools', translationKey: 'technologies.tools', icon: 'build' }
   ];
-
-  constructor(public dataService: DataService, private translate: TranslateService) {}
 
   // Filter technologies by selected category
   getFilteredTechnologies(): Technology[] {

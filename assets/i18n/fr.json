@@ -6,7 +6,15 @@
     "certifications": "Certifications",
     "references": "Références",
     "contact": "Contact",
-    "getInTouch": "Me contacter"
+    "getInTouch": "Me contacter",
+    "closeMobileMenu": "Fermer le menu mobile",
+    "language": "Langue",
+    "french": "Français",
+    "english": "Anglais",
+    "portfolio": "Portfolio",
+    "projects": "Projets",
+    "technologies": "Technologies",
+    "faq": "FAQ"
   },
   "header": {
     "name": "Aldéric Hoarau",

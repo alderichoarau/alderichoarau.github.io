@@ -1,12 +1,12 @@
-import { Component, signal, computed, OnInit, OnDestroy, HostListener } from '@angular/core';
+import { Component, signal, OnInit, HostListener, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { TranslateModule } from '@ngx-translate/core';
-import { TranslationService } from '../../core/services/translation.service';
-import { ScrollAnimationService } from '../../core/services/scroll-animation.service';
+import { TranslationService } from '../../services/translation.service';
+import { ScrollAnimationService } from '../../services/scroll-animation.service';
 
 @Component({
     selector: 'app-navigation',
@@ -21,7 +21,11 @@ import { ScrollAnimationService } from '../../core/services/scroll-animation.ser
     templateUrl: './navigation.component.html',
     styleUrl: './navigation.component.scss'
 })
-export class NavigationComponent implements OnInit, OnDestroy {
+export class NavigationComponent implements OnInit {
+  // Modern Angular inject pattern - must be declared first
+  private readonly translationService = inject(TranslationService);
+  private readonly scrollAnimationService = inject(ScrollAnimationService);
+  
   // Angular Signals for state management
   private readonly mobileMenuOpenSignal = signal(false);
   public readonly mobileMenuOpen = this.mobileMenuOpenSignal.asReadonly();
@@ -34,19 +38,11 @@ export class NavigationComponent implements OnInit, OnDestroy {
   public readonly isEnglish = this.translationService.isEnglish;
   public readonly isFrench = this.translationService.isFrench;
 
-  constructor(
-    private translationService: TranslationService,
-    private scrollAnimationService: ScrollAnimationService
-  ) {}
-
   ngOnInit() {
     // Initial scroll position check
     this.updateScrollState();
   }
 
-  ngOnDestroy() {
-    // Cleanup handled by Angular 19 automatically for signals
-  }
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {

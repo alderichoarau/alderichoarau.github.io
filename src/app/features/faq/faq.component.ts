@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { TranslateModule } from '@ngx-translate/core';
-import { DataService } from '../../core/services/data.service';
+import { DataService, FAQItem } from '../../core/services/data.service';
 import { fadeInUpAnimation, listItemAnimation, slideInUpAnimation } from '../../shared/animations/animations';
 
 @Component({
@@ -17,6 +17,9 @@ import { fadeInUpAnimation, listItemAnimation, slideInUpAnimation } from '../../
     animations: [fadeInUpAnimation, listItemAnimation, slideInUpAnimation]
 })
 export class FaqComponent {
+  // Modern Angular inject pattern
+  public readonly dataService = inject(DataService);
+  
   expandedIndex: number | null = null;
   selectedCategory = 'all';
 
@@ -28,8 +31,6 @@ export class FaqComponent {
     { id: 'security', translationKey: 'faq.categories.security', icon: 'security' },
     { id: 'pricing', translationKey: 'faq.categories.pricing', icon: 'euro_symbol' }
   ];
-
-  constructor(public dataService: DataService) {}
 
   // Get FAQ data from service
   get faqs() {
@@ -51,7 +52,7 @@ export class FaqComponent {
   }
 
   // Track by function for performance
-  trackByFAQ(index: number, faq: any) {
+  trackByFAQ(index: number, faq: FAQItem) {
     return faq.id;
   }
 }

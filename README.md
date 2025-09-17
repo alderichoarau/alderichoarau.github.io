@@ -1,34 +1,62 @@
-# Aldéric Hoarau - Professional Portfolio
+# 🚀 Aldéric Hoarau - Portfolio
 
-🚀 A modern, responsive portfolio website showcasing the skills and experience of Aldéric Hoarau, a Developer, Cloud & DevSecOps Freelancer.
+[![Angular](https://img.shields.io/badge/Angular-19.2-red?style=for-the-badge&logo=angular)](https://angular.io/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.5-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-green?style=for-the-badge&logo=github)](https://pages.github.com/)
+[![PWA Ready](https://img.shields.io/badge/PWA-Ready-purple?style=for-the-badge)](https://web.dev/progressive-web-apps/)
+
+Portfolio professionnel développé avec Angular 19, déployé sur GitHub Pages. Architecturé selon les meilleures pratiques Angular avec un code clean, performant et accessible.
 
 **Live Website:** [https://alderichoarau.github.io](https://alderichoarau.github.io)
 
-## ✨ Features
+## ✨ Fonctionnalités
 
-- **Modern Angular Application** - Built with Angular 17+ and Angular Material
-- **Responsive Design** - Optimized for all devices (mobile, tablet, desktop)
-- **Bilingual Support** - Available in English and French with seamless language switching
-- **Professional Sections:**
-  - 👤 About Me with photo and introduction
-  - 🛠️ Skills showcase with visual cards
-  - 💼 Professional Experience timeline
-  - 🏆 Certifications display
-  - 📋 Client References
-  - ❓ FAQ section
-  - 📞 Contact information
-- **Material Design** - Clean, modern UI with LinkedIn blue theme
-- **Performance Optimized** - Production build with minified assets
-- **SEO Ready** - Proper meta tags and semantic HTML structure
+- 🌟 **Modern Angular 19** avec signals et standalone components
+- 🎨 **Angular Material** avec thème personnalisé LinkedIn-inspired  
+- 🌐 **Internationalization** (FR/EN) avec ngx-translate
+- 📱 **Fully Responsive** et mobile-first
+- ♿ **Accessible** (ARIA labels, navigation clavier, contraste)
+- 🔍 **SEO Optimized** (meta tags, Open Graph, JSON-LD)
+- ⚡ **Performance** (lazy loading, PWA, optimizations)
+- 🎭 **Smooth Animations** avec Angular Animations
+- 🧪 **Clean Architecture** (Core/Shared/Features modules)
+- 🛠️ **Clean Code** (ESLint, Prettier, inject() pattern)
 
-## 🛠️ Technologies Used
+## 🏗️ Architecture Clean Code
 
-- **Frontend:** Angular 17, TypeScript, HTML5, SCSS
-- **UI Framework:** Angular Material
-- **Fonts:** Manrope, Roboto, Material Icons
-- **Build Tools:** Angular CLI, Webpack
-- **Deployment:** GitHub Pages
-- **Internationalization:** Angular i18n with custom translation service
+```
+src/app/
+├── core/                    # Services singleton et composants layout
+│   ├── components/         
+│   │   ├── header/
+│   │   └── navigation/
+│   ├── services/           # Services globaux avec inject()
+│   │   ├── data.service.ts
+│   │   ├── translation.service.ts
+│   │   ├── seo.service.ts
+│   │   └── scroll-animation.service.ts
+│   └── core.module.ts
+├── shared/                  # Composants et utilitaires réutilisables  
+│   ├── styles/
+│   │   └── _variables.scss  # Variables SCSS centralisées
+│   └── shared.module.ts     # Angular Material + utilitaires
+├── features/               # Sections du portfolio
+│   ├── about/ ├── technologies/ ├── projects/ 
+│   ├── experience/ ├── certifications/ ├── faq/
+│   └── features.module.ts
+└── shared/animations/      # Animations Angular réutilisables
+```
+
+### 🛠️ Technologies
+
+- **Frontend:** Angular 19.2, TypeScript 5.5, SCSS
+- **UI Framework:** Angular Material avec thème custom
+- **Architecture:** Standalone Components + Modules hybrides
+- **State Management:** Angular Signals (moderne)
+- **Injection:** inject() pattern (au lieu de constructors)
+- **Build:** Angular CLI + optimisations Webpack
+- **PWA:** Service Worker + cache strategies
+- **Deployment:** GitHub Pages avec 404.html routing
 
 ## 🚀 Quick Start
 
