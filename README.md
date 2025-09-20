@@ -1,209 +1,175 @@
 # 🚀 Aldéric Hoarau - Portfolio
 
 [![Angular](https://img.shields.io/badge/Angular-19.2-red?style=for-the-badge&logo=angular)](https://angular.io/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.5-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-green?style=for-the-badge&logo=github)](https://pages.github.com/)
 [![PWA Ready](https://img.shields.io/badge/PWA-Ready-purple?style=for-the-badge)](https://web.dev/progressive-web-apps/)
 
-Portfolio professionnel développé avec Angular 19, déployé sur GitHub Pages. Architecturé selon les meilleures pratiques Angular avec un code clean, performant et accessible.
+A professional portfolio built with Angular 19 and deployed on GitHub Pages. Architected following Angular best practices with clean, performant, and accessible code.
 
-**Live Website:** [https://alderichoarau.github.io](https://alderichoarau.github.io)
+**🌐 Live Website:** [https://alderichoarau.github.io](https://alderichoarau.github.io)
 
-## ✨ Fonctionnalités
+## ✨ Features
 
-- 🌟 **Modern Angular 19** avec signals et standalone components
-- 🎨 **Angular Material** avec thème personnalisé LinkedIn-inspired  
-- 🌐 **Internationalization** (FR/EN) avec ngx-translate
-- 📱 **Fully Responsive** et mobile-first
-- ♿ **Accessible** (ARIA labels, navigation clavier, contraste)
+- 🌟 **Modern Angular 19** with signals and standalone components
+- 🎨 **Angular Material** with custom LinkedIn-inspired theme
+- 🌐 **Internationalization** (FR/EN) using ngx-translate
+- 📱 **Fully Responsive** and mobile-first design
+- ♿ **Accessible** (ARIA labels, keyboard navigation, contrast)
 - 🔍 **SEO Optimized** (meta tags, Open Graph, JSON-LD)
-- ⚡ **Performance** (lazy loading, PWA, optimizations)
-- 🎭 **Smooth Animations** avec Angular Animations
+- ⚡ **High Performance** (lazy loading, PWA, optimizations)
+- 🎭 **Smooth Animations** with Angular Animations API
 - 🧪 **Clean Architecture** (Core/Shared/Features modules)
-- 🛠️ **Clean Code** (ESLint, Prettier, inject() pattern)
+- 🔠 **Clean Code** (ESLint, Prettier, modern inject() pattern)
 
-## 🏗️ Architecture Clean Code
+## 🏗️ Architecture
 
 ```
 src/app/
-├── core/                    # Services singleton et composants layout
-│   ├── components/         
-│   │   ├── header/
-│   │   └── navigation/
-│   ├── services/           # Services globaux avec inject()
-│   │   ├── data.service.ts
-│   │   ├── translation.service.ts
-│   │   ├── seo.service.ts
-│   │   └── scroll-animation.service.ts
+├── core/                    # Singleton services and layout components
+│   ├── components/          # Header, navigation
+│   ├── services/           # Global services using inject()
 │   └── core.module.ts
-├── shared/                  # Composants et utilitaires réutilisables  
-│   ├── styles/
-│   │   └── _variables.scss  # Variables SCSS centralisées
-│   └── shared.module.ts     # Angular Material + utilitaires
-├── features/               # Sections du portfolio
-│   ├── about/ ├── technologies/ ├── projects/ 
-│   ├── experience/ ├── certifications/ ├── faq/
+├── shared/                  # Reusable components and utilities
+│   ├── animations/         # Reusable Angular animations
+│   └── shared.module.ts     # Angular Material + utilities
+├── features/               # Portfolio sections
+│   ├── about/ ├── technologies/ ├── projects/
+│   ├── experience/ ├── certifications/ ├── references/
 │   └── features.module.ts
-└── shared/animations/      # Animations Angular réutilisables
+└── styles.scss             # Global styles and variables
 ```
 
-### 🛠️ Technologies
+## 🔧 Tech Stack
 
-- **Frontend:** Angular 19.2, TypeScript 5.5, SCSS
-- **UI Framework:** Angular Material avec thème custom
-- **Architecture:** Standalone Components + Modules hybrides
-- **State Management:** Angular Signals (moderne)
-- **Injection:** inject() pattern (au lieu de constructors)
-- **Build:** Angular CLI + optimisations Webpack
-- **PWA:** Service Worker + cache strategies
-- **Deployment:** GitHub Pages avec 404.html routing
-- **Quality:** Husky + lint-staged pour hooks Git automatiques
+- **Frontend:** Angular 19.2, TypeScript 5.8, SCSS
+- **UI Library:** Angular Material with custom theme
+- **Architecture:** Standalone Components + Feature modules
+- **State Management:** Angular Signals (modern approach)
+- **Dependency Injection:** Modern inject() function pattern
+- **Build Tools:** Angular CLI with Webpack optimizations
+- **PWA:** Service Worker with intelligent caching strategies
+- **Deployment:** GitHub Pages with SPA routing support
+- **Code Quality:** ESLint + Prettier + Husky pre-commit hooks
 
-## 🚀 Quick Start
+## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js (v18 or later)
-- npm (v9 or later)
-- Angular CLI (`npm install -g @angular/cli`)
 
-### Development Setup
+- Node.js 22+
+- npm 10+
+- Angular CLI: `npm install -g @angular/cli`
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/alderichoarau/alderichoarau.github.io.git
-   cd alderichoarau.github.io
-   ```
+### Development
 
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-
-3. **Start development server:**
-   ```bash
-   npm start
-   ```
-   Navigate to `http://localhost:4200/` - the app will automatically reload when you change source files.
-
-### Production Build & Test
-
-**Build de production:**
 ```bash
+# Clone and setup
+git clone https://github.com/alderichoarau/alderichoarau.github.io.git
+cd alderichoarau.github.io
+npm install
+
+# Start development server
+npm start
+```
+
+Navigate to `http://localhost:4200/` - auto-reloads on file changes.
+
+### Build & Test
+
+```bash
+# Production build
 npm run build
-```
 
-**Test local avec serveur HTTP:**
-```bash
-./test-local.sh
-```
-Ce script build le projet et lance un serveur sur `http://localhost:8080` pour tester la version de production.
+# Test production build locally
+npm run build
 
-**Build pour GitHub Pages:**
-```bash
+# Build for GitHub Pages
 npm run build:gh-pages
 ```
 
-### Code Quality
+## 🛠️ Code Quality
 
-**ESLint & Prettier Setup:**
 ```bash
+# Linting and formatting
 npm run lint             # Check code with ESLint
 npm run lint:fix         # Auto-fix ESLint errors
 npm run format           # Format code with Prettier
 npm run format:check     # Check formatting
 npm run check            # Run both lint and format check
-npm run quality-gate      # Tests complets (lint+test+build)
+npm run quality-gate     # Full quality check (lint+test+build)
+
+# Testing
+npm run test             # Run tests (headless)
+npm run test:watch       # Run tests in watch mode
+npm run test:coverage    # Run tests with coverage report
 ```
 
-## 🐺 **Git Hooks avec Husky**
+### Git Hooks (Husky)
 
-### Hooks Automatiques
-- **Pre-commit** : Lint-staged + Tests + Build production
-- **Post-commit** : Notifications et rappels de déploiement
+- **Pre-commit**: Lint-staged + Tests + Production build
+- **Post-commit**: Deployment reminders
 
-### Scripts Qualité Additionnels
-```bash
-# Tests avec différentes options
-npm run test                # Tests headless rapides
-npm run test:watch          # Tests en mode watch
-npm run test:coverage       # Tests avec couverture de code
+### VS Code Integration
 
-# Bypass d'urgence (utiliser avec précaution)
-git commit --no-verify -m "Emergency commit"
-```
-
-**VS Code Integration:**
-- ESLint extension automatically installed via workspace recommendations
-- Auto-fix on save enabled
-- Prettier formatting on save
-- Angular Language Service support
+- ESLint + Prettier auto-fix on save
+- Angular Language Service
+- Workspace recommendations for extensions
 
 ## 📁 Project Structure
 
 ```
 alderichoarau.github.io/
 ├── src/
-│   ├── app/
-│   │   ├── features/           # Feature modules (Skills, Experience, etc.)
-│   │   ├── shared/             # Shared components and services
-│   │   ├── app.component.*     # Root component
-│   │   └── app.config.ts       # App configuration
+│   ├── app/                # Angular application
+│   │   ├── features/       # Feature modules
+│   │   ├── shared/         # Shared components and services
+│   │   └── core/           # Core services and layout
 │   ├── assets/
-│   │   ├── i18n/              # Translation files (en.json, fr.json)
-│   │   └── [images]           # Company logos and assets
-│   └── styles.scss            # Global styles
-├── .github/workflows/         # GitHub Actions for deployment
-├── [build-files]             # Production build files for GitHub Pages
-└── README.md                 # This file
+│   │   ├── i18n/          # Translation files (en.json, fr.json)
+│   │   └── images/        # Company logos and assets
+│   └── styles.scss        # Global styles
+├── docs/                  # Production build (GitHub Pages)
+├── .github/workflows/     # GitHub Actions for deployment
+└── README.md             # This file
 ```
 
-## 🌐 Déploiement GitHub Pages
+## 🌐 GitHub Pages Deployment
 
-### Déploiement Automatique
+### Automatic Deployment
 
-Le site est déployé automatiquement via **GitHub Actions** :
+The site is automatically deployed via **GitHub Actions**:
 
-1. **Push vers main** : Chaque push déclenche le workflow automatiquement
-2. **Build** : GitHub Actions exécute `npm run build` avec ESLint
-3. **Déploiement** : Les fichiers sont déployés sur GitHub Pages
-4. **URL** : Disponible sur [https://alderichoarau.github.io](https://alderichoarau.github.io)
+1. **Push to main** → Triggers workflow automatically
+2. **Build** → GitHub Actions runs `npm run build` with ESLint
+3. **Deploy** → Files are deployed to GitHub Pages
+4. **Live** → Available at [https://alderichoarau.github.io](https://alderichoarau.github.io)
 
-### Workflow GitHub Actions
+### Workflow Details
 
-Le fichier `.github/workflows/deploy.yml` contient :
-- Installation des dépendances
-- Vérification ESLint (non-bloquante)
-- Build de production Angular
-- Déploiement automatique sur GitHub Pages
+The `.github/workflows/deploy.yml` includes:
 
-### Test Local avant Déploiement
+- Dependencies installation
+- ESLint validation (non-blocking)
+- Angular production build
+- Automatic GitHub Pages deployment
 
-```bash
-# Test complet avec serveur local
-./test-local.sh
+### Cache Issues Troubleshooting
 
-# Ou manuellement :
-npm run build
-cd docs/browser && python3 -m http.server 8080
-```
+If translations don't appear after deployment:
 
-### Résolution des Problèmes de Cache
+1. **Wait 2-5 minutes** for GitHub Pages propagation
+2. **Clear cache**: Ctrl+F5 (Windows) or Cmd+Shift+R (Mac)
+3. **Private browsing**: Test in incognito tab
+4. **Check translations**: [assets/i18n/fr.json](https://alderichoarau.github.io/assets/i18n/fr.json)
+5. **Developer console**: Check for errors in F12
 
-Si les traductions ne s'affichent pas après déploiement :
-
-1. **Attendre 2-5 minutes** pour la propagation GitHub Pages
-2. **Vider le cache** : Ctrl+F5 (Windows) ou Cmd+Shift+R (Mac)
-3. **Navigation privée** : Tester dans un onglet incognito
-4. **Vérifier les traductions** : [https://alderichoarau.github.io/assets/i18n/fr.json](https://alderichoarau.github.io/assets/i18n/fr.json)
-5. **Console développeur** : Vérifier les erreurs dans F12
-
-## 🔧 Development
+## 🔧 Development Guide
 
 ### Adding New Features
 
-1. Create new feature components in `src/app/features/`
+1. Create feature components in `src/app/features/`
 2. Add translations to `src/assets/i18n/en.json` and `fr.json`
-3. Update the main app component to include the new feature
+3. Update main app component to include the new feature
 4. Test responsive design across different screen sizes
 
 ### Updating Translations
@@ -222,6 +188,7 @@ The translation service automatically loads the appropriate language based on us
 ## 📧 Contact
 
 **Aldéric Hoarau**
+
 - 📧 Email: contact@alderichoarau.com
 - 💼 LinkedIn: [linkedin.com/in/alderichoarau](https://linkedin.com/in/alderichoarau)
 - 🌐 Website: [alderichoarau.github.io](https://alderichoarau.github.io)
@@ -232,4 +199,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-*Built with ❤️ using Angular and Angular Material*
+_Built with ❤️ using Angular and Angular Material_

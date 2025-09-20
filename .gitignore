@@ -114,3 +114,44 @@ docs/browser/runtime-*.js
 docs/browser/runtime-*.js.map
 docs/browser/vendor-*.js
 docs/browser/vendor-*.js.map
+
+# Additional Angular build artifacts
+*.tsbuildinfo.tmp
+*.ngsummary.json
+*.ngfactory.ts
+*.ngstyle.ts
+
+# OS specific files
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+ehthumbs_vista.db
+
+# Package manager lock files (keep only one)
+# Uncomment the one you DON'T use:
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Husky (if using git hooks)
+.husky/_
+
+# Local environment files
+.env.*.local
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Storybook build outputs (if using Storybook)
+storybook-static/
+
+# Cypress (if using E2E testing)
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
+
+# Playwright (if using E2E testing)
+test-results/
+playwright-report/
+playwright/.cache/
