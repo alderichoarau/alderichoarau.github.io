@@ -71,3 +71,46 @@ node_modules/
 # Development temp files
 *.tmp
 *.temp
+
+# Generated build files (Angular with outputHashing)
+# These files have dynamic hashes and should not be committed
+chunk-*.js
+chunk-*.js.map
+main-*.js
+main-*.js.map
+polyfills-*.js
+polyfills-*.js.map
+styles-*.css
+styles-*.css.map
+runtime-*.js
+runtime-*.js.map
+vendor-*.js
+vendor-*.js.map
+
+# Generated build files in docs folder
+docs/chunk-*.js
+docs/chunk-*.js.map
+docs/main-*.js
+docs/main-*.js.map
+docs/polyfills-*.js
+docs/polyfills-*.js.map
+docs/styles-*.css
+docs/styles-*.css.map
+docs/runtime-*.js
+docs/runtime-*.js.map
+docs/vendor-*.js
+docs/vendor-*.js.map
+
+# Generated build files in docs/browser folder (Angular 20)
+docs/browser/chunk-*.js
+docs/browser/chunk-*.js.map
+docs/browser/main-*.js
+docs/browser/main-*.js.map
+docs/browser/polyfills-*.js
+docs/browser/polyfills-*.js.map
+docs/browser/styles-*.css
+docs/browser/styles-*.css.map
+docs/browser/runtime-*.js
+docs/browser/runtime-*.js.map
+docs/browser/vendor-*.js
+docs/browser/vendor-*.js.map
