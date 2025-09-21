@@ -19,7 +19,7 @@ export class LazyLoadingService {
               const element = entry.target as HTMLElement;
               const src = element.getAttribute('data-src');
               
-              if (src) {
+              if (src && this.isSafeImageSrc(src)) {
                 // For images
                 if (element.tagName === 'IMG') {
                   const imgElement = element as HTMLImageElement;
@@ -131,6 +131,40 @@ export class LazyLoadingService {
   destroy(): void {
     if (this.observer) {
       this.observer.disconnect();
+    }
+  }
+
+  /**
+   * Checks if the image src is a safe and allowed URL.
+   * Only allows http(s), protocol-relative or root-relative paths.
+   */
+  private isSafeImageSrc(src: string): boolean {
+    // Allow absolute HTTP(S) URLs and root-relative/relative paths, disallow data:, javascript:
+    try {
+      // Disallow dangerous protocols
+      if (
+        src.trim().startsWith('javascript:') ||
+        src.trim().startsWith('data:')
+      ) {
+        return false;
+      }
+
+      // Allow only http, https, protocol-relative, or relative (starts with / or .)
+      if (
+        src.trim().startsWith('http://') ||
+        src.trim().startsWith('https://') ||
+        src.trim().startsWith('//') ||
+        src.trim().startsWith('/') ||
+        src.trim().startsWith('./') ||
+        src.trim().startsWith('../')
+      ) {
+        return true;
+      }
+
+      // optionally restrict more, e.g. block all ? and % encoded protocols
+      return false;
+    } catch {
+      return false;
     }
   }
 }
