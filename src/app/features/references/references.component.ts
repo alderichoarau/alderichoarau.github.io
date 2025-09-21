@@ -16,31 +16,35 @@ export class ReferencesComponent {
   references = [
     {
       name: 'Airbus',
-      logo: 'assets/images/Airbus.png',
+      logo: 'assets/images/references/Airbus.png',
     },
     {
       name: 'Air France',
-      logo: 'assets/images/AirFrance.png',
+      logo: 'assets/images/references/AirFrance.png',
     },
     {
       name: 'Transavia',
-      logo: 'assets/images/Transavia.png',
+      logo: 'assets/images/references/Transavia.png',
     },
     {
       name: 'KLM',
-      logo: 'assets/images/KLM.png',
+      logo: 'assets/images/references/KLM.png',
     },
     {
       name: 'INETUM',
-      logo: 'assets/images/INETUM.png',
+      logo: 'assets/images/references/Inetum.png',
     },
     {
       name: 'GFI',
-      logo: 'assets/images/GFI.png',
+      logo: 'assets/images/references/GFI.png',
+    },
+    {
+      name: 'ASTEK',
+      logo: 'assets/images/references/Astek.png',
     },
     {
       name: "Ministère de l'Agriculture",
-      logo: 'assets/images/Ministere.png',
+      logo: 'assets/images/references/MinistereAgriculture.png',
     },
   ];
 
