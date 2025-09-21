@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1758467995591,
+  "timestamp": 1758469513121,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -15,7 +15,7 @@
         "/chunk-X7N2XAXK.js",
         "/favicon.ico",
         "/index.html",
-        "/main-VGVMBNCK.js",
+        "/main-GIY5MPJV.js",
         "/polyfills-B6TNHZQ6.js",
         "/styles-ZXUHTFKE.css"
       ],
@@ -29,15 +29,14 @@
         "ignoreVary": true
       },
       "urls": [
-        "/assets/AVATAR.png",
-        "/assets/AirFrance.jpg",
-        "/assets/Airbus.png",
-        "/assets/GFI.jpg",
-        "/assets/INETUM.png",
-        "/assets/KLM.png",
-        "/assets/Linkedin.png",
-        "/assets/Ministere.png",
-        "/assets/Transavia.svg",
+        "/assets/images/AVATAR.png",
+        "/assets/images/AirFrance.png",
+        "/assets/images/Airbus.png",
+        "/assets/images/GFI.png",
+        "/assets/images/INETUM.png",
+        "/assets/images/KLM.png",
+        "/assets/images/Ministere.png",
+        "/assets/images/Transavia.png",
         "/assets/images/projects/placeholder.svg"
       ],
       "patterns": []
@@ -45,21 +44,20 @@
   ],
   "dataGroups": [],
   "hashTable": {
-    "/assets/AVATAR.png": "5033c27a59f3bca10a1e07f382266aeb4dfc0a76",
-    "/assets/AirFrance.jpg": "93a96c0fd8ce161180804bd2886f8dfa27ac6f5d",
-    "/assets/Airbus.png": "e7f6005d9390f5d28faa0199960034077fb22f01",
-    "/assets/GFI.jpg": "0c32e29b3ab133d53f9394d2f9f4bdde63c18da6",
-    "/assets/INETUM.png": "e5d0b3b18c4e3aedc3e1acd6020f499fa71b5ab9",
-    "/assets/KLM.png": "d50e3d3557fb18edee581ad551916269d42660e8",
-    "/assets/Linkedin.png": "c719c3b37f447788cbe0153c3fc5c16c49bdc464",
-    "/assets/Ministere.png": "a7e8a29ba85a3a126a8d0ee65cd92364aa63ce17",
-    "/assets/Transavia.svg": "de866aade3c949de9539211d3888205ed9c984a6",
+    "/assets/images/AVATAR.png": "5033c27a59f3bca10a1e07f382266aeb4dfc0a76",
+    "/assets/images/AirFrance.png": "080ca5026b660902096bcc1e8f1215448b0b4574",
+    "/assets/images/Airbus.png": "c834bc59e3003136179a6b66dbee230f4f124ff9",
+    "/assets/images/GFI.png": "0553f931cc27ef73c3568a8374f7f7bceea60ac9",
+    "/assets/images/INETUM.png": "e5d0b3b18c4e3aedc3e1acd6020f499fa71b5ab9",
+    "/assets/images/KLM.png": "d50e3d3557fb18edee581ad551916269d42660e8",
+    "/assets/images/Ministere.png": "78a786c5d8cdb2be84c0a6b942d5ff06b0640266",
+    "/assets/images/Transavia.png": "f599250b15b355415296345f549dadbcc0aa47ec",
     "/assets/images/projects/placeholder.svg": "24fc890e0390c856e6743f696fa8bf481169ef9d",
     "/chunk-4D3PBAEN.js": "5c61275490fc0915796ec69d9ee5102483eee452",
     "/chunk-X7N2XAXK.js": "4648170d28d563f0c4fea491d3e236428bef5993",
     "/favicon.ico": "9c39f434fe1261f68c5e3eefdf734630d99c5670",
-    "/index.html": "d91300ed2f2c638b9be94c9d7137239c3679c3d4",
-    "/main-VGVMBNCK.js": "8fac5a1b1746bac1807cb2e7a2da0fd54ab8d3f9",
+    "/index.html": "de43a09a7a06095ef81b7923b118b4287ea4d547",
+    "/main-GIY5MPJV.js": "00c8fa52ac553f72e9087142fb2fad456710f4d4",
     "/polyfills-B6TNHZQ6.js": "bf76ac291d7f51c1139b7edcf86b359a30c08c64",
     "/styles-ZXUHTFKE.css": "0d2f6b548f9c68dea68f0830e43459e30e506bd7"
   },

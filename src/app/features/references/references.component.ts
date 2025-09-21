@@ -5,10 +5,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-    selector: 'app-references',
-    imports: [CommonModule, MatCardModule, MatIconModule, TranslateModule],
-    templateUrl: './references.component.html',
-    styleUrl: './references.component.scss'
+  selector: 'app-references',
+  imports: [CommonModule, MatCardModule, MatIconModule, TranslateModule],
+  templateUrl: './references.component.html',
+  styleUrl: './references.component.scss',
 })
 export class ReferencesComponent {
   isHovered = false;
@@ -16,32 +16,32 @@ export class ReferencesComponent {
   references = [
     {
       name: 'Airbus',
-      logo: 'assets/Airbus.png'
+      logo: 'assets/images/Airbus.png',
     },
     {
       name: 'Air France',
-      logo: 'assets/AirFrance.jpg'
+      logo: 'assets/images/AirFrance.png',
     },
     {
       name: 'Transavia',
-      logo: 'assets/Transavia.svg'
+      logo: 'assets/images/Transavia.png',
     },
     {
       name: 'KLM',
-      logo: 'assets/KLM.png'
+      logo: 'assets/images/KLM.png',
     },
     {
       name: 'INETUM',
-      logo: 'assets/INETUM.png'
+      logo: 'assets/images/INETUM.png',
     },
     {
       name: 'GFI',
-      logo: 'assets/GFI.jpg'
+      logo: 'assets/images/GFI.png',
     },
     {
-      name: 'Ministère de l\'Agriculture',
-      logo: 'assets/Ministere.png'
-    }
+      name: "Ministère de l'Agriculture",
+      logo: 'assets/images/Ministere.png',
+    },
   ];
 
   onMouseEnter() {
