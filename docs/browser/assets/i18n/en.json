@@ -23,7 +23,28 @@
     "yearsExperience": "Years Experience",
     "projectsCompleted": "Projects Completed",
     "costReduction": "Cost Reduction",
-    "keyAreas": "Key Areas of Expertise"
+    "keyAreas": "Key Areas of Expertise",
+    "values": "My Values",
+    "passion": {
+      "title": "Passion",
+      "description": "Love for code and technology that drives me to always give my best"
+    },
+    "work": {
+      "title": "Work",
+      "description": "Commitment and rigor in every project for quality results"
+    },
+    "ambition": {
+      "title": "Ambition",
+      "description": "Vision and will to create innovative and high-performing solutions"
+    },
+    "determination": {
+      "title": "Determination",
+      "description": "Perseverance in the face of the most complex technical challenges"
+    },
+    "resilience": {
+      "title": "Resilience",
+      "description": "Ability to bounce back and learn from every obstacle encountered"
+    }
   },
   "technologies": {
     "title": "Technologies & Stack",
