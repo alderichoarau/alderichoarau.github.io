@@ -1,10 +1,5 @@
 <mat-toolbar class="portfolio-navbar" [class.scrolled]="isScrolled()">
   <div class="nav-container">
-    <a href="#home" class="logo">
-      <mat-icon class="logo-icon">code</mat-icon>
-      <span class="logo-text">Aldéric</span>
-    </a>
-    
     <div class="nav-content">
       <nav class="nav-menu">
         <button mat-button (click)="navigateToSection('about')" class="nav-link">
@@ -42,43 +37,58 @@
           <mat-icon>contact_mail</mat-icon>
           <span>{{ 'nav.contact' | translate }}</span>
         </button>
-        <a mat-raised-button color="primary" href="mailto:alderic.hoarau@gmail.com" class="cta-button">
+        <a
+          mat-raised-button
+          color="primary"
+          href="mailto:alderic.hoarau@gmail.com"
+          class="cta-button"
+        >
           <mat-icon>send</mat-icon>
           <span>{{ 'nav.getInTouch' | translate }}</span>
         </a>
       </nav>
-      
+
       <div class="language-switcher">
         <button mat-icon-button [matMenuTriggerFor]="langMenu" class="lang-trigger">
           <mat-icon>language</mat-icon>
         </button>
         <mat-menu #langMenu="matMenu">
-          <button mat-menu-item (click)="changeLanguage('en')" [class.active]="currentLang() === 'en'">
-            <img src="https://flagcdn.com/w20/gb.png" alt="English" class="flag-icon">
+          <button
+            mat-menu-item
+            (click)="changeLanguage('en')"
+            [class.active]="currentLang() === 'en'"
+          >
+            <img src="https://flagcdn.com/w20/gb.png" alt="English" class="flag-icon" />
             EN
           </button>
-          <button mat-menu-item (click)="changeLanguage('fr')" [class.active]="currentLang() === 'fr'">
-            <img src="https://flagcdn.com/w20/fr.png" alt="Français" class="flag-icon">
+          <button
+            mat-menu-item
+            (click)="changeLanguage('fr')"
+            [class.active]="currentLang() === 'fr'"
+          >
+            <img src="https://flagcdn.com/w20/fr.png" alt="Français" class="flag-icon" />
             FR
           </button>
         </mat-menu>
       </div>
-      
+
       <button mat-icon-button class="mobile-menu-toggle" (click)="toggleMobileMenu()">
         <mat-icon>{{ mobileMenuOpen() ? 'close' : 'menu' }}</mat-icon>
       </button>
     </div>
   </div>
-  
+
   <!-- Mobile menu -->
   <div class="mobile-menu" [class.open]="mobileMenuOpen()">
-    <div class="mobile-menu-overlay" 
-         (click)="closeMobileMenu()" 
-         (keydown.enter)="closeMobileMenu()" 
-         (keydown.space)="closeMobileMenu()" 
-         tabindex="0" 
-         role="button" 
-         [attr.aria-label]="'nav.closeMobileMenu' | translate"></div>
+    <div
+      class="mobile-menu-overlay"
+      (click)="closeMobileMenu()"
+      (keydown.enter)="closeMobileMenu()"
+      (keydown.space)="closeMobileMenu()"
+      tabindex="0"
+      role="button"
+      [attr.aria-label]="'nav.closeMobileMenu' | translate"
+    ></div>
     <nav class="mobile-nav">
       <button mat-button class="mobile-nav-link" (click)="navigateToSection('about')">
         <mat-icon>person</mat-icon>
@@ -88,16 +98,24 @@
         <mat-icon>code</mat-icon>
         <span>{{ 'nav.technologies' | translate }}</span>
       </button>
-      
+
       <!-- Portfolio section in mobile -->
       <div class="mobile-section-divider">
         <span class="section-title">{{ 'nav.portfolio' | translate }}</span>
       </div>
-      <button mat-button class="mobile-nav-link mobile-sub-link" (click)="navigateToSection('projects')">
+      <button
+        mat-button
+        class="mobile-nav-link mobile-sub-link"
+        (click)="navigateToSection('projects')"
+      >
         <mat-icon>work</mat-icon>
         <span>{{ 'nav.projects' | translate }}</span>
       </button>
-      <button mat-button class="mobile-nav-link mobile-sub-link" (click)="navigateToSection('experience')">
+      <button
+        mat-button
+        class="mobile-nav-link mobile-sub-link"
+        (click)="navigateToSection('experience')"
+      >
         <mat-icon>timeline</mat-icon>
         <span>{{ 'nav.experience' | translate }}</span>
       </button>
@@ -119,27 +137,35 @@
           <span class="section-title">{{ 'nav.language' | translate }}</span>
         </div>
         <div class="mobile-language-options">
-          <button 
-            mat-button 
-            class="mobile-lang-button" 
+          <button
+            mat-button
+            class="mobile-lang-button"
             [class.active]="currentLang() === 'fr'"
-            (click)="changeLanguage('fr'); closeMobileMenu()">
-            <img src="https://flagcdn.com/w20/fr.png" alt="Français" class="flag-icon">
+            (click)="changeLanguage('fr'); closeMobileMenu()"
+          >
+            <img src="https://flagcdn.com/w20/fr.png" alt="Français" class="flag-icon" />
             <span>{{ 'nav.french' | translate }}</span>
           </button>
-          <button 
-            mat-button 
-            class="mobile-lang-button" 
+          <button
+            mat-button
+            class="mobile-lang-button"
             [class.active]="currentLang() === 'en'"
-            (click)="changeLanguage('en'); closeMobileMenu()">
-            <img src="https://flagcdn.com/w20/gb.png" alt="English" class="flag-icon">
+            (click)="changeLanguage('en'); closeMobileMenu()"
+          >
+            <img src="https://flagcdn.com/w20/gb.png" alt="English" class="flag-icon" />
             <span>{{ 'nav.english' | translate }}</span>
           </button>
         </div>
       </div>
 
       <div class="mobile-cta">
-        <a mat-raised-button color="primary" href="mailto:alderic.hoarau@gmail.com" (click)="closeMobileMenu()" class="mobile-cta-button">
+        <a
+          mat-raised-button
+          color="primary"
+          href="mailto:alderic.hoarau@gmail.com"
+          (click)="closeMobileMenu()"
+          class="mobile-cta-button"
+        >
           <mat-icon>send</mat-icon>
           <span>{{ 'nav.getInTouch' | translate }}</span>
         </a>

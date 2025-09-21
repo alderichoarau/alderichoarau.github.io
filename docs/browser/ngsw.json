@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1758462310436,
+  "timestamp": 1758467995591,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -15,7 +15,7 @@
         "/chunk-X7N2XAXK.js",
         "/favicon.ico",
         "/index.html",
-        "/main-XTBUCYHI.js",
+        "/main-VGVMBNCK.js",
         "/polyfills-B6TNHZQ6.js",
         "/styles-ZXUHTFKE.css"
       ],
@@ -29,6 +29,7 @@
         "ignoreVary": true
       },
       "urls": [
+        "/assets/AVATAR.png",
         "/assets/AirFrance.jpg",
         "/assets/Airbus.png",
         "/assets/GFI.jpg",
@@ -44,6 +45,7 @@
   ],
   "dataGroups": [],
   "hashTable": {
+    "/assets/AVATAR.png": "5033c27a59f3bca10a1e07f382266aeb4dfc0a76",
     "/assets/AirFrance.jpg": "93a96c0fd8ce161180804bd2886f8dfa27ac6f5d",
     "/assets/Airbus.png": "e7f6005d9390f5d28faa0199960034077fb22f01",
     "/assets/GFI.jpg": "0c32e29b3ab133d53f9394d2f9f4bdde63c18da6",
@@ -56,8 +58,8 @@
     "/chunk-4D3PBAEN.js": "5c61275490fc0915796ec69d9ee5102483eee452",
     "/chunk-X7N2XAXK.js": "4648170d28d563f0c4fea491d3e236428bef5993",
     "/favicon.ico": "9c39f434fe1261f68c5e3eefdf734630d99c5670",
-    "/index.html": "aa6587a66a15771b6f7f31523c4f64eac6b3e0ba",
-    "/main-XTBUCYHI.js": "ec858bb93459f3703f2d5f693fe0c9fb89802817",
+    "/index.html": "d91300ed2f2c638b9be94c9d7137239c3679c3d4",
+    "/main-VGVMBNCK.js": "8fac5a1b1746bac1807cb2e7a2da0fd54ab8d3f9",
     "/polyfills-B6TNHZQ6.js": "bf76ac291d7f51c1139b7edcf86b359a30c08c64",
     "/styles-ZXUHTFKE.css": "0d2f6b548f9c68dea68f0830e43459e30e506bd7"
   },

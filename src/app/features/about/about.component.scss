@@ -67,16 +67,21 @@
         border-bottom: 1px solid var(--card-border);
 
         .profile-avatar {
-          .avatar-icon {
-            font-size: 3rem;
-            width: 3rem;
-            height: 3rem;
-            color: var(--accent-color);
-            background: rgba(0, 212, 170, 0.1);
+          .avatar-image {
+            width: 4.5rem;
+            height: 4.5rem;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            object-fit: cover;
+            object-position: center 20%;
+            border: 3px solid var(--accent-color);
+            box-shadow: 0 4px 15px rgba(var(--accent-rgb), 0.2);
+            transition: all 0.3s ease;
+
+            &:hover {
+              transform: scale(1.05);
+              box-shadow: 0 6px 20px rgba(var(--accent-rgb), 0.3);
+              border-color: var(--accent-secondary);
+            }
           }
         }
 
@@ -375,6 +380,15 @@
           flex-direction: column;
           text-align: center;
           gap: 1rem;
+
+          .profile-avatar {
+            .avatar-image {
+              width: 4rem;
+              height: 4rem;
+              border-width: 2px;
+              object-position: center 20%;
+            }
+          }
         }
 
         .about-highlights {
