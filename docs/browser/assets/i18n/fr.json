@@ -72,42 +72,22 @@
     "project1": {
       "title": "Plateforme de migration Cloud",
       "description": "Migration Azure complète pour 20+ applications avec réduction des coûts x10 grâce à une architecture optimisée et un déploiement automatisé.",
-      "technologies": [
-        "Azure",
-        "Terraform",
-        "GitHub Actions",
-        "Docker"
-      ]
+      "technologies": ["Azure", "Terraform", "GitHub Actions", "Docker"]
     },
     "project2": {
       "title": "Dashboard FinOps",
       "description": "Plateforme de surveillance et d'optimisation des coûts en temps réel pour environnements multi-cloud avec recommandations automatisées.",
-      "technologies": [
-        "Angular",
-        "Power BI",
-        "Azure Functions",
-        "Cosmos DB"
-      ]
+      "technologies": ["Angular", "Power BI", "Azure Functions", "Cosmos DB"]
     },
     "project3": {
       "title": "Pipeline DevSecOps",
       "description": "Pipeline CI/CD sécurisé avec scanning de sécurité automatisé, vérifications de conformité et infrastructure as code.",
-      "technologies": [
-        "Azure DevOps",
-        "SonarQube",
-        "Terraform",
-        "Kubernetes"
-      ]
+      "technologies": ["Azure DevOps", "SonarQube", "Terraform", "Kubernetes"]
     },
     "project4": {
       "title": "Site Portfolio",
       "description": "Site portfolio moderne et responsive construit avec Angular 19 et Material Design, avec thème sombre et animations fluides.",
-      "technologies": [
-        "Angular",
-        "Material Design",
-        "TypeScript",
-        "SCSS"
-      ]
+      "technologies": ["Angular", "Material Design", "TypeScript", "SCSS"]
     }
   },
   "experience": {
