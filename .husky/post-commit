@@ -1,7 +1,7 @@
 
 echo ""
 echo "🎉 Commit successful!"
-echo "📊 Your Angular 19 portfolio is ready for deployment!"
+echo "📊 Your Angular portfolio is ready for deployment!"
 echo ""
 
 # Optional: Show latest commit info

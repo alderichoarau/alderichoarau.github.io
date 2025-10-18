@@ -28,7 +28,7 @@ echo ""
 
 # Build production (final check)
 echo "🏗️ Building production to ensure deployability..."
-npm run build:prod
+npm run build
 
 if [ $? -ne 0 ]; then
   echo "❌ Production build failed. Please fix the build issues and try again."
@@ -36,6 +36,18 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "✅ Production build successful!"
+echo ""
+
+# Run security audit
+echo "🔒 Running security audit..."
+npm run security:audit
+
+if [ $? -ne 0 ]; then
+  echo "❌ Security audit failed. Please fix the security issues and try again."
+  exit 1
+fi
+
+echo "✅ Security audit passed!"
 echo ""
 echo "🎉 Quality gates passed! Proceeding with commit..."
 echo ""
