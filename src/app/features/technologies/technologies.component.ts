@@ -79,7 +79,7 @@ export class TechnologiesComponent {
   }
 
   // TrackBy function for performance optimization
-  trackByTech(index: number, tech: Technology): string {
+  trackByTech(_index: number, tech: Technology): string {
     return tech.name;
   }
 

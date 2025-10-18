@@ -59,7 +59,7 @@ export class FaqComponent {
   }
 
   // Track by function for performance
-  trackByFAQ(index: number, faq: FAQItem) {
+  trackByFAQ(_index: number, faq: FAQItem) {
     return faq.id;
   }
 }
