@@ -1,52 +1,55 @@
 import { Component, signal, inject, computed, ChangeDetectionStrategy } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { DataService, Technology } from '../../core/services/data.service';
-import { fadeInUpAnimation, staggerAnimation, scaleInAnimation, bounceInAnimation } from '../../shared/animations/animations';
+import {
+  fadeInUpAnimation,
+  staggerAnimation,
+  scaleInAnimation,
+  bounceInAnimation,
+} from '../../shared/animations/animations';
 
 @Component({
   selector: 'app-technologies',
   standalone: true,
-  imports: [
-    CommonModule,
-    MatCardModule,
-    MatIconModule,
-    TranslateModule
-  ],
+  imports: [MatCardModule, MatIconModule, TranslateModule],
   templateUrl: './technologies.component.html',
   styleUrl: './technologies.component.scss',
   animations: [fadeInUpAnimation, staggerAnimation, scaleInAnimation, bounceInAnimation],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TechnologiesComponent {
-  
   // Modern Angular inject pattern
   public readonly dataService = inject(DataService);
   private readonly translate = inject(TranslateService);
-  
+
   // Get technologies from data service using Angular Signals
   public readonly technologies = this.dataService.technologies;
-  
+
   // Category filters with signals
   private readonly selectedCategorySignal = signal<Technology['category'] | 'all'>('all');
   public readonly selectedCategory = this.selectedCategorySignal.asReadonly();
-  
+
   // Available categories
-  public readonly categories: {key: Technology['category'] | 'all', translationKey: string, icon: string}[] = [
+  public readonly categories: {
+    key: Technology['category'] | 'all';
+    translationKey: string;
+    icon: string;
+  }[] = [
     { key: 'all', translationKey: 'technologies.all', icon: 'apps' },
     { key: 'frontend', translationKey: 'technologies.frontend', icon: 'web' },
     { key: 'backend', translationKey: 'technologies.backend', icon: 'storage' },
     { key: 'cloud', translationKey: 'technologies.cloud', icon: 'cloud' },
     { key: 'databases', translationKey: 'technologies.databases', icon: 'database' },
-    { key: 'tools', translationKey: 'technologies.tools', icon: 'build' }
+    { key: 'tools', translationKey: 'technologies.tools', icon: 'build' },
   ];
 
   // Angular 19 computed signal for filtered technologies (better performance)
   public readonly filteredTechnologies = computed(() => {
     const category = this.selectedCategory();
-    return category === 'all' 
+    return category === 'all'
       ? this.technologies()
       : this.dataService.getTechnologiesByCategory(category);
   });

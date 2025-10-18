@@ -12,99 +12,102 @@
 
       <!-- Featured Projects Grid -->
       <div class="projects-grid">
-        <div
-          *ngFor="let project of featuredProjects(); let i = index; trackBy: trackByProject"
-          class="project-card"
-          [class.fade-in-left]="i % 2 === 0"
-          [class.fade-in-right]="i % 2 === 1"
-        >
-          <mat-card class="modern-project-card">
-            <!-- Project Image -->
-            <div class="project-image-container">
-              <img
-                [src]="project.image"
-                [alt]="project.title"
-                class="project-image"
-                (error)="onImageError($event)"
-              />
-              <div class="project-overlay">
-                <div class="project-actions">
-                  <button
-                    *ngIf="project.liveUrl && project.liveUrl !== '#'"
-                    mat-fab
-                    color="primary"
-                    class="action-button"
-                    (click)="openLink(project.liveUrl)"
-                    [title]="'projects.liveDemo' | translate"
-                  >
-                    <mat-icon>launch</mat-icon>
-                  </button>
-                  <button
-                    *ngIf="project.sourceUrl && project.sourceUrl !== '#'"
-                    mat-fab
-                    color="accent"
-                    class="action-button"
-                    (click)="openLink(project.sourceUrl)"
-                    [title]="'projects.sourceCode' | translate"
-                  >
-                    <mat-icon>code</mat-icon>
-                  </button>
+        @for (project of featuredProjects(); track trackByProject(i, project); let i = $index) {
+          <div
+            class="project-card"
+            [class.fade-in-left]="i % 2 === 0"
+            [class.fade-in-right]="i % 2 === 1"
+          >
+            <mat-card class="modern-project-card">
+              <!-- Project Image -->
+              <div class="project-image-container">
+                <img
+                  [src]="project.image"
+                  [alt]="project.title"
+                  class="project-image"
+                  (error)="onImageError($event)"
+                />
+                <div class="project-overlay">
+                  <div class="project-actions">
+                    @if (project.liveUrl && project.liveUrl !== '#') {
+                      <button
+                        mat-fab
+                        color="primary"
+                        class="action-button"
+                        (click)="openLink(project.liveUrl)"
+                        [title]="'projects.liveDemo' | translate"
+                      >
+                        <mat-icon>launch</mat-icon>
+                      </button>
+                    }
+                    @if (project.sourceUrl && project.sourceUrl !== '#') {
+                      <button
+                        mat-fab
+                        color="accent"
+                        class="action-button"
+                        (click)="openLink(project.sourceUrl)"
+                        [title]="'projects.sourceCode' | translate"
+                      >
+                        <mat-icon>code</mat-icon>
+                      </button>
+                    }
+                  </div>
                 </div>
               </div>
-            </div>
-
-            <!-- Project Content -->
-            <mat-card-content class="project-content">
-              <div class="project-header">
-                <h3 class="project-title">{{ project.title | translate }}</h3>
-                <div class="project-featured" *ngIf="project.featured">
-                  <mat-icon class="featured-icon">star</mat-icon>
-                  <span class="featured-text">{{ 'projects.featured' | translate }}</span>
+              <!-- Project Content -->
+              <mat-card-content class="project-content">
+                <div class="project-header">
+                  <h3 class="project-title">{{ project.title | translate }}</h3>
+                  @if (project.featured) {
+                    <div class="project-featured">
+                      <mat-icon class="featured-icon">star</mat-icon>
+                      <span class="featured-text">{{ 'projects.featured' | translate }}</span>
+                    </div>
+                  }
                 </div>
-              </div>
-
-              <p class="project-description">{{ project.description | translate }}</p>
-
-              <div class="project-technologies">
-                <div
-                  *ngFor="let tech of project.technologies"
-                  class="tech-tag"
-                  [style.--tech-color]="
-                    dataService.getTechnologyByName(tech)?.color || 'var(--accent-color)'
-                  "
-                >
-                  <mat-icon class="tech-icon">{{
-                    dataService.getTechnologyByName(tech)?.icon || 'code'
-                  }}</mat-icon>
-                  <span class="tech-name">{{ tech }}</span>
+                <p class="project-description">{{ project.description | translate }}</p>
+                <div class="project-technologies">
+                  @for (tech of project.technologies; track tech) {
+                    <div
+                      class="tech-tag"
+                      [style.--tech-color]="
+                        dataService.getTechnologyByName(tech)?.color || 'var(--accent-color)'
+                      "
+                    >
+                      <mat-icon class="tech-icon">{{
+                        dataService.getTechnologyByName(tech)?.icon || 'code'
+                      }}</mat-icon>
+                      <span class="tech-name">{{ tech }}</span>
+                    </div>
+                  }
                 </div>
-              </div>
-
-              <div class="project-actions-footer">
-                <button
-                  *ngIf="project.liveUrl && project.liveUrl !== '#'"
-                  mat-raised-button
-                  color="primary"
-                  class="project-button"
-                  (click)="openLink(project.liveUrl)"
-                >
-                  <mat-icon>launch</mat-icon>
-                  <span>{{ 'projects.liveDemo' | translate }}</span>
-                </button>
-
-                <button
-                  *ngIf="project.sourceUrl && project.sourceUrl !== '#'"
-                  mat-outlined-button
-                  class="project-button"
-                  (click)="openLink(project.sourceUrl)"
-                >
-                  <mat-icon>code</mat-icon>
-                  <span>{{ 'projects.sourceCode' | translate }}</span>
-                </button>
-              </div>
-            </mat-card-content>
-          </mat-card>
-        </div>
+                <div class="project-actions-footer">
+                  @if (project.liveUrl && project.liveUrl !== '#') {
+                    <button
+                      mat-raised-button
+                      color="primary"
+                      class="project-button"
+                      (click)="openLink(project.liveUrl)"
+                    >
+                      <mat-icon>launch</mat-icon>
+                      <span>{{ 'projects.liveDemo' | translate }}</span>
+                    </button>
+                  }
+                  @if (project.sourceUrl && project.sourceUrl !== '#') {
+                    <button
+                      mat-outlined-button
+                      class="project-button"
+                      (click)="openLink(project.sourceUrl)"
+                    >
+                      <mat-icon>code</mat-icon>
+                      <span>{{ 'projects.sourceCode' | translate }}</span>
+                    </button>
+                  }
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        }
       </div>
 
       <!-- All Projects Section -->
@@ -119,62 +122,62 @@
         </div>
 
         <div class="all-projects-grid">
-          <div
-            *ngFor="let project of projects(); trackBy: trackByProject"
-            class="mini-project-card"
-          >
-            <mat-card class="mini-card">
-              <div class="mini-project-image">
-                <img [src]="project.image" [alt]="project.title" (error)="onImageError($event)" />
-                <div class="mini-project-overlay">
-                  <mat-icon class="project-type-icon">{{
-                    project.featured ? 'star' : 'code'
-                  }}</mat-icon>
-                </div>
-              </div>
-
-              <mat-card-content class="mini-project-content">
-                <h4 class="mini-project-title">{{ project.title | translate }}</h4>
-                <p class="mini-project-description">
-                  {{
-                    (project.description | translate).length > 80
-                      ? (project.description | translate | slice: 0 : 80) + '...'
-                      : (project.description | translate)
-                  }}
-                </p>
-
-                <div class="mini-project-tech">
-                  <div *ngFor="let tech of project.technologies.slice(0, 3)" class="mini-tech-tag">
-                    {{ tech }}
+          @for (project of projects(); track trackByProject($index, project)) {
+            <div class="mini-project-card">
+              <mat-card class="mini-card">
+                <div class="mini-project-image">
+                  <img [src]="project.image" [alt]="project.title" (error)="onImageError($event)" />
+                  <div class="mini-project-overlay">
+                    <mat-icon class="project-type-icon">{{
+                      project.featured ? 'star' : 'code'
+                    }}</mat-icon>
                   </div>
-                  <span *ngIf="project.technologies.length > 3" class="tech-more">
-                    +{{ project.technologies.length - 3 }}
-                  </span>
                 </div>
-
-                <div class="mini-project-actions">
-                  <button
-                    *ngIf="project.liveUrl && project.liveUrl !== '#'"
-                    mat-icon-button
-                    class="mini-action-button"
-                    (click)="openLink(project.liveUrl)"
-                    [title]="'projects.liveDemo' | translate"
-                  >
-                    <mat-icon>launch</mat-icon>
-                  </button>
-                  <button
-                    *ngIf="project.sourceUrl && project.sourceUrl !== '#'"
-                    mat-icon-button
-                    class="mini-action-button"
-                    (click)="openLink(project.sourceUrl)"
-                    [title]="'projects.sourceCode' | translate"
-                  >
-                    <mat-icon>code</mat-icon>
-                  </button>
-                </div>
-              </mat-card-content>
-            </mat-card>
-          </div>
+                <mat-card-content class="mini-project-content">
+                  <h4 class="mini-project-title">{{ project.title | translate }}</h4>
+                  <p class="mini-project-description">
+                    {{
+                      (project.description | translate).length > 80
+                        ? (project.description | translate | slice: 0 : 80) + '...'
+                        : (project.description | translate)
+                    }}
+                  </p>
+                  <div class="mini-project-tech">
+                    @for (tech of project.technologies.slice(0, 3); track tech) {
+                      <div class="mini-tech-tag">
+                        {{ tech }}
+                      </div>
+                    }
+                    @if (project.technologies.length > 3) {
+                      <span class="tech-more"> +{{ project.technologies.length - 3 }} </span>
+                    }
+                  </div>
+                  <div class="mini-project-actions">
+                    @if (project.liveUrl && project.liveUrl !== '#') {
+                      <button
+                        mat-icon-button
+                        class="mini-action-button"
+                        (click)="openLink(project.liveUrl)"
+                        [title]="'projects.liveDemo' | translate"
+                      >
+                        <mat-icon>launch</mat-icon>
+                      </button>
+                    }
+                    @if (project.sourceUrl && project.sourceUrl !== '#') {
+                      <button
+                        mat-icon-button
+                        class="mini-action-button"
+                        (click)="openLink(project.sourceUrl)"
+                        [title]="'projects.sourceCode' | translate"
+                      >
+                        <mat-icon>code</mat-icon>
+                      </button>
+                    }
+                  </div>
+                </mat-card-content>
+              </mat-card>
+            </div>
+          }
         </div>
       </div>
     </div>
