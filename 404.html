@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Page non trouvée - Aldéric Hoarau</title>
+  <meta name="description" content="Page non trouvée - Redirection vers l'accueil">
+  <meta name="robots" content="noindex">
+  <script>
+    // GitHub Pages SPA redirect for Angular
+    // Store the current path and redirect to index.html
+    sessionStorage.setItem('redirect', location.href);
+    window.location.replace('/index.html');
+  </script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #0A1628;
+      color: #FFFFFF;
+    }
+    .loader {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(244, 162, 97, 0.3);
+      border-top: 3px solid #F4A261;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="loader">
+    <div class="spinner"></div>
+    <p>Redirection en cours...</p>
+  </div>
+  <noscript>
+    <p>Page non trouvée. Veuillez activer JavaScript pour continuer.</p>
+    <a href="/index.html">Retour à l'accueil</a>
+  </noscript>
+</body>
+</html>
