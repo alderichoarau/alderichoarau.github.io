@@ -1,3 +1,16 @@
+// Classe utilitaire pour masquer visuellement
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 // Styles communs pour les badges de section
 .section-badge {
   display: inline-flex;
@@ -15,6 +28,11 @@
 
   .badge-icon {
     font-size: 1.2rem;
+  }
+
+  .badge-text {
+    color: #ffffff !important; // Forcer blanc pour contraste maximum
+    font-weight: 600;
   }
 
   &:hover {
@@ -95,7 +113,8 @@
 
           .profile-title {
             font-size: 1rem;
-            color: var(--text-secondary);
+            color: var(--text-primary);
+            font-weight: 500;
             margin: 0;
           }
         }

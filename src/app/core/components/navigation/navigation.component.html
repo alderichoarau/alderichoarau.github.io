@@ -49,7 +49,12 @@
       </nav>
 
       <div class="language-switcher">
-        <button mat-icon-button [matMenuTriggerFor]="langMenu" class="lang-trigger">
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="langMenu"
+          class="lang-trigger"
+          [attr.aria-label]="'nav.languageSelector' | translate"
+        >
           <mat-icon>language</mat-icon>
         </button>
         <mat-menu #langMenu="matMenu">
@@ -72,7 +77,16 @@
         </mat-menu>
       </div>
 
-      <button mat-icon-button class="mobile-menu-toggle" (click)="toggleMobileMenu()">
+      <button
+        mat-icon-button
+        class="mobile-menu-toggle"
+        (click)="toggleMobileMenu()"
+        [attr.aria-label]="
+          mobileMenuOpen()
+            ? ('nav.closeMobileMenu' | translate)
+            : ('nav.openMobileMenu' | translate)
+        "
+      >
         <mat-icon>{{ mobileMenuOpen() ? 'close' : 'menu' }}</mat-icon>
       </button>
     </div>
