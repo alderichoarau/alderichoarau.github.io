@@ -6,13 +6,17 @@
 
 .contact-header {
   margin-bottom: 4rem;
-  
+
   .section-badge {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     padding: 0.75rem 2rem;
-    background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.1) 0%, rgba(var(--accent-secondary-rgb), 0.1) 100%);
+    background: linear-gradient(
+      135deg,
+      rgba(var(--accent-rgb), 0.1) 0%,
+      rgba(var(--accent-secondary-rgb), 0.1) 100%
+    );
     border: 1px solid rgba(var(--accent-rgb), 0.2);
     border-radius: 50px;
     color: var(--accent-color);
@@ -20,16 +24,16 @@
     margin-bottom: 2rem;
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
-    
+
     &:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 25px rgba(var(--accent-rgb), 0.2);
     }
-    
+
     .badge-icon {
       font-size: 1.3rem;
     }
-    
+
     .badge-text {
       font-size: 0.9rem;
       text-transform: uppercase;
@@ -40,17 +44,17 @@
 
 .main-cta {
   margin-bottom: 4rem;
-  
+
   .primary-cta {
     font-size: 1.2rem !important;
     padding: 1.25rem 3rem !important;
     margin-bottom: 1rem;
-    
+
     mat-icon {
       font-size: 1.4rem !important;
     }
   }
-  
+
   .cta-description {
     font-size: 1.1rem;
     color: var(--text-secondary);
@@ -65,17 +69,17 @@
     border-radius: 20px !important;
     backdrop-filter: blur(20px) !important;
     transition: all 0.3s ease !important;
-    
+
     &:hover {
       transform: translateY(-4px) !important;
       box-shadow: 0 20px 60px var(--shadow-medium) !important;
     }
-    
+
     .mat-mdc-card-content {
       padding: 2rem !important;
     }
   }
-  
+
   .contact-methods-title {
     font-size: 1.2rem;
     font-weight: 600;
@@ -103,79 +107,70 @@
   border: 2px solid transparent !important;
   background: var(--card-bg) !important;
   color: var(--text-primary) !important;
-  
+
   mat-icon {
     font-size: 1.2rem;
   }
-  
+
   &:hover {
     transform: translateY(-3px) !important;
     background: var(--card-bg-hover) !important;
   }
-  
+
   &.linkedin-btn {
     border-color: #0077b5 !important;
-    
+
     mat-icon {
       color: #0077b5;
     }
-    
+
     &:hover {
-      background: linear-gradient(135deg, rgba(0, 119, 181, 0.1) 0%, rgba(0, 88, 133, 0.1) 100%) !important;
+      background: linear-gradient(
+        135deg,
+        rgba(0, 119, 181, 0.1) 0%,
+        rgba(0, 88, 133, 0.1) 100%
+      ) !important;
       box-shadow: 0 8px 30px rgba(0, 119, 181, 0.2) !important;
     }
   }
-  
+
   &.github-btn {
     border-color: var(--text-primary) !important;
-    
+
     mat-icon {
       color: var(--text-primary);
     }
-    
+
     &:hover {
-      background: linear-gradient(135deg, rgba(100, 100, 100, 0.15) 0%, rgba(60, 60, 60, 0.15) 100%) !important;
+      background: linear-gradient(
+        135deg,
+        rgba(100, 100, 100, 0.15) 0%,
+        rgba(60, 60, 60, 0.15) 100%
+      ) !important;
       box-shadow: 0 8px 30px rgba(100, 100, 100, 0.3) !important;
       border-color: #6cc644 !important;
-      
+
       mat-icon {
         color: #6cc644 !important;
       }
     }
   }
-  
+
   &.malt-btn {
-    border-color: #FC5656 !important;
-    
+    border-color: #fc5656 !important;
+
     mat-icon {
-      color: #FC5656;
+      color: #fc5656;
     }
-    
+
     &:hover {
-      background: linear-gradient(135deg, rgba(252, 86, 86, 0.1) 0%, rgba(252, 45, 45, 0.1) 100%) !important;
+      background: linear-gradient(
+        135deg,
+        rgba(252, 86, 86, 0.1) 0%,
+        rgba(252, 45, 45, 0.1) 100%
+      ) !important;
       box-shadow: 0 8px 30px rgba(252, 86, 86, 0.2) !important;
     }
-  }
-}
-
-.footer {
-  text-align: center;
-  padding: 2rem 0;
-  color: var(--text-muted);
-  margin-top: 3rem;
-  background: rgba(var(--primary-rgb), 0.5);
-  backdrop-filter: blur(10px);
-  border-top: 1px solid var(--card-border);
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  
-  p {
-    margin: 0;
-    font-size: 0.9rem;
   }
 }
 
@@ -184,22 +179,22 @@
   .contact-header {
     margin-bottom: 3rem;
   }
-  
+
   .main-cta {
     margin-bottom: 3rem;
-    
+
     .primary-cta {
       font-size: 1.1rem !important;
       padding: 1rem 2rem !important;
     }
   }
-  
+
   .contact-buttons {
     flex-direction: column;
     align-items: center;
     gap: 0.75rem;
   }
-  
+
   .contact-btn {
     width: 100%;
     max-width: 280px;
@@ -210,18 +205,18 @@
   .contact-content {
     padding: 0 1rem;
   }
-  
+
   .main-cta {
     .primary-cta {
       font-size: 1rem !important;
       padding: 0.875rem 1.5rem !important;
     }
-    
+
     .cta-description {
       font-size: 1rem;
     }
   }
-  
+
   .contact-btn {
     padding: 0.875rem 1.25rem !important;
     font-size: 0.9rem !important;
