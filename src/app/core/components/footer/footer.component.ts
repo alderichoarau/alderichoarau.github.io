@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { version } from '../../../../../package.json';
+import packageInfo from '../../../../../package.json';
 
 @Component({
   selector: 'app-footer',
@@ -10,5 +10,5 @@ import { version } from '../../../../../package.json';
   standalone: true,
 })
 export class FooterComponent {
-  version: string = version;
+  version: string = packageInfo.version;
 }

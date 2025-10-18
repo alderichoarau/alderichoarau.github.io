@@ -1,7 +1,6 @@
 import { Component, AfterViewInit, OnDestroy, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavigationComponent } from './core/components/navigation/navigation.component';
-import { HeaderComponent } from './core/components/header/header.component';
 import { AboutComponent } from './features/about/about.component';
 import { TechnologiesComponent } from './features/technologies/technologies.component';
 import { ProjectsComponent } from './features/projects/projects.component';
@@ -19,7 +18,6 @@ import { FooterComponent } from './core/components/footer/footer.component';
   imports: [
     RouterOutlet,
     NavigationComponent,
-    HeaderComponent,
     AboutComponent,
     TechnologiesComponent,
     ProjectsComponent,

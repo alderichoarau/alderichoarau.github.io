@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { SkillsComponent } from './skills.component';
 
@@ -8,10 +10,9 @@ describe('SkillsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SkillsComponent]
-    })
-    .compileComponents();
-    
+      imports: [SkillsComponent, HttpClientTestingModule, TranslateModule.forRoot()],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(SkillsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

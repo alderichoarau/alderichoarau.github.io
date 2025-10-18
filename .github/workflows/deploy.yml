@@ -31,7 +31,9 @@ jobs:
 
       - name: Lint code
         run: npm run lint
-        continue-on-error: true
+
+      - name: Run test
+        run: npm run test
 
       - name: Build Angular app
         run: npm run build
