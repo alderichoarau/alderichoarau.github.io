@@ -155,7 +155,8 @@
     "sendEmail": "Envoyer un email",
     "linkedin": "LinkedIn",
     "github": "GitHub",
-    "malt": "Malt"
+    "malt": "Malt",
+    "collective": "Collective"
   },
   "footer": {
     "copyright": "© 2025 Aldéric Hoarau. Tous droits réservés."
