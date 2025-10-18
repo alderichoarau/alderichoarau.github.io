@@ -20,7 +20,7 @@
     "pre-commit": "lint-staged",
     "pre-commit-full": "npm run test && npm run lint && npm run build:prod",
     "quality-gate": "npm run format:check && npm run lint && npm run test && npm run build:prod",
-    "security:audit": "npm audit --audit-level=high && npm outdated | grep -v 'alpha\\|beta'",
+    "security:audit": "npm audit --audit-level=high && (npm outdated | grep -v 'alpha\\|beta' || true)",
     "prepare": "husky"
   },
   "private": true,
