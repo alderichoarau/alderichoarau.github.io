@@ -144,7 +144,8 @@ export class LazyLoadingService {
       // Disallow dangerous protocols
       if (
         src.trim().startsWith('javascript:') ||
-        src.trim().startsWith('data:')
+        src.trim().startsWith('data:') ||
+        src.trim().startsWith('vbscript:')
       ) {
         return false;
       }
