@@ -1,5 +1,5 @@
 import { Component, signal, OnInit, HostListener, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -9,30 +9,23 @@ import { TranslationService } from '../../services/translation.service';
 import { ScrollAnimationService } from '../../services/scroll-animation.service';
 
 @Component({
-    selector: 'app-navigation',
-    imports: [
-        CommonModule,
-        MatToolbarModule,
-        MatButtonModule,
-        MatIconModule,
-        MatMenuModule,
-        TranslateModule
-    ],
-    templateUrl: './navigation.component.html',
-    styleUrl: './navigation.component.scss'
+  selector: 'app-navigation',
+  imports: [MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, TranslateModule],
+  templateUrl: './navigation.component.html',
+  styleUrl: './navigation.component.scss',
 })
 export class NavigationComponent implements OnInit {
   // Modern Angular inject pattern - must be declared first
   private readonly translationService = inject(TranslationService);
   private readonly scrollAnimationService = inject(ScrollAnimationService);
-  
+
   // Angular Signals for state management
   private readonly mobileMenuOpenSignal = signal(false);
   public readonly mobileMenuOpen = this.mobileMenuOpenSignal.asReadonly();
-  
+
   private readonly scrolledSignal = signal(false);
   public readonly isScrolled = this.scrolledSignal.asReadonly();
-  
+
   // Get language signal from service
   public readonly currentLang = this.translationService.currentLang;
   public readonly isEnglish = this.translationService.isEnglish;
@@ -42,7 +35,6 @@ export class NavigationComponent implements OnInit {
     // Initial scroll position check
     this.updateScrollState();
   }
-
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
@@ -65,7 +57,7 @@ export class NavigationComponent implements OnInit {
   closeMobileMenu() {
     this.mobileMenuOpenSignal.set(false);
   }
-  
+
   /**
    * Navigate to section with smooth scroll and close mobile menu
    */
@@ -73,7 +65,7 @@ export class NavigationComponent implements OnInit {
     this.scrollAnimationService.scrollToElement(`#${sectionId}`);
     this.closeMobileMenu();
   }
-  
+
   /**
    * Handle click outside mobile menu
    */
@@ -83,14 +75,14 @@ export class NavigationComponent implements OnInit {
       const target = event.target as Element;
       const mobileMenu = document.querySelector('.mobile-menu');
       const menuToggle = document.querySelector('.mobile-menu-toggle');
-      
+
       // Close menu if clicking outside of it (but not on the toggle button)
       if (mobileMenu && !mobileMenu.contains(target) && !menuToggle?.contains(target)) {
         this.closeMobileMenu();
       }
     }
   }
-  
+
   /**
    * Handle escape key to close mobile menu
    */

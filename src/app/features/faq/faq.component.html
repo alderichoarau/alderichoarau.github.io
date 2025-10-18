@@ -13,46 +13,49 @@
       <!-- Category Filters -->
       <div class="category-filters fade-in-up">
         <div class="filter-buttons">
-          <button
-            *ngFor="let category of categories"
-            class="filter-button"
-            [class.active]="selectedCategory() === category.id"
-            (click)="selectCategory(category.id)"
-          >
-            <mat-icon>{{ category.icon }}</mat-icon>
-            <span>{{ category.translationKey | translate }}</span>
-          </button>
+          @for (category of categories; track category) {
+            <button
+              class="filter-button"
+              [class.active]="selectedCategory() === category.id"
+              (click)="selectCategory(category.id)"
+            >
+              <mat-icon>{{ category.icon }}</mat-icon>
+              <span>{{ category.translationKey | translate }}</span>
+            </button>
+          }
         </div>
       </div>
 
       <!-- FAQ Accordion -->
       <div class="faq-accordion-container fade-in-up">
         <mat-accordion class="modern-faq-accordion" multi="false">
-          <mat-expansion-panel
-            *ngFor="let faq of filteredFAQs(); let i = index; trackBy: trackByFAQ"
-            class="modern-faq-panel"
-            [expanded]="expandedIndex() === i"
-            (opened)="expandedIndexSignal.set(i)"
-            (closed)="expandedIndexSignal.set(null)"
-          >
-            <mat-expansion-panel-header class="faq-panel-header">
-              <mat-panel-title class="faq-question">
-                <mat-icon class="question-icon">help_outline</mat-icon>
-                <span class="question-text">{{ faq.question | translate }}</span>
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-
-            <div class="faq-answer-content">
-              <p class="faq-answer">{{ faq.answer | translate }}</p>
-            </div>
-          </mat-expansion-panel>
+          @for (faq of filteredFAQs(); track trackByFAQ(i, faq); let i = $index) {
+            <mat-expansion-panel
+              class="modern-faq-panel"
+              [expanded]="expandedIndex() === i"
+              (opened)="expandedIndexSignal.set(i)"
+              (closed)="expandedIndexSignal.set(null)"
+            >
+              <mat-expansion-panel-header class="faq-panel-header">
+                <mat-panel-title class="faq-question">
+                  <mat-icon class="question-icon">help_outline</mat-icon>
+                  <span class="question-text">{{ faq.question | translate }}</span>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="faq-answer-content">
+                <p class="faq-answer">{{ faq.answer | translate }}</p>
+              </div>
+            </mat-expansion-panel>
+          }
         </mat-accordion>
 
         <!-- Empty state -->
-        <div *ngIf="filteredFAQs().length === 0" class="empty-state">
-          <mat-icon class="empty-icon">search_off</mat-icon>
-          <p class="empty-text">Aucune question trouvée pour cette catégorie.</p>
-        </div>
+        @if (filteredFAQs().length === 0) {
+          <div class="empty-state">
+            <mat-icon class="empty-icon">search_off</mat-icon>
+            <p class="empty-text">Aucune question trouvée pour cette catégorie.</p>
+          </div>
+        }
       </div>
     </div>
   </div>

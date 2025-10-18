@@ -12,64 +12,68 @@
 
       <!-- Category Filters -->
       <div class="category-filters">
-        <button
-          *ngFor="let category of categories"
-          class="filter-button"
-          [class.active]="selectedCategory() === category.key"
-          (click)="selectCategory(category.key)"
-        >
-          <mat-icon>{{ category.icon }}</mat-icon>
-          <span>{{ category.translationKey | translate }}</span>
-        </button>
+        @for (category of categories; track category) {
+          <button
+            class="filter-button"
+            [class.active]="selectedCategory() === category.key"
+            (click)="selectCategory(category.key)"
+          >
+            <mat-icon>{{ category.icon }}</mat-icon>
+            <span>{{ category.translationKey | translate }}</span>
+          </button>
+        }
       </div>
 
       <!-- Technologies Grid -->
       <div class="technologies-grid">
-        <div
-          *ngFor="let tech of filteredTechnologies(); trackBy: trackByTech"
-          class="tech-badge"
-          [style.--tech-color]="tech.color"
-        >
-          <div class="tech-icon">
-            <mat-icon>{{ tech.icon }}</mat-icon>
-          </div>
-          <div class="tech-info">
-            <span class="tech-name">{{ tech.name }}</span>
-            <div class="tech-level" [style.color]="getLevelColor(tech.level)">
-              <div class="level-dot" [style.background-color]="getLevelColor(tech.level)"></div>
-              <span class="level-text">{{ getLevelText(tech.level) }}</span>
+        @for (tech of filteredTechnologies(); track trackByTech($index, tech)) {
+          <div class="tech-badge" [style.--tech-color]="tech.color">
+            <div class="tech-icon">
+              <mat-icon>{{ tech.icon }}</mat-icon>
+            </div>
+            <div class="tech-info">
+              <span class="tech-name">{{ tech.name }}</span>
+              <div class="tech-level" [style.color]="getLevelColor(tech.level)">
+                <div class="level-dot" [style.background-color]="getLevelColor(tech.level)"></div>
+                <span class="level-text">{{ getLevelText(tech.level) }}</span>
+              </div>
             </div>
           </div>
-        </div>
+        }
       </div>
 
       <!-- Categories Section -->
       <div class="tech-categories">
-        <div class="category-section" *ngFor="let category of categories.slice(1)">
-          <mat-card class="category-card">
-            <mat-card-header>
-              <mat-card-title class="category-title">
-                <mat-icon class="category-icon">{{ category.icon }}</mat-icon>
-                {{ category.translationKey | translate }}
-              </mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <div class="category-technologies">
-                <div
-                  *ngFor="let tech of getCategoryTechnologies()(category.key)"
-                  class="mini-tech-badge"
-                  [style.--tech-color]="tech.color"
-                >
-                  <mat-icon class="mini-tech-icon">{{ tech.icon }}</mat-icon>
-                  <span class="mini-tech-name">{{ tech.name }}</span>
-                  <div class="mini-tech-level" [style.background-color]="getLevelColor(tech.level)">
-                    <span class="mini-level-text">{{ tech.level.charAt(0).toUpperCase() }}</span>
-                  </div>
+        @for (category of categories.slice(1); track category) {
+          <div class="category-section">
+            <mat-card class="category-card">
+              <mat-card-header>
+                <mat-card-title class="category-title">
+                  <mat-icon class="category-icon">{{ category.icon }}</mat-icon>
+                  {{ category.translationKey | translate }}
+                </mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <div class="category-technologies">
+                  @for (tech of getCategoryTechnologies()(category.key); track tech) {
+                    <div class="mini-tech-badge" [style.--tech-color]="tech.color">
+                      <mat-icon class="mini-tech-icon">{{ tech.icon }}</mat-icon>
+                      <span class="mini-tech-name">{{ tech.name }}</span>
+                      <div
+                        class="mini-tech-level"
+                        [style.background-color]="getLevelColor(tech.level)"
+                      >
+                        <span class="mini-level-text">{{
+                          tech.level.charAt(0).toUpperCase()
+                        }}</span>
+                      </div>
+                    </div>
+                  }
                 </div>
-              </div>
-            </mat-card-content>
-          </mat-card>
-        </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        }
       </div>
     </div>
   </div>
