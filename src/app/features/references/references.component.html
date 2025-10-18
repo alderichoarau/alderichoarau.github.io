@@ -12,23 +12,17 @@
           class="references-track"
           [style.animation-play-state]="isHovered ? 'paused' : 'running'"
         >
-          <div
-            class="reference-item"
-            *ngFor="let ref of references; let i = index"
-            (mouseenter)="onMouseEnter()"
-            (mouseleave)="onMouseLeave()"
-          >
-            <img [src]="ref.logo" [alt]="ref.name" class="reference-logo" />
-          </div>
+          @for (ref of references; track ref; let i = $index) {
+            <div class="reference-item" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()">
+              <img [src]="ref.logo" [alt]="ref.name" class="reference-logo" />
+            </div>
+          }
           <!-- Duplicate for seamless loop -->
-          <div
-            class="reference-item"
-            *ngFor="let ref of references; let i = index"
-            (mouseenter)="onMouseEnter()"
-            (mouseleave)="onMouseLeave()"
-          >
-            <img [src]="ref.logo" [alt]="ref.name" class="reference-logo" />
-          </div>
+          @for (ref of references; track ref; let i = $index) {
+            <div class="reference-item" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()">
+              <img [src]="ref.logo" [alt]="ref.name" class="reference-logo" />
+            </div>
+          }
         </div>
       </div>
     </mat-card-content>

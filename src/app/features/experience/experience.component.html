@@ -8,27 +8,25 @@
         </div>
       </div>
       <div class="timeline">
-        <div
-          class="timeline-item"
-          *ngFor="let exp of experiences; let last = last"
-          [class.last]="last"
-        >
-          <div class="timeline-marker"></div>
-          <mat-card class="timeline-card">
-            <mat-card-header>
-              <mat-card-title class="experience-title">
-                <mat-icon>{{ exp.icon }}</mat-icon>
-                {{ exp.title | translate }}
-              </mat-card-title>
-              <mat-card-subtitle class="experience-period">
-                {{ exp.period | translate }}
-              </mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-              <p>{{ exp.description | translate }}</p>
-            </mat-card-content>
-          </mat-card>
-        </div>
+        @for (exp of experiences; track exp; let last = $last) {
+          <div class="timeline-item" [class.last]="last">
+            <div class="timeline-marker"></div>
+            <mat-card class="timeline-card">
+              <mat-card-header>
+                <mat-card-title class="experience-title">
+                  <mat-icon>{{ exp.icon }}</mat-icon>
+                  {{ exp.title | translate }}
+                </mat-card-title>
+                <mat-card-subtitle class="experience-period">
+                  {{ exp.period | translate }}
+                </mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <p>{{ exp.description | translate }}</p>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        }
       </div>
     </mat-card-content>
   </mat-card>

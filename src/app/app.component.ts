@@ -12,33 +12,34 @@ import { FaqComponent } from './features/faq/faq.component';
 import { ContactComponent } from './features/contact/contact.component';
 import { fadeInUpAnimation, staggerAnimation } from './shared/animations/animations';
 import { ScrollAnimationService } from './core/services/scroll-animation.service';
+import { FooterComponent } from './core/components/footer/footer.component';
 
 @Component({
-    selector: 'app-root',
-    imports: [
-        RouterOutlet,
-        NavigationComponent,
-        HeaderComponent,
-        AboutComponent,
-        TechnologiesComponent,
-        ProjectsComponent,
-        ExperienceComponent,
-        CertificationsComponent,
-        ReferencesComponent,
-        FaqComponent,
-        ContactComponent
-    ],
-    templateUrl: './app.component.html',
-    styleUrl: './app.component.scss',
-    animations: [fadeInUpAnimation, staggerAnimation]
+  selector: 'app-root',
+  imports: [
+    RouterOutlet,
+    NavigationComponent,
+    HeaderComponent,
+    AboutComponent,
+    TechnologiesComponent,
+    ProjectsComponent,
+    ExperienceComponent,
+    CertificationsComponent,
+    ReferencesComponent,
+    FaqComponent,
+    ContactComponent,
+    FooterComponent,
+  ],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss',
+  animations: [fadeInUpAnimation, staggerAnimation],
 })
 export class AppComponent implements AfterViewInit, OnDestroy {
   title = 'Aldéric Hoarau - Portfolio';
-  
+
   // Modern Angular inject pattern
   private readonly scrollAnimationService = inject(ScrollAnimationService);
-  
-  
+
   ngAfterViewInit() {
     // Set up scroll animations for sections
     setTimeout(() => {
@@ -48,7 +49,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
       this.scrollAnimationService.observeElementsBySelector('.project-card');
     }, 100);
   }
-  
+
   ngOnDestroy() {
     this.scrollAnimationService.destroy();
   }

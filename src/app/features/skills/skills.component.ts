@@ -1,21 +1,15 @@
 import { Component, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-    selector: 'app-skills',
-    imports: [
-        CommonModule,
-        MatCardModule,
-        MatIconModule,
-        MatGridListModule,
-        TranslateModule
-    ],
-    templateUrl: './skills.component.html',
-    styleUrl: './skills.component.scss'
+  selector: 'app-skills',
+  imports: [MatCardModule, MatIconModule, MatGridListModule, TranslateModule],
+  templateUrl: './skills.component.html',
+  styleUrl: './skills.component.scss',
 })
 export class SkillsComponent {
   // Angular 18 Signals for reactive skills data
@@ -23,22 +17,22 @@ export class SkillsComponent {
     {
       icon: 'cloud',
       title: 'skills.cloudDevSecOps',
-      description: 'skills.cloudDevSecOpsDesc'
+      description: 'skills.cloudDevSecOpsDesc',
     },
     {
       icon: 'trending_up',
       title: 'skills.finOps',
-      description: 'skills.finOpsDesc'
+      description: 'skills.finOpsDesc',
     },
     {
       icon: 'security',
       title: 'skills.architecture',
-      description: 'skills.architectureDesc'
+      description: 'skills.architectureDesc',
     },
     {
       icon: 'groups',
       title: 'skills.agility',
-      description: 'skills.agilityDesc'
-    }
+      description: 'skills.agilityDesc',
+    },
   ]);
 }

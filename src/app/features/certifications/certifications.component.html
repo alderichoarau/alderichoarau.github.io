@@ -8,13 +8,17 @@
         </div>
       </div>
       <div class="certifications-grid">
-        <div class="cert-item" *ngFor="let cert of certifications">
-          <mat-icon class="cert-icon">{{ cert.icon }}</mat-icon>
-          <div class="cert-content">
-            <h3>{{ cert.title | translate }}</h3>
-            <p *ngIf="cert.status" class="cert-status">({{ cert.status | translate }})</p>
+        @for (cert of certifications; track cert) {
+          <div class="cert-item">
+            <mat-icon class="cert-icon">{{ cert.icon }}</mat-icon>
+            <div class="cert-content">
+              <h3>{{ cert.title | translate }}</h3>
+              @if (cert.status) {
+                <p class="cert-status">({{ cert.status | translate }})</p>
+              }
+            </div>
           </div>
-        </div>
+        }
       </div>
     </mat-card-content>
   </mat-card>
@@ -31,13 +35,15 @@
         <h2 class="section-title">{{ 'languages.title' | translate }}</h2>
       </div>
       <div class="languages-grid">
-        <div class="language-item" *ngFor="let lang of languages">
-          <div class="language-info">
-            <mat-icon>language</mat-icon>
-            <span>{{ lang.name | translate }}</span>
+        @for (lang of languages; track lang) {
+          <div class="language-item">
+            <div class="language-info">
+              <mat-icon>language</mat-icon>
+              <span>{{ lang.name | translate }}</span>
+            </div>
+            <mat-chip class="language-level">{{ lang.level | translate }}</mat-chip>
           </div>
-          <mat-chip class="language-level">{{ lang.level | translate }}</mat-chip>
-        </div>
+        }
       </div>
     </mat-card-content>
   </mat-card>

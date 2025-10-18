@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-references',
-  imports: [CommonModule, MatCardModule, MatIconModule, TranslateModule],
+  imports: [MatCardModule, MatIconModule, TranslateModule],
   templateUrl: './references.component.html',
   styleUrl: './references.component.scss',
 })
