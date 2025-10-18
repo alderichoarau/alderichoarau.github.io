@@ -1,17 +1,17 @@
 # 🚀 Aldéric Hoarau - Portfolio
 
-[![Angular](https://img.shields.io/badge/Angular-19.2-red?style=for-the-badge&logo=angular)](https://angular.io/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![Angular](https://img.shields.io/badge/Angular-20-red?style=for-the-badge&logo=angular)](https://angular.io/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-green?style=for-the-badge&logo=github)](https://pages.github.com/)
 [![PWA Ready](https://img.shields.io/badge/PWA-Ready-purple?style=for-the-badge)](https://web.dev/progressive-web-apps/)
 
-A professional portfolio built with Angular 19 and deployed on GitHub Pages. Architected following Angular best practices with clean, performant, and accessible code.
+A professional portfolio built with Angular 20 and deployed on GitHub Pages. Architected following Angular best practices with clean, performant, and accessible code.
 
 **🌐 Live Website:** [https://alderichoarau.github.io](https://alderichoarau.github.io)
 
 ## ✨ Features
 
-- 🌟 **Modern Angular 19** with signals and standalone components
+- 🌟 **Modern Angular 20** with signals and standalone components
 - 🎨 **Angular Material** with custom LinkedIn-inspired theme
 - 🌐 **Internationalization** (FR/EN) using ngx-translate
 - 📱 **Fully Responsive** and mobile-first design
@@ -42,7 +42,7 @@ src/app/
 
 ## 🔧 Tech Stack
 
-- **Frontend:** Angular 19.2, TypeScript 5.8, SCSS
+- **Frontend:** Angular 20, TypeScript 5.9, SCSS
 - **UI Library:** Angular Material with custom theme
 - **Architecture:** Standalone Components + Feature modules
 - **State Management:** Angular Signals (modern approach)
