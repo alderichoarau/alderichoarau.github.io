@@ -22,8 +22,9 @@ A professional portfolio built with Angular 20 and deployed on GitHub Pages. Arc
 - 🧪 **Clean Architecture** (Core/Shared/Features modules)
 - 🔠 **Clean Code** (ESLint, Prettier, modern inject() pattern)
 
-## 🏗️ Architecture
+## 🏗️ Architecture & Tech Stack
 
+### Project Structure
 ```
 src/app/
 ├── core/                    # Singleton services and layout components
@@ -40,8 +41,7 @@ src/app/
 └── styles.scss             # Global styles and variables
 ```
 
-## 🔧 Tech Stack
-
+### Tech Stack
 - **Frontend:** Angular 20, TypeScript 5.9, SCSS
 - **UI Library:** Angular Material with custom theme
 - **Architecture:** Standalone Components + Feature modules
@@ -102,6 +102,12 @@ npm run quality-gate     # Full quality check (lint+test+build)
 npm run test             # Run tests (headless)
 npm run test:watch       # Run tests in watch mode
 npm run test:coverage    # Run tests with coverage report
+
+# Accessibility
+npm run a11y            # Run accessibility tests (requires running server)
+
+# Security
+npm run security:audit  # Check for security vulnerabilities
 ```
 
 ### Git Hooks (Husky)
@@ -115,7 +121,7 @@ npm run test:coverage    # Run tests with coverage report
 - Angular Language Service
 - Workspace recommendations for extensions
 
-## 📁 Project Structure
+## 📁 Complete Project Structure
 
 ```
 alderichoarau.github.io/
@@ -129,31 +135,77 @@ alderichoarau.github.io/
 │   │   └── images/        # Company logos and assets
 │   └── styles.scss        # Global styles
 ├── docs/                  # Production build (GitHub Pages)
-├── .github/workflows/     # GitHub Actions for deployment
+├── .github/
+│   ├── workflows/         # GitHub Actions CI/CD
+│   │   ├── deploy.yml     # Main deployment workflow
+│   │   ├── pr-checks.yml  # PR quality checks
+│   │   └── security.yml   # Security audit
+│   └── dependabot.yml     # Dependabot configuration
+├── .husky/                # Git hooks (pre-commit)
 └── README.md             # This file
 ```
 
-## 🌐 GitHub Pages Deployment
+## 🌐 CI/CD & Deployment
 
-### Automatic Deployment
+### 🚀 Automatic Deployment
 
-The site is automatically deployed via **GitHub Actions**:
+The project uses **GitHub Actions** for automated deployment:
 
-1. **Push to main** → Triggers workflow automatically
-2. **Build** → GitHub Actions runs `npm run build` with ESLint
-3. **Deploy** → Files are deployed to GitHub Pages
-4. **Live** → Available at [https://alderichoarau.github.io](https://alderichoarau.github.io)
+[![Deploy Status](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/deploy.yml)
+[![PR Checks](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/pr-checks.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/pr-checks.yml)
+[![Security](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/security.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/security.yml)
 
-### Workflow Details
+1. **Push to main** → Automatic trigger
+2. **Quality checks** → Format, lint, tests with coverage
+3. **Production build** → `npm run build:prod`
+4. **Deploy** → Automatic GitHub Pages deployment
+5. **Live** → Available at [https://alderichoarau.github.io](https://alderichoarau.github.io)
 
-The `.github/workflows/deploy.yml` includes:
+### 🔄 GitHub Actions Workflows
 
-- Dependencies installation
-- ESLint validation (non-blocking)
-- Angular production build
-- Automatic GitHub Pages deployment
+#### 1. **Deploy Workflow** (`.github/workflows/deploy.yml`)
+- **Triggers**: Manual dispatch only (`workflow_dispatch`)
+- **Quality Checks**:
+  - Dependencies installation with npm cache
+  - ESLint linting (`npm run lint`)
+  - Tests (`npm run test`)
+  - Standard build (`npm run build`)
+- **Deployment**: Direct to GitHub Pages
 
-### Cache Issues Troubleshooting
+#### 2. **PR Quality Checks** (`.github/workflows/pr-checks.yml`)
+- **Triggers**: Pull Requests to `main`
+- **Complete validation** without deployment
+- **Automatic PR comments** with status results
+- **Protection**: Prevents unwanted deployments
+
+#### 3. **Security Checks** (`.github/workflows/security.yml`)
+- **Schedule**: Every Monday at 9:00 AM UTC
+- **Security audit**: `npm audit` and vulnerability scanning
+- **Automatic alerts**: Creates issues when problems are found
+- **Labels**: `security`, `dependencies` for easy management
+
+### 📊 Dependabot Configuration
+
+Automated configuration in `.github/dependabot.yml`:
+
+- **Weekly updates**: Every Monday at 8:00 AM
+- **Smart grouping**:
+  - Angular Core (major/minor versions separated)
+  - Angular Material & CDK
+  - Development tools (ESLint, Prettier)
+  - Testing dependencies (Jasmine, Karma)
+  - GitHub Actions
+- **Automated management**: 10 PRs max, automatic labels
+- **Review**: `@alderichoarau` automatically assigned
+
+### ⚡ Performance Optimizations
+
+- **npm cache**: Dependency reuse between builds
+- **Build cache**: Faster successive deployments
+- **Conditional builds**: Deployment only on `main`
+- **Parallel tests**: Optimized verification execution
+
+### 🛠️ Deployment Troubleshooting
 
 If translations don't appear after deployment:
 
@@ -162,6 +214,7 @@ If translations don't appear after deployment:
 3. **Private browsing**: Test in incognito tab
 4. **Check translations**: [assets/i18n/fr.json](https://alderichoarau.github.io/assets/i18n/fr.json)
 5. **Developer console**: Check for errors in F12
+6. **GitHub Actions**: Check workflow status
 
 ## 🔧 Development Guide
 
