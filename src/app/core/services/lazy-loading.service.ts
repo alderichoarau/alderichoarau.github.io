@@ -6,6 +6,22 @@ import { Injectable } from '@angular/core';
 export class LazyLoadingService {
   private observer!: IntersectionObserver;
 
+  /**
+   * Ensures the image source (src) is not vulnerable to XSS.
+   * Allows only:
+   *  - https:// and http:// URLs
+   *  - data:image/* URIs
+   */
+  private isSafeImageSrc(src: string | null): boolean {
+    if (!src) return false;
+    // Accept only http(s) URLs or data:image URIs
+    // Disallow other protocols: javascript:, vbscript:, file:, blob:, data:text/html, etc.
+    return (
+      /^https?:\/\/[\w\-]+(\.[\w\-]+)+([\/#?]?.*)$/i.test(src) ||
+      /^data:image\/[a-zA-Z]+;base64,[A-Za-z0-9+/=]+$/i.test(src)
+    );
+  }
+
   constructor() {
     this.createObserver();
   }
