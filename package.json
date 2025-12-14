@@ -40,28 +40,28 @@
     "@ngx-translate/http-loader": "17.0.0",
     "rxjs": "7.8.2",
     "tslib": "2.8.1",
-    "zone.js": "0.15.1"
+    "zone.js": "0.16.0"
   },
   "devDependencies": {
     "@angular/build": "^21.0.3",
     "@angular/cli": "21.0.3",
     "@angular/compiler-cli": "21.0.5",
     "@axe-core/cli": "4.11.0",
-    "@types/jasmine": "5.1.12",
-    "@types/node": "24.10.1",
-    "angular-eslint": "20.6.0",
-    "eslint": "9.39.1",
+    "@types/jasmine": "5.1.13",
+    "@types/node": "25.0.2",
+    "angular-eslint": "21.1.0",
+    "eslint": "9.39.2",
     "husky": "9.1.7",
-    "jasmine-core": "5.12.1",
+    "jasmine-core": "5.13.0",
     "karma": "6.4.4",
     "karma-chrome-launcher": "3.2.0",
     "karma-coverage": "2.2.1",
     "karma-jasmine": "5.1.0",
     "karma-jasmine-html-reporter": "2.1.0",
-    "lint-staged": "16.2.6",
-    "prettier": "3.6.2",
+    "lint-staged": "16.2.7",
+    "prettier": "3.7.4",
     "typescript": "5.9.3",
-    "typescript-eslint": "8.46.4"
+    "typescript-eslint": "8.49.0"
   },
   "lint-staged": {
     "src/**/*.{ts,js}": [
