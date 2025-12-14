@@ -36,7 +36,7 @@ export class NavigationComponent implements OnInit {
     this.updateScrollState();
   }
 
-  @HostListener('window:scroll', ['$event'])
+  @HostListener('window:scroll')
   onWindowScroll() {
     this.updateScrollState();
   }
@@ -86,7 +86,7 @@ export class NavigationComponent implements OnInit {
   /**
    * Handle escape key to close mobile menu
    */
-  @HostListener('document:keydown.escape', ['$event'])
+  @HostListener('document:keydown.escape')
   onEscapeKey() {
     if (this.mobileMenuOpen()) {
       this.closeMobileMenu();
