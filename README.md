@@ -1,17 +1,17 @@
 # 🚀 Aldéric Hoarau - Portfolio
 
-[![Angular](https://img.shields.io/badge/Angular-20-red?style=for-the-badge&logo=angular)](https://angular.io/)
+[![Angular](https://img.shields.io/badge/Angular-21-red?style=for-the-badge&logo=angular)](https://angular.io/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-green?style=for-the-badge&logo=github)](https://pages.github.com/)
 [![PWA Ready](https://img.shields.io/badge/PWA-Ready-purple?style=for-the-badge)](https://web.dev/progressive-web-apps/)
 
-A professional portfolio built with Angular 20 and deployed on GitHub Pages. Architected following Angular best practices with clean, performant, and accessible code.
+A professional portfolio built with Angular 21 and deployed on GitHub Pages. Architected following Angular best practices with clean, performant, and accessible code.
 
 **🌐 Live Website:** [https://alderichoarau.github.io](https://alderichoarau.github.io)
 
 ## ✨ Features
 
-- 🌟 **Modern Angular 20** with signals and standalone components
+- 🌟 **Modern Angular 21** with signals and standalone components
 - 🎨 **Angular Material** with custom LinkedIn-inspired theme
 - 🌐 **Internationalization** (FR/EN) using ngx-translate
 - 📱 **Fully Responsive** and mobile-first design
@@ -56,8 +56,8 @@ src/app/
 
 ### Prerequisites
 
-- Node.js 22+
-- npm 10+
+- Node.js 24+
+- npm 11+
 - Angular CLI: `npm install -g @angular/cli`
 
 ### Development
