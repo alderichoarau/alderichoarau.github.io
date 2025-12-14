@@ -216,27 +216,6 @@ If translations don't appear after deployment:
 5. **Developer console**: Check for errors in F12
 6. **GitHub Actions**: Check workflow status
 
-## 🔧 Development Guide
-
-### Adding New Features
-
-1. Create feature components in `src/app/features/`
-2. Add translations to `src/assets/i18n/en.json` and `fr.json`
-3. Update main app component to include the new feature
-4. Test responsive design across different screen sizes
-
-### Updating Translations
-
-- English: `src/assets/i18n/en.json`
-- French: `src/assets/i18n/fr.json`
-
-The translation service automatically loads the appropriate language based on user selection.
-
-### Customizing Styles
-
-- Global styles: `src/styles.scss`
-- Component styles: Individual `.scss` files per component
-- Theme colors: Based on LinkedIn blue (#0077b5) with Material Design principles
 
 ## 📧 Contact
 
