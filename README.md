@@ -152,8 +152,6 @@ alderichoarau.github.io/
 The project uses **GitHub Actions** for automated deployment:
 
 [![Deploy Status](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/deploy.yml)
-[![PR Checks](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/pr-checks.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/pr-checks.yml)
-[![Security](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/security.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/security.yml)
 
 1. **Push to main** → Automatic trigger
 2. **Quality checks** → Format, lint, tests with coverage
@@ -171,18 +169,6 @@ The project uses **GitHub Actions** for automated deployment:
   - Tests (`npm run test`)
   - Standard build (`npm run build`)
 - **Deployment**: Direct to GitHub Pages
-
-#### 2. **PR Quality Checks** (`.github/workflows/pr-checks.yml`)
-- **Triggers**: Pull Requests to `main`
-- **Complete validation** without deployment
-- **Automatic PR comments** with status results
-- **Protection**: Prevents unwanted deployments
-
-#### 3. **Security Checks** (`.github/workflows/security.yml`)
-- **Schedule**: Every Monday at 9:00 AM UTC
-- **Security audit**: `npm audit` and vulnerability scanning
-- **Automatic alerts**: Creates issues when problems are found
-- **Labels**: `security`, `dependencies` for easy management
 
 ### 📊 Dependabot Configuration
 
@@ -215,7 +201,6 @@ If translations don't appear after deployment:
 4. **Check translations**: [assets/i18n/fr.json](https://alderichoarau.github.io/assets/i18n/fr.json)
 5. **Developer console**: Check for errors in F12
 6. **GitHub Actions**: Check workflow status
-
 
 ## 📧 Contact
 
