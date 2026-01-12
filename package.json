@@ -47,7 +47,7 @@
     "@angular/cli": "21.0.4",
     "@angular/compiler-cli": "21.0.6",
     "@axe-core/cli": "4.11.0",
-    "@types/jasmine": "5.1.13",
+    "@types/jasmine": "5.1.14",
     "@types/node": "25.0.3",
     "angular-eslint": "21.1.0",
     "eslint": "9.39.2",
