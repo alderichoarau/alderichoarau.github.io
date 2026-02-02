@@ -45,7 +45,7 @@
   "devDependencies": {
     "@angular/build": "21.1.1",
     "@angular/cli": "21.1.1",
-    "@angular/compiler-cli": "21.1.1",
+    "@angular/compiler-cli": "21.1.2",
     "@axe-core/cli": "4.11.0",
     "@types/jasmine": "5.1.13",
     "@types/node": "25.0.10",
