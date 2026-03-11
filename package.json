@@ -50,7 +50,7 @@
     "@types/jasmine": "6.0.0",
     "@types/node": "25.4.0",
     "angular-eslint": "21.3.0",
-    "eslint": "9.39.2",
+    "eslint": "10.0.3",
     "husky": "9.1.7",
     "jasmine-core": "6.1.0",
     "karma": "6.4.4",
