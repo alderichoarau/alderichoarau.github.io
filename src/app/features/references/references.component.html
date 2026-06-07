@@ -1,30 +1,31 @@
-<section id="references" class="section-container">
-  <mat-card class="content-card">
-    <mat-card-content>
-      <div class="references-header">
-        <div class="section-badge">
-          <mat-icon class="badge-icon">business</mat-icon>
-          <span class="badge-text">{{ 'references.title' | translate }}</span>
-        </div>
+<section id="references" class="references-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">
+        <mat-icon>business</mat-icon>
+        {{ 'references.title' | translate }}
+      </span>
+      <p class="section-subtitle">{{ 'references.subtitle' | translate }}</p>
+    </div>
+
+    <div class="references-container">
+      <div class="references-track" [style.animation-play-state]="isHovered ? 'paused' : 'running'">
+        @for (ref of references; track ref.name) {
+          <div class="reference-item" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()">
+            <img [src]="ref.logo" [alt]="ref.name" class="reference-logo" />
+          </div>
+        }
+        @for (ref of references; track ref.name + '_dup') {
+          <div
+            class="reference-item"
+            aria-hidden="true"
+            (mouseenter)="onMouseEnter()"
+            (mouseleave)="onMouseLeave()"
+          >
+            <img [src]="ref.logo" [alt]="ref.name" class="reference-logo" />
+          </div>
+        }
       </div>
-      <div class="references-container">
-        <div
-          class="references-track"
-          [style.animation-play-state]="isHovered ? 'paused' : 'running'"
-        >
-          @for (ref of references; track ref; let i = $index) {
-            <div class="reference-item" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()">
-              <img [src]="ref.logo" [alt]="ref.name" class="reference-logo" />
-            </div>
-          }
-          <!-- Duplicate for seamless loop -->
-          @for (ref of references; track ref; let i = $index) {
-            <div class="reference-item" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()">
-              <img [src]="ref.logo" [alt]="ref.name" class="reference-logo" />
-            </div>
-          }
-        </div>
-      </div>
-    </mat-card-content>
-  </mat-card>
+    </div>
+  </div>
 </section>

@@ -18,6 +18,10 @@
           <mat-icon>verified</mat-icon>
           <span>{{ 'nav.certifications' | translate }}</span>
         </button>
+        <button mat-button (click)="navigateToSection('references')" class="nav-link">
+          <mat-icon>business</mat-icon>
+          <span>{{ 'nav.references' | translate }}</span>
+        </button>
         <button mat-button (click)="navigateToSection('faq')" class="nav-link">
           <mat-icon>help_outline</mat-icon>
           <span>{{ 'nav.faq' | translate }}</span>
@@ -109,6 +113,10 @@
       <button mat-button class="mobile-nav-link" (click)="navigateToSection('certifications')">
         <mat-icon>verified</mat-icon>
         <span>{{ 'nav.certifications' | translate }}</span>
+      </button>
+      <button mat-button class="mobile-nav-link" (click)="navigateToSection('references')">
+        <mat-icon>business</mat-icon>
+        <span>{{ 'nav.references' | translate }}</span>
       </button>
       <button mat-button class="mobile-nav-link" (click)="navigateToSection('faq')">
         <mat-icon>help_outline</mat-icon>

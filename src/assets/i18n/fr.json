@@ -6,6 +6,7 @@
     "projects": "Projets",
     "experience": "Expérience",
     "certifications": "Crédentiels",
+    "references": "Références",
     "faq": "FAQ",
     "contact": "Contact",
     "getInTouch": "Me contacter",
@@ -135,7 +136,8 @@
     "elementary": "Élémentaire"
   },
   "references": {
-    "title": "Ils m'ont fait confiance"
+    "title": "Ils m'ont fait confiance",
+    "subtitle": "Des grands comptes aux scale-ups, j'ai accompagné des équipes dans leurs transformations cloud et digitales."
   },
   "faq": {
     "title": "Questions Fréquentes",
