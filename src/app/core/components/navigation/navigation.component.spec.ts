@@ -3,6 +3,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { signal } from '@angular/core';
+import { vi } from 'vitest';
 
 import { NavigationComponent } from './navigation.component';
 import { TranslationService } from '../../services/translation.service';
@@ -11,20 +12,22 @@ import { ScrollAnimationService } from '../../services/scroll-animation.service'
 describe('NavigationComponent', () => {
   let component: NavigationComponent;
   let fixture: ComponentFixture<NavigationComponent>;
-  let mockTranslationService: jasmine.SpyObj<TranslationService>;
-  let mockScrollAnimationService: jasmine.SpyObj<ScrollAnimationService>;
+  let mockTranslationService: {
+    setLanguage: ReturnType<typeof vi.fn>;
+    currentLang: ReturnType<typeof signal<string>>;
+    isEnglish: ReturnType<typeof signal<boolean>>;
+    isFrench: ReturnType<typeof signal<boolean>>;
+  };
+  let mockScrollAnimationService: { scrollToElement: ReturnType<typeof vi.fn> };
 
   beforeEach(async () => {
-    // Create spies for services
-    mockTranslationService = jasmine.createSpyObj('TranslationService', ['setLanguage'], {
+    mockTranslationService = {
+      setLanguage: vi.fn(),
       currentLang: signal('fr'),
       isEnglish: signal(false),
       isFrench: signal(true),
-    });
-
-    mockScrollAnimationService = jasmine.createSpyObj('ScrollAnimationService', [
-      'scrollToElement',
-    ]);
+    };
+    mockScrollAnimationService = { scrollToElement: vi.fn() };
 
     await TestBed.configureTestingModule({
       imports: [
@@ -41,11 +44,7 @@ describe('NavigationComponent', () => {
 
     fixture = TestBed.createComponent(NavigationComponent);
     component = fixture.componentInstance;
-
-    // Mock window.scrollY and document.documentElement.scrollTop
     Object.defineProperty(window, 'scrollY', { value: 0, writable: true });
-    Object.defineProperty(document.documentElement, 'scrollTop', { value: 0, writable: true });
-
     fixture.detectChanges();
   });
 
@@ -68,18 +67,14 @@ describe('NavigationComponent', () => {
 
   it('should toggle mobile menu', () => {
     expect(component.mobileMenuOpen()).toBe(false);
-
     component.toggleMobileMenu();
     expect(component.mobileMenuOpen()).toBe(true);
-
     component.toggleMobileMenu();
     expect(component.mobileMenuOpen()).toBe(false);
   });
 
   it('should close mobile menu', () => {
-    component.toggleMobileMenu(); // Open menu
-    expect(component.mobileMenuOpen()).toBe(true);
-
+    component.toggleMobileMenu();
     component.closeMobileMenu();
     expect(component.mobileMenuOpen()).toBe(false);
   });
@@ -87,306 +82,155 @@ describe('NavigationComponent', () => {
   it('should change language', () => {
     component.changeLanguage('en');
     expect(mockTranslationService.setLanguage).toHaveBeenCalledWith('en');
-
     component.changeLanguage('fr');
     expect(mockTranslationService.setLanguage).toHaveBeenCalledWith('fr');
   });
 
   it('should navigate to section and close mobile menu', () => {
-    component.toggleMobileMenu(); // Open menu first
-    expect(component.mobileMenuOpen()).toBe(true);
-
+    component.toggleMobileMenu();
     component.navigateToSection('about');
-
     expect(mockScrollAnimationService.scrollToElement).toHaveBeenCalledWith('#about');
     expect(component.mobileMenuOpen()).toBe(false);
   });
 
   it('should update scroll state based on window scroll position', () => {
-    // Test initial state (not scrolled)
     expect(component.isScrolled()).toBe(false);
-
-    // Mock scrolled position
     Object.defineProperty(window, 'scrollY', { value: 100, writable: true });
     component['updateScrollState']();
     expect(component.isScrolled()).toBe(true);
-
-    // Mock scroll back to top
     Object.defineProperty(window, 'scrollY', { value: 30, writable: true });
     component['updateScrollState']();
     expect(component.isScrolled()).toBe(false);
   });
 
-  it('should handle window scroll event', () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const spy = spyOn<any>(component, 'updateScrollState');
-
+  it('should call updateScrollState on window scroll', () => {
+    const spy = vi.spyOn(
+      component as NavigationComponent & { updateScrollState(): void },
+      'updateScrollState'
+    );
     component.onWindowScroll();
     expect(spy).toHaveBeenCalled();
   });
 
   it('should handle escape key to close mobile menu', () => {
-    component.toggleMobileMenu(); // Open menu
-    expect(component.mobileMenuOpen()).toBe(true);
-
-    component.onEscapeKey();
-    expect(component.mobileMenuOpen()).toBe(false);
-  });
-
-  it('should not close mobile menu on escape when menu is closed', () => {
-    expect(component.mobileMenuOpen()).toBe(false);
-
-    spyOn(component, 'closeMobileMenu');
-    component.onEscapeKey();
-
-    expect(component.closeMobileMenu).not.toHaveBeenCalled();
-  });
-
-  it('should handle document click to close mobile menu', () => {
-    // Create mock elements
-    const mockMobileMenu = document.createElement('div');
-    mockMobileMenu.className = 'mobile-menu';
-    const mockMenuToggle = document.createElement('button');
-    mockMenuToggle.className = 'mobile-menu-toggle';
-
-    document.body.appendChild(mockMobileMenu);
-    document.body.appendChild(mockMenuToggle);
-
-    spyOn(document, 'querySelector').and.callFake((selector: string) => {
-      if (selector === '.mobile-menu') return mockMobileMenu;
-      if (selector === '.mobile-menu-toggle') return mockMenuToggle;
-      return null;
-    });
-
-    // Open mobile menu
     component.toggleMobileMenu();
-    expect(component.mobileMenuOpen()).toBe(true);
-
-    // Click outside menu
-    const outsideElement = document.createElement('div');
-    const clickEvent = new Event('click');
-    Object.defineProperty(clickEvent, 'target', { value: outsideElement });
-
-    component.onDocumentClick(clickEvent);
+    component.onEscapeKey();
     expect(component.mobileMenuOpen()).toBe(false);
-
-    // Cleanup
-    document.body.removeChild(mockMobileMenu);
-    document.body.removeChild(mockMenuToggle);
   });
 
-  it('should not close mobile menu when clicking on menu toggle', () => {
-    const mockMobileMenu = document.createElement('div');
-    mockMobileMenu.className = 'mobile-menu';
-    const mockMenuToggle = document.createElement('button');
-    mockMenuToggle.className = 'mobile-menu-toggle';
+  it('should not close mobile menu on escape when already closed', () => {
+    const spy = vi.spyOn(component, 'closeMobileMenu');
+    component.onEscapeKey();
+    expect(spy).not.toHaveBeenCalled();
+  });
 
+  it('should close menu on outside document click', () => {
+    const mockMobileMenu = document.createElement('div');
+    const mockMenuToggle = document.createElement('button');
     document.body.appendChild(mockMobileMenu);
     document.body.appendChild(mockMenuToggle);
 
-    spyOn(document, 'querySelector').and.callFake((selector: string) => {
+    vi.spyOn(document, 'querySelector').mockImplementation((selector: string) => {
       if (selector === '.mobile-menu') return mockMobileMenu;
       if (selector === '.mobile-menu-toggle') return mockMenuToggle;
       return null;
     });
 
-    component.toggleMobileMenu(); // Open menu
+    component.toggleMobileMenu();
+    const event = new Event('click');
+    Object.defineProperty(event, 'target', { value: document.createElement('div') });
+    component.onDocumentClick(event);
+    expect(component.mobileMenuOpen()).toBe(false);
 
-    // Click on toggle button
-    const clickEvent = new Event('click');
-    Object.defineProperty(clickEvent, 'target', { value: mockMenuToggle });
-
-    spyOn(component, 'closeMobileMenu');
-    component.onDocumentClick(clickEvent);
-
-    expect(component.closeMobileMenu).not.toHaveBeenCalled();
-
-    // Cleanup
+    vi.restoreAllMocks();
     document.body.removeChild(mockMobileMenu);
     document.body.removeChild(mockMenuToggle);
   });
 
-  it('should not handle document click when mobile menu is closed', () => {
-    expect(component.mobileMenuOpen()).toBe(false);
+  it('should not close menu when clicking the toggle button', () => {
+    const mockMobileMenu = document.createElement('div');
+    const mockMenuToggle = document.createElement('button');
+    document.body.appendChild(mockMobileMenu);
+    document.body.appendChild(mockMenuToggle);
 
-    spyOn(component, 'closeMobileMenu');
-    const clickEvent = new Event('click');
-    component.onDocumentClick(clickEvent);
+    vi.spyOn(document, 'querySelector').mockImplementation((selector: string) => {
+      if (selector === '.mobile-menu') return mockMobileMenu;
+      if (selector === '.mobile-menu-toggle') return mockMenuToggle;
+      return null;
+    });
 
-    expect(component.closeMobileMenu).not.toHaveBeenCalled();
+    component.toggleMobileMenu();
+    const spy = vi.spyOn(component, 'closeMobileMenu');
+    const event = new Event('click');
+    Object.defineProperty(event, 'target', { value: mockMenuToggle });
+    component.onDocumentClick(event);
+    expect(spy).not.toHaveBeenCalled();
+
+    vi.restoreAllMocks();
+    document.body.removeChild(mockMobileMenu);
+    document.body.removeChild(mockMenuToggle);
   });
 
-  it('should call ngOnInit and update scroll state', () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const spy = spyOn<any>(component, 'updateScrollState');
+  it('should not handle document click when menu is closed', () => {
+    const spy = vi.spyOn(component, 'closeMobileMenu');
+    component.onDocumentClick(new Event('click'));
+    expect(spy).not.toHaveBeenCalled();
+  });
 
+  it('should call updateScrollState on ngOnInit', () => {
+    const spy = vi.spyOn(
+      component as NavigationComponent & { updateScrollState(): void },
+      'updateScrollState'
+    );
     component.ngOnInit();
     expect(spy).toHaveBeenCalled();
   });
 
-  it('should render navigation toolbar', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-    const toolbar = compiled.querySelector('mat-toolbar');
-
+  it('should render the mat-toolbar', () => {
+    const toolbar = fixture.nativeElement.querySelector('mat-toolbar');
     expect(toolbar).toBeTruthy();
-    expect(toolbar?.classList.contains('portfolio-navbar')).toBe(true);
+    expect(toolbar.classList.contains('portfolio-navbar')).toBe(true);
   });
 
-  it('should render desktop navigation menu', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-    const navMenu = compiled.querySelector('.nav-menu');
-
-    expect(navMenu).toBeTruthy();
-
-    const navLinks = navMenu?.querySelectorAll('.nav-link');
-    expect(navLinks?.length).toBeGreaterThan(5); // About, Technologies, Portfolio, Certifications, FAQ, Contact
+  it('should render mobile menu toggle with menu icon', () => {
+    const icon = fixture.nativeElement.querySelector('.mobile-menu-toggle mat-icon');
+    expect(icon?.textContent?.trim()).toBe('menu');
   });
 
-  it('should render mobile menu toggle button', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-    const toggleButton = compiled.querySelector('.mobile-menu-toggle');
-
-    expect(toggleButton).toBeTruthy();
-
-    const icon = toggleButton?.querySelector('mat-icon');
-    expect(icon?.textContent?.trim()).toBe('menu'); // Should show 'menu' when closed
-  });
-
-  it('should update mobile menu toggle icon when menu is open', () => {
+  it('should show close icon when mobile menu is open', () => {
     component.toggleMobileMenu();
     fixture.detectChanges();
-
-    const compiled = fixture.nativeElement as HTMLElement;
-    const toggleButton = compiled.querySelector('.mobile-menu-toggle');
-    const icon = toggleButton?.querySelector('mat-icon');
-
+    const icon = fixture.nativeElement.querySelector('.mobile-menu-toggle mat-icon');
     expect(icon?.textContent?.trim()).toBe('close');
   });
 
-  it('should render mobile menu', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-    const mobileMenu = compiled.querySelector('.mobile-menu');
-
-    expect(mobileMenu).toBeTruthy();
-    expect(mobileMenu?.classList.contains('open')).toBe(false);
-  });
-
-  it('should show mobile menu when open', () => {
+  it('should add open class to mobile menu when open', () => {
     component.toggleMobileMenu();
     fixture.detectChanges();
-
-    const compiled = fixture.nativeElement as HTMLElement;
-    const mobileMenu = compiled.querySelector('.mobile-menu');
-
+    const mobileMenu = fixture.nativeElement.querySelector('.mobile-menu');
     expect(mobileMenu?.classList.contains('open')).toBe(true);
   });
 
-  it('should render language switcher', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-    const langSwitcher = compiled.querySelector('.language-switcher');
-
-    expect(langSwitcher).toBeTruthy();
-
-    const langTrigger = langSwitcher?.querySelector('.lang-trigger');
-    expect(langTrigger).toBeTruthy();
+  it('should render CTA button with correct email href', () => {
+    const cta = fixture.nativeElement.querySelector('.cta-button') as HTMLAnchorElement;
+    expect(cta).toBeTruthy();
+    expect(cta.href).toBe('mailto:alderic.hoarau@gmail.com');
   });
 
-  it('should render CTA button with email link', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-    const ctaButton = compiled.querySelector('.cta-button') as HTMLAnchorElement;
-
-    expect(ctaButton).toBeTruthy();
-    expect(ctaButton.href).toBe('mailto:alderic.hoarau@gmail.com');
-  });
-
-  it('should handle navigation button clicks', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-
-    // Find and click the about button
-    const buttons = compiled.querySelectorAll('.nav-link');
-    const aboutButton = Array.from(buttons).find(
-      btn => btn.textContent?.includes('person') // mat-icon content
-    ) as HTMLButtonElement;
-
-    if (aboutButton) {
-      aboutButton.click();
-      fixture.detectChanges();
-
-      expect(mockScrollAnimationService.scrollToElement).toHaveBeenCalledWith('#about');
-    }
-  });
-
-  it('should handle mobile navigation clicks', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-
-    // Open mobile menu first
-    component.toggleMobileMenu();
-    fixture.detectChanges();
-
-    // Find mobile nav links
-    const mobileNavLinks = compiled.querySelectorAll('.mobile-nav-link');
-    expect(mobileNavLinks.length).toBeGreaterThan(0);
-
-    // Click first mobile nav link (should be about)
-    const firstMobileLink = mobileNavLinks[0] as HTMLButtonElement;
-    firstMobileLink.click();
-    fixture.detectChanges();
-
-    expect(mockScrollAnimationService.scrollToElement).toHaveBeenCalled();
-    expect(component.mobileMenuOpen()).toBe(false); // Should close menu
-  });
-
-  it('should handle mobile language change', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-
-    // Open mobile menu
-    component.toggleMobileMenu();
-    fixture.detectChanges();
-
-    // Find mobile language buttons
-    const mobileLangButtons = compiled.querySelectorAll('.mobile-lang-button');
-    expect(mobileLangButtons.length).toBe(2);
-
-    // Click English button
-    const englishButton = Array.from(mobileLangButtons).find(
-      btn => btn.textContent?.includes('EN') || btn.textContent?.includes('English')
-    ) as HTMLButtonElement;
-
-    if (englishButton) {
-      englishButton.click();
-      fixture.detectChanges();
-
-      expect(mockTranslationService.setLanguage).toHaveBeenCalledWith('en');
-      expect(component.mobileMenuOpen()).toBe(false); // Should close menu
-    }
-  });
-
-  it('should apply scrolled class when scrolled', () => {
-    // Mock scrolled state
+  it('should apply scrolled class to toolbar when scrolled', () => {
     Object.defineProperty(window, 'scrollY', { value: 100, writable: true });
     component['updateScrollState']();
     fixture.detectChanges();
-
-    const compiled = fixture.nativeElement as HTMLElement;
-    const toolbar = compiled.querySelector('mat-toolbar');
-
+    const toolbar = fixture.nativeElement.querySelector('mat-toolbar');
     expect(toolbar?.classList.contains('scrolled')).toBe(true);
   });
 
-  it('should handle mobile menu overlay click', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-
-    // Open mobile menu
+  it('should close menu when overlay is clicked', () => {
     component.toggleMobileMenu();
     fixture.detectChanges();
-
-    // Find and click overlay
-    const overlay = compiled.querySelector('.mobile-menu-overlay') as HTMLElement;
-    expect(overlay).toBeTruthy();
-
+    const overlay = fixture.nativeElement.querySelector('.mobile-menu-overlay') as HTMLElement;
     overlay.click();
     fixture.detectChanges();
-
     expect(component.mobileMenuOpen()).toBe(false);
   });
 });

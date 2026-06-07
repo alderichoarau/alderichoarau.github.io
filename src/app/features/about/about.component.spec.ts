@@ -38,7 +38,7 @@ describe('AboutComponent', () => {
     const avatar = fixture.nativeElement.querySelector('.hero-avatar') as HTMLImageElement;
     expect(avatar).toBeTruthy();
     expect(avatar.src).toContain('assets/images/about/Avatar.png');
-    expect(avatar.loading).toBe('eager');
+    expect(avatar.getAttribute('loading')).toBe('eager');
   });
 
   it('should render the availability badge', () => {

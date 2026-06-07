@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { vi } from 'vitest';
 import { ScrollAnimationService } from './scroll-animation.service';
 
 describe('ScrollAnimationService', () => {
@@ -66,9 +67,10 @@ describe('ScrollAnimationService', () => {
     el.id = 'scroll-target';
     document.body.appendChild(el);
 
-    spyOn(window, 'scrollTo');
+    const spy = vi.spyOn(window, 'scrollTo').mockImplementation((): void => undefined);
     service.scrollToElement('#scroll-target');
-    expect(window.scrollTo).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalled();
+    vi.restoreAllMocks();
 
     document.body.removeChild(el);
   });

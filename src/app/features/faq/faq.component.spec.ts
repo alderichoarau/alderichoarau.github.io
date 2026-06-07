@@ -3,14 +3,13 @@ import { TranslateModule } from '@ngx-translate/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { signal } from '@angular/core';
-
 import { FaqComponent } from './faq.component';
 import { DataService, FAQItem } from '../../core/services/data.service';
 
 describe('FaqComponent', () => {
   let component: FaqComponent;
   let fixture: ComponentFixture<FaqComponent>;
-  let mockDataService: jasmine.SpyObj<DataService>;
+  let mockDataService: { faq: ReturnType<typeof signal<FAQItem[]>> };
 
   const mockFAQs: FAQItem[] = [
     { id: '1', question: 'faq.q1', answer: 'faq.a1' },
@@ -19,9 +18,7 @@ describe('FaqComponent', () => {
   ];
 
   beforeEach(async () => {
-    mockDataService = jasmine.createSpyObj('DataService', [], {
-      faq: signal(mockFAQs),
-    });
+    mockDataService = { faq: signal(mockFAQs) };
 
     await TestBed.configureTestingModule({
       imports: [
