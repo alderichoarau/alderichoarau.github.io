@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1780834984631,
+  "timestamp": 1780839552935,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -15,7 +15,7 @@
         "/chunk-LMFNEALB.js",
         "/favicon.ico",
         "/index.html",
-        "/main-ZOWA27SE.js",
+        "/main-ZBTZLL3C.js",
         "/polyfills-RV3JTMEC.js",
         "/styles-34IBTQ7M.css"
       ],
@@ -58,8 +58,8 @@
     "/chunk-ECZFIRQT.js": "2fc1b98cd64a1119a202142fd9d6effbe45c0809",
     "/chunk-LMFNEALB.js": "9c4a6c72c851b3de81925a4810ba49ebea3ab952",
     "/favicon.ico": "9c39f434fe1261f68c5e3eefdf734630d99c5670",
-    "/index.html": "9be9b0acb5b53554da88150d9519536176eda49e",
-    "/main-ZOWA27SE.js": "1c468d4bd2952bcb8cb95cd0e8640167e727e563",
+    "/index.html": "4693edfb3a7ec24b850fa0f7767b24a1c61f15f8",
+    "/main-ZBTZLL3C.js": "286c5af6b169786b6dd33e5c5729f6859b9c348f",
     "/polyfills-RV3JTMEC.js": "e83dcd401293cfb45ad0988a17d1815b3bb09c33",
     "/styles-34IBTQ7M.css": "a42dd4046e6895116c9de811094e212f9d09dbed"
   },
