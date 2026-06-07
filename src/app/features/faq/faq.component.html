@@ -1,62 +1,32 @@
-<section id="faq" class="section fade-in-up">
-  <div class="container">
-    <div class="faq-content">
-      <!-- Header -->
-      <div class="faq-header">
-        <div class="section-badge">
-          <mat-icon class="badge-icon">help</mat-icon>
-          <span class="badge-text">{{ 'faq.title' | translate }}</span>
-        </div>
-        <p>{{ 'faq.subtitle' | translate }}</p>
-      </div>
-
-      <!-- Category Filters -->
-      <div class="category-filters fade-in-up">
-        <div class="filter-buttons">
-          @for (category of categories; track category) {
-            <button
-              class="filter-button"
-              [class.active]="selectedCategory() === category.id"
-              (click)="selectCategory(category.id)"
-            >
-              <mat-icon>{{ category.icon }}</mat-icon>
-              <span>{{ category.translationKey | translate }}</span>
-            </button>
-          }
-        </div>
-      </div>
-
-      <!-- FAQ Accordion -->
-      <div class="faq-accordion-container fade-in-up">
-        <mat-accordion class="modern-faq-accordion" multi="false">
-          @for (faq of filteredFAQs(); track trackByFAQ(i, faq); let i = $index) {
-            <mat-expansion-panel
-              class="modern-faq-panel"
-              [expanded]="expandedIndex() === i"
-              (opened)="expandedIndexSignal.set(i)"
-              (closed)="expandedIndexSignal.set(null)"
-            >
-              <mat-expansion-panel-header class="faq-panel-header">
-                <mat-panel-title class="faq-question">
-                  <mat-icon class="question-icon">help_outline</mat-icon>
-                  <span class="question-text">{{ faq.question | translate }}</span>
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-              <div class="faq-answer-content">
-                <p class="faq-answer">{{ faq.answer | translate }}</p>
-              </div>
-            </mat-expansion-panel>
-          }
-        </mat-accordion>
-
-        <!-- Empty state -->
-        @if (filteredFAQs().length === 0) {
-          <div class="empty-state">
-            <mat-icon class="empty-icon">search_off</mat-icon>
-            <p class="empty-text">Aucune question trouvée pour cette catégorie.</p>
-          </div>
-        }
-      </div>
+<section id="faq" class="faq-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">
+        <mat-icon>help_outline</mat-icon>
+        {{ 'faq.title' | translate }}
+      </span>
+      <p class="section-subtitle">{{ 'faq.subtitle' | translate }}</p>
     </div>
+
+    <mat-accordion class="faq-accordion" multi="false">
+      @for (faq of faqs(); track trackByFAQ(i, faq); let i = $index) {
+        <mat-expansion-panel
+          class="faq-panel"
+          [expanded]="expandedIndex() === i"
+          (opened)="expandedIndexSignal.set(i)"
+          (closed)="expandedIndexSignal.set(null)"
+        >
+          <mat-expansion-panel-header class="faq-header">
+            <mat-panel-title class="faq-question">
+              <span class="q-number">{{ i + 1 }}</span>
+              <span class="q-text">{{ faq.question | translate }}</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="faq-answer">
+            <p>{{ faq.answer | translate }}</p>
+          </div>
+        </mat-expansion-panel>
+      }
+    </mat-accordion>
   </div>
 </section>

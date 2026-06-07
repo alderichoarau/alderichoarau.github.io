@@ -3,7 +3,6 @@ import { RouterOutlet } from '@angular/router';
 import { NavigationComponent } from './core/components/navigation/navigation.component';
 import { AboutComponent } from './features/about/about.component';
 import { TechnologiesComponent } from './features/technologies/technologies.component';
-import { ProjectsComponent } from './features/projects/projects.component';
 import { ExperienceComponent } from './features/experience/experience.component';
 import { CertificationsComponent } from './features/certifications/certifications.component';
 import { ReferencesComponent } from './features/references/references.component';
@@ -20,7 +19,6 @@ import { FooterComponent } from './core/components/footer/footer.component';
     NavigationComponent,
     AboutComponent,
     TechnologiesComponent,
-    ProjectsComponent,
     ExperienceComponent,
     CertificationsComponent,
     ReferencesComponent,

@@ -1,50 +1,55 @@
-<section id="certifications" class="section-container">
-  <mat-card class="content-card">
-    <mat-card-content>
-      <div class="certifications-header">
-        <div class="section-badge">
-          <mat-icon class="badge-icon">verified</mat-icon>
-          <span class="badge-text">{{ 'certifications.title' | translate }}</span>
-        </div>
+<section id="certifications" class="credentials-section">
+  <div class="section-inner">
+    <!-- Certifications -->
+    <div class="credentials-panel">
+      <div class="panel-header">
+        <span class="section-label">
+          <mat-icon>verified</mat-icon>
+          {{ 'certifications.title' | translate }}
+        </span>
       </div>
-      <div class="certifications-grid">
-        @for (cert of certifications; track cert) {
-          <div class="cert-item">
-            <mat-icon class="cert-icon">{{ cert.icon }}</mat-icon>
-            <div class="cert-content">
-              <h3>{{ cert.title | translate }}</h3>
-              @if (cert.status) {
-                <p class="cert-status">({{ cert.status | translate }})</p>
+
+      <div class="certs-list">
+        @for (cert of certifications; track cert.title) {
+          <div class="cert-card">
+            <div class="cert-icon-wrap">
+              <mat-icon>{{ cert.icon }}</mat-icon>
+            </div>
+            <div class="cert-body">
+              <p class="cert-name">{{ cert.title | translate }}</p>
+              <span class="cert-badge obtained-badge">{{
+                'certifications.obtained' | translate
+              }}</span>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Langues -->
+    <div class="credentials-panel">
+      <div class="panel-header">
+        <span class="section-label">
+          <mat-icon>translate</mat-icon>
+          {{ 'languages.title' | translate }}
+        </span>
+      </div>
+
+      <div class="langs-list">
+        @for (lang of languages; track lang.name) {
+          <div class="lang-item">
+            <div class="lang-left">
+              <p class="lang-name">{{ lang.name | translate }}</p>
+              <p class="lang-level-text">{{ lang.level | translate }}</p>
+            </div>
+            <div class="lang-dots">
+              @for (dot of [1, 2, 3]; track dot) {
+                <span class="dot" [class.filled]="dot <= lang.dots"></span>
               }
             </div>
           </div>
         }
       </div>
-    </mat-card-content>
-  </mat-card>
-</section>
-
-<section class="section-container">
-  <mat-card class="content-card">
-    <mat-card-content>
-      <div class="languages-header">
-        <div class="section-badge">
-          <mat-icon class="badge-icon">translate</mat-icon>
-          <span class="badge-text">{{ 'languages.title' | translate }}</span>
-        </div>
-        <h2 class="section-title">{{ 'languages.title' | translate }}</h2>
-      </div>
-      <div class="languages-grid">
-        @for (lang of languages; track lang) {
-          <div class="language-item">
-            <div class="language-info">
-              <mat-icon>language</mat-icon>
-              <span>{{ lang.name | translate }}</span>
-            </div>
-            <mat-chip class="language-level">{{ lang.level | translate }}</mat-chip>
-          </div>
-        }
-      </div>
-    </mat-card-content>
-  </mat-card>
+    </div>
+  </div>
 </section>

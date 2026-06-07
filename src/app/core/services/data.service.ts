@@ -23,7 +23,6 @@ export interface FAQItem {
   id: string;
   question: string;
   answer: string;
-  category?: string;
 }
 
 @Injectable({
@@ -159,54 +158,13 @@ export class DataService {
 
   // FAQ data
   private readonly faqData = signal<FAQItem[]>([
-    {
-      id: 'cloud-projects',
-      question: 'faq.q1',
-      answer: 'faq.a1',
-      category: 'services',
-    },
-    {
-      id: 'mission-process',
-      question: 'faq.q2',
-      answer: 'faq.a2',
-      category: 'process',
-    },
-    {
-      id: 'emergency',
-      question: 'faq.q3',
-      answer: 'faq.a3',
-      category: 'services',
-    },
-    {
-      id: 'security',
-      question: 'faq.q4',
-      answer: 'faq.a4',
-      category: 'security',
-    },
-    {
-      id: 'collaboration',
-      question: 'faq.q5',
-      answer: 'faq.a5',
-      category: 'process',
-    },
-    {
-      id: 'billing',
-      question: 'faq.q6',
-      answer: 'faq.a6',
-      category: 'pricing',
-    },
-    {
-      id: 'maintenance',
-      question: 'faq.q7',
-      answer: 'faq.a7',
-      category: 'services',
-    },
-    {
-      id: 'remote-onsite',
-      question: 'faq.q8',
-      answer: 'faq.a8',
-      category: 'process',
-    },
+    { id: 'services', question: 'faq.q1', answer: 'faq.a1' },
+    { id: 'training', question: 'faq.q2', answer: 'faq.a2' },
+    { id: 'process', question: 'faq.q3', answer: 'faq.a3' },
+    { id: 'security', question: 'faq.q4', answer: 'faq.a4' },
+    { id: 'collaboration', question: 'faq.q5', answer: 'faq.a5' },
+    { id: 'billing', question: 'faq.q6', answer: 'faq.a6' },
+    { id: 'remote', question: 'faq.q7', answer: 'faq.a7' },
   ]);
 
   // Public readonly signals

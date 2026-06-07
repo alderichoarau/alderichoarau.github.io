@@ -1,33 +1,33 @@
-<section id="experience" class="section-container">
-  <mat-card class="content-card">
-    <mat-card-content>
-      <div class="experience-header">
-        <div class="section-badge">
-          <mat-icon class="badge-icon">timeline</mat-icon>
-          <span class="badge-text">{{ 'experience.title' | translate }}</span>
-        </div>
-      </div>
-      <div class="timeline">
-        @for (exp of experiences; track exp; let last = $last) {
-          <div class="timeline-item" [class.last]="last">
-            <div class="timeline-marker"></div>
-            <mat-card class="timeline-card">
-              <mat-card-header>
-                <mat-card-title class="experience-title">
-                  <mat-icon>{{ exp.icon }}</mat-icon>
-                  {{ exp.title | translate }}
-                </mat-card-title>
-                <mat-card-subtitle class="experience-period">
-                  {{ exp.period | translate }}
-                </mat-card-subtitle>
-              </mat-card-header>
-              <mat-card-content>
-                <p>{{ exp.description | translate }}</p>
-              </mat-card-content>
-            </mat-card>
+<section id="experience" class="experience-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">
+        <mat-icon>timeline</mat-icon>
+        {{ 'experience.title' | translate }}
+      </span>
+    </div>
+
+    <div class="timeline">
+      @for (exp of experiences; track exp; let i = $index; let last = $last) {
+        <div class="timeline-entry" [class.last]="last">
+          <!-- Ligne verticale + point -->
+          <div class="timeline-axis">
+            <div class="timeline-dot">
+              <mat-icon>{{ exp.icon }}</mat-icon>
+            </div>
+            @if (!last) {
+              <div class="timeline-line"></div>
+            }
           </div>
-        }
-      </div>
-    </mat-card-content>
-  </mat-card>
+
+          <!-- Contenu -->
+          <div class="timeline-body">
+            <div class="entry-period">{{ exp.period | translate }}</div>
+            <h3 class="entry-title">{{ exp.title | translate }}</h3>
+            <p class="entry-desc">{{ exp.description | translate }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
 </section>

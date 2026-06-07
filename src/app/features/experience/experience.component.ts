@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 
-import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-experience',
-  imports: [MatCardModule, MatIconModule, TranslateModule],
+  imports: [MatIconModule, TranslateModule],
   templateUrl: './experience.component.html',
   styleUrl: './experience.component.scss',
 })
@@ -29,6 +28,18 @@ export class ExperienceComponent {
       title: 'experience.gfi',
       period: 'experience.gfiPeriod',
       description: 'experience.gfiDesc',
+    },
+    {
+      icon: 'laptop_mac',
+      title: 'experience.astek',
+      period: 'experience.astekPeriod',
+      description: 'experience.astekDesc',
+    },
+    {
+      icon: 'groups',
+      title: 'experience.agileToulouse',
+      period: 'experience.agileToulousePeriod',
+      description: 'experience.agileToulouseDesc',
     },
   ];
 }

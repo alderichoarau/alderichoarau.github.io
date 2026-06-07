@@ -10,21 +10,10 @@
           <mat-icon>code</mat-icon>
           <span>{{ 'nav.technologies' | translate }}</span>
         </button>
-        <button mat-button [matMenuTriggerFor]="portfolioMenu" class="nav-link dropdown-trigger">
-          <mat-icon>work</mat-icon>
-          <span>{{ 'nav.portfolio' | translate }}</span>
-          <mat-icon class="dropdown-arrow">keyboard_arrow_down</mat-icon>
+        <button mat-button (click)="navigateToSection('experience')" class="nav-link">
+          <mat-icon>timeline</mat-icon>
+          <span>{{ 'nav.experience' | translate }}</span>
         </button>
-        <mat-menu #portfolioMenu="matMenu">
-          <button mat-menu-item (click)="navigateToSection('projects')">
-            <mat-icon>work</mat-icon>
-            <span>{{ 'nav.projects' | translate }}</span>
-          </button>
-          <button mat-menu-item (click)="navigateToSection('experience')">
-            <mat-icon>timeline</mat-icon>
-            <span>{{ 'nav.experience' | translate }}</span>
-          </button>
-        </mat-menu>
         <button mat-button (click)="navigateToSection('certifications')" class="nav-link">
           <mat-icon>verified</mat-icon>
           <span>{{ 'nav.certifications' | translate }}</span>
@@ -113,23 +102,7 @@
         <span>{{ 'nav.technologies' | translate }}</span>
       </button>
 
-      <!-- Portfolio section in mobile -->
-      <div class="mobile-section-divider">
-        <span class="section-title">{{ 'nav.portfolio' | translate }}</span>
-      </div>
-      <button
-        mat-button
-        class="mobile-nav-link mobile-sub-link"
-        (click)="navigateToSection('projects')"
-      >
-        <mat-icon>work</mat-icon>
-        <span>{{ 'nav.projects' | translate }}</span>
-      </button>
-      <button
-        mat-button
-        class="mobile-nav-link mobile-sub-link"
-        (click)="navigateToSection('experience')"
-      >
+      <button mat-button class="mobile-nav-link" (click)="navigateToSection('experience')">
         <mat-icon>timeline</mat-icon>
         <span>{{ 'nav.experience' | translate }}</span>
       </button>

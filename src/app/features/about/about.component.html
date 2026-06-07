@@ -1,147 +1,147 @@
-<section id="about" class="section fade-in-up">
-  <div class="container">
-    <h1 class="visually-hidden">{{ 'about.mainTitle' | translate }}</h1>
-    <div class="about-content">
-      <div class="about-header">
-        <div class="section-badge">
-          <mat-icon class="badge-icon">person</mat-icon>
-          <span class="badge-text">{{ 'about.title' | translate }}</span>
+<section id="about" class="hero-section">
+  <h1 class="visually-hidden">{{ 'about.mainTitle' | translate }}</h1>
+
+  <div class="hero-container">
+    <div class="hero-content">
+      <!-- Avatar -->
+      <div class="hero-avatar-wrapper">
+        <div class="avatar-ring">
+          <img
+            src="assets/images/about/Avatar.png"
+            alt="Aldéric Hoarau"
+            class="hero-avatar"
+            loading="eager"
+          />
+        </div>
+        <span class="availability-badge">
+          <span class="availability-dot"></span>
+          {{ 'about.available' | translate }}
+        </span>
+      </div>
+
+      <!-- Identity -->
+      <div class="hero-identity">
+        <p class="hero-greeting">{{ 'about.greeting' | translate }}</p>
+        <h2 class="hero-name">Aldéric Hoarau</h2>
+        <p class="hero-title">{{ 'header.subtitle' | translate }}</p>
+        <p class="hero-description">{{ 'about.text' | translate }}</p>
+      </div>
+
+      <!-- CTAs -->
+      <div class="hero-ctas">
+        <a href="mailto:alderic.hoarau@gmail.com" class="btn btn-primary">
+          <mat-icon>send</mat-icon>
+          {{ 'about.ctaEmail' | translate }}
+        </a>
+        <a
+          href="https://www.malt.fr/profile/alderichoarau"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-outline"
+        >
+          <mat-icon>work</mat-icon>
+          {{ 'about.ctaMalt' | translate }}
+        </a>
+      </div>
+
+      <!-- Stats -->
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number">10+</span>
+          <span class="stat-label">{{ 'about.yearsExperience' | translate }}</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-number">20+</span>
+          <span class="stat-label">{{ 'about.projectsCompleted' | translate }}</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-number">10x</span>
+          <span class="stat-label">{{ 'about.costReduction' | translate }}</span>
         </div>
       </div>
 
-      <div class="about-grid">
-        <div class="about-text-card">
-          <mat-card class="modern-card">
-            <mat-card-content>
-              <div class="profile-section">
-                <div class="profile-avatar">
-                  <img
-                    src="assets/images/about/Avatar.png"
-                    alt="Aldéric Hoarau - Photo de profil"
-                    class="avatar-image"
-                    loading="eager"
-                  />
-                </div>
-                <div class="profile-info">
-                  <h2 class="profile-name">Aldéric Hoarau</h2>
-                  <p class="profile-title">{{ 'header.subtitle' | translate }}</p>
-                </div>
-              </div>
-
-              <div class="about-description">
-                <p class="about-text">{{ 'about.text' | translate }}</p>
-              </div>
-
-              <div class="about-highlights">
-                <div class="highlight-item">
-                  <mat-icon class="highlight-icon">trending_up</mat-icon>
-                  <div class="highlight-content">
-                    <span class="highlight-number">10+</span>
-                    <span class="highlight-label">{{ 'about.yearsExperience' | translate }}</span>
-                  </div>
-                </div>
-
-                <div class="highlight-item">
-                  <mat-icon class="highlight-icon">cloud_done</mat-icon>
-                  <div class="highlight-content">
-                    <span class="highlight-number">20+</span>
-                    <span class="highlight-label">{{ 'about.projectsCompleted' | translate }}</span>
-                  </div>
-                </div>
-
-                <div class="highlight-item">
-                  <mat-icon class="highlight-icon">savings</mat-icon>
-                  <div class="highlight-content">
-                    <span class="highlight-number">10x</span>
-                    <span class="highlight-label">{{ 'about.costReduction' | translate }}</span>
-                  </div>
-                </div>
-              </div>
-            </mat-card-content>
-          </mat-card>
-        </div>
-
-        <div class="about-skills-preview">
-          <mat-card class="modern-card skills-card">
-            <mat-card-content>
-              <h3 class="skills-title">{{ 'about.keyAreas' | translate }}</h3>
-              <div class="skills-list">
-                <div class="skill-item">
-                  <mat-icon class="skill-icon">cloud</mat-icon>
-                  <span class="skill-text">Cloud & DevSecOps</span>
-                </div>
-                <div class="skill-item">
-                  <mat-icon class="skill-icon">analytics</mat-icon>
-                  <span class="skill-text">FinOps & Optimization</span>
-                </div>
-                <div class="skill-item">
-                  <mat-icon class="skill-icon">security</mat-icon>
-                  <span class="skill-text">Architecture & Security</span>
-                </div>
-                <div class="skill-item">
-                  <mat-icon class="skill-icon">groups</mat-icon>
-                  <span class="skill-text">Agility & Coaching</span>
-                </div>
-              </div>
-            </mat-card-content>
-          </mat-card>
-        </div>
+      <!-- Social links -->
+      <div class="hero-socials">
+        <a
+          href="https://www.linkedin.com/in/alderichoarau"
+          target="_blank"
+          rel="noopener"
+          class="social-link"
+          aria-label="LinkedIn"
+        >
+          <mat-icon>person</mat-icon>
+        </a>
+        <a
+          href="https://github.com/alderichoarau"
+          target="_blank"
+          rel="noopener"
+          class="social-link"
+          aria-label="GitHub"
+        >
+          <mat-icon>code</mat-icon>
+        </a>
+        <a
+          href="https://www.collective.work/profile/alderic-hoarau"
+          target="_blank"
+          rel="noopener"
+          class="social-link"
+          aria-label="Collective"
+        >
+          <mat-icon>business</mat-icon>
+        </a>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- Section Valeurs -->
-<section id="values" class="section fade-in-up">
-  <div class="container">
-    <div class="values-horizontal-grid">
-      <div class="value-card">
-        <div class="value-icon-wrapper">
-          <mat-icon class="value-icon">favorite</mat-icon>
+    <!-- Expertise card -->
+    <div class="hero-card">
+      <h3 class="card-title">{{ 'about.keyAreas' | translate }}</h3>
+      <div class="expertise-list">
+        <div class="expertise-item">
+          <div class="expertise-icon">
+            <mat-icon>cloud</mat-icon>
+          </div>
+          <div>
+            <p class="expertise-name">Cloud & DevSecOps</p>
+            <p class="expertise-desc">Azure, AWS, GCP · Terraform · CI/CD</p>
+          </div>
         </div>
-        <div class="value-content">
-          <h4 class="value-title">{{ 'about.passion.title' | translate }}</h4>
-          <p class="value-description">{{ 'about.passion.description' | translate }}</p>
+        <div class="expertise-item">
+          <div class="expertise-icon">
+            <mat-icon>savings</mat-icon>
+          </div>
+          <div>
+            <p class="expertise-name">FinOps & Optimisation</p>
+            <p class="expertise-desc">Réduction des coûts · Monitoring</p>
+          </div>
         </div>
-      </div>
-
-      <div class="value-card">
-        <div class="value-icon-wrapper">
-          <mat-icon class="value-icon">work</mat-icon>
+        <div class="expertise-item">
+          <div class="expertise-icon">
+            <mat-icon>security</mat-icon>
+          </div>
+          <div>
+            <p class="expertise-name">Architecture & Sécurité</p>
+            <p class="expertise-desc">Cloud-native · Microservices · DevSecOps</p>
+          </div>
         </div>
-        <div class="value-content">
-          <h4 class="value-title">{{ 'about.work.title' | translate }}</h4>
-          <p class="value-description">{{ 'about.work.description' | translate }}</p>
+        <div class="expertise-item">
+          <div class="expertise-icon">
+            <mat-icon>terminal</mat-icon>
+          </div>
+          <div>
+            <p class="expertise-name">Développement Full Stack</p>
+            <p class="expertise-desc">Java · Angular · TypeScript</p>
+          </div>
         </div>
-      </div>
-
-      <div class="value-card">
-        <div class="value-icon-wrapper">
-          <mat-icon class="value-icon">rocket_launch</mat-icon>
-        </div>
-        <div class="value-content">
-          <h4 class="value-title">{{ 'about.ambition.title' | translate }}</h4>
-          <p class="value-description">{{ 'about.ambition.description' | translate }}</p>
-        </div>
-      </div>
-
-      <div class="value-card">
-        <div class="value-icon-wrapper">
-          <mat-icon class="value-icon">psychology</mat-icon>
-        </div>
-        <div class="value-content">
-          <h4 class="value-title">{{ 'about.determination.title' | translate }}</h4>
-          <p class="value-description">{{ 'about.determination.description' | translate }}</p>
-        </div>
-      </div>
-
-      <div class="value-card">
-        <div class="value-icon-wrapper">
-          <mat-icon class="value-icon">autorenew</mat-icon>
-        </div>
-        <div class="value-content">
-          <h4 class="value-title">{{ 'about.resilience.title' | translate }}</h4>
-          <p class="value-description">{{ 'about.resilience.description' | translate }}</p>
+        <div class="expertise-item">
+          <div class="expertise-icon">
+            <mat-icon>groups</mat-icon>
+          </div>
+          <div>
+            <p class="expertise-name">Agilité & Coaching</p>
+            <p class="expertise-desc">Scrum · Facilitation · Transformation</p>
+          </div>
         </div>
       </div>
     </div>

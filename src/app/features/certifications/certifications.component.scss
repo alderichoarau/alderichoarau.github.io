@@ -1,168 +1,227 @@
-// Header styles consistent with contact
-.certifications-header,
-.languages-header {
-  text-align: center;
-  margin-bottom: 3rem;
-  
-  .section-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 2rem;
-    background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.1) 0%, rgba(var(--accent-secondary-rgb), 0.1) 100%);
-    border: 1px solid rgba(var(--accent-rgb), 0.2);
-    border-radius: 50px;
-    color: var(--accent-color);
-    font-weight: 600;
-    margin-bottom: 2rem;
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
-    
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(var(--accent-rgb), 0.2);
-    }
-    
-    .badge-icon {
-      font-size: 1.3rem;
-      width: 1.3rem;
-      height: 1.3rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .badge-text {
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-  }
-  
-  .section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin: 0 0 1rem 0;
-    
-    @media (max-width: 768px) {
-      font-size: 2rem;
-    }
+.credentials-section {
+  padding: 80px 0;
+
+  @media (max-width: 768px) {
+    padding: 60px 0;
   }
 }
 
-.certifications-grid {
+.section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
-}
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
 
-.cert-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  background: linear-gradient(135deg, rgba(0, 119, 181, 0.1) 0%, rgba(0, 88, 133, 0.1) 100%);
-  border-left: 4px solid #0077b5;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    background: linear-gradient(135deg, #0077b5 0%, #005885 100%);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 119, 181, 0.3);
-    
-    .cert-icon {
-      color: white;
-    }
-    
-    .cert-status {
-      color: rgba(255, 255, 255, 0.8);
-    }
-  }
-  
-  .cert-icon {
-    font-size: 1.8rem;
-    color: #0077b5;
-    transition: color 0.3s ease;
-  }
-  
-  .cert-content {
-    flex: 1;
-    
-    h3 {
-      margin: 0 0 0.25rem 0;
-      font-size: 1rem;
-      font-weight: 600;
-    }
-    
-    .cert-status {
-      margin: 0;
-      font-size: 0.9rem;
-      color: #666;
-      font-style: italic;
-      transition: color 0.3s ease;
-    }
-  }
-}
-
-.languages-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.language-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.7);
-  border-radius: 8px;
-  border: 1px solid rgba(0, 119, 181, 0.1);
-  transition: all 0.3s ease;
-  
-  &:hover {
-    background: rgba(0, 119, 181, 0.05);
-    border-color: rgba(0, 119, 181, 0.3);
-    transform: translateY(-1px);
-  }
-  
-  .language-info {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    
-    mat-icon {
-      color: #0077b5;
-    }
-    
-    span {
-      font-weight: 500;
-    }
-  }
-  
-  .language-level {
-    background: linear-gradient(135deg, #0077b5 0%, #005885 100%) !important;
-    color: white !important;
-    font-size: 0.8rem;
-    font-weight: 600;
-  }
-}
-
-// Responsive design
-@media (max-width: 768px) {
-  .certifications-grid,
-  .languages-grid {
+  @media (max-width: 700px) {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
-  
-  .language-item {
-    flex-direction: column;
-    gap: 0.5rem;
-    text-align: center;
+}
+
+// ── Panel commun ──────────────────────────────────────────────────────────────
+
+.credentials-panel {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 24px;
+  transition: border-color 0.25s ease;
+
+  &:hover {
+    border-color: rgba(var(--accent-rgb), 0.2);
   }
+}
+
+.panel-header {
+  margin-bottom: 20px;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: rgba(var(--accent-rgb), 0.08);
+  border: 1px solid rgba(var(--accent-rgb), 0.25);
+  border-radius: 50px;
+  color: var(--accent-color);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+
+  mat-icon {
+    font-size: 0.95rem;
+    width: 0.95rem;
+    height: 0.95rem;
+  }
+}
+
+// ── Certifications ────────────────────────────────────────────────────────────
+
+.certs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cert-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  transition: all 0.2s ease;
+
+  &:hover:not(.planned) {
+    border-color: rgba(var(--accent-rgb), 0.3);
+    background: rgba(var(--accent-rgb), 0.06);
+  }
+
+  &.planned {
+    opacity: 0.55;
+    border-style: dashed;
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+}
+
+.cert-icon-wrap {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(var(--accent-rgb), 0.1);
+  border: 1px solid rgba(var(--accent-rgb), 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  mat-icon {
+    font-size: 1.1rem;
+    color: var(--accent-color);
+  }
+
+  &.planned {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+
+    mat-icon {
+      color: var(--text-muted);
+    }
+  }
+}
+
+.cert-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.cert-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.cert-badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 2px 8px;
+  border-radius: 4px;
+  width: fit-content;
+
+  &.obtained-badge {
+    background: rgba(16, 185, 129, 0.12);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.25);
+  }
+
+  &.planned-badge {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-muted);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+// ── Langues ───────────────────────────────────────────────────────────────────
+
+.langs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lang-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: rgba(var(--accent-rgb), 0.3);
+    background: rgba(var(--accent-rgb), 0.06);
+  }
+}
+
+.lang-left {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.lang-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.lang-level-text {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.lang-dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid rgba(var(--accent-rgb), 0.35);
+  transition: all 0.2s ease;
+
+  &.filled {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 6px rgba(var(--accent-rgb), 0.4);
+  }
+}
+
+.lang-item:hover .dot.filled {
+  box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.6);
 }
