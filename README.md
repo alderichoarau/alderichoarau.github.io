@@ -1,219 +1,166 @@
-# 🚀 Aldéric Hoarau - Portfolio
+# Aldéric Hoarau — Portfolio Freelance
 
 [![Angular](https://img.shields.io/badge/Angular-21-red?style=for-the-badge&logo=angular)](https://angular.io/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![Vitest](https://img.shields.io/badge/Tested%20with-Vitest-6E9F18?style=for-the-badge&logo=vitest)](https://vitest.dev/)
 [![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-green?style=for-the-badge&logo=github)](https://pages.github.com/)
-[![PWA Ready](https://img.shields.io/badge/PWA-Ready-purple?style=for-the-badge)](https://web.dev/progressive-web-apps/)
-
-A professional portfolio built with Angular 21 and deployed on GitHub Pages. Architected following Angular best practices with clean, performant, and accessible code.
-
-**🌐 Live Website:** [https://alderichoarau.github.io](https://alderichoarau.github.io)
-
-## ✨ Features
-
-- 🌟 **Modern Angular 21** with signals and standalone components
-- 🎨 **Angular Material** with custom LinkedIn-inspired theme
-- 🌐 **Internationalization** (FR/EN) using ngx-translate
-- 📱 **Fully Responsive** and mobile-first design
-- ♿ **Accessible** (ARIA labels, keyboard navigation, contrast)
-- 🔍 **SEO Optimized** (meta tags, Open Graph, JSON-LD)
-- ⚡ **High Performance** (lazy loading, PWA, optimizations)
-- 🎭 **Smooth Animations** with Angular Animations API
-- 🧪 **Clean Architecture** (Core/Shared/Features modules)
-- 🔠 **Clean Code** (ESLint, Prettier, modern inject() pattern)
-
-## 🏗️ Architecture & Tech Stack
-
-### Project Structure
-```
-src/app/
-├── core/                    # Singleton services and layout components
-│   ├── components/          # Header, navigation
-│   ├── services/           # Global services using inject()
-│   └── core.module.ts
-├── shared/                  # Reusable components and utilities
-│   ├── animations/         # Reusable Angular animations
-│   └── shared.module.ts     # Angular Material + utilities
-├── features/               # Portfolio sections
-│   ├── about/ ├── technologies/ ├── projects/
-│   ├── experience/ ├── certifications/ ├── references/
-│   └── features.module.ts
-└── styles.scss             # Global styles and variables
-```
-
-### Tech Stack
-- **Frontend:** Angular 20, TypeScript 5.9, SCSS
-- **UI Library:** Angular Material with custom theme
-- **Architecture:** Standalone Components + Feature modules
-- **State Management:** Angular Signals (modern approach)
-- **Dependency Injection:** Modern inject() function pattern
-- **Build Tools:** Angular CLI with Webpack optimizations
-- **PWA:** Service Worker with intelligent caching strategies
-- **Deployment:** GitHub Pages with SPA routing support
-- **Code Quality:** ESLint + Prettier + Husky pre-commit hooks
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js 24+
-- npm 11+
-- Angular CLI: `npm install -g @angular/cli`
-
-### Development
-
-```bash
-# Clone and setup
-git clone https://github.com/alderichoarau/alderichoarau.github.io.git
-cd alderichoarau.github.io
-npm install
-
-# Start development server
-npm start
-```
-
-Navigate to `http://localhost:4200/` - auto-reloads on file changes.
-
-### Build & Test
-
-```bash
-# Production build
-npm run build
-
-# Test production build locally
-npm run build
-
-# Build for GitHub Pages
-npm run build:gh-pages
-```
-
-## 🛠️ Code Quality
-
-```bash
-# Linting and formatting
-npm run lint             # Check code with ESLint
-npm run lint:fix         # Auto-fix ESLint errors
-npm run format           # Format code with Prettier
-npm run format:check     # Check formatting
-npm run check            # Run both lint and format check
-npm run quality-gate     # Full quality check (lint+test+build)
-
-# Testing
-npm run test             # Run tests (headless)
-npm run test:watch       # Run tests in watch mode
-npm run test:coverage    # Run tests with coverage report
-
-# Accessibility
-npm run a11y            # Run accessibility tests (requires running server)
-
-# Security
-npm run security:audit  # Check for security vulnerabilities
-```
-
-### Git Hooks (Husky)
-
-- **Pre-commit**: Lint-staged + Tests + Production build
-- **Post-commit**: Deployment reminders
-
-### VS Code Integration
-
-- ESLint + Prettier auto-fix on save
-- Angular Language Service
-- Workspace recommendations for extensions
-
-## 📁 Complete Project Structure
-
-```
-alderichoarau.github.io/
-├── src/
-│   ├── app/                # Angular application
-│   │   ├── features/       # Feature modules
-│   │   ├── shared/         # Shared components and services
-│   │   └── core/           # Core services and layout
-│   ├── assets/
-│   │   ├── i18n/          # Translation files (en.json, fr.json)
-│   │   └── images/        # Company logos and assets
-│   └── styles.scss        # Global styles
-├── docs/                  # Production build (GitHub Pages)
-├── .github/
-│   ├── workflows/         # GitHub Actions CI/CD
-│   │   ├── deploy.yml     # Main deployment workflow
-│   │   ├── pr-checks.yml  # PR quality checks
-│   │   └── security.yml   # Security audit
-│   └── dependabot.yml     # Dependabot configuration
-├── .husky/                # Git hooks (pre-commit)
-└── README.md             # This file
-```
-
-## 🌐 CI/CD & Deployment
-
-### 🚀 Automatic Deployment
-
-The project uses **GitHub Actions** for automated deployment:
-
 [![Deploy Status](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/deploy.yml)
 
-1. **Push to main** → Automatic trigger
-2. **Quality checks** → Format, lint, tests with coverage
-3. **Production build** → `npm run build:prod`
-4. **Deploy** → Automatic GitHub Pages deployment
-5. **Live** → Available at [https://alderichoarau.github.io](https://alderichoarau.github.io)
+Landing page freelance construite avec Angular 21, déployée sur GitHub Pages.
 
-### 🔄 GitHub Actions Workflows
-
-#### 1. **Deploy Workflow** (`.github/workflows/deploy.yml`)
-- **Triggers**: Manual dispatch only (`workflow_dispatch`)
-- **Quality Checks**:
-  - Dependencies installation with npm cache
-  - ESLint linting (`npm run lint`)
-  - Tests (`npm run test`)
-  - Standard build (`npm run build`)
-- **Deployment**: Direct to GitHub Pages
-
-### 📊 Dependabot Configuration
-
-Automated configuration in `.github/dependabot.yml`:
-
-- **Weekly updates**: Every Monday at 8:00 AM
-- **Smart grouping**:
-  - Angular Core (major/minor versions separated)
-  - Angular Material & CDK
-  - Development tools (ESLint, Prettier)
-  - Testing dependencies (Jasmine, Karma)
-  - GitHub Actions
-- **Automated management**: 10 PRs max, automatic labels
-- **Review**: `@alderichoarau` automatically assigned
-
-### ⚡ Performance Optimizations
-
-- **npm cache**: Dependency reuse between builds
-- **Build cache**: Faster successive deployments
-- **Conditional builds**: Deployment only on `main`
-- **Parallel tests**: Optimized verification execution
-
-### 🛠️ Deployment Troubleshooting
-
-If translations don't appear after deployment:
-
-1. **Wait 2-5 minutes** for GitHub Pages propagation
-2. **Clear cache**: Ctrl+F5 (Windows) or Cmd+Shift+R (Mac)
-3. **Private browsing**: Test in incognito tab
-4. **Check translations**: [assets/i18n/fr.json](https://alderichoarau.github.io/assets/i18n/fr.json)
-5. **Developer console**: Check for errors in F12
-6. **GitHub Actions**: Check workflow status
-
-## 📧 Contact
-
-**Aldéric Hoarau**
-
-- 📧 Email: contact@alderichoarau.com
-- 💼 LinkedIn: [linkedin.com/in/alderichoarau](https://linkedin.com/in/alderichoarau)
-- 🌐 Website: [alderichoarau.github.io](https://alderichoarau.github.io)
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+**🌐 Site live :** [https://alderichoarau.github.io](https://alderichoarau.github.io)
 
 ---
 
-_Built with ❤️ using Angular and Angular Material_
+## Stack technique
+
+| Catégorie  | Technologie                                 |
+| ---------- | ------------------------------------------- |
+| Framework  | Angular 21 — Standalone Components, Signals |
+| UI         | Angular Material 21 avec thème dark custom  |
+| i18n       | ngx-translate (FR / EN)                     |
+| Tests      | Vitest + @analogjs/vitest-angular + jsdom   |
+| Couverture | @vitest/coverage-v8 (lcov → SonarCloud)     |
+| Build      | Angular CLI / esbuild                       |
+| Qualité    | ESLint + Prettier + Husky pre-commit        |
+| CI/CD      | GitHub Actions                              |
+| Analyse    | SonarCloud                                  |
+
+---
+
+## Sections du portfolio
+
+| Section          | Description                                          |
+| ---------------- | ---------------------------------------------------- |
+| **Hero**         | Présentation, stats clés, CTAs, liens sociaux        |
+| **Technologies** | Stack par catégorie (Frontend, Backend, Cloud, etc.) |
+| **Expérience**   | Timeline de 2015 à aujourd'hui                       |
+| **Crédentiels**  | Certifications Microsoft/Scrum + langues             |
+| **Références**   | Logos clients (carousel défilant)                    |
+| **FAQ**          | 7 questions fréquentes sur les services              |
+| **Contact**      | Email, LinkedIn, Malt, GitHub, Collective            |
+
+---
+
+## Démarrage rapide
+
+**Prérequis :** Node.js 24+, npm 11+
+
+```bash
+git clone https://github.com/alderichoarau/alderichoarau.github.io.git
+cd alderichoarau.github.io
+npm install
+npm start
+# → http://localhost:4200
+```
+
+---
+
+## Scripts disponibles
+
+```bash
+# Développement
+npm start                # Serveur de développement
+npm run build            # Build standard
+npm run build:prod       # Build production
+
+# Qualité de code
+npm run lint             # ESLint
+npm run lint:fix         # ESLint avec auto-fix
+npm run format           # Prettier (écriture)
+npm run format:check     # Prettier (vérification)
+npm run check            # lint + format:check
+
+# Tests
+npm run test             # Tests (single run, Vitest)
+npm run test:watch       # Tests en mode watch
+npm run test:coverage    # Tests + rapport de couverture lcov
+```
+
+---
+
+## Architecture
+
+```
+src/
+├── app/
+│   ├── core/
+│   │   ├── components/     # Navigation, Footer
+│   │   └── services/       # DataService, ScrollAnimationService,
+│   │                       # SeoService, TranslationService
+│   ├── features/
+│   │   ├── about/          # Section Hero
+│   │   ├── technologies/   # Stack technique
+│   │   ├── experience/     # Timeline
+│   │   ├── certifications/ # Certifications + langues
+│   │   ├── references/     # Logos clients
+│   │   ├── faq/            # FAQ accordion
+│   │   └── contact/        # Contact
+│   └── shared/
+│       └── animations/     # Animations Angular réutilisables
+├── assets/
+│   └── i18n/               # fr.json, en.json
+├── test-setup.ts           # Setup Vitest (zone.js + TestBed)
+└── styles.scss             # Thème global + variables CSS
+```
+
+---
+
+## Tests
+
+Les tests tournent avec **Vitest** + `@analogjs/vitest-angular` (jsdom, pas de navigateur nécessaire).
+
+```bash
+npm run test             # 145 tests, ~3s
+npm run test:coverage    # Génère coverage/lcov.info
+```
+
+Couverture cible : **80%** statements / functions / lines.
+
+---
+
+## CI/CD
+
+### Workflows GitHub Actions
+
+| Fichier                 | Déclencheur                  | Rôle                                      |
+| ----------------------- | ---------------------------- | ----------------------------------------- |
+| `deploy.yml`            | Manuel (`workflow_dispatch`) | Lint → Test → Build → Deploy GitHub Pages |
+| `sonar.yml`             | Push `main` + PR             | Génère couverture → Analyse SonarCloud    |
+| `dependency-review.yml` | Pull Request                 | Audit des nouvelles dépendances           |
+
+### Déploiement (`deploy.yml`)
+
+1. Checkout du code
+2. `npm run lint` — vérification ESLint
+3. `npm run test` — suite Vitest
+4. `npm run build` — build Angular (esbuild)
+5. Upload de `docs/browser/` → GitHub Pages
+
+### Analyse SonarCloud (`sonar.yml`)
+
+1. Checkout avec `fetch-depth: 0` (historique Git complet)
+2. `npm run test:coverage` — génère `coverage/lcov.info`
+3. Scan SonarCloud avec le rapport lcov
+
+La configuration Sonar est dans `sonar-project.properties`.
+
+---
+
+## Qualité de code
+
+- **ESLint** + **angular-eslint** pour TypeScript et templates
+- **Prettier** pour le formatage
+- **Husky** : hook pre-commit (lint-staged)
+- **SonarCloud** : analyse statique continue
+
+---
+
+## Contact
+
+**Aldéric Hoarau** — Consultant Cloud & Formateur DevOps Freelance
+
+- 📧 [alderic.hoarau@gmail.com](mailto:alderic.hoarau@gmail.com)
+- 💼 [linkedin.com/in/alderichoarau](https://linkedin.com/in/alderichoarau)
+- 🔨 [malt.fr/profile/alderichoarau](https://www.malt.fr/profile/alderichoarau)
+- 🌐 [alderichoarau.github.io](https://alderichoarau.github.io)
