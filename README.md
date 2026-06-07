@@ -10,6 +10,8 @@ Freelance landing page built with Angular 21, deployed on GitHub Pages.
 
 **🌐 Live site:** [https://alderichoarau.github.io](https://alderichoarau.github.io)
 
+[![CodeQL](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/github-code-scanning/codeql)
+[![Dependency Review](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/dependency-review.yml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=alderichoarau_alderichoarau.github.io&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=alderichoarau_alderichoarau.github.io)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=alderichoarau_alderichoarau.github.io&metric=bugs)](https://sonarcloud.io/summary/new_code?id=alderichoarau_alderichoarau.github.io)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=alderichoarau_alderichoarau.github.io&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=alderichoarau_alderichoarau.github.io)
@@ -21,31 +23,31 @@ Freelance landing page built with Angular 21, deployed on GitHub Pages.
 
 ## Tech Stack
 
-| Category | Technology |
-|----------|------------|
+| Category  | Technology                                  |
+| --------- | ------------------------------------------- |
 | Framework | Angular 21 — Standalone Components, Signals |
-| UI | Angular Material 21 with custom dark theme |
-| i18n | ngx-translate (FR / EN) |
-| Testing | Vitest + @analogjs/vitest-angular + jsdom |
-| Coverage | @vitest/coverage-v8 (lcov → SonarCloud) |
-| Build | Angular CLI / esbuild |
-| Quality | ESLint + Prettier + Husky pre-commit |
-| CI/CD | GitHub Actions |
-| Analysis | SonarCloud |
+| UI        | Angular Material 21 with custom dark theme  |
+| i18n      | ngx-translate (FR / EN)                     |
+| Testing   | Vitest + @analogjs/vitest-angular + jsdom   |
+| Coverage  | @vitest/coverage-v8 (lcov → SonarCloud)     |
+| Build     | Angular CLI / esbuild                       |
+| Quality   | ESLint + Prettier + Husky pre-commit        |
+| CI/CD     | GitHub Actions                              |
+| Analysis  | SonarCloud                                  |
 
 ---
 
 ## Sections
 
-| Section | Description |
-|---------|-------------|
-| **Hero** | Introduction, key stats, CTAs, social links |
+| Section          | Description                                        |
+| ---------------- | -------------------------------------------------- |
+| **Hero**         | Introduction, key stats, CTAs, social links        |
 | **Technologies** | Stack by category (Frontend, Backend, Cloud, etc.) |
-| **Experience** | Timeline from 2015 to present |
-| **Credentials** | Microsoft/Scrum certifications + languages |
-| **References** | Client logos (infinite scroll carousel) |
-| **FAQ** | 7 frequently asked questions about services |
-| **Contact** | Email, LinkedIn, Malt, GitHub, Collective |
+| **Experience**   | Timeline from 2015 to present                      |
+| **Credentials**  | Microsoft/Scrum certifications + languages         |
+| **References**   | Client logos (infinite scroll carousel)            |
+| **FAQ**          | 7 frequently asked questions about services        |
+| **Contact**      | Email, LinkedIn, Malt, GitHub, Collective          |
 
 ---
 
@@ -130,11 +132,11 @@ Coverage target: **80%** statements / functions / lines.
 
 ### GitHub Actions Workflows
 
-| File | Trigger | Role |
-|------|---------|------|
-| `deploy.yml` | Manual (`workflow_dispatch`) | Lint → Test → Build → Deploy to GitHub Pages |
-| `sonar.yml` | Push to `main` + PR | Generate coverage → SonarCloud analysis |
-| `dependency-review.yml` | Pull Request | Audit new dependencies |
+| File                    | Trigger                      | Role                                         |
+| ----------------------- | ---------------------------- | -------------------------------------------- |
+| `deploy.yml`            | Manual (`workflow_dispatch`) | Lint → Test → Build → Deploy to GitHub Pages |
+| `sonar.yml`             | Push to `main` + PR          | Generate coverage → SonarCloud analysis      |
+| `dependency-review.yml` | Pull Request                 | Audit new dependencies                       |
 
 ### Deployment (`deploy.yml`)
 
