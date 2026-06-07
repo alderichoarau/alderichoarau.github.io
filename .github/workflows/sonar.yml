@@ -1,0 +1,21 @@
+name: Run Sonar Cloud scan
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        types: [opened, synchronize, reopened]
+
+jobs:
+    sonar-scan:
+        name: Sonar scan
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v6
+
+            - name: SonarQube Scan
+              uses: SonarSource/sonarqube-scan-action@v8
+              env:
+                  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
