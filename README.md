@@ -1,4 +1,4 @@
-# Aldéric Hoarau — Portfolio Freelance
+# Aldéric Hoarau — Freelance Portfolio
 
 [![Angular](https://img.shields.io/badge/Angular-21-red?style=for-the-badge&logo=angular)](https://angular.io/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
@@ -6,45 +6,52 @@
 [![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-green?style=for-the-badge&logo=github)](https://pages.github.com/)
 [![Deploy Status](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/deploy.yml)
 
-Landing page freelance construite avec Angular 21, déployée sur GitHub Pages.
+Freelance landing page built with Angular 21, deployed on GitHub Pages.
 
-**🌐 Site live :** [https://alderichoarau.github.io](https://alderichoarau.github.io)
+**🌐 Live site:** [https://alderichoarau.github.io](https://alderichoarau.github.io)
 
----
-
-## Stack technique
-
-| Catégorie  | Technologie                                 |
-| ---------- | ------------------------------------------- |
-| Framework  | Angular 21 — Standalone Components, Signals |
-| UI         | Angular Material 21 avec thème dark custom  |
-| i18n       | ngx-translate (FR / EN)                     |
-| Tests      | Vitest + @analogjs/vitest-angular + jsdom   |
-| Couverture | @vitest/coverage-v8 (lcov → SonarCloud)     |
-| Build      | Angular CLI / esbuild                       |
-| Qualité    | ESLint + Prettier + Husky pre-commit        |
-| CI/CD      | GitHub Actions                              |
-| Analyse    | SonarCloud                                  |
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=alderichoarau_alderichoarau.github.io&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=alderichoarau_alderichoarau.github.io)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=alderichoarau_alderichoarau.github.io&metric=bugs)](https://sonarcloud.io/summary/new_code?id=alderichoarau_alderichoarau.github.io)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=alderichoarau_alderichoarau.github.io&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=alderichoarau_alderichoarau.github.io)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=alderichoarau_alderichoarau.github.io&metric=coverage)](https://sonarcloud.io/summary/new_code?id=alderichoarau_alderichoarau.github.io)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=alderichoarau_alderichoarau.github.io&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=alderichoarau_alderichoarau.github.io)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=alderichoarau_alderichoarau.github.io&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=alderichoarau_alderichoarau.github.io)
 
 ---
 
-## Sections du portfolio
+## Tech Stack
 
-| Section          | Description                                          |
-| ---------------- | ---------------------------------------------------- |
-| **Hero**         | Présentation, stats clés, CTAs, liens sociaux        |
-| **Technologies** | Stack par catégorie (Frontend, Backend, Cloud, etc.) |
-| **Expérience**   | Timeline de 2015 à aujourd'hui                       |
-| **Crédentiels**  | Certifications Microsoft/Scrum + langues             |
-| **Références**   | Logos clients (carousel défilant)                    |
-| **FAQ**          | 7 questions fréquentes sur les services              |
-| **Contact**      | Email, LinkedIn, Malt, GitHub, Collective            |
+| Category | Technology |
+|----------|------------|
+| Framework | Angular 21 — Standalone Components, Signals |
+| UI | Angular Material 21 with custom dark theme |
+| i18n | ngx-translate (FR / EN) |
+| Testing | Vitest + @analogjs/vitest-angular + jsdom |
+| Coverage | @vitest/coverage-v8 (lcov → SonarCloud) |
+| Build | Angular CLI / esbuild |
+| Quality | ESLint + Prettier + Husky pre-commit |
+| CI/CD | GitHub Actions |
+| Analysis | SonarCloud |
 
 ---
 
-## Démarrage rapide
+## Sections
 
-**Prérequis :** Node.js 24+, npm 11+
+| Section | Description |
+|---------|-------------|
+| **Hero** | Introduction, key stats, CTAs, social links |
+| **Technologies** | Stack by category (Frontend, Backend, Cloud, etc.) |
+| **Experience** | Timeline from 2015 to present |
+| **Credentials** | Microsoft/Scrum certifications + languages |
+| **References** | Client logos (infinite scroll carousel) |
+| **FAQ** | 7 frequently asked questions about services |
+| **Contact** | Email, LinkedIn, Malt, GitHub, Collective |
+
+---
+
+## Quick Start
+
+**Requirements:** Node.js 22+, npm 10+
 
 ```bash
 git clone https://github.com/alderichoarau/alderichoarau.github.io.git
@@ -56,25 +63,25 @@ npm start
 
 ---
 
-## Scripts disponibles
+## Scripts
 
 ```bash
-# Développement
-npm start                # Serveur de développement
-npm run build            # Build standard
-npm run build:prod       # Build production
+# Development
+npm start                # Development server
+npm run build            # Standard build
+npm run build:prod       # Production build
 
-# Qualité de code
-npm run lint             # ESLint
-npm run lint:fix         # ESLint avec auto-fix
-npm run format           # Prettier (écriture)
-npm run format:check     # Prettier (vérification)
+# Code quality
+npm run lint             # ESLint check
+npm run lint:fix         # ESLint with auto-fix
+npm run format           # Prettier (write)
+npm run format:check     # Prettier (check only)
 npm run check            # lint + format:check
 
-# Tests
-npm run test             # Tests (single run, Vitest)
-npm run test:watch       # Tests en mode watch
-npm run test:coverage    # Tests + rapport de couverture lcov
+# Testing
+npm run test             # Single run (Vitest)
+npm run test:watch       # Watch mode
+npm run test:coverage    # Tests + lcov coverage report
 ```
 
 ---
@@ -89,76 +96,76 @@ src/
 │   │   └── services/       # DataService, ScrollAnimationService,
 │   │                       # SeoService, TranslationService
 │   ├── features/
-│   │   ├── about/          # Section Hero
-│   │   ├── technologies/   # Stack technique
+│   │   ├── about/          # Hero section
+│   │   ├── technologies/   # Tech stack
 │   │   ├── experience/     # Timeline
-│   │   ├── certifications/ # Certifications + langues
-│   │   ├── references/     # Logos clients
+│   │   ├── certifications/ # Certifications + languages
+│   │   ├── references/     # Client logos
 │   │   ├── faq/            # FAQ accordion
 │   │   └── contact/        # Contact
 │   └── shared/
-│       └── animations/     # Animations Angular réutilisables
+│       └── animations/     # Reusable Angular animations
 ├── assets/
 │   └── i18n/               # fr.json, en.json
-├── test-setup.ts           # Setup Vitest (zone.js + TestBed)
-└── styles.scss             # Thème global + variables CSS
+├── test-setup.ts           # Vitest setup (zone.js + TestBed)
+└── styles.scss             # Global theme + CSS variables
 ```
 
 ---
 
-## Tests
+## Testing
 
-Les tests tournent avec **Vitest** + `@analogjs/vitest-angular` (jsdom, pas de navigateur nécessaire).
+Tests run with **Vitest** + `@analogjs/vitest-angular` (jsdom — no browser required).
 
 ```bash
 npm run test             # 145 tests, ~3s
-npm run test:coverage    # Génère coverage/lcov.info
+npm run test:coverage    # Generates coverage/lcov.info
 ```
 
-Couverture cible : **80%** statements / functions / lines.
+Coverage target: **80%** statements / functions / lines.
 
 ---
 
 ## CI/CD
 
-### Workflows GitHub Actions
+### GitHub Actions Workflows
 
-| Fichier                 | Déclencheur                  | Rôle                                      |
-| ----------------------- | ---------------------------- | ----------------------------------------- |
-| `deploy.yml`            | Manuel (`workflow_dispatch`) | Lint → Test → Build → Deploy GitHub Pages |
-| `sonar.yml`             | Push `main` + PR             | Génère couverture → Analyse SonarCloud    |
-| `dependency-review.yml` | Pull Request                 | Audit des nouvelles dépendances           |
+| File | Trigger | Role |
+|------|---------|------|
+| `deploy.yml` | Manual (`workflow_dispatch`) | Lint → Test → Build → Deploy to GitHub Pages |
+| `sonar.yml` | Push to `main` + PR | Generate coverage → SonarCloud analysis |
+| `dependency-review.yml` | Pull Request | Audit new dependencies |
 
-### Déploiement (`deploy.yml`)
+### Deployment (`deploy.yml`)
 
-1. Checkout du code
-2. `npm run lint` — vérification ESLint
-3. `npm run test` — suite Vitest
-4. `npm run build` — build Angular (esbuild)
-5. Upload de `docs/browser/` → GitHub Pages
+1. Checkout code
+2. `npm run lint` — ESLint check
+3. `npm run test` — Vitest suite
+4. `npm run build` — Angular build (esbuild)
+5. Upload `docs/browser/` → GitHub Pages
 
-### Analyse SonarCloud (`sonar.yml`)
+### SonarCloud Analysis (`sonar.yml`)
 
-1. Checkout avec `fetch-depth: 0` (historique Git complet)
-2. `npm run test:coverage` — génère `coverage/lcov.info`
-3. Scan SonarCloud avec le rapport lcov
+1. Checkout with `fetch-depth: 0` (full Git history)
+2. `npm run test:coverage` — generates `coverage/lcov.info`
+3. SonarCloud scan using the lcov report
 
-La configuration Sonar est dans `sonar-project.properties`.
+Sonar configuration is in `sonar-project.properties`.
 
 ---
 
-## Qualité de code
+## Code Quality
 
-- **ESLint** + **angular-eslint** pour TypeScript et templates
-- **Prettier** pour le formatage
-- **Husky** : hook pre-commit (lint-staged)
-- **SonarCloud** : analyse statique continue
+- **ESLint** + **angular-eslint** for TypeScript and templates
+- **Prettier** for consistent formatting
+- **Husky** pre-commit hook (lint-staged)
+- **SonarCloud** for continuous static analysis
 
 ---
 
 ## Contact
 
-**Aldéric Hoarau** — Consultant Cloud & Formateur DevOps Freelance
+**Aldéric Hoarau** — Cloud Consultant & DevOps Trainer
 
 - 📧 [alderic.hoarau@gmail.com](mailto:alderic.hoarau@gmail.com)
 - 💼 [linkedin.com/in/alderichoarau](https://linkedin.com/in/alderichoarau)
