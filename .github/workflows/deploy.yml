@@ -32,7 +32,7 @@ jobs:
       - name: Lint code
         run: npm run lint
 
-      - name: Run test
+      - name: Run tests
         run: npm run test
 
       - name: Build Angular app
