@@ -43,14 +43,14 @@
     "zone.js": "0.16.2"
   },
   "devDependencies": {
-    "@analogjs/vitest-angular": "^2.6.0",
+    "@analogjs/vitest-angular": "^2.6.2",
     "@angular/build": "21.2.14",
     "@angular/cli": "21.2.14",
     "@angular/compiler-cli": "21.2.16",
-    "@axe-core/cli": "4.11.3",
+    "@axe-core/cli": "4.12.1",
     "@eslint/js": "10.0.1",
-    "@types/node": "25.9.2",
-    "@vitest/coverage-v8": "^4.1.8",
+    "@types/node": "26.0.1",
+    "@vitest/coverage-v8": "^4.1.9",
     "angular-eslint": "21.4.0",
     "eslint": "10.4.1",
     "husky": "9.1.7",
