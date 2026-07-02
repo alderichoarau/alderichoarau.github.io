@@ -12,11 +12,8 @@ class ControllableIntersectionObserver {
   constructor(cb: IntersectionObserverCallback) {
     capturedCallback = cb;
   }
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   observe = mockObserve;
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   unobserve = mockUnobserve;
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   disconnect = mockDisconnect;
 }
 
