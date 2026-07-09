@@ -16,11 +16,9 @@
     "languageSelector": "Sélecteur de langue"
   },
   "header": {
-    "name": "Aldéric Hoarau",
     "subtitle": "Développeur, Cloud & DevSecOps Freelance"
   },
   "about": {
-    "title": "À propos",
     "mainTitle": "Portfolio d'Aldéric Hoarau",
     "greeting": "Bonjour, je suis",
     "available": "Disponible",
@@ -30,28 +28,7 @@
     "yearsExperience": "Années d'expérience",
     "projectsCompleted": "Projets réalisés",
     "costReduction": "Réduction des coûts",
-    "keyAreas": "Domaines d'expertise clés",
-    "values": "Mes Valeurs",
-    "passion": {
-      "title": "Passion",
-      "description": "L'amour du code et des technologies qui me pousse à toujours donner le meilleur"
-    },
-    "work": {
-      "title": "Travail",
-      "description": "L'engagement et la rigueur dans chaque projet pour des résultats de qualité"
-    },
-    "ambition": {
-      "title": "Ambition",
-      "description": "La vision et la volonté de créer des solutions innovantes et performantes"
-    },
-    "determination": {
-      "title": "Détermination",
-      "description": "La persévérance face aux défis techniques les plus complexes"
-    },
-    "resilience": {
-      "title": "Résilience",
-      "description": "La capacité à rebondir et apprendre de chaque obstacle rencontré"
-    }
+    "keyAreas": "Domaines d'expertise clés"
   },
   "technologies": {
     "title": "Technologies & Stack",
@@ -61,12 +38,7 @@
     "backend": "Backend",
     "cloud": "Cloud & DevOps",
     "databases": "Bases de données",
-    "tools": "Outils de développement",
-    "levels": {
-      "expert": "Expert",
-      "advanced": "Avancé",
-      "intermediate": "Intermédiaire"
-    }
+    "tools": "Outils de développement"
   },
   "experience": {
     "title": "Expérience récente",
@@ -111,13 +83,6 @@
   "faq": {
     "title": "Questions Fréquentes",
     "subtitle": "Questions fréquemment posées sur mes services et méthodes de travail",
-    "categories": {
-      "all": "Toutes",
-      "services": "Services",
-      "process": "Processus",
-      "security": "Sécurité",
-      "pricing": "Tarification"
-    },
     "q1": "Quels services proposez-vous ?",
     "a1": "J'interviens sur trois axes principaux : la migration et modernisation d'applications vers le cloud Azure, le conseil et l'implémentation DevSecOps (CI/CD, Infrastructure as Code, sécurité), et la formation technique sur les sujets DevOps et Cloud pour vos équipes.",
     "q2": "Proposez-vous des formations DevOps & Cloud ?",

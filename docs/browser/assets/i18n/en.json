@@ -16,11 +16,9 @@
     "languageSelector": "Language selector"
   },
   "header": {
-    "name": "Aldéric Hoarau",
     "subtitle": "Developer, Cloud & DevSecOps Freelancer"
   },
   "about": {
-    "title": "About",
     "mainTitle": "Aldéric Hoarau Portfolio",
     "greeting": "Hi, I'm",
     "available": "Available",
@@ -30,28 +28,7 @@
     "yearsExperience": "Years Experience",
     "projectsCompleted": "Projects Completed",
     "costReduction": "Cost Reduction",
-    "keyAreas": "Key Areas of Expertise",
-    "values": "My Values",
-    "passion": {
-      "title": "Passion",
-      "description": "Love for code and technology that drives me to always give my best"
-    },
-    "work": {
-      "title": "Work",
-      "description": "Commitment and rigor in every project for quality results"
-    },
-    "ambition": {
-      "title": "Ambition",
-      "description": "Vision and will to create innovative and high-performing solutions"
-    },
-    "determination": {
-      "title": "Determination",
-      "description": "Perseverance in the face of the most complex technical challenges"
-    },
-    "resilience": {
-      "title": "Resilience",
-      "description": "Ability to bounce back and learn from every obstacle encountered"
-    }
+    "keyAreas": "Key Areas of Expertise"
   },
   "technologies": {
     "title": "Technologies & Stack",
@@ -61,12 +38,7 @@
     "backend": "Backend",
     "cloud": "Cloud & DevOps",
     "databases": "Databases",
-    "tools": "Development Tools",
-    "levels": {
-      "expert": "Expert",
-      "advanced": "Advanced",
-      "intermediate": "Intermediate"
-    }
+    "tools": "Development Tools"
   },
   "experience": {
     "title": "Recent Experience",
@@ -111,13 +83,6 @@
   "faq": {
     "title": "Frequently Asked Questions",
     "subtitle": "Frequently asked questions about my services and working methods",
-    "categories": {
-      "all": "All",
-      "services": "Services",
-      "process": "Process",
-      "security": "Security",
-      "pricing": "Pricing"
-    },
     "q1": "What services do you offer?",
     "a1": "I work across three main areas: migration and modernization of applications to Azure cloud, DevSecOps consulting and implementation (CI/CD, Infrastructure as Code, security), and technical training on DevOps and Cloud topics for your teams.",
     "q2": "Do you offer DevOps & Cloud training?",
