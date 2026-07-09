@@ -5,6 +5,7 @@
 [![Vitest](https://img.shields.io/badge/Tested%20with-Vitest-6E9F18?style=for-the-badge&logo=vitest)](https://vitest.dev/)
 [![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-green?style=for-the-badge&logo=github)](https://pages.github.com/)
 [![Deploy Status](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/deploy.yml)
+[![CI](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/ci.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/ci.yml)
 
 Freelance landing page built with Angular 22, deployed on GitHub Pages.
 
@@ -134,6 +135,7 @@ Coverage target: **80%** statements / functions / lines.
 
 | File                    | Trigger                      | Role                                         |
 | ----------------------- | ---------------------------- | -------------------------------------------- |
+| `ci.yml`                | Pull Request + push to `main` | Lint → Format check → Test → Build (gate)   |
 | `deploy.yml`            | Manual (`workflow_dispatch`) | Lint → Test → Build → Deploy to GitHub Pages |
 | `sonar.yml`             | Push to `main` + PR          | Generate coverage → SonarCloud analysis      |
 | `dependency-review.yml` | Pull Request                 | Audit new dependencies                       |

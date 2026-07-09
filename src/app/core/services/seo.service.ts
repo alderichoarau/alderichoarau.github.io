@@ -15,7 +15,7 @@ interface FAQStructuredData {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SeoService {
   private readonly meta = inject(Meta);
@@ -32,7 +32,7 @@ export class SeoService {
   updateOpenGraph(data: { title: string; description: string; image?: string }): void {
     this.meta.updateTag({ property: 'og:title', content: data.title });
     this.meta.updateTag({ property: 'og:description', content: data.description });
-    
+
     if (data.image) {
       this.meta.updateTag({ property: 'og:image', content: data.image });
     }
@@ -47,9 +47,9 @@ export class SeoService {
         name: faq.question,
         acceptedAnswer: {
           '@type': 'Answer',
-          text: faq.answer
-        }
-      }))
+          text: faq.answer,
+        },
+      })),
     };
 
     // Remove existing FAQ structured data script if any
@@ -74,8 +74,8 @@ export class SeoService {
         '@type': 'ListItem',
         position: index + 1,
         name: crumb.name,
-        item: crumb.url
-      }))
+        item: crumb.url,
+      })),
     };
 
     // Remove existing breadcrumb structured data script if any

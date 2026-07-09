@@ -1,11 +1,17 @@
-name: Run Sonar Cloud scan
+name: GitHub - Sonar Cloud Analysis
+run-name: Run Sonar Cloud Analysis
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
   pull_request:
     types: [opened, synchronize, reopened]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -17,24 +23,23 @@ jobs:
     name: Sonar scan
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: "Checkout code"
         uses: actions/checkout@v7
-        with:
-          fetch-depth: 0
 
-      - name: Setup Node.js
+      - name: "Setup Node"
         uses: actions/setup-node@v6
         with:
-          node-version: "24"
-          cache: "npm"
+            node-version-file: .nvmrc
+            cache: npm
+            cache-dependency-path: package-lock.json
 
-      - name: Install dependencies
+      - name: "Install dependencies"
         run: npm ci
 
-      - name: Generate coverage report
+      - name: "Generate coverage report"
         run: npm run test:coverage
 
-      - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v8
+      - name: "SonarCloud Scan"
+        uses: SonarSource/sonarqube-scan-action@713881670b6b3676cda39549040e2d88c70d582e # v8
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

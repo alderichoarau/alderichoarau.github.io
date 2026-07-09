@@ -1,0 +1,46 @@
+name: GitHub - Continuous Integration
+run-name: Run Continuous Integration
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: "Lint, test & build"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout code"
+        uses: actions/checkout@v7
+
+      - name: "Setup Node"
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: "Install dependencies"
+        run: npm ci
+
+      - name: "Lint code"
+        run: npm run lint
+
+      - name: "Format check"
+        run: npm run format:check
+
+      - name: "Run tests"
+        run: npm run test
+
+      - name: "Build Angular app"
+        run: npm run build:prod
