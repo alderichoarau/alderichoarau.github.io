@@ -165,6 +165,14 @@ Sonar configuration is in `sonar-project.properties`.
 
 ---
 
+## License
+
+© 2026 Aldéric Hoarau. All rights reserved. This repository is public for
+viewing purposes only — see [LICENSE](./LICENSE). External contributions are
+not accepted, see [CONTRIBUTING.md](./CONTRIBUTING.md).
+
+---
+
 ## Contact
 
 **Aldéric Hoarau** — Cloud Consultant & DevOps Trainer
