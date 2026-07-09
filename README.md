@@ -1,12 +1,12 @@
 # Aldéric Hoarau — Freelance Portfolio
 
-[![Angular](https://img.shields.io/badge/Angular-21-red?style=for-the-badge&logo=angular)](https://angular.io/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![Angular](https://img.shields.io/badge/Angular-22-red?style=for-the-badge&logo=angular)](https://angular.io/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-6.0.3-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![Vitest](https://img.shields.io/badge/Tested%20with-Vitest-6E9F18?style=for-the-badge&logo=vitest)](https://vitest.dev/)
 [![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-green?style=for-the-badge&logo=github)](https://pages.github.com/)
 [![Deploy Status](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/deploy.yml)
 
-Freelance landing page built with Angular 21, deployed on GitHub Pages.
+Freelance landing page built with Angular 22, deployed on GitHub Pages.
 
 **🌐 Live site:** [https://alderichoarau.github.io](https://alderichoarau.github.io)
 
@@ -24,8 +24,8 @@ Freelance landing page built with Angular 21, deployed on GitHub Pages.
 ## Tech Stack
 
 | Category  | Technology                                  |
-| --------- | ------------------------------------------- |
-| Framework | Angular 21 — Standalone Components, Signals |
+| --------- |---------------------------------------------|
+| Framework | Angular 22 — Standalone Components, Signals |
 | UI        | Angular Material 21 with custom dark theme  |
 | i18n      | ngx-translate (FR / EN)                     |
 | Testing   | Vitest + @analogjs/vitest-angular + jsdom   |
