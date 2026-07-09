@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1783614496470,
+  "timestamp": 1783616855761,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -15,7 +15,7 @@
         "/chunk-VOLLM6IB.js",
         "/favicon.ico",
         "/index.html",
-        "/main-YKRCRO4R.js",
+        "/main-D3PYX2RM.js",
         "/polyfills-RV3JTMEC.js",
         "/styles-34IBTQ7M.css"
       ],
@@ -30,7 +30,6 @@
       },
       "urls": [
         "/assets/images/about/Avatar.png",
-        "/assets/images/projects/placeholder.svg",
         "/assets/images/references/AirFrance.png",
         "/assets/images/references/Airbus.png",
         "/assets/images/references/Astek.png",
@@ -46,7 +45,6 @@
   "dataGroups": [],
   "hashTable": {
     "/assets/images/about/Avatar.png": "5033c27a59f3bca10a1e07f382266aeb4dfc0a76",
-    "/assets/images/projects/placeholder.svg": "24fc890e0390c856e6743f696fa8bf481169ef9d",
     "/assets/images/references/AirFrance.png": "080ca5026b660902096bcc1e8f1215448b0b4574",
     "/assets/images/references/Airbus.png": "c834bc59e3003136179a6b66dbee230f4f124ff9",
     "/assets/images/references/Astek.png": "f6c062ce33c03397268eaa894c1a8bcc5a37c4bb",
@@ -58,8 +56,8 @@
     "/chunk-QTA7IWZR.js": "4ba2e86ea3b2f40ae82468d6f8c05ac1a49dc5f7",
     "/chunk-VOLLM6IB.js": "c59812dde7272c858fa772744d85932791fb0bf3",
     "/favicon.ico": "9c39f434fe1261f68c5e3eefdf734630d99c5670",
-    "/index.html": "507d3c65d5220911e3902af46c2b9198742aa6b4",
-    "/main-YKRCRO4R.js": "f5b365b8e75d4745ce3d6547035f8bfe99cac37d",
+    "/index.html": "fd5075c0fe9e117df3b282e6cf72743af92137f6",
+    "/main-D3PYX2RM.js": "2b23366108726385440e98f84357ea52b4ec9c8a",
     "/polyfills-RV3JTMEC.js": "e83dcd401293cfb45ad0988a17d1815b3bb09c33",
     "/styles-34IBTQ7M.css": "a42dd4046e6895116c9de811094e212f9d09dbed"
   },

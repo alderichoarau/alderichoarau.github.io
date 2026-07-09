@@ -2,8 +2,6 @@
   "nav": {
     "about": "About",
     "technologies": "Technologies",
-    "portfolio": "Portfolio",
-    "projects": "Projects",
     "experience": "Experience",
     "certifications": "Credentials",
     "references": "References",
@@ -68,35 +66,6 @@
       "expert": "Expert",
       "advanced": "Advanced",
       "intermediate": "Intermediate"
-    }
-  },
-  "projects": {
-    "title": "Featured Projects",
-    "subtitle": "A selection of projects I've worked on recently",
-    "viewProject": "View Project",
-    "liveDemo": "Live Demo",
-    "sourceCode": "Source Code",
-    "featured": "Featured",
-    "allProjects": "All Projects",
-    "project1": {
-      "title": "Cloud Migration Platform",
-      "description": "Complete Azure migration for 20+ applications with 10x cost reduction through optimized architecture and automated deployment.",
-      "technologies": ["Azure", "Terraform", "GitHub Actions", "Docker"]
-    },
-    "project2": {
-      "title": "FinOps Dashboard",
-      "description": "Real-time cost monitoring and optimization platform for multi-cloud environments with automated recommendations.",
-      "technologies": ["Angular", "Power BI", "Azure Functions", "Cosmos DB"]
-    },
-    "project3": {
-      "title": "DevSecOps Pipeline",
-      "description": "Secure CI/CD pipeline with automated security scanning, compliance checks, and infrastructure as code.",
-      "technologies": ["Azure DevOps", "SonarQube", "Terraform", "Kubernetes"]
-    },
-    "project4": {
-      "title": "Portfolio Website",
-      "description": "Modern, responsive portfolio website built with Angular 19 and Material Design, featuring dark theme and smooth animations.",
-      "technologies": ["Angular", "Material Design", "TypeScript", "SCSS"]
     }
   },
   "experience": {

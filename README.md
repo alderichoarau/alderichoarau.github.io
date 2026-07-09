@@ -29,7 +29,7 @@ Freelance landing page built with Angular 22, deployed on GitHub Pages.
 | Category  | Technology                                  |
 | --------- |---------------------------------------------|
 | Framework | Angular 22 — Standalone Components, Signals |
-| UI        | Angular Material 21 with custom dark theme  |
+| UI        | Angular Material 22 with custom dark theme  |
 | i18n      | ngx-translate (FR / EN)                     |
 | Testing   | Vitest + @analogjs/vitest-angular + jsdom   |
 | Coverage  | @vitest/coverage-v8 (lcov → SonarCloud)     |
@@ -137,9 +137,9 @@ Coverage target: **80%** statements / functions / lines.
 
 | File                    | Trigger                      | Role                                         |
 | ----------------------- | ---------------------------- | -------------------------------------------- |
-| `ci.yml`                | Pull Request + push to `main` | Lint → Format check → Test → Build (gate)   |
+| `ci.yml`                | PR + push to `main` + manual | Lint → Format check → Test → Build (gate)   |
 | `deploy.yml`            | Manual (`workflow_dispatch`) | Lint → Test → Build → Deploy to GitHub Pages |
-| `sonar.yml`             | Push to `main` + PR          | Generate coverage → SonarCloud analysis      |
+| `sonar.yml`             | Push to `main` + PR + manual | Generate coverage → SonarCloud analysis      |
 | `dependency-review.yml` | Pull Request                 | Audit new dependencies                       |
 
 ### Deployment (`deploy.yml`)
@@ -152,7 +152,7 @@ Coverage target: **80%** statements / functions / lines.
 
 ### SonarCloud Analysis (`sonar.yml`)
 
-1. Checkout with `fetch-depth: 0` (full Git history)
+1. Checkout code
 2. `npm run test:coverage` — generates `coverage/lcov.info`
 3. SonarCloud scan using the lcov report
 

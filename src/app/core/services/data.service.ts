@@ -8,17 +8,6 @@ export interface Technology {
   color?: string;
 }
 
-export interface Project {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  technologies: string[];
-  liveUrl?: string;
-  sourceUrl?: string;
-  featured: boolean;
-}
-
 export interface FAQItem {
   id: string;
   question: string;
@@ -115,47 +104,6 @@ export class DataService {
     },
   ]);
 
-  // Projects data
-  private readonly projectsData = signal<Project[]>([
-    {
-      id: 'cloud-migration',
-      title: 'projects.project1.title',
-      description: 'projects.project1.description',
-      image: '/assets/images/projects/placeholder.svg',
-      technologies: ['Azure', 'Terraform', 'GitHub Actions', 'Docker'],
-      liveUrl: '#',
-      featured: true,
-    },
-    {
-      id: 'finops-dashboard',
-      title: 'projects.project2.title',
-      description: 'projects.project2.description',
-      image: '/assets/images/projects/placeholder.svg',
-      technologies: ['Angular', 'Power BI', 'Azure Functions', 'Cosmos DB'],
-      liveUrl: '#',
-      featured: true,
-    },
-    {
-      id: 'devsecops-pipeline',
-      title: 'projects.project3.title',
-      description: 'projects.project3.description',
-      image: '/assets/images/projects/placeholder.svg',
-      technologies: ['Azure DevOps', 'SonarQube', 'Terraform', 'Kubernetes'],
-      sourceUrl: '#',
-      featured: true,
-    },
-    {
-      id: 'portfolio-website',
-      title: 'projects.project4.title',
-      description: 'projects.project4.description',
-      image: '/assets/images/projects/placeholder.svg',
-      technologies: ['Angular', 'Material Design', 'TypeScript', 'SCSS'],
-      liveUrl: 'https://alderichoarau.github.io',
-      sourceUrl: 'https://github.com/alderichoarau/alderichoarau.github.io',
-      featured: false,
-    },
-  ]);
-
   // FAQ data
   private readonly faqData = signal<FAQItem[]>([
     { id: 'services', question: 'faq.q1', answer: 'faq.a1' },
@@ -169,19 +117,14 @@ export class DataService {
 
   // Public readonly signals
   public readonly technologies = this.technologiesData.asReadonly();
-  public readonly projects = this.projectsData.asReadonly();
   public readonly faq = this.faqData.asReadonly();
 
   // Helper methods with computed signals
-  getFeaturedProjects() {
-    return this.projects().filter(project => project.featured);
-  }
-
   getTechnologiesByCategory(category: Technology['category']) {
     return this.technologies().filter(tech => tech.category === category);
   }
 
-  // Method to get technology by name (for project display)
+  // Method to get technology by name
   getTechnologyByName(name: string) {
     return this.technologies().find(tech => tech.name === name);
   }

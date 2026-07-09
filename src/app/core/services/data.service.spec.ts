@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { DataService } from './data.service';
+import { beforeEach, describe, expect, it } from 'vitest';
 
 describe('DataService', () => {
   let service: DataService;
@@ -76,29 +77,6 @@ describe('DataService', () => {
     const angular = frontendTechs.find(t => t.name === 'Angular');
     expect(angular).toBeDefined();
     expect(angular?.level).toBe('expert');
-  });
-
-  // ── Projects ──────────────────────────────────────────────────────────────
-
-  it('should expose projects as a signal', () => {
-    const projects = service.projects();
-    expect(Array.isArray(projects)).toBe(true);
-    expect(projects.length).toBeGreaterThan(0);
-  });
-
-  it('should return only featured projects', () => {
-    const featured = service.getFeaturedProjects();
-    expect(featured.length).toBeGreaterThan(0);
-    featured.forEach(p => expect(p.featured).toBe(true));
-  });
-
-  it('should not include non-featured projects in getFeaturedProjects', () => {
-    const all = service.projects();
-    const featured = service.getFeaturedProjects();
-    const nonFeatured = all.filter(p => !p.featured);
-    nonFeatured.forEach(p => {
-      expect(featured.find(f => f.id === p.id)).toBeUndefined();
-    });
   });
 
   // ── FAQ ───────────────────────────────────────────────────────────────────
