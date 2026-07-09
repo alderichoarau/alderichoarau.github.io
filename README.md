@@ -2,6 +2,7 @@
 
 [![Angular](https://img.shields.io/badge/Angular-22-red?style=for-the-badge&logo=angular)](https://angular.io/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-6.0.3-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+![NPM](https://img.shields.io/badge/npm-DD0031?style=for-the-badge&logo=npm&logoColor=white)
 [![Vitest](https://img.shields.io/badge/Tested%20with-Vitest-6E9F18?style=for-the-badge&logo=vitest)](https://vitest.dev/)
 [![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-green?style=for-the-badge&logo=github)](https://pages.github.com/)
 [![Deploy Status](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/deploy.yml)
@@ -55,7 +56,7 @@ Freelance landing page built with Angular 22, deployed on GitHub Pages.
 
 ## Quick Start
 
-**Requirements:** Node.js 22+, npm 10+
+**Requirements:** Node.js 24+, npm 11+
 
 ```bash
 git clone https://github.com/alderichoarau/alderichoarau.github.io.git
