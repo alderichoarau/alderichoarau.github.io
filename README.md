@@ -123,7 +123,7 @@ src/
 Tests run with **Vitest** + `@analogjs/vitest-angular` (jsdom — no browser required).
 
 ```bash
-npm run test             # 145 tests, ~3s
+npm run test             # 151 tests, ~3s
 npm run test:coverage    # Generates coverage/lcov.info
 ```
 

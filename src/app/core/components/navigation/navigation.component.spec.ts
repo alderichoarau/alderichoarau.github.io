@@ -3,7 +3,7 @@ import { provideTranslateService } from '@ngx-translate/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { signal } from '@angular/core';
-import { vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { NavigationComponent } from './navigation.component';
 import { TranslationService } from '../../services/translation.service';

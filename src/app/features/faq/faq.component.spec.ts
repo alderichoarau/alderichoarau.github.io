@@ -5,6 +5,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { signal } from '@angular/core';
 import { FaqComponent } from './faq.component';
 import { DataService, FAQItem } from '../../core/services/data.service';
+import { beforeEach, describe, expect, it } from 'vitest';
 
 describe('FaqComponent', () => {
   let component: FaqComponent;

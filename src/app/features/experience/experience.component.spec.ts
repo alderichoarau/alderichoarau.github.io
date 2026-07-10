@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideTranslateService } from '@ngx-translate/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { beforeEach, describe, expect, it } from 'vitest';
 
 import { ExperienceComponent } from './experience.component';
 

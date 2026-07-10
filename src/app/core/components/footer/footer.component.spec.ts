@@ -3,6 +3,7 @@ import { provideTranslateService } from '@ngx-translate/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { FooterComponent } from './footer.component';
+import { beforeEach, describe, expect, it } from 'vitest';
 
 describe('FooterComponent', () => {
   let component: FooterComponent;
