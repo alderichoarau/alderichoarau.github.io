@@ -1,5 +1,5 @@
 name: GitHub - Publish Release
-run-name: ${{ (github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/')) && format('Publish release from #{0}', github.event.pull_request.number) || format('Skip: PR #{0} not a release merge', github.event.pull_request.number) }}
+run-name: "${{ (github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/')) && format('Publish release from #{0}', github.event.pull_request.number) || format('Skip: PR #{0} not a release merge', github.event.pull_request.number) }}"
 
 on:
   pull_request:
