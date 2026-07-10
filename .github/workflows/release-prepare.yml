@@ -53,3 +53,12 @@ jobs:
             --head "release/${{ inputs.tag_name }}" \
             --title "chore: release ${{ inputs.tag_name }}" \
             --body "Bumps the version to \`${{ inputs.tag_name }}\`. Merging this PR creates the \`${{ inputs.tag_name }}\` tag and the matching GitHub release."
+
+      - name: "Enable auto-merge (squash)"
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Squash keeps only the GitHub-generated (verified) merge commit on
+          # main, avoiding the unsigned "chore: bump version" bot commit that
+          # a regular merge commit would otherwise carry into history.
+          gh pr merge --squash --auto "release/${{ inputs.tag_name }}"
