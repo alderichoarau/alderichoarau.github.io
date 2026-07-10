@@ -141,11 +141,12 @@ Coverage target: **80%** statements / functions / lines.
 | `deploy.yml`            | Release published + manual   | Lint → Test → Build → Deploy to GitHub Pages |
 | `sonar.yml`             | Push to `main` + PR + manual | Generate coverage → SonarCloud analysis      |
 | `dependency-review.yml` | Pull Request                 | Audit new dependencies                       |
-| `release.yml`           | Manual (`workflow_dispatch`) | Create a git tag + GitHub release            |
+| `release-prepare.yml`   | Manual (`workflow_dispatch`) | Bump version, open the release PR            |
+| `release-publish.yml`   | Release PR merged            | Create the git tag + GitHub release          |
 
 ### Deployment (`deploy.yml`)
 
-Triggered when a GitHub release is published (typically via `release.yml`), or manually via `workflow_dispatch`. Deploys the exact commit pointed to by the release's tag.
+Triggered when a GitHub release is published (typically via `release-publish.yml`), or manually via `workflow_dispatch`. Deploys the exact commit pointed to by the release's tag.
 
 1. Checkout code
 2. `npm run lint` — ESLint check
@@ -161,14 +162,14 @@ Triggered when a GitHub release is published (typically via `release.yml`), or m
 
 Sonar configuration is in `sonar-project.properties`.
 
-### Release (`release.yml`)
+### Release (`release-prepare.yml` + `release-publish.yml`)
 
-Manually triggered from the **Actions** tab with a `tag_name` input (e.g. `v2.1.0`):
+`main` is a protected branch, so the release is a two-step process:
 
-1. Create and push the git tag
-2. Create the corresponding GitHub release with auto-generated release notes
+1. **Prepare** — manually trigger `release-prepare.yml` from the **Actions** tab with a `tag_name` input (e.g. `v2.1.0`). It bumps `package.json` / `package-lock.json`, pushes a `release/<tag_name>` branch, and opens a PR into `main`.
+2. **Publish** — once that PR is reviewed and merged, `release-publish.yml` fires automatically: it creates and pushes the `<tag_name>` tag on the merge commit, then creates the matching GitHub release with auto-generated notes.
 
-Publishing the release automatically triggers `deploy.yml`, so a release is the standard way to ship to production.
+Publishing the release automatically triggers `deploy.yml`, so merging the release PR is the standard way to ship to production.
 
 ---
 

@@ -1,0 +1,43 @@
+name: GitHub - Publish Release
+run-name: Publish release from #${{ github.event.pull_request.number }}
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    name: "Create tag & release"
+    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/')
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout code"
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.base.ref }}
+
+      - name: "Extract tag name from branch"
+        id: tag
+        run: echo "name=${GITHUB_HEAD_REF#release/}" >> "$GITHUB_OUTPUT"
+        env:
+          GITHUB_HEAD_REF: ${{ github.event.pull_request.head.ref }}
+
+      - name: "Create and push tag"
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag "${{ steps.tag.outputs.name }}"
+          git push origin "${{ steps.tag.outputs.name }}"
+
+      - name: "Create GitHub release"
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${{ steps.tag.outputs.name }}" \
+            --title "${{ steps.tag.outputs.name }}" \
+            --generate-notes
