@@ -27,7 +27,7 @@ Freelance landing page built with Angular 22, deployed on GitHub Pages.
 ## Tech Stack
 
 | Category  | Technology                                  |
-| --------- |---------------------------------------------|
+| --------- | ------------------------------------------- |
 | Framework | Angular 22 — Standalone Components, Signals |
 | UI        | Angular Material 22 with custom dark theme  |
 | i18n      | ngx-translate (FR / EN)                     |
@@ -137,12 +137,15 @@ Coverage target: **80%** statements / functions / lines.
 
 | File                    | Trigger                      | Role                                         |
 | ----------------------- | ---------------------------- | -------------------------------------------- |
-| `ci.yml`                | PR + push to `main` + manual | Lint → Format check → Test → Build (gate)   |
-| `deploy.yml`            | Manual (`workflow_dispatch`) | Lint → Test → Build → Deploy to GitHub Pages |
+| `ci.yml`                | PR + push to `main` + manual | Lint → Format check → Test → Build (gate)    |
+| `deploy.yml`            | Release published + manual   | Lint → Test → Build → Deploy to GitHub Pages |
 | `sonar.yml`             | Push to `main` + PR + manual | Generate coverage → SonarCloud analysis      |
 | `dependency-review.yml` | Pull Request                 | Audit new dependencies                       |
+| `release.yml`           | Manual (`workflow_dispatch`) | Create a git tag + GitHub release            |
 
 ### Deployment (`deploy.yml`)
+
+Triggered when a GitHub release is published (typically via `release.yml`), or manually via `workflow_dispatch`. Deploys the exact commit pointed to by the release's tag.
 
 1. Checkout code
 2. `npm run lint` — ESLint check
@@ -157,6 +160,15 @@ Coverage target: **80%** statements / functions / lines.
 3. SonarCloud scan using the lcov report
 
 Sonar configuration is in `sonar-project.properties`.
+
+### Release (`release.yml`)
+
+Manually triggered from the **Actions** tab with a `tag_name` input (e.g. `v2.1.0`):
+
+1. Create and push the git tag
+2. Create the corresponding GitHub release with auto-generated release notes
+
+Publishing the release automatically triggers `deploy.yml`, so a release is the standard way to ship to production.
 
 ---
 
