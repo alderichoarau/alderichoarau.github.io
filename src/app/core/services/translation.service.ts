@@ -42,7 +42,7 @@ export class TranslationService {
       this.translate.setTranslation('en', enTranslations);
 
       // Set default language
-      this.translate.setDefaultLang('fr');
+      this.translate.setFallbackLang('fr');
 
       // Get saved language from localStorage or default to 'fr'
       if (typeof localStorage !== 'undefined') {
@@ -54,7 +54,7 @@ export class TranslationService {
     } catch (error) {
       console.error('Error loading translations:', error);
       // Fallback to French
-      this.translate.setDefaultLang('fr');
+      this.translate.setFallbackLang('fr');
       this.setLanguage('fr');
     }
   }

@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TranslateModule } from '@ngx-translate/core';
+import { provideTranslateService } from '@ngx-translate/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { signal } from '@angular/core';
@@ -21,13 +21,8 @@ describe('FaqComponent', () => {
     mockDataService = { faq: signal(mockFAQs) };
 
     await TestBed.configureTestingModule({
-      imports: [
-        FaqComponent,
-        HttpClientTestingModule,
-        TranslateModule.forRoot(),
-        NoopAnimationsModule,
-      ],
-      providers: [{ provide: DataService, useValue: mockDataService }],
+      imports: [FaqComponent, HttpClientTestingModule, NoopAnimationsModule],
+      providers: [provideTranslateService(), { provide: DataService, useValue: mockDataService }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(FaqComponent);

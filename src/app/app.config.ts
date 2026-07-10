@@ -1,4 +1,4 @@
-import { ApplicationConfig, importProvidersFrom, isDevMode } from '@angular/core';
+import { ApplicationConfig, isDevMode } from '@angular/core';
 import {
   provideRouter,
   withEnabledBlockingInitialNavigation,
@@ -6,7 +6,7 @@ import {
 } from '@angular/router';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideClientHydration } from '@angular/platform-browser';
-import { TranslateModule } from '@ngx-translate/core';
+import { provideTranslateService } from '@ngx-translate/core';
 
 import { routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -33,8 +33,8 @@ export const appConfig: ApplicationConfig = {
     // Async animations for better performance
     provideAnimationsAsync(),
 
-    // Translation module
-    importProvidersFrom(TranslateModule.forRoot()),
+    // Translation service
+    provideTranslateService(),
 
     // Service Worker
     provideServiceWorker('ngsw-worker.js', {

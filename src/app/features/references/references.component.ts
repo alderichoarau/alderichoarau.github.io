@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 import { MatIconModule } from '@angular/material/icon';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-references',
-  imports: [MatIconModule, TranslateModule],
+  imports: [MatIconModule, TranslatePipe],
   templateUrl: './references.component.html',
   styleUrl: './references.component.scss',
 })

@@ -2,13 +2,13 @@ import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/cor
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { DataService, FAQItem } from '../../core/services/data.service';
 
 @Component({
   selector: 'app-faq',
   standalone: true,
-  imports: [MatIconModule, MatExpansionModule, TranslateModule],
+  imports: [MatIconModule, MatExpansionModule, TranslatePipe],
   templateUrl: './faq.component.html',
   styleUrl: './faq.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

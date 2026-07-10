@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TranslateModule } from '@ngx-translate/core';
+import { provideTranslateService } from '@ngx-translate/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { CertificationsComponent } from './certifications.component';
@@ -10,7 +10,8 @@ describe('CertificationsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CertificationsComponent, HttpClientTestingModule, TranslateModule.forRoot()],
+      imports: [CertificationsComponent, HttpClientTestingModule],
+      providers: [provideTranslateService()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(CertificationsComponent);

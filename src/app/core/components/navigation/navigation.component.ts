@@ -4,13 +4,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { TranslationService } from '../../services/translation.service';
 import { ScrollAnimationService } from '../../services/scroll-animation.service';
 
 @Component({
   selector: 'app-navigation',
-  imports: [MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, TranslateModule],
+  imports: [MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, TranslatePipe],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss',
 })

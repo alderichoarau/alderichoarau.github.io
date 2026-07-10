@@ -1,13 +1,13 @@
 import { Component, inject, computed, ChangeDetectionStrategy } from '@angular/core';
 
 import { MatIconModule } from '@angular/material/icon';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { DataService, Technology } from '../../core/services/data.service';
 
 @Component({
   selector: 'app-technologies',
   standalone: true,
-  imports: [MatIconModule, TranslateModule],
+  imports: [MatIconModule, TranslatePipe],
   templateUrl: './technologies.component.html',
   styleUrl: './technologies.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
