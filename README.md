@@ -138,7 +138,7 @@ Coverage target: **80%** statements / functions / lines.
 | File                    | Trigger                      | Role                                         |
 | ----------------------- | ---------------------------- | -------------------------------------------- |
 | `ci.yml`                | PR + push to `main` + manual | Lint → Format check → Test → Build (gate)    |
-| `deploy.yml`            | Release published + manual   | Lint → Test → Build → Deploy to GitHub Pages |
+| `deploy.yml`            | Manual (`workflow_dispatch`) | Lint → Test → Build → Deploy to GitHub Pages |
 | `sonar.yml`             | Push to `main` + PR + manual | Generate coverage → SonarCloud analysis      |
 | `dependency-review.yml` | Pull Request                 | Audit new dependencies                       |
 | `release-prepare.yml`   | Manual (`workflow_dispatch`) | Bump version, open the release PR            |
@@ -146,7 +146,7 @@ Coverage target: **80%** statements / functions / lines.
 
 ### Deployment (`deploy.yml`)
 
-Triggered when a GitHub release is published (typically via `release-publish.yml`), or manually via `workflow_dispatch`. Deploys the exact commit pointed to by the release's tag.
+Triggered manually via `workflow_dispatch`, or dispatched by `release-publish.yml` right after it creates a release, via `gh workflow run deploy.yml --ref <tag>` (a release created with `GITHUB_TOKEN` doesn't emit an event other workflows can react to, so a `release: published` trigger wouldn't fire here). Deploys the exact commit pointed to by the release's tag.
 
 1. Checkout code
 2. `npm run lint` — ESLint check

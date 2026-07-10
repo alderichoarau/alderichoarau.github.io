@@ -9,6 +9,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   publish:
@@ -41,3 +42,11 @@ jobs:
           gh release create "${{ steps.tag.outputs.name }}" \
             --title "${{ steps.tag.outputs.name }}" \
             --generate-notes
+
+      - name: "Trigger GitHub Pages deployment"
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Releases created with GITHUB_TOKEN don't emit events that trigger
+          # other workflows, so deploy.yml is dispatched explicitly here.
+          gh workflow run deploy.yml --ref "${{ steps.tag.outputs.name }}"
