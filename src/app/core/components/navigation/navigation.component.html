@@ -56,13 +56,9 @@
             (click)="changeLanguage('en')"
             [class.active]="currentLang() === 'en'"
           >
-            <img
-              ngSrc="https://flagcdn.com/w20/gb.png"
-              width="20"
-              height="10"
-              alt="English"
-              class="flag-icon"
-            />
+            <span class="flag-icon">
+              <img ngSrc="https://flagcdn.com/w20/gb.png" fill alt="English" />
+            </span>
             EN
           </button>
           <button
@@ -70,13 +66,9 @@
             (click)="changeLanguage('fr')"
             [class.active]="currentLang() === 'fr'"
           >
-            <img
-              ngSrc="https://flagcdn.com/w20/fr.png"
-              width="20"
-              height="13"
-              alt="Français"
-              class="flag-icon"
-            />
+            <span class="flag-icon">
+              <img ngSrc="https://flagcdn.com/w20/fr.png" fill alt="Français" />
+            </span>
             FR
           </button>
         </mat-menu>
@@ -150,13 +142,9 @@
             [class.active]="currentLang() === 'fr'"
             (click)="changeLanguage('fr'); closeMobileMenu()"
           >
-            <img
-              ngSrc="https://flagcdn.com/w20/fr.png"
-              width="20"
-              height="13"
-              alt="Français"
-              class="flag-icon"
-            />
+            <span class="flag-icon">
+              <img ngSrc="https://flagcdn.com/w20/fr.png" fill alt="Français" />
+            </span>
             <span>{{ 'nav.french' | translate }}</span>
           </button>
           <button
@@ -165,13 +153,9 @@
             [class.active]="currentLang() === 'en'"
             (click)="changeLanguage('en'); closeMobileMenu()"
           >
-            <img
-              ngSrc="https://flagcdn.com/w20/gb.png"
-              width="20"
-              height="10"
-              alt="English"
-              class="flag-icon"
-            />
+            <span class="flag-icon">
+              <img ngSrc="https://flagcdn.com/w20/gb.png" fill alt="English" />
+            </span>
             <span>{{ 'nav.english' | translate }}</span>
           </button>
         </div>

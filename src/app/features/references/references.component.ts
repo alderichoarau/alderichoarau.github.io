@@ -14,57 +14,58 @@ import { TranslatePipe } from '@ngx-translate/core';
 export class ReferencesComponent {
   isHovered = false;
 
-  // width/height are the logo files' real intrinsic dimensions (required by
-  // NgOptimizedImage to reserve layout space and avoid CLS); actual on-screen
-  // size stays governed by the `.reference-logo` CSS (max-width/max-height).
+  // Logos are pre-resized to ~3x their max on-screen box (see .reference-logo
+  // CSS: max-width 110px / max-height 46px) and shipped as WebP; width/height
+  // are each file's real intrinsic dimensions, required by NgOptimizedImage
+  // to reserve layout space and avoid CLS.
   references = [
     {
       name: 'Airbus',
-      logo: 'assets/images/references/Airbus.png',
-      width: 375,
-      height: 185,
+      logo: 'assets/images/references/Airbus.webp',
+      width: 330,
+      height: 163,
     },
     {
       name: 'Air France',
-      logo: 'assets/images/references/AirFrance.png',
-      width: 2560,
-      height: 244,
+      logo: 'assets/images/references/AirFrance.webp',
+      width: 330,
+      height: 31,
     },
     {
       name: 'Transavia',
-      logo: 'assets/images/references/Transavia.png',
-      width: 2560,
-      height: 501,
+      logo: 'assets/images/references/Transavia.webp',
+      width: 330,
+      height: 64,
     },
     {
       name: 'KLM',
-      logo: 'assets/images/references/KLM.png',
-      width: 800,
-      height: 466,
+      logo: 'assets/images/references/KLM.webp',
+      width: 330,
+      height: 192,
     },
     {
       name: 'INETUM',
-      logo: 'assets/images/references/Inetum.png',
-      width: 1024,
-      height: 297,
+      logo: 'assets/images/references/Inetum.webp',
+      width: 330,
+      height: 95,
     },
     {
       name: 'GFI',
-      logo: 'assets/images/references/GFI.png',
-      width: 800,
-      height: 577,
+      logo: 'assets/images/references/GFI.webp',
+      width: 330,
+      height: 238,
     },
     {
       name: 'ASTEK',
-      logo: 'assets/images/references/Astek.png',
-      width: 1018,
-      height: 771,
+      logo: 'assets/images/references/Astek.webp',
+      width: 330,
+      height: 250,
     },
     {
       name: "Ministère de l'Agriculture",
-      logo: 'assets/images/references/MinistereAgriculture.png',
-      width: 800,
-      height: 507,
+      logo: 'assets/images/references/MinistereAgriculture.webp',
+      width: 330,
+      height: 209,
     },
   ];
 

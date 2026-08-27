@@ -68,6 +68,9 @@ node_modules/
 # Angular CLI cache
 .angular/cache/
 
+# scripts/a11y.sh's cached ChromeDriver download
+/.cache/
+
 # TypeScript cache
 *.tsbuildinfo
 
