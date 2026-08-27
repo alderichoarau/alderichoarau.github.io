@@ -118,12 +118,12 @@ jobs:
           fetch-depth: 0 # full history, so gitleaks can scan past commits too
 
       - name: "Scan for leaked secrets (gitleaks)"
-        uses: gitleaks/gitleaks-action@v2
+        uses: gitleaks/gitleaks-action@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: "Scan for vulnerabilities & misconfigurations (trivy)"
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           scan-type: fs
           scanners: vuln,secret,misconfig
