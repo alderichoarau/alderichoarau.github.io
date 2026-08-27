@@ -1,13 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideTranslateService } from '@ngx-translate/core';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { signal } from '@angular/core';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { NavigationComponent } from './navigation.component';
-import { TranslationService } from '../../services/translation.service';
-import { ScrollAnimationService } from '../../services/scroll-animation.service';
+import { TranslationService } from '@core/services/translation.service';
+import { ScrollAnimationService } from '@core/services/scroll-animation.service';
 
 describe('NavigationComponent', () => {
   let component: NavigationComponent;
@@ -30,8 +29,9 @@ describe('NavigationComponent', () => {
     mockScrollAnimationService = { scrollToElement: vi.fn() };
 
     await TestBed.configureTestingModule({
-      imports: [NavigationComponent, HttpClientTestingModule, NoopAnimationsModule],
+      imports: [NavigationComponent],
       providers: [
+        provideHttpClientTesting(),
         provideTranslateService(),
         { provide: TranslationService, useValue: mockTranslationService },
         { provide: ScrollAnimationService, useValue: mockScrollAnimationService },

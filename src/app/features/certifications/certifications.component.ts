@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { MatIconModule } from '@angular/material/icon';
 import { TranslatePipe } from '@ngx-translate/core';
@@ -8,6 +8,7 @@ import { TranslatePipe } from '@ngx-translate/core';
   imports: [MatIconModule, TranslatePipe],
   templateUrl: './certifications.component.html',
   styleUrl: './certifications.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CertificationsComponent {
   certifications = [

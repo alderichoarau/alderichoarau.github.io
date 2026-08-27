@@ -1,10 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideTranslateService } from '@ngx-translate/core';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { signal } from '@angular/core';
 import { FaqComponent } from './faq.component';
-import { DataService, FAQItem } from '../../core/services/data.service';
+import { DataService, FAQItem } from '@core/services/data.service';
 import { beforeEach, describe, expect, it } from 'vitest';
 
 describe('FaqComponent', () => {
@@ -22,8 +21,12 @@ describe('FaqComponent', () => {
     mockDataService = { faq: signal(mockFAQs) };
 
     await TestBed.configureTestingModule({
-      imports: [FaqComponent, HttpClientTestingModule, NoopAnimationsModule],
-      providers: [provideTranslateService(), { provide: DataService, useValue: mockDataService }],
+      imports: [FaqComponent],
+      providers: [
+        provideHttpClientTesting(),
+        provideTranslateService(),
+        { provide: DataService, useValue: mockDataService },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(FaqComponent);

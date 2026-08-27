@@ -2,7 +2,7 @@ import { Component, inject, computed, ChangeDetectionStrategy } from '@angular/c
 
 import { MatIconModule } from '@angular/material/icon';
 import { TranslatePipe } from '@ngx-translate/core';
-import { DataService, Technology } from '../../core/services/data.service';
+import { DataService, Technology } from '@core/services/data.service';
 
 @Component({
   selector: 'app-technologies',
@@ -29,7 +29,7 @@ export class TechnologiesComponent {
     { key: 'tools', translationKey: 'technologies.tools', icon: 'build' },
   ];
 
-  getCategoryTechnologies = computed(() => {
+  readonly getCategoryTechnologies = computed(() => {
     return (categoryKey: Technology['category'] | 'all'): Technology[] => {
       if (categoryKey === 'all') {
         return this.technologies();

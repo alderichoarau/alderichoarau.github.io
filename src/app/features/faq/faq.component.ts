@@ -3,7 +3,7 @@ import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/cor
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { TranslatePipe } from '@ngx-translate/core';
-import { DataService, FAQItem } from '../../core/services/data.service';
+import { DataService, FAQItem } from '@core/services/data.service';
 
 @Component({
   selector: 'app-faq',

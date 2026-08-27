@@ -8,7 +8,7 @@ export class ScrollAnimationService {
   private animatedElements = new Set<Element>();
 
   // Signal to track if service is initialized
-  private initialized: WritableSignal<boolean> = signal(false);
+  private readonly initialized: WritableSignal<boolean> = signal(false);
 
   constructor() {
     if (typeof window !== 'undefined') {

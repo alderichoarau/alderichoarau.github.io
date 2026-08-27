@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { provideTranslateService, TranslateService } from '@ngx-translate/core';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { provideHttpClientTesting, HttpTestingController } from '@angular/common/http/testing';
 import { TranslationService } from './translation.service';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
@@ -13,8 +13,7 @@ describe('TranslationService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [TranslationService, provideTranslateService()],
+      providers: [TranslationService, provideTranslateService(), provideHttpClientTesting()],
     });
     service = TestBed.inject(TranslationService);
   });
@@ -79,8 +78,7 @@ describe('TranslationService - initialization', () => {
   function createService(): TranslationService {
     TestBed.resetTestingModule();
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [TranslationService, provideTranslateService()],
+      providers: [TranslationService, provideTranslateService(), provideHttpClientTesting()],
     });
     httpMock = TestBed.inject(HttpTestingController);
     translate = TestBed.inject(TranslateService);

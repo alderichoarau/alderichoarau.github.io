@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideTranslateService } from '@ngx-translate/core';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 import { FooterComponent } from './footer.component';
 import { beforeEach, describe, expect, it } from 'vitest';
@@ -11,8 +11,8 @@ describe('FooterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FooterComponent, HttpClientTestingModule],
-      providers: [provideTranslateService()],
+      imports: [FooterComponent],
+      providers: [provideHttpClientTesting(), provideTranslateService()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(FooterComponent);

@@ -12,7 +12,13 @@
       <div class="references-track" [style.animation-play-state]="isHovered ? 'paused' : 'running'">
         @for (ref of references; track ref.name) {
           <div class="reference-item" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()">
-            <img [src]="ref.logo" [alt]="ref.name" class="reference-logo" />
+            <img
+              [ngSrc]="ref.logo"
+              [width]="ref.width"
+              [height]="ref.height"
+              [alt]="ref.name"
+              class="reference-logo"
+            />
           </div>
         }
         @for (ref of references; track ref.name + '_dup') {
@@ -22,7 +28,13 @@
             (mouseenter)="onMouseEnter()"
             (mouseleave)="onMouseLeave()"
           >
-            <img [src]="ref.logo" [alt]="ref.name" class="reference-logo" />
+            <img
+              [ngSrc]="ref.logo"
+              [width]="ref.width"
+              [height]="ref.height"
+              [alt]="ref.name"
+              class="reference-logo"
+            />
           </div>
         }
       </div>
