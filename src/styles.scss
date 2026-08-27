@@ -36,6 +36,10 @@ $alderichoarau-portfolio-temp-theme: mat.m2-define-light-theme(
 // that you are using.
 @include mat.all-component-themes($alderichoarau-portfolio-temp-theme);
 
+// Import Google Fonts - LinkedIn inspired
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
 /* You can add global styles to this file, and also import other style files */
 
 // LinkedIn Inspired Theme - Bleu foncé + Jaune orangé
@@ -98,10 +102,6 @@ body {
 *::after {
   box-sizing: inherit;
 }
-
-// Import Google Fonts - LinkedIn inspired
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 // Smooth scrolling
 html {
