@@ -159,24 +159,6 @@
         transform: scale(1.05);
       }
     }
-
-    // Wraps the `fill`-mode flag <img> (NgOptimizedImage) so its intrinsic
-    // aspect ratio can differ from the fixed 16x12 display box without
-    // triggering an aspect-ratio warning.
-    .flag-icon {
-      position: relative;
-      display: inline-block;
-      flex-shrink: 0;
-      width: 16px;
-      height: 12px;
-      border-radius: 2px;
-      overflow: hidden;
-      margin-right: 8px;
-
-      img {
-        object-fit: cover;
-      }
-    }
   }
 
   .mobile-menu-toggle {
@@ -698,6 +680,28 @@
       color: inherit !important;
       margin-right: 12px !important;
       font-size: 1.1rem !important;
+    }
+
+    // Wraps the `fill`-mode flag <img> (NgOptimizedImage) so its intrinsic
+    // aspect ratio can differ from the fixed 16x12 display box without
+    // triggering an aspect-ratio warning. Styled here (::ng-deep, inside the
+    // .mat-mdc-menu-panel block) rather than under .language-switcher,
+    // because mat-menu content is rendered in a CDK overlay outside the
+    // component's normal DOM subtree — a plain scoped descendant selector
+    // never reaches it, silently leaving the flag unsized.
+    .flag-icon {
+      position: relative !important;
+      display: inline-block !important;
+      flex-shrink: 0 !important;
+      width: 16px !important;
+      height: 12px !important;
+      border-radius: 2px !important;
+      overflow: hidden !important;
+      margin-right: 12px !important;
+
+      img {
+        object-fit: cover !important;
+      }
     }
   }
 }
