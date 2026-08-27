@@ -12,6 +12,12 @@ module.exports = tseslint.config(
       ...tseslint.configs.stylistic,
       ...angular.configs.tsRecommended,
     ],
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: __dirname,
+      },
+    },
     processor: angular.processInlineTemplates,
     rules: {
       "@angular-eslint/directive-selector": [
@@ -30,6 +36,13 @@ module.exports = tseslint.config(
           style: "kebab-case",
         },
       ],
+      // No deprecated APIs anywhere in the codebase (Angular, RxJS, TS lib, ...)
+      "@typescript-eslint/no-deprecated": "error",
+      // Angular 22 best practices
+      "@angular-eslint/prefer-standalone": "error",
+      "@angular-eslint/prefer-inject": "error",
+      "@angular-eslint/prefer-signals": "error",
+      "@angular-eslint/prefer-on-push-component-change-detection": "error",
     },
   },
   {

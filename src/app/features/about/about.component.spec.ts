@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideTranslateService } from '@ngx-translate/core';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { beforeEach, describe, expect, it } from 'vitest';
 
 import { AboutComponent } from './about.component';
@@ -12,8 +11,8 @@ describe('AboutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AboutComponent, HttpClientTestingModule, NoopAnimationsModule],
-      providers: [provideTranslateService()],
+      imports: [AboutComponent],
+      providers: [provideHttpClientTesting(), provideTranslateService()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(AboutComponent);

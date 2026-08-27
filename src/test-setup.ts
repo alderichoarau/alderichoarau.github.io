@@ -1,9 +1,6 @@
 import '@analogjs/vitest-angular/setup-zone';
 import { getTestBed } from '@angular/core/testing';
-import {
-  BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting,
-} from '@angular/platform-browser-dynamic/testing';
+import { BrowserTestingModule, platformBrowserTesting } from '@angular/platform-browser/testing';
 
 // IntersectionObserver is not available in jsdom
 globalThis.IntersectionObserver = class IntersectionObserver {
@@ -15,4 +12,4 @@ globalThis.IntersectionObserver = class IntersectionObserver {
   disconnect(): void {}
 } as unknown as typeof IntersectionObserver;
 
-getTestBed().initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting());
+getTestBed().initTestEnvironment(BrowserTestingModule, platformBrowserTesting());

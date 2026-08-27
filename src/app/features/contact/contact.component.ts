@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,5 +10,6 @@ import { TranslatePipe } from '@ngx-translate/core';
   imports: [MatCardModule, MatButtonModule, MatIconModule, TranslatePipe],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContactComponent {}

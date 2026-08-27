@@ -1,18 +1,34 @@
-import { Component, signal, OnInit, HostListener, inject } from '@angular/core';
+import {
+  Component,
+  signal,
+  OnInit,
+  HostListener,
+  inject,
+  ChangeDetectionStrategy,
+} from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { TranslatePipe } from '@ngx-translate/core';
-import { TranslationService } from '../../services/translation.service';
-import { ScrollAnimationService } from '../../services/scroll-animation.service';
+import { TranslationService } from '@core/services/translation.service';
+import { ScrollAnimationService } from '@core/services/scroll-animation.service';
 
 @Component({
   selector: 'app-navigation',
-  imports: [MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, TranslatePipe],
+  imports: [
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule,
+    TranslatePipe,
+    NgOptimizedImage,
+  ],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavigationComponent implements OnInit {
   // Modern Angular inject pattern - must be declared first

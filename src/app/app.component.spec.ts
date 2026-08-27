@@ -1,7 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { provideTranslateService } from '@ngx-translate/core';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { AppComponent } from './app.component';
 import { ScrollAnimationService } from './core/services/scroll-animation.service';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
@@ -9,8 +8,8 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent, HttpClientTestingModule, NoopAnimationsModule],
-      providers: [provideTranslateService()],
+      imports: [AppComponent],
+      providers: [provideHttpClientTesting(), provideTranslateService()],
     }).compileComponents();
   });
 

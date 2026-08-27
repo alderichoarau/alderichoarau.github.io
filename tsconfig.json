@@ -19,7 +19,18 @@
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    // TODO: drop baseUrl + this flag once the Angular/esbuild toolchain resolves
+    // "paths" without it (baseUrl itself is deprecated, removed in TypeScript 7).
+    "ignoreDeprecations": "6.0",
+    "baseUrl": ".",
+    "paths": {
+      "@app/*": ["src/app/*"],
+      "@core/*": ["src/app/core/*"],
+      "@features/*": ["src/app/features/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@root/*": ["*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

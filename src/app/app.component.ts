@@ -1,5 +1,10 @@
-import { Component, AfterViewInit, OnDestroy, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {
+  Component,
+  AfterViewInit,
+  OnDestroy,
+  inject,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { NavigationComponent } from './core/components/navigation/navigation.component';
 import { AboutComponent } from './features/about/about.component';
 import { TechnologiesComponent } from './features/technologies/technologies.component';
@@ -8,14 +13,12 @@ import { CertificationsComponent } from './features/certifications/certification
 import { ReferencesComponent } from './features/references/references.component';
 import { FaqComponent } from './features/faq/faq.component';
 import { ContactComponent } from './features/contact/contact.component';
-import { fadeInUpAnimation, staggerAnimation } from './shared/animations/animations';
 import { ScrollAnimationService } from './core/services/scroll-animation.service';
 import { FooterComponent } from './core/components/footer/footer.component';
 
 @Component({
   selector: 'app-root',
   imports: [
-    RouterOutlet,
     NavigationComponent,
     AboutComponent,
     TechnologiesComponent,
@@ -28,7 +31,7 @@ import { FooterComponent } from './core/components/footer/footer.component';
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  animations: [fadeInUpAnimation, staggerAnimation],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements AfterViewInit, OnDestroy {
   title = 'Aldéric Hoarau - Portfolio';

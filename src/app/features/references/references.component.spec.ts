@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideTranslateService } from '@ngx-translate/core';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { beforeEach, describe, expect, it } from 'vitest';
 
 import { ReferencesComponent } from './references.component';
@@ -11,8 +11,8 @@ describe('ReferencesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ReferencesComponent, HttpClientTestingModule],
-      providers: [provideTranslateService()],
+      imports: [ReferencesComponent],
+      providers: [provideHttpClientTesting(), provideTranslateService()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ReferencesComponent);
