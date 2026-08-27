@@ -6,6 +6,24 @@
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <!-- Content Security Policy. Static GitHub Pages hosting can't set real
+         HTTP headers, so this meta tag is the only enforcement available
+         (note: frame-ancestors/report-uri are ignored via meta and must be
+         skipped). Keep this in sync with any new external origin used above. -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self';
+        script-src 'self';
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+        font-src 'self' https://fonts.gstatic.com;
+        img-src 'self' data: https://flagcdn.com;
+        connect-src 'self';
+        manifest-src 'self';
+        object-src 'none';
+        base-uri 'self';
+        form-action 'self'"
+    />
+
     <!-- SEO Meta Tags -->
     <meta
       name="description"

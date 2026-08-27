@@ -33,7 +33,7 @@ describe('AboutComponent', () => {
   it('should render the avatar image', () => {
     const avatar = fixture.nativeElement.querySelector('.hero-avatar') as HTMLImageElement;
     expect(avatar).toBeTruthy();
-    expect(avatar.src).toContain('assets/images/about/Avatar.png');
+    expect(avatar.src).toContain('assets/images/about/Avatar.webp');
     expect(avatar.getAttribute('loading')).toBe('eager');
   });
 

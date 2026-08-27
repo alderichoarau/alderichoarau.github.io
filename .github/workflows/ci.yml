@@ -44,3 +44,81 @@ jobs:
 
       - name: "Build Angular app"
         run: npm run build:prod
+
+  a11y:
+    name: "Accessibility audit (axe-core)"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout code"
+        uses: actions/checkout@v7
+
+      - name: "Setup Node"
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: "Install dependencies"
+        run: npm ci
+
+      - name: "Build Angular app"
+        run: npm run build:prod
+
+      - name: "Setup Chrome"
+        id: setup-chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+
+      # axe-core's bundled ChromeDriver isn't guaranteed to match whatever
+      # Chrome version setup-chrome installs, so fetch the exact matching
+      # build from the official Chrome for Testing distribution instead.
+      - name: "Install matching ChromeDriver"
+        run: |
+          CHROME_VERSION=$("${{ steps.setup-chrome.outputs.chrome-path }}" --version | grep -oE '[0-9.]+' | head -1)
+          echo "Chrome version: $CHROME_VERSION"
+          curl -fsSL "https://storage.googleapis.com/chrome-for-testing-public/${CHROME_VERSION}/linux64/chromedriver-linux64.zip" -o /tmp/chromedriver.zip
+          unzip -o /tmp/chromedriver.zip -d /tmp
+          chmod +x /tmp/chromedriver-linux64/chromedriver
+
+      - name: "Serve production build"
+        run: npx http-server docs -p 4200 --silent &
+
+      - name: "Wait for server to be ready"
+        run: |
+          for i in $(seq 1 30); do
+            curl -sf http://localhost:4200 > /dev/null && exit 0
+            sleep 1
+          done
+          echo "Server never became ready" >&2
+          exit 1
+
+      - name: "Run axe-core accessibility audit"
+        run: |
+          npx axe http://localhost:4200 \
+            --chrome-path "${{ steps.setup-chrome.outputs.chrome-path }}" \
+            --chromedriver-path "/tmp/chromedriver-linux64/chromedriver" \
+            --exit
+
+  security:
+    name: "Security scan (gitleaks + trivy)"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout code"
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0 # full history, so gitleaks can scan past commits too
+
+      - name: "Scan for leaked secrets (gitleaks)"
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: "Scan for vulnerabilities & misconfigurations (trivy)"
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: fs
+          scanners: vuln,secret,misconfig
+          severity: HIGH,CRITICAL
+          exit-code: 1

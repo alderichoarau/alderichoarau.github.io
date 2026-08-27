@@ -160,12 +160,22 @@
       }
     }
 
+    // Wraps the `fill`-mode flag <img> (NgOptimizedImage) so its intrinsic
+    // aspect ratio can differ from the fixed 16x12 display box without
+    // triggering an aspect-ratio warning.
     .flag-icon {
+      position: relative;
+      display: inline-block;
+      flex-shrink: 0;
       width: 16px;
       height: 12px;
-      object-fit: cover;
       border-radius: 2px;
+      overflow: hidden;
       margin-right: 8px;
+
+      img {
+        object-fit: cover;
+      }
     }
   }
 
@@ -403,10 +413,17 @@
             min-height: 44px;
 
             .flag-icon {
+              position: relative;
+              display: inline-block;
+              flex-shrink: 0;
               width: 16px;
               height: 12px;
-              object-fit: cover;
               border-radius: 2px;
+              overflow: hidden;
+
+              img {
+                object-fit: cover;
+              }
             }
 
             span {
