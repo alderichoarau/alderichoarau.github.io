@@ -9,7 +9,14 @@
     <!-- Content Security Policy. Static GitHub Pages hosting can't set real
          HTTP headers, so this meta tag is the only enforcement available
          (note: frame-ancestors/report-uri are ignored via meta and must be
-         skipped). Keep this in sync with any new external origin used above. -->
+         skipped). Keep this in sync with any new external origin used above.
+
+         script-src deliberately has no 'unsafe-inline': this is also why
+         angular.json's production config has optimization.styles.inlineCritical
+         set to false — Beasties' critical-CSS inlining defers the rest of the
+         stylesheet via <link media="print" onload="this.media='all'">, an
+         inline event handler that a strict script-src blocks, leaving the
+         whole external stylesheet stuck at media="print" and never applied. -->
     <meta
       http-equiv="Content-Security-Policy"
       content="default-src 'self';

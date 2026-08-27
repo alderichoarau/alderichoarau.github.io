@@ -1,7 +1,8 @@
-import { ApplicationConfig, isDevMode } from '@angular/core';
+import { ApplicationConfig, inject, isDevMode, provideAppInitializer } from '@angular/core';
 import { provideHttpClient } from '@angular/common/http';
 import { provideTranslateService } from '@ngx-translate/core';
 import { provideServiceWorker } from '@angular/service-worker';
+import { TranslationService } from './core/services/translation.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -10,6 +11,9 @@ export const appConfig: ApplicationConfig = {
 
     // Translation service
     provideTranslateService(),
+
+    // Load fr/en translations before the app becomes interactive
+    provideAppInitializer(() => inject(TranslationService).initialize()),
 
     // Service Worker
     provideServiceWorker('ngsw-worker.js', {

@@ -23,11 +23,10 @@ export class TranslationService {
   public readonly isEnglish = computed(() => this.currentLangSignal() === 'en');
   public readonly isFrench = computed(() => this.currentLangSignal() === 'fr');
 
-  constructor() {
-    this.initializeTranslations();
-  }
-
-  private async initializeTranslations() {
+  // Kicked off from app.config.ts via provideAppInitializer() rather than
+  // the constructor — a service constructor should stay synchronous and
+  // side-effect-free (Sonar S7059 / constructors shouldn't launch async work).
+  async initialize(): Promise<void> {
     try {
       // Load French translations
       const frTranslations = await firstValueFrom(

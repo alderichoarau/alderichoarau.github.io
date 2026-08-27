@@ -82,7 +82,11 @@ describe('TranslationService - initialization', () => {
     });
     httpMock = TestBed.inject(HttpTestingController);
     translate = TestBed.inject(TranslateService);
-    return TestBed.inject(TranslationService);
+    const service = TestBed.inject(TranslationService);
+    // Fired explicitly here now that it's no longer kicked off from the
+    // constructor (see app.config.ts's provideAppInitializer for prod).
+    service.initialize();
+    return service;
   }
 
   afterEach(() => {
