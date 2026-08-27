@@ -16,11 +16,20 @@
          set to false — Beasties' critical-CSS inlining defers the rest of the
          stylesheet via <link media="print" onload="this.media='all'">, an
          inline event handler that a strict script-src blocks, leaving the
-         whole external stylesheet stuck at media="print" and never applied. -->
+         whole external stylesheet stuck at media="print" and never applied.
+
+         worker-src is set explicitly (rather than left to fall back to
+         script-src) because the fallback doesn't reliably cover
+         ServiceWorkerContainer.register() when CSP is delivered via this
+         meta tag instead of a real HTTP header — without it, registering
+         ngsw-worker.js fails with a generic "unknown error fetching the
+         script" / NG05604, even though a plain fetch() of the same URL
+         succeeds. -->
     <meta
       http-equiv="Content-Security-Policy"
       content="default-src 'self';
         script-src 'self';
+        worker-src 'self';
         style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
         font-src 'self' https://fonts.gstatic.com;
         img-src 'self' data: https://flagcdn.com;
