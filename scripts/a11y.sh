@@ -54,7 +54,11 @@ if [ ! -x "$DRIVER_PATH" ]; then
 fi
 
 echo "Auditing $URL with Chrome $CHROME_VERSION..."
+# --chrome-options is only strictly required when running as root/in a
+# container (axe-core/cli skips its usual auto no-sandbox in that case
+# since we supply --chrome-path ourselves), but it's harmless locally too.
 exec npx axe "$URL" \
   --chrome-path "$CHROME_PATH" \
   --chromedriver-path "$DRIVER_PATH" \
+  --chrome-options="no-sandbox,disable-dev-shm-usage,disable-gpu" \
   --exit

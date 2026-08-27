@@ -96,9 +96,16 @@ jobs:
 
       - name: "Run axe-core accessibility audit"
         run: |
+          # axe-core/cli only adds --no-sandbox automatically when it launches
+          # its own auto-detected Chrome binary; since we pass --chrome-path
+          # ourselves, it's skipped, and headless Chrome refuses to start as
+          # root on the runner without it (SessionNotCreatedError: Chrome
+          # instance exited). disable-dev-shm-usage/disable-gpu avoid the
+          # usual /dev/shm and GPU-less-container crashes on top of that.
           npx axe http://localhost:4200 \
             --chrome-path "${{ steps.setup-chrome.outputs.chrome-path }}" \
             --chromedriver-path "/tmp/chromedriver-linux64/chromedriver" \
+            --chrome-options="no-sandbox,disable-dev-shm-usage,disable-gpu" \
             --exit
 
   security:
