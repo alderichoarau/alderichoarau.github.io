@@ -2,8 +2,10 @@ echo "🔍 Running quality gate checks before commit..."
 echo "⏳ This may take a moment..."
 echo ""
 
-# Run lint-staged first (fast checks)
-echo "📝 Running lint-staged (format + lint)..."
+# Run lint-staged first (fast checks) — this only formats staged files
+# (prettier --write); it does NOT run ESLint, so a real `npm run lint`
+# follows below to actually catch lint errors before they hit CI.
+echo "📝 Running lint-staged (format)..."
 npx lint-staged
 
 if [ $? -ne 0 ]; then
@@ -12,6 +14,18 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "✅ Lint-staged passed!"
+echo ""
+
+# Run ESLint on the full project
+echo "🔎 Running lint..."
+npm run lint
+
+if [ $? -ne 0 ]; then
+  echo "❌ Lint failed. Please fix the issues and try again."
+  exit 1
+fi
+
+echo "✅ Lint passed!"
 echo ""
 
 # Run unit tests
