@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "alderichoarau-portfolio-temp": {
+    "alderichoarau-portfolio": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "outputPath": "dist/alderichoarau-portfolio-temp",
+            "outputPath": "dist/alderichoarau-portfolio",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
@@ -65,36 +65,6 @@
               "namedChunks": false,
               "serviceWorker": "ngsw-config.json"
             },
-            "github-pages": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "900kb",
-                  "maximumError": "1.3mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "15kb",
-                  "maximumError": "20kb"
-                }
-              ],
-              "outputHashing": "all",
-              "outputPath": "./",
-              "baseHref": "/",
-              "optimization": {
-                "scripts": true,
-                "styles": {
-                  "minify": true,
-                  "inlineCritical": true
-                },
-                "fonts": {
-                  "inline": true
-                }
-              },
-              "extractLicenses": true,
-              "sourceMap": false,
-              "namedChunks": false
-            },
             "development": {
               "optimization": false,
               "extractLicenses": false,
@@ -107,10 +77,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "alderichoarau-portfolio-temp:build:production"
+              "buildTarget": "alderichoarau-portfolio:build:production"
             },
             "development": {
-              "buildTarget": "alderichoarau-portfolio-temp:build:development"
+              "buildTarget": "alderichoarau-portfolio:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -118,7 +88,7 @@
         "extract-i18n": {
           "builder": "@angular/build:extract-i18n",
           "options": {
-            "buildTarget": "alderichoarau-portfolio-temp:build"
+            "buildTarget": "alderichoarau-portfolio:build"
           }
         },
         "lint": {

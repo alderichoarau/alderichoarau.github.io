@@ -56,7 +56,7 @@ Freelance landing page built with Angular 22, deployed on GitHub Pages.
 
 ## Quick Start
 
-**Requirements:** Node.js 24+, npm 11+
+**Requirements:** Node.js 26+, npm 11+
 
 ```bash
 git clone https://github.com/alderichoarau/alderichoarau.github.io.git
@@ -108,8 +108,6 @@ src/
 │   │   ├── references/     # Client logos
 │   │   ├── faq/            # FAQ accordion
 │   │   └── contact/        # Contact
-│   └── shared/
-│       └── animations/     # Reusable Angular animations
 ├── assets/
 │   └── i18n/               # fr.json, en.json
 ├── test-setup.ts           # Vitest setup (zone.js + TestBed)
@@ -137,7 +135,7 @@ Coverage target: **80%** statements / functions / lines.
 
 | File                    | Trigger                      | Role                                         |
 | ----------------------- | ---------------------------- | -------------------------------------------- |
-| `ci.yml`                | PR + push to `main` + manual | Lint → Format check → Test → Build (gate)    |
+| `ci.yml`                | PR + push to `main` + manual | 4 parallel gate jobs: Lint → Format check → Test → Build, an accessibility audit (axe-core), and a security scan (gitleaks + trivy) |
 | `deploy.yml`            | Manual (`workflow_dispatch`) | Lint → Test → Build → Deploy to GitHub Pages |
 | `sonar.yml`             | Push to `main` + PR + manual | Generate coverage → SonarCloud analysis      |
 | `dependency-review.yml` | Pull Request                 | Audit new dependencies                       |
