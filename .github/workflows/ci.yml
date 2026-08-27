@@ -83,7 +83,7 @@ jobs:
           chmod +x /tmp/chromedriver-linux64/chromedriver
 
       - name: "Serve production build"
-        run: npx http-server docs -p 4200 --silent &
+        run: npx http-server docs/browser -p 4200 --silent &
 
       - name: "Wait for server to be ready"
         run: |
