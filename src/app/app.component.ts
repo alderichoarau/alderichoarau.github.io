@@ -36,11 +36,9 @@ import { FooterComponent } from './core/components/footer/footer.component';
 export class AppComponent implements AfterViewInit, OnDestroy {
   title = 'Aldéric Hoarau - Portfolio';
 
-  // Modern Angular inject pattern
   private readonly scrollAnimationService = inject(ScrollAnimationService);
 
   ngAfterViewInit() {
-    // Set up scroll animations for sections
     setTimeout(() => {
       this.scrollAnimationService.observeElementsBySelector('.section');
       this.scrollAnimationService.observeElementsBySelector('mat-card');

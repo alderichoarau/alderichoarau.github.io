@@ -7,7 +7,6 @@ export class ScrollAnimationService {
   private observer?: IntersectionObserver;
   private animatedElements = new Set<Element>();
 
-  // Signal to track if service is initialized
   private readonly initialized: WritableSignal<boolean> = signal(false);
 
   constructor() {
@@ -22,11 +21,10 @@ export class ScrollAnimationService {
         entries => {
           entries.forEach(entry => {
             if (entry.isIntersecting && !this.animatedElements.has(entry.target)) {
-              // Add animation class
               entry.target.classList.add('in-view');
               this.animatedElements.add(entry.target);
 
-              // Optional: unobserve after animation to improve performance
+              // Unobserve once animated in — it never needs to fire again for this element.
               this.observer?.unobserve(entry.target);
             }
           });

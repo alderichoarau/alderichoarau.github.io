@@ -52,13 +52,11 @@ export class SeoService {
       })),
     };
 
-    // Remove existing FAQ structured data script if any
     const existingScript = document.getElementById('faq-structured-data');
     if (existingScript) {
       existingScript.remove();
     }
 
-    // Add new structured data
     const script = document.createElement('script');
     script.id = 'faq-structured-data';
     script.type = 'application/ld+json';
@@ -78,13 +76,11 @@ export class SeoService {
       })),
     };
 
-    // Remove existing breadcrumb structured data script if any
     const existingScript = document.getElementById('breadcrumb-structured-data');
     if (existingScript) {
       existingScript.remove();
     }
 
-    // Add new structured data
     const script = document.createElement('script');
     script.id = 'breadcrumb-structured-data';
     script.type = 'application/ld+json';

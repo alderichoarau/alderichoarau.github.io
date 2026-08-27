@@ -8,14 +8,11 @@ export const appConfig: ApplicationConfig = {
   providers: [
     // Modern HTTP client (fetch-based `FetchBackend` is the default since v20)
     provideHttpClient(),
-
-    // Translation service
     provideTranslateService(),
 
     // Load fr/en translations before the app becomes interactive
     provideAppInitializer(() => inject(TranslationService).initialize()),
 
-    // Service Worker
     provideServiceWorker('ngsw-worker.js', {
       enabled: !isDevMode(),
       registrationStrategy: 'registerWhenStable:30000',

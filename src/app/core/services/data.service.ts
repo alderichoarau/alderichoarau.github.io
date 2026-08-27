@@ -18,7 +18,6 @@ export interface FAQItem {
   providedIn: 'root',
 })
 export class DataService {
-  // Technologies data with Angular Signals
   private readonly technologiesData = signal<Technology[]>([
     // Frontend
     { name: 'Angular', icon: 'web', category: 'frontend', level: 'expert', color: '#dd0031' },
@@ -104,7 +103,6 @@ export class DataService {
     },
   ]);
 
-  // FAQ data
   private readonly faqData = signal<FAQItem[]>([
     { id: 'services', question: 'faq.q1', answer: 'faq.a1' },
     { id: 'training', question: 'faq.q2', answer: 'faq.a2' },
@@ -115,16 +113,13 @@ export class DataService {
     { id: 'remote', question: 'faq.q7', answer: 'faq.a7' },
   ]);
 
-  // Public readonly signals
   public readonly technologies = this.technologiesData.asReadonly();
   public readonly faq = this.faqData.asReadonly();
 
-  // Helper methods with computed signals
   getTechnologiesByCategory(category: Technology['category']) {
     return this.technologies().filter(tech => tech.category === category);
   }
 
-  // Method to get technology by name
   getTechnologyByName(name: string) {
     return this.technologies().find(tech => tech.name === name);
   }

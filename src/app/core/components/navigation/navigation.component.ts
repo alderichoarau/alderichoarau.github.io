@@ -31,24 +31,20 @@ import { ScrollAnimationService } from '@core/services/scroll-animation.service'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavigationComponent implements OnInit {
-  // Modern Angular inject pattern - must be declared first
   private readonly translationService = inject(TranslationService);
   private readonly scrollAnimationService = inject(ScrollAnimationService);
 
-  // Angular Signals for state management
   private readonly mobileMenuOpenSignal = signal(false);
   public readonly mobileMenuOpen = this.mobileMenuOpenSignal.asReadonly();
 
   private readonly scrolledSignal = signal(false);
   public readonly isScrolled = this.scrolledSignal.asReadonly();
 
-  // Get language signal from service
   public readonly currentLang = this.translationService.currentLang;
   public readonly isEnglish = this.translationService.isEnglish;
   public readonly isFrench = this.translationService.isFrench;
 
   ngOnInit() {
-    // Initial scroll position check
     this.updateScrollState();
   }
 
