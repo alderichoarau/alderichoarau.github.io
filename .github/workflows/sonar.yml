@@ -1,5 +1,5 @@
-name: GitHub - Sonar Cloud Analysis
-run-name: Run Sonar Cloud Analysis
+name: "GitHub - Security (SAST): SonarCloud Analysis"
+run-name: Security (SAST) - Run SonarCloud Analysis
 
 on:
   workflow_dispatch:
