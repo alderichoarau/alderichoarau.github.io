@@ -1,0 +1,54 @@
+# -----------------------------------------------------------------------------------------------
+# SCA (Software Composition Analysis): looks for known CVEs in third-party dependencies.
+# Extracted from ci.yml's combined "security" job (was scanners: vuln,secret,misconfig together)
+# to get its own named workflow/badge. misconfig dropped along the way: this repo has no
+# Dockerfile/Helm/Terraform, nothing for that scanner to check.
+# Complements dependency-review.yml (diffs only new PR deps) by checking the *current* lockfile
+# every run.
+# -----------------------------------------------------------------------------------------------
+name: "GitHub - Security (SCA): Dependency Vulnerability Scan"
+run-name: Security (SCA) - Dependency Vulnerability Scan
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  trivy-vuln:
+    name: "Trivy (dependency vulnerabilities)"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout repository"
+        uses: actions/checkout@v7
+
+      - name: "Scan dependencies for known CVEs (trivy)"
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          scan-type: fs
+          scanners: vuln
+          severity: HIGH,CRITICAL
+          exit-code: 1
+          hide-progress: true
+          output: trivy-sca.txt
+
+      - name: "Publish results to job summary"
+        if: always()
+        run: |
+          if [ -s trivy-sca.txt ]; then
+            {
+              echo "## 🛡️ Trivy — Dependency Vulnerabilities"
+              echo '```'
+              cat trivy-sca.txt
+              echo '```'
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi

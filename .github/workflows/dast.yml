@@ -1,0 +1,75 @@
+# -----------------------------------------------------------------------------------------------
+# DAST (Dynamic Application Security Testing): unlike azure-quiz-frontend/backend's DAST (which
+# only scan a disposable local instance in CI), this one targets the *real* deployed site
+# (https://alderichoarau.github.io/, see deploy.yml) -- genuinely meaningful signal here, since
+# it's actually live.
+#
+# Two triggers: manual (workflow_dispatch, on demand) and automatic right after every successful
+# deploy (workflow_run on deploy.yml) -- so a change that ships a new security gap gets caught
+# without anyone remembering to run this by hand. The job still guards on
+# `conclusion == 'success'` so a failed deploy doesn't trigger a scan of stale content.
+#
+# OWASP ZAP's baseline scan (passive checks only, no active/aggressive attack payloads) -- this is
+# a static site (HTML/CSS/JS, no API), so there's nothing here an active scan would usefully add.
+# -----------------------------------------------------------------------------------------------
+name: "GitHub - Security (DAST): OWASP ZAP Baseline Scan"
+run-name: Security (DAST) - OWASP ZAP Baseline Scan
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["Deploy Angular App to GitHub Pages"]
+    types: [completed]
+
+permissions:
+  contents: read
+
+jobs:
+  zap-baseline:
+    name: "OWASP ZAP baseline scan"
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Run ZAP baseline scan"
+        uses: zaproxy/action-baseline@v0.15.0
+        with:
+          target: "https://alderichoarau.github.io/"
+          fail_action: false
+          allow_issue_writing: false
+          # No cmd_options: the action already writes report_html.html/report_md.md/
+          # report_json.json by default. Renaming them via -r/-w/-J broke the artifact-upload
+          # step in azure-quiz-frontend's dast.yml ("report_md.md does not exist") -- not
+          # repeating that here.
+
+      - name: "Publish alert summary to job summary"
+        if: always()
+        run: |
+          if [ ! -f report_md.md ]; then
+            echo "⚠️ report_md.md not found -- ZAP markdown report wasn't generated (check the 'Run ZAP baseline scan' step above)." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          {
+            echo "## 🔍 OWASP ZAP Baseline — Summary of Alerts"
+            echo
+            # Slice out the "Summary of Alerts" section -- everything up to the next level-2
+            # heading (e.g. "## Alert Detail").
+            SUMMARY=$(awk '
+              /^## Summary of Alerts/ { found=1 }
+              found && /^## / && !/^## Summary of Alerts/ { exit }
+              found { print }
+            ' report_md.md)
+
+            if [ -n "$SUMMARY" ]; then
+              echo "$SUMMARY"
+            else
+              echo "_Could not locate a \"Summary of Alerts\" section in the report -- see the full report below._"
+            fi
+
+            echo
+            echo "<details><summary>Full ZAP report (Markdown)</summary>"
+            echo
+            cat report_md.md
+            echo
+            echo "</details>"
+          } >> "$GITHUB_STEP_SUMMARY"

@@ -1,0 +1,122 @@
+# -----------------------------------------------------------------------------------------------
+# Accessibility audit: runs axe-core against the production build's landing route.
+# Extracted from ci.yml (was the "a11y" job there) to get its own named workflow/badge, matching
+# the "Security (X)" / "Accessibility (X)" convention used in azure-quiz-frontend/backend.
+#
+# Two jobs, two different targets on purpose:
+#   - a11y      -- PR/push: audits *this branch's* build, before it's deployed. Can't target the
+#     real URL here, it wouldn't reflect the change being reviewed yet.
+#   - a11y-live -- audits the real deployed site (https://alderichoarau.github.io/), both manually
+#     (workflow_dispatch) and automatically right after every successful deploy (workflow_run on
+#     deploy.yml), same reasoning as dast.yml.
+# -----------------------------------------------------------------------------------------------
+name: "GitHub - Accessibility (a11y): axe-core Audit"
+run-name: Accessibility (a11y) - axe-core Audit
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_run:
+    workflows: ["Deploy Angular App to GitHub Pages"]
+    types: [completed]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  a11y:
+    name: "Accessibility audit (axe-core)"
+    if: github.event_name == 'pull_request' || github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout code"
+        uses: actions/checkout@v7
+
+      - name: "Setup Node"
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: "Install dependencies"
+        run: npm ci
+
+      - name: "Build Angular app"
+        run: npm run build:prod
+
+      - name: "Setup Chrome"
+        id: setup-chrome
+        uses: browser-actions/setup-chrome@v2
+        with:
+          chrome-version: stable
+
+      # axe-core's bundled ChromeDriver isn't guaranteed to match whatever
+      # Chrome version setup-chrome installs, so fetch the exact matching
+      # build from the official Chrome for Testing distribution instead.
+      - name: "Install matching ChromeDriver"
+        run: |
+          CHROME_VERSION=$("${{ steps.setup-chrome.outputs.chrome-path }}" --version | grep -oE '[0-9.]+' | head -1)
+          echo "Chrome version: $CHROME_VERSION"
+          curl -fsSL "https://storage.googleapis.com/chrome-for-testing-public/${CHROME_VERSION}/linux64/chromedriver-linux64.zip" -o /tmp/chromedriver.zip
+          unzip -o /tmp/chromedriver.zip -d /tmp
+          chmod +x /tmp/chromedriver-linux64/chromedriver
+
+      - name: "Serve production build"
+        run: npx http-server docs/browser -p 4200 --silent &
+
+      - name: "Wait for server to be ready"
+        run: |
+          for i in $(seq 1 30); do
+            curl -sf http://localhost:4200 > /dev/null && exit 0
+            sleep 1
+          done
+          echo "Server never became ready" >&2
+          exit 1
+
+      - name: "Run axe-core accessibility audit"
+        run: |
+          # axe-core/cli only adds --no-sandbox automatically when it launches
+          # its own auto-detected Chrome binary; since we pass --chrome-path
+          # ourselves, it's skipped, and headless Chrome refuses to start as
+          # root on the runner without it (SessionNotCreatedError: Chrome
+          # instance exited). disable-dev-shm-usage/disable-gpu avoid the
+          # usual /dev/shm and GPU-less-container crashes on top of that.
+          npx axe http://localhost:4200 \
+            --chrome-path "${{ steps.setup-chrome.outputs.chrome-path }}" \
+            --chromedriver-path "/tmp/chromedriver-linux64/chromedriver" \
+            --chrome-options="no-sandbox,disable-dev-shm-usage,disable-gpu" \
+            --exit
+
+  a11y-live:
+    name: "Accessibility audit (axe-core) — live site"
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Setup Chrome"
+        id: setup-chrome
+        uses: browser-actions/setup-chrome@v2
+        with:
+          chrome-version: stable
+
+      - name: "Install matching ChromeDriver"
+        run: |
+          CHROME_VERSION=$("${{ steps.setup-chrome.outputs.chrome-path }}" --version | grep -oE '[0-9.]+' | head -1)
+          curl -fsSL "https://storage.googleapis.com/chrome-for-testing-public/${CHROME_VERSION}/linux64/chromedriver-linux64.zip" -o /tmp/chromedriver.zip
+          unzip -o /tmp/chromedriver.zip -d /tmp
+          chmod +x /tmp/chromedriver-linux64/chromedriver
+
+      - name: "Run axe-core accessibility audit (live URL)"
+        run: |
+          npx axe https://alderichoarau.github.io/ \
+            --chrome-path "${{ steps.setup-chrome.outputs.chrome-path }}" \
+            --chromedriver-path "/tmp/chromedriver-linux64/chromedriver" \
+            --chrome-options="no-sandbox,disable-dev-shm-usage,disable-gpu" \
+            --exit

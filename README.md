@@ -15,6 +15,10 @@ Freelance landing page built with Angular 22, deployed on GitHub Pages.
 
 [![CodeQL](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/github-code-scanning/codeql)
 [![Dependency Review](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/dependency-review.yml)
+[![Security · SCA](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/sca.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/sca.yml)
+[![Security · Secrets](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/secrets-scan.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/secrets-scan.yml)
+[![Security · DAST (OWASP ZAP)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/dast.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/dast.yml)
+[![Accessibility · axe-core](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/a11y.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/a11y.yml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=alderichoarau_alderichoarau.github.io&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=alderichoarau_alderichoarau.github.io)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=alderichoarau_alderichoarau.github.io&metric=bugs)](https://sonarcloud.io/summary/new_code?id=alderichoarau_alderichoarau.github.io)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=alderichoarau_alderichoarau.github.io&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=alderichoarau_alderichoarau.github.io)
@@ -133,14 +137,21 @@ Coverage target: **80%** statements / functions / lines.
 
 ### GitHub Actions Workflows
 
-| File                    | Trigger                      | Role                                         |
-| ----------------------- | ---------------------------- | -------------------------------------------- |
-| `ci.yml`                | PR + push to `main` + manual | 4 parallel gate jobs: Lint → Format check → Test → Build, an accessibility audit (axe-core), and a security scan (gitleaks + trivy) |
-| `deploy.yml`            | Manual (`workflow_dispatch`) | Lint → Test → Build → Deploy to GitHub Pages |
-| `sonar.yml`             | Push to `main` + PR + manual | Generate coverage → SonarCloud analysis      |
-| `dependency-review.yml` | Pull Request                 | Audit new dependencies                       |
-| `release-prepare.yml`   | Manual (`workflow_dispatch`) | Bump version, open the release PR            |
-| `release-publish.yml`   | Release PR merged            | Create the git tag + GitHub release          |
+| File                    | Trigger                       | Role                                                                                                          |
+| ----------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `ci.yml`                | PR + push to `main` + manual  | Lint → Format check → Test → Build                                                                            |
+| `a11y.yml`              | PR + push to `main` + manual  | Accessibility audit (axe-core) — PR/push job audits this branch's build, manual dispatch audits the live site |
+| `sca.yml`               | PR + push to `main` + manual  | Dependency vulnerability scan (Trivy)                                                                         |
+| `secrets-scan.yml`      | PR + push to `main` + manual  | Leaked secret scan (gitleaks)                                                                                 |
+| `dast.yml`              | Manual (`workflow_dispatch`)  | OWASP ZAP baseline scan against the real deployed site                                                        |
+| `sonar.yml`             | Push to `main` + PR + manual  | Generate coverage → SonarCloud analysis (SAST)                                                                |
+| CodeQL                  | GitHub default setup (weekly) | SAST, no workflow file — configured under repo Settings → Code security                                       |
+| `dependency-review.yml` | Pull Request                  | Audit new dependencies                                                                                        |
+| `deploy.yml`            | Manual (`workflow_dispatch`)  | Lint → Test → Build → Deploy to GitHub Pages                                                                  |
+| `release-prepare.yml`   | Manual (`workflow_dispatch`)  | Bump version, open the release PR                                                                             |
+| `release-publish.yml`   | Release PR merged             | Create the git tag + GitHub release                                                                           |
+
+`sca.yml`/`secrets-scan.yml`/`dast.yml`/`a11y.yml` used to be jobs inside `ci.yml` (`a11y`, `security`) — split into their own files for a named badge/check per category, same convention as `azure-quiz-frontend`/`azure-quiz-backend`. No Container/IaC scan here: this repo has no Dockerfile/Helm/Terraform, nothing for that category to check.
 
 ### Deployment (`deploy.yml`)
 
