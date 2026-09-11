@@ -1,5 +1,5 @@
-name: GitHub - Continuous Integration
-run-name: Run Continuous Integration
+name: "GitHub - Build & Test"
+run-name: Build & Test
 
 on:
   workflow_dispatch:
