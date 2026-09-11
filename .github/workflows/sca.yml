@@ -1,10 +1,9 @@
 # -----------------------------------------------------------------------------------------------
-# SCA (Software Composition Analysis): looks for known CVEs in third-party dependencies.
-# Extracted from ci.yml's combined "security" job (was scanners: vuln,secret,misconfig together)
-# to get its own named workflow/badge. misconfig dropped along the way: this repo has no
-# Dockerfile/Helm/Terraform, nothing for that scanner to check.
-# Complements dependency-review.yml (diffs only new PR deps) by checking the *current* lockfile
-# every run.
+# SCA: looks for known CVEs in third-party dependencies. Extracted from ci.yml's "security" job
+# (misconfig dropped: no Dockerfile/Helm/Terraform here to check). Complements
+# dependency-review.yml (diffs only new PR deps) via two scanners:
+#   - npm audit -- package.json's "security:audit" script, defined but never wired in before
+#   - Trivy     -- broader/faster DB, reads package-lock.json directly
 # -----------------------------------------------------------------------------------------------
 name: "GitHub - Security (SCA): Dependency Vulnerability Scan"
 run-name: Security (SCA) - Dependency Vulnerability Scan
@@ -24,6 +23,38 @@ permissions:
   contents: read
 
 jobs:
+  npm-audit:
+    name: "npm audit"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout repository"
+        uses: actions/checkout@v7
+
+      - name: "Setup Node"
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: "Install dependencies"
+        run: npm ci
+
+      - name: "Audit dependencies (high & critical)"
+        shell: bash
+        run: |
+          set +e
+          npm run security:audit 2>&1 | tee npm-audit.txt
+          STATUS=${PIPESTATUS[0]}
+          set -e
+          {
+            echo "## 📦 npm audit"
+            echo '```'
+            cat npm-audit.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit $STATUS
+
   trivy-vuln:
     name: "Trivy (dependency vulnerabilities)"
     runs-on: ubuntu-latest

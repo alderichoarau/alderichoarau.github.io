@@ -1,16 +1,18 @@
 # -----------------------------------------------------------------------------------------------
-# DAST (Dynamic Application Security Testing): unlike azure-quiz-frontend/backend's DAST (which
-# only scan a disposable local instance in CI), this one targets the *real* deployed site
-# (https://alderichoarau.github.io/, see deploy.yml) -- genuinely meaningful signal here, since
-# it's actually live.
+# DAST: attacks the *running* app, unlike every other scan here. Targets the real deployed site
+# (https://alderichoarau.github.io/) -- more meaningful than azure-quiz-*'s local-only DAST, since
+# this one's actually live.
 #
-# Two triggers: manual (workflow_dispatch, on demand) and automatic right after every successful
-# deploy (workflow_run on deploy.yml) -- so a change that ships a new security gap gets caught
-# without anyone remembering to run this by hand. The job still guards on
-# `conclusion == 'success'` so a failed deploy doesn't trigger a scan of stale content.
+# Three triggers: manual, right after each successful deploy (workflow_run, guarded on
+# `conclusion == 'success'`), and weekly (schedule) to catch new ZAP rules on unchanged content.
+# cron is UTC only, no DST -- 07:00 UTC is 08:00 Paris in winter, 09:00 in summer.
 #
-# OWASP ZAP's baseline scan (passive checks only, no active/aggressive attack payloads) -- this is
-# a static site (HTML/CSS/JS, no API), so there's nothing here an active scan would usefully add.
+# Baseline (passive) scan: static site, nothing an active scan would add.
+#
+# EXPECT permanent header WARNs, not a real gap: GitHub Pages serves fixed headers with no way to
+# override them. CSP is already set via a <meta> tag in index.html (see its comment for why
+# frame-ancestors can't be covered that way); X-Frame-Options has no meta equivalent at all --
+# both stay unaddressable here short of a CDN in front (Cloudflare, etc.).
 # -----------------------------------------------------------------------------------------------
 name: "GitHub - Security (DAST): OWASP ZAP Baseline Scan"
 run-name: Security (DAST) - OWASP ZAP Baseline Scan
@@ -20,6 +22,8 @@ on:
   workflow_run:
     workflows: ["Deploy Angular App to GitHub Pages"]
     types: [completed]
+  schedule:
+    - cron: "0 7 * * 1" # Monday 07:00 UTC (08:00 Paris in winter, 09:00 in summer)
 
 permissions:
   contents: read
@@ -27,7 +31,7 @@ permissions:
 jobs:
   zap-baseline:
     name: "OWASP ZAP baseline scan"
-    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
       - name: "Run ZAP baseline scan"
@@ -36,10 +40,9 @@ jobs:
           target: "https://alderichoarau.github.io/"
           fail_action: false
           allow_issue_writing: false
-          # No cmd_options: the action already writes report_html.html/report_md.md/
+          # No cmd_options: this action already writes report_html.html/report_md.md/
           # report_json.json by default. Renaming them via -r/-w/-J broke the artifact-upload
-          # step in azure-quiz-frontend's dast.yml ("report_md.md does not exist") -- not
-          # repeating that here.
+          # step -- hit live ("report_md.md does not exist") in azure-quiz-frontend's dast.yml.
 
       - name: "Publish alert summary to job summary"
         if: always()

@@ -1,14 +1,11 @@
 # -----------------------------------------------------------------------------------------------
 # Accessibility audit: runs axe-core against the production build's landing route.
-# Extracted from ci.yml (was the "a11y" job there) to get its own named workflow/badge, matching
-# the "Security (X)" / "Accessibility (X)" convention used in azure-quiz-frontend/backend.
+# Extracted from ci.yml's "a11y" job to get its own named workflow/badge, matching
+# azure-quiz-frontend/backend's convention.
 #
-# Two jobs, two different targets on purpose:
-#   - a11y      -- PR/push: audits *this branch's* build, before it's deployed. Can't target the
-#     real URL here, it wouldn't reflect the change being reviewed yet.
-#   - a11y-live -- audits the real deployed site (https://alderichoarau.github.io/), both manually
-#     (workflow_dispatch) and automatically right after every successful deploy (workflow_run on
-#     deploy.yml), same reasoning as dast.yml.
+# Two jobs, two targets: "a11y" audits this branch's build (PR/push -- can't target a URL that
+# doesn't reflect the change yet); "a11y-live" audits the real deployed site, manually or right
+# after each deploy (same reasoning as dast.yml).
 # -----------------------------------------------------------------------------------------------
 name: "GitHub - Accessibility (a11y): axe-core Audit"
 run-name: Accessibility (a11y) - axe-core Audit
@@ -115,18 +112,14 @@ jobs:
 
       - name: "Run axe-core accessibility audit (live URL)"
         run: |
-          # "npx axe" (not "npx @axe-core/cli") only resolves here because a11y's own "npm ci"
-          # step installed @axe-core/cli as a project devDependency first -- this job has no
-          # checkout/npm ci at all (nothing else needed to hit a live URL), so npx has no local
-          # project to resolve "axe" against and no way to guess it means @axe-core/cli. Pinned
-          # to the same version as package.json's own devDependency, for determinism.
+          # "npx axe" only resolves via a local project's node_modules; this job has none (nothing
+          # else needed to hit a live URL), so the package is named explicitly, pinned to
+          # package.json's own devDependency version.
           #
-          # --load-delay 4000: over the real internet this Angular CSR app's ~480KB main bundle
-          # takes long enough to download+bootstrap that axe can snapshot the DOM before the app
-          # has rendered anything, reporting phantom violations (no <main>, no <h1>) that don't
-          # exist once rendering finishes -- hit live, reproduced locally, and confirmed fixed by
-          # this delay (0 violations either way against a local build, which renders near-
-          # instantly and never needed it -- the "a11y" job above stays as-is).
+          # --load-delay 4000: over the real internet the ~480KB bundle takes long enough to
+          # bootstrap that axe can snapshot before Angular renders, reporting phantom violations
+          # (no <main>/<h1>) -- hit live, fixed and confirmed with this delay (local builds render
+          # fast enough to never need it).
           npx --yes @axe-core/cli@4.13.0 https://alderichoarau.github.io/ \
             --chrome-path "${{ steps.setup-chrome.outputs.chrome-path }}" \
             --chromedriver-path "/tmp/chromedriver-linux64/chromedriver" \
