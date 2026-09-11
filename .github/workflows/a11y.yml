@@ -115,8 +115,21 @@ jobs:
 
       - name: "Run axe-core accessibility audit (live URL)"
         run: |
-          npx axe https://alderichoarau.github.io/ \
+          # "npx axe" (not "npx @axe-core/cli") only resolves here because a11y's own "npm ci"
+          # step installed @axe-core/cli as a project devDependency first -- this job has no
+          # checkout/npm ci at all (nothing else needed to hit a live URL), so npx has no local
+          # project to resolve "axe" against and no way to guess it means @axe-core/cli. Pinned
+          # to the same version as package.json's own devDependency, for determinism.
+          #
+          # --load-delay 4000: over the real internet this Angular CSR app's ~480KB main bundle
+          # takes long enough to download+bootstrap that axe can snapshot the DOM before the app
+          # has rendered anything, reporting phantom violations (no <main>, no <h1>) that don't
+          # exist once rendering finishes -- hit live, reproduced locally, and confirmed fixed by
+          # this delay (0 violations either way against a local build, which renders near-
+          # instantly and never needed it -- the "a11y" job above stays as-is).
+          npx --yes @axe-core/cli@4.13.0 https://alderichoarau.github.io/ \
             --chrome-path "${{ steps.setup-chrome.outputs.chrome-path }}" \
             --chromedriver-path "/tmp/chromedriver-linux64/chromedriver" \
+            --load-delay 4000 \
             --chrome-options="no-sandbox,disable-dev-shm-usage,disable-gpu" \
             --exit
