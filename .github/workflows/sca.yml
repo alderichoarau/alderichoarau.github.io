@@ -5,7 +5,7 @@
 #   - npm audit -- package.json's "security:audit" script, defined but never wired in before
 #   - Trivy     -- broader/faster DB, reads package-lock.json directly
 # -----------------------------------------------------------------------------------------------
-name: "GitHub - Security (SCA): Dependency Vulnerability Scan"
+name: "Security (SCA) - Dependency Vulnerability Scan"
 run-name: Security (SCA) - Run Dependency Vulnerability Scan
 
 on:

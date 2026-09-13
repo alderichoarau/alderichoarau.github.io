@@ -1,4 +1,5 @@
-name: Deploy Angular App to GitHub Pages
+name: "CD - Deploy to GitHub Pages"
+run-name: CD - Run Deploy to GitHub Pages
 
 on:
   workflow_dispatch:

@@ -1,5 +1,5 @@
-name: "GitHub - Build & Test"
-run-name: Build & Test
+name: "CI - Lint, Test & Build"
+run-name: CI - Run Lint, Test & Build
 
 on:
   workflow_dispatch:

@@ -14,13 +14,13 @@
 # frame-ancestors can't be covered that way); X-Frame-Options has no meta equivalent at all --
 # both stay unaddressable here short of a CDN in front (Cloudflare, etc.).
 # -----------------------------------------------------------------------------------------------
-name: "GitHub - Security (DAST): OWASP ZAP Baseline Scan"
-run-name: Security (DAST) - OWASP ZAP Baseline Scan
+name: "Security (DAST) - OWASP ZAP Baseline Scan"
+run-name: Security (DAST) - Run OWASP ZAP Baseline Scan
 
 on:
   workflow_dispatch:
   workflow_run:
-    workflows: ["Deploy Angular App to GitHub Pages"]
+    workflows: ["CD - Deploy to GitHub Pages"]
     types: [completed]
   schedule:
     - cron: "0 7 * * 1" # Monday 07:00 UTC (08:00 Paris in winter, 09:00 in summer)

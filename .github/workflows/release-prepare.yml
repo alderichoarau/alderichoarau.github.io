@@ -1,5 +1,5 @@
-name: GitHub - Prepare Release
-run-name: Prepare release ${{ inputs.tag_name }}
+name: "Release - Prepare"
+run-name: Release - Prepare ${{ inputs.tag_name }}
 
 on:
   workflow_dispatch:
