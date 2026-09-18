@@ -2,8 +2,12 @@
 # SCA: looks for known CVEs in third-party dependencies. Extracted from ci.yml's "security" job
 # (misconfig dropped: no Dockerfile/Helm/Terraform here to check). Complements
 # dependency-review.yml (diffs only new PR deps) via two scanners:
-#   - npm audit -- package.json's "security:audit" script, defined but never wired in before
+#   - npm audit -- package.json's "security:audit" script
 #   - Trivy     -- broader/faster DB, reads package-lock.json directly
+#
+# Also generates compliance artifacts (same shape as azure-quiz-frontend's sca.yml):
+#   - license-scan -- flags non-permissive licenses, informational only until there's a policy
+#   - sbom         -- CycloneDX inventory, uploaded as a build artifact
 # -----------------------------------------------------------------------------------------------
 name: "Security (SCA) - Dependency Vulnerability Scan"
 run-name: Security (SCA) - Run Dependency Vulnerability Scan
@@ -31,7 +35,7 @@ jobs:
         uses: actions/checkout@v7
 
       - name: "Setup Node and install deps"
-        uses: alderichoarau/gha-actions/setup-node@setup-node-v1
+        uses: alderichoarau/gha-setup-node@v1
 
       - name: "Audit dependencies (high & critical)"
         shell: bash
@@ -56,8 +60,35 @@ jobs:
         uses: actions/checkout@v7
 
       - name: "Scan dependencies for known CVEs (trivy)"
-        uses: alderichoarau/gha-actions/trivy-scan@trivy-scan-v1
+        uses: alderichoarau/gha-trivy-scan@v1
         with:
           scan-type: fs
           scanners: vuln
           heading: "Dependency Vulnerabilities"
+
+  license-scan:
+    name: "Trivy (license compliance)"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout repository"
+        uses: actions/checkout@v7
+
+      # exit-code "0" (informational only) -- no explicit allow/deny license policy yet.
+      - name: "Scan dependency licenses (trivy)"
+        uses: alderichoarau/gha-trivy-scan@v1
+        with:
+          scan-type: fs
+          scanners: license
+          exit-code: "0"
+          icon: "📄"
+          heading: "License Compliance"
+
+  sbom:
+    name: "Generate SBOM (CycloneDX)"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout repository"
+        uses: actions/checkout@v7
+
+      - name: "Generate SBOM (trivy)"
+        uses: alderichoarau/gha-generate-sbom@v1

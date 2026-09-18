@@ -37,27 +37,10 @@ jobs:
         uses: actions/checkout@v7
 
       - name: "Setup Node and install deps"
-        uses: alderichoarau/gha-actions/setup-node@setup-node-v1
+        uses: alderichoarau/gha-setup-node@v1
 
       - name: "Build Angular app"
         run: npm run build:prod
-
-      - name: "Setup Chrome"
-        id: setup-chrome
-        uses: browser-actions/setup-chrome@v2
-        with:
-          chrome-version: stable
-
-      # axe-core's bundled ChromeDriver isn't guaranteed to match whatever
-      # Chrome version setup-chrome installs, so fetch the exact matching
-      # build from the official Chrome for Testing distribution instead.
-      - name: "Install matching ChromeDriver"
-        run: |
-          CHROME_VERSION=$("${{ steps.setup-chrome.outputs.chrome-path }}" --version | grep -oE '[0-9.]+' | head -1)
-          echo "Chrome version: $CHROME_VERSION"
-          curl -fsSL "https://storage.googleapis.com/chrome-for-testing-public/${CHROME_VERSION}/linux64/chromedriver-linux64.zip" -o /tmp/chromedriver.zip
-          unzip -o /tmp/chromedriver.zip -d /tmp
-          chmod +x /tmp/chromedriver-linux64/chromedriver
 
       - name: "Serve production build"
         run: npx http-server docs/browser -p 4200 --silent &
@@ -72,50 +55,19 @@ jobs:
           exit 1
 
       - name: "Run axe-core accessibility audit"
-        run: |
-          # axe-core/cli only adds --no-sandbox automatically when it launches
-          # its own auto-detected Chrome binary; since we pass --chrome-path
-          # ourselves, it's skipped, and headless Chrome refuses to start as
-          # root on the runner without it (SessionNotCreatedError: Chrome
-          # instance exited). disable-dev-shm-usage/disable-gpu avoid the
-          # usual /dev/shm and GPU-less-container crashes on top of that.
-          npx axe http://localhost:4200 \
-            --chrome-path "${{ steps.setup-chrome.outputs.chrome-path }}" \
-            --chromedriver-path "/tmp/chromedriver-linux64/chromedriver" \
-            --chrome-options="no-sandbox,disable-dev-shm-usage,disable-gpu" \
-            --exit
+        uses: alderichoarau/gha-setup-chrome-axe@v1
+        with:
+          target-url: "http://localhost:4200"
 
   a11y-live:
     name: "Accessibility audit (axe-core) — live site"
     if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
-      - name: "Setup Chrome"
-        id: setup-chrome
-        uses: browser-actions/setup-chrome@v2
-        with:
-          chrome-version: stable
-
-      - name: "Install matching ChromeDriver"
-        run: |
-          CHROME_VERSION=$("${{ steps.setup-chrome.outputs.chrome-path }}" --version | grep -oE '[0-9.]+' | head -1)
-          curl -fsSL "https://storage.googleapis.com/chrome-for-testing-public/${CHROME_VERSION}/linux64/chromedriver-linux64.zip" -o /tmp/chromedriver.zip
-          unzip -o /tmp/chromedriver.zip -d /tmp
-          chmod +x /tmp/chromedriver-linux64/chromedriver
-
+      # --load-delay: over the real internet the bundle takes long enough to bootstrap that axe
+      # can snapshot before Angular renders, reporting phantom violations (no <main>/<h1>).
       - name: "Run axe-core accessibility audit (live URL)"
-        run: |
-          # "npx axe" only resolves via a local project's node_modules; this job has none (nothing
-          # else needed to hit a live URL), so the package is named explicitly, pinned to
-          # package.json's own devDependency version.
-          #
-          # --load-delay 4000: over the real internet the ~480KB bundle takes long enough to
-          # bootstrap that axe can snapshot before Angular renders, reporting phantom violations
-          # (no <main>/<h1>) -- hit live, fixed and confirmed with this delay (local builds render
-          # fast enough to never need it).
-          npx --yes @axe-core/cli@4.13.0 https://alderichoarau.github.io/ \
-            --chrome-path "${{ steps.setup-chrome.outputs.chrome-path }}" \
-            --chromedriver-path "/tmp/chromedriver-linux64/chromedriver" \
-            --load-delay 4000 \
-            --chrome-options="no-sandbox,disable-dev-shm-usage,disable-gpu" \
-            --exit
+        uses: alderichoarau/gha-setup-chrome-axe@v1
+        with:
+          target-url: "https://alderichoarau.github.io/"
+          load-delay: "4000"
