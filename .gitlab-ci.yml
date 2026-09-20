@@ -6,10 +6,10 @@
 # DAST have no free-tier equivalent, so they're not replicated here.
 #
 # The "pages" job publishes a GitLab Pages mirror of the site (a bonus backup copy, not the real
-# deployment). This project isn't named <username>.gitlab.io, so it's served at a sub-path
-# (https://alderichoarau.gitlab.io/alderichoarau.github.io/) instead of the domain root -- hence
-# the explicit --base-href, separate from the GitHub Pages build which serves from the root and is
-# never touched by this job.
+# deployment) -- this file is mirrored into the "alderichoarau.gitlab.io" project (not one named
+# after this repo), GitLab's special "user Pages" project served at the domain root
+# (https://alderichoarau.gitlab.io/), so the default root base-href from build:prod already works
+# as-is. GitHub Pages remains the real deployment and is never touched by this job.
 # -----------------------------------------------------------------------------------------------
 stages:
   - test
@@ -63,7 +63,7 @@ pages:
   stage: pages
   script:
     - npm ci
-    - npx ng build --configuration production --base-href /alderichoarau.github.io/
+    - npm run build:prod
     - rm -rf public
     - mv docs/browser public
   artifacts:

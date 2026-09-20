@@ -1,6 +1,10 @@
 # -----------------------------------------------------------------------------------------------
 # Mirrors this repository to GitLab on every push. GitLab's free tier only supports push
 # mirroring, not pull mirroring: https://docs.gitlab.com/user/project/repository/mirror/pull/
+#
+# Mirrors into the "alderichoarau.gitlab.io" project rather than one named after this repo: that
+# exact <username>.gitlab.io name is GitLab's special "user Pages" project, served at a clean root
+# domain instead of a hashed per-project "unique domain".
 # -----------------------------------------------------------------------------------------------
 name: "Mirror to GitLab"
 run-name: Mirror repository to GitLab
@@ -26,7 +30,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Mirror to GitLab"
-        uses: alderichoarau/gha-mirror-gitlab@v1
+        uses: alderichoarau/gha-mirror-gitlab@v2
         with:
           gitlab-token: ${{ secrets.GITLAB_MIRROR_TOKEN }}
           gitlab-namespace: alderichoarau
+          gitlab-project: alderichoarau.gitlab.io
