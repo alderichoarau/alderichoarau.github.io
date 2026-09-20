@@ -14,6 +14,16 @@
 Freelance landing page built with Angular 22, deployed on GitHub Pages.
 
 **🌐 Live site:** [https://alderichoarau.github.io](https://alderichoarau.github.io)
+(mirrored on [GitLab Pages](https://alderichoarau.gitlab.io) — bonus backup copy, GitHub Pages is the real deployment)
+
+## Mirrors
+
+GitHub is the source of truth. This repository is automatically push-mirrored (read-only) to:
+
+- [GitLab](https://gitlab.com/alderichoarau/alderichoarau.gitlab.io)
+- [Bitbucket](https://bitbucket.org/alderic-hoarau/alderichoarau.github.io)
+
+Issues and pull requests should be opened on GitHub.
 
 [![CodeQL](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/github-code-scanning/codeql)
 [![Dependency Review](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/dependency-review.yml)
