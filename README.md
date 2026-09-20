@@ -8,8 +8,8 @@
 [![Deploy Status](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/deploy.yml)
 [![Build & Test](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/ci.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/ci.yml)
 [![GitHub - Sonar Cloud Analysis](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/sonar.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/sonar.yml)
-[![GitLab CI](https://gitlab.com/alderichoarau/alderichoarau.gitlab.io/badges/main/pipeline.svg?key_text=GitLab+CI)](https://gitlab.com/alderichoarau/alderichoarau.gitlab.io/-/pipelines)
-[![Bitbucket Pipelines](https://img.shields.io/bitbucket/pipelines/alderic-hoarau/alderichoarau.github.io/main?label=Bitbucket%20CI)](https://bitbucket.org/alderic-hoarau/alderichoarau.github.io/pipelines)
+[![GitLab CI](https://img.shields.io/gitlab/pipeline-status/alderichoarau%2Falderichoarau.gitlab.io?branch=main&label=GitLab%20CI&logo=gitlab)](https://gitlab.com/alderichoarau/alderichoarau.gitlab.io/-/pipelines)
+[![Bitbucket Pipelines](https://img.shields.io/bitbucket/pipelines/alderic-hoarau/alderichoarau.github.io/main?label=Bitbucket%20CI&logo=bitbucket)](https://bitbucket.org/alderic-hoarau/alderichoarau.github.io/pipelines)
 
 Freelance landing page built with Angular 22, deployed on GitHub Pages.
 
