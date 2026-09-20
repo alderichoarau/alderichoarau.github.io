@@ -8,6 +8,7 @@
 [![Deploy Status](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/deploy.yml)
 [![Build & Test](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/ci.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/ci.yml)
 [![GitHub - Sonar Cloud Analysis](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/sonar.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/sonar.yml)
+[![GitLab CI](https://gitlab.com/alderichoarau/alderichoarau.gitlab.io/badges/main/pipeline.svg)](https://gitlab.com/alderichoarau/alderichoarau.gitlab.io/-/pipelines)
 
 Freelance landing page built with Angular 22, deployed on GitHub Pages.
 
