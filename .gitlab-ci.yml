@@ -1,14 +1,21 @@
 # -----------------------------------------------------------------------------------------------
-# CI only (no CD) -- mirrors the checks from .github/workflows/ci.yml and a11y.yml. Deployment
-# stays on GitHub Pages, driven only from the GitHub side; this pipeline just verifies the mirrored
-# code builds. SAST/Secret Detection are GitLab's free-tier native templates (results as pipeline
-# artifacts only, no Vulnerability Report/MR integration -- that needs Ultimate). Dependency
-# Scanning and DAST have no free-tier equivalent, so they're not replicated here.
+# CI only (no CD) -- mirrors the checks from .github/workflows/ci.yml and a11y.yml. Real deployment
+# stays on GitHub Pages, driven only from the GitHub side and untouched by anything here.
+# SAST/Secret Detection are GitLab's free-tier native templates (results as pipeline artifacts
+# only, no Vulnerability Report/MR integration -- that needs Ultimate). Dependency Scanning and
+# DAST have no free-tier equivalent, so they're not replicated here.
+#
+# The "pages" job publishes a GitLab Pages mirror of the site (a bonus backup copy, not the real
+# deployment). This project isn't named <username>.gitlab.io, so it's served at a sub-path
+# (https://alderichoarau.gitlab.io/alderichoarau.github.io/) instead of the domain root -- hence
+# the explicit --base-href, separate from the GitHub Pages build which serves from the root and is
+# never touched by this job.
 # -----------------------------------------------------------------------------------------------
 stages:
   - test
   - build
   - accessibility
+  - pages
 
 include:
   - template: Security/SAST.gitlab-ci.yml
@@ -51,3 +58,16 @@ accessibility:
     - npx --yes @axe-core/cli@4.13.0 http://localhost:4200
       --chrome-path /usr/bin/chromium --chromedriver-path /usr/bin/chromedriver
       --chrome-options="no-sandbox,disable-dev-shm-usage,disable-gpu" --exit
+
+pages:
+  stage: pages
+  script:
+    - npm ci
+    - npx ng build --configuration production --base-href /alderichoarau.github.io/
+    - rm -rf public
+    - mv docs/browser public
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
