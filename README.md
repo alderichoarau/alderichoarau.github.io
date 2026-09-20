@@ -5,16 +5,43 @@
 ![NPM](https://img.shields.io/badge/npm-DD0031?style=for-the-badge&logo=npm&logoColor=white)
 [![Vitest](https://img.shields.io/badge/Tested%20with-Vitest-6E9F18?style=for-the-badge&logo=vitest)](https://vitest.dev/)
 [![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-green?style=for-the-badge&logo=github)](https://pages.github.com/)
-[![Deploy Status](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/deploy.yml)
-[![Build & Test](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/ci.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/ci.yml)
-[![GitHub - Sonar Cloud Analysis](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/sonar.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/sonar.yml)
-[![GitLab CI](https://img.shields.io/gitlab/pipeline-status/alderichoarau%2Falderichoarau.gitlab.io?branch=main&label=GitLab%20CI&logo=gitlab)](https://gitlab.com/alderichoarau/alderichoarau.gitlab.io/-/pipelines)
-[![Bitbucket Pipelines](https://img.shields.io/bitbucket/pipelines/alderic-hoarau/alderichoarau.github.io/main?label=Bitbucket%20CI&logo=bitbucket)](https://bitbucket.org/alderic-hoarau/alderichoarau.github.io/pipelines)
 
 Freelance landing page built with Angular 22, deployed on GitHub Pages.
 
 **🌐 Live site:** [https://alderichoarau.github.io](https://alderichoarau.github.io)
 (mirrored on [GitLab Pages](https://alderichoarau.gitlab.io) — bonus backup copy, GitHub Pages is the real deployment)
+
+## Analysis
+
+### GitHub
+
+**CI**
+
+[![Build & Test](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/ci.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/ci.yml)
+[![Sonar Cloud Analysis](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/sonar.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/sonar.yml)
+[![CodeQL](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/github-code-scanning/codeql)
+[![Dependency Review](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/dependency-review.yml)
+[![Security · SCA](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/sca.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/sca.yml)
+[![Security · Secrets](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/secrets-scan.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/secrets-scan.yml)
+[![Security · DAST (OWASP ZAP)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/dast.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/dast.yml)
+[![Accessibility · axe-core](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/a11y.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/a11y.yml)
+
+**Deploy**
+
+[![Deploy Status](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/deploy.yml)
+
+### Mirror
+
+[![GitLab CI](https://img.shields.io/gitlab/pipeline-status/alderichoarau%2Falderichoarau.gitlab.io?branch=main&label=GitLab%20CI&logo=gitlab)](https://gitlab.com/alderichoarau/alderichoarau.gitlab.io/-/pipelines)
+[![Bitbucket Pipelines](https://img.shields.io/bitbucket/pipelines/alderic-hoarau/alderichoarau.github.io/main?label=Bitbucket%20CI&logo=bitbucket)](https://bitbucket.org/alderic-hoarau/alderichoarau.github.io/pipelines)
+
+### Sonar
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=alderichoarau_alderichoarau.github.io&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=alderichoarau_alderichoarau.github.io)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=alderichoarau_alderichoarau.github.io&metric=bugs)](https://sonarcloud.io/summary/new_code?id=alderichoarau_alderichoarau.github.io)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=alderichoarau_alderichoarau.github.io&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=alderichoarau_alderichoarau.github.io)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=alderichoarau_alderichoarau.github.io&metric=coverage)](https://sonarcloud.io/summary/new_code?id=alderichoarau_alderichoarau.github.io)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=alderichoarau_alderichoarau.github.io&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=alderichoarau_alderichoarau.github.io)
 
 ## Mirrors
 
@@ -24,19 +51,6 @@ GitHub is the source of truth. This repository is automatically push-mirrored (r
 - [Bitbucket](https://bitbucket.org/alderic-hoarau/alderichoarau.github.io)
 
 Issues and pull requests should be opened on GitHub.
-
-[![CodeQL](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/github-code-scanning/codeql)
-[![Dependency Review](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/dependency-review.yml)
-[![Security · SCA](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/sca.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/sca.yml)
-[![Security · Secrets](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/secrets-scan.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/secrets-scan.yml)
-[![Security · DAST (OWASP ZAP)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/dast.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/dast.yml)
-[![Accessibility · axe-core](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/a11y.yml/badge.svg)](https://github.com/alderichoarau/alderichoarau.github.io/actions/workflows/a11y.yml)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=alderichoarau_alderichoarau.github.io&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=alderichoarau_alderichoarau.github.io)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=alderichoarau_alderichoarau.github.io&metric=bugs)](https://sonarcloud.io/summary/new_code?id=alderichoarau_alderichoarau.github.io)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=alderichoarau_alderichoarau.github.io&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=alderichoarau_alderichoarau.github.io)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=alderichoarau_alderichoarau.github.io&metric=coverage)](https://sonarcloud.io/summary/new_code?id=alderichoarau_alderichoarau.github.io)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=alderichoarau_alderichoarau.github.io&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=alderichoarau_alderichoarau.github.io)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=alderichoarau_alderichoarau.github.io&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=alderichoarau_alderichoarau.github.io)
 
 ---
 
