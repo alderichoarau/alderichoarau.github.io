@@ -37,7 +37,7 @@ jobs:
         uses: actions/checkout@v7
 
       - name: "Setup Node and install deps"
-        uses: alderichoarau/gha-setup-node@v1
+        uses: alderichoarau/gha-setup-node@v2
 
       - name: "Build Angular app"
         run: npm run build:prod
@@ -55,7 +55,7 @@ jobs:
           exit 1
 
       - name: "Run axe-core accessibility audit"
-        uses: alderichoarau/gha-setup-chrome-axe@v1
+        uses: alderichoarau/gha-setup-chrome-axe@v3
         with:
           target-url: "http://localhost:4200"
 
@@ -67,7 +67,7 @@ jobs:
       # --load-delay: over the real internet the bundle takes long enough to bootstrap that axe
       # can snapshot before Angular renders, reporting phantom violations (no <main>/<h1>).
       - name: "Run axe-core accessibility audit (live URL)"
-        uses: alderichoarau/gha-setup-chrome-axe@v1
+        uses: alderichoarau/gha-setup-chrome-axe@v3
         with:
           target-url: "https://alderichoarau.github.io/"
           load-delay: "4000"
