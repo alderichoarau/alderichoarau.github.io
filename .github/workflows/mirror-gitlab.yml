@@ -33,5 +33,5 @@ jobs:
         uses: alderichoarau/gha-mirror-gitlab@v2
         with:
           gitlab-token: ${{ secrets.GITLAB_MIRROR_TOKEN }}
-          gitlab-namespace: alderichoarau
+          gitlab-namespace: ${{ vars.GITLAB_NAMESPACE }}
           gitlab-project: alderichoarau.gitlab.io
