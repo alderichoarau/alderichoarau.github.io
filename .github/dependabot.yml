@@ -10,101 +10,19 @@ updates:
       time: "08:00"
       timezone: "Europe/Paris"
     
-    # Group all updates into fewer PRs
+    # Grouped by bump type (not by package category) -- consistent with azure-quiz-backend/
+    # azure-quiz-frontend's dependabot.yml, and lets patch-only PRs be auto-merged (see
+    # dependabot-auto-merge.yml) while minor/major still get a human look.
     groups:
-      # Angular core packages (major versions)
-      angular-core:
-        patterns:
-          - "@angular/*"
-          - "@angular-devkit/*"
-          - "@ngtools/*"
-          - "typescript"
-          - "zone.js"
+      patch-updates:
         update-types:
-          - "major"
-        
-      # Angular core packages (minor & patch)
-      angular-minor:
-        patterns:
-          - "@angular/*"
-          - "@angular-devkit/*"
-          - "@ngtools/*"
-          - "typescript"
-          - "zone.js"
+          - "patch"
+      minor-updates:
         update-types:
           - "minor"
-          - "patch"
-          
-      # Angular Material & CDK
-      angular-material:
-        patterns:
-          - "@angular/material"
-          - "@angular/cdk"
+      major-updates:
         update-types:
           - "major"
-          - "minor"
-          - "patch"
-      
-      # Translation dependencies
-      translation:
-        patterns:
-          - "@ngx-translate/*"
-        update-types:
-          - "major"
-          - "minor"
-          - "patch"
-      
-      # Development tools (ESLint, Prettier, etc.)
-      dev-tools:
-        patterns:
-          - "eslint*"
-          - "angular-eslint"
-          - "typescript-eslint"
-          - "prettier"
-          - "husky"
-          - "lint-staged"
-        update-types:
-          - "major"
-          - "minor"
-          - "patch"
-      
-      # Testing dependencies
-      testing:
-        patterns:
-          - "jasmine*"
-          - "karma*"
-          - "@types/jasmine"
-        update-types:
-          - "major"
-          - "minor"
-          - "patch"
-      
-      # All other dependencies (grouped)
-      other-dependencies:
-        patterns:
-          - "*"
-        exclude-patterns:
-          - "@angular/*"
-          - "@angular-devkit/*"
-          - "@ngtools/*"
-          - "@angular/material"
-          - "@angular/cdk"
-          - "@ngx-translate/*"
-          - "eslint*"
-          - "angular-eslint"
-          - "typescript-eslint"
-          - "prettier"
-          - "husky"
-          - "lint-staged"
-          - "jasmine*"
-          - "karma*"
-          - "@types/jasmine"
-          - "typescript"
-          - "zone.js"
-        update-types:
-          - "major"
-          - "minor"
-          - "patch"
     
     # Configuration options
     open-pull-requests-limit: 10
