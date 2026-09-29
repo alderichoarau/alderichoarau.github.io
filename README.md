@@ -5,6 +5,7 @@
 ![NPM](https://img.shields.io/badge/npm-DD0031?style=for-the-badge&logo=npm&logoColor=white)
 [![Vitest](https://img.shields.io/badge/Tested%20with-Vitest-6E9F18?style=for-the-badge&logo=vitest)](https://vitest.dev/)
 [![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-green?style=for-the-badge&logo=github)](https://pages.github.com/)
+<!-- deps-badge --> ![Dependencies](https://img.shields.io/badge/dependencies-not_yet_updated-lightgrey?style=for-the-badge)
 
 Freelance landing page built with Angular 22, deployed on GitHub Pages.
 
